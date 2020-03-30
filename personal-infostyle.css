@@ -1,0 +1,43 @@
+.sendfile{
+    background-color: transparent;
+    border-radius: 5px;
+    height: 30px;
+    width: 80px;
+    border:1px solid green ;
+    opacity:.8;
+    color:green;
+
+}
+
+.sendfile:hover{
+    background-color: rgb(82, 207, 82);
+    opacity:1;
+    cursor:pointer;
+    transform: translateY(-3px);
+    transition:ease-in-out .3s;
+    color :white;
+
+
+}
+
+.changepic{
+    opacity: 0;
+}
+
+table{
+    margin-right: 50%;
+    border:1px solid black;
+
+}
+
+p{
+    color :red;
+    font-size:25px;
+    font-weight: bolder;
+
+}
+
+p .l{
+    color:black;
+    font:bold;
+}
