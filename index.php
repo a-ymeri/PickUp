@@ -18,7 +18,7 @@ require_once('init.php');
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="loginstyle.css">
-        <link rel="stylesheet" href="section-sidebar.css">
+        
         <link rel="stylesheet" href="date-picker.css">
 
         <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -47,7 +47,7 @@ require_once('init.php');
         <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
         <!-- <link rel="stylesheet" href="normalize.css"> -->
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet1" href="style.scss">
+        <link rel="stylesheet" href="section-sidebar.css">
 
 
 
@@ -284,9 +284,11 @@ $u = get_username();
                             </li></a>
                         
                     </ul>   
-
-
-
+<?php
+                    echo (isset($_SESSION['username']) ?  "<button class='sslogout'> LOGOUT</button>": ""); 
+                        
+                        ?>
+                
 
                 </section> 
 

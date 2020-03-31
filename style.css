@@ -851,6 +851,31 @@ nav {
   }
 
 
+  .sslogout{
+    /* background-color: #ff3e30; */
+    border-style: none;
+    border-radius:5px;
+    background-color:transparent;
+    color:red;
+    border:1px solid red;
+    font-weight:900;
+    width:100px;
+    margin-top:160%;
+    margin-left: 17%;
+}
+
+.sslogout:hover{
+    opacity:1;
+    background-color:#ff3e30;
+    box-shadow: 1px 5px 5px #ff3e30;
+    transform: perspective();
+    transition:all .4s;
+}
+
+
+
+
+
 
   /* .circular--landscape {
     display: inline-block;

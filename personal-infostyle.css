@@ -41,3 +41,69 @@ p .l{
     color:black;
     font:bold;
 }
+
+label{
+    font-size:22px;
+    font-weight: bolder;
+    
+}
+
+input{
+    width:40%;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border:none;
+    font-family: "Poppins";
+    text-align: center;
+    height:30px;
+    font-size: 20px;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+
+
+
+input[type=text]{
+    width:40%;
+    font-size: 20px;
+}
+
+input[type=password]{
+    width:40%;
+
+}
+
+.savechanges{
+    /* background-color: #ff3e30; */
+    border-style: none;
+    border-radius:5px;
+    background-color:#32c92d;
+    color:black;
+    border:1px solid #32c92d;
+    font-weight:900;
+    height:55px;
+
+}
+
+.savechanges:hover{
+    opacity:1;
+    background-color:#32c92d;
+    transform: perspective();
+    transition:all .4s;
+}
+
+fieldset{
+    border-top:1px solid black;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-top: 2%;
+}
+
+legend{
+    font-size: 24px;
+    color:red;
+}

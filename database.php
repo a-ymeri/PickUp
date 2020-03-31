@@ -5,9 +5,11 @@
     $servername = "localhost";
     $username = "memli1";
     $password = "3591";
-    $dbname = "cwtest";
-     $conn = mysqli_connect($servername, $username, $password, $dbname);
-		confirm_db_connect();
+	$dbname = "cwtest";
+	
+	$conn = mysqli_connect($servername, $username,$password,$dbname);
+	 
+	confirm_db_connect();
 		return $conn;
 	}
 

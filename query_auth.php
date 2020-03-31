@@ -4,6 +4,8 @@ require_once('init.php');
 function verify_user($username,$password){
     $conn = db_connect();
     $sql = "SELECT username,password FROM user";
+    
+
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -29,7 +31,7 @@ function verify_user($username,$password){
 }
 
 
-function get_name( $username){
+function get_name($username){
 
     $conn = db_connect();
    
