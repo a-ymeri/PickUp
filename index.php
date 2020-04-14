@@ -1,138 +1,140 @@
-<?php 
+<?php
 session_start();
 require_once('init.php');
 
 ?>
 
-
-
 <!DOCTYPE html>
 
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="loginstyle.css">
-        
-        <link rel="stylesheet" href="date-picker.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="loginstyle.css">
+    <link rel="stylesheet" href="date-picker.css">
 
-        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
-
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-              crossorigin="" />
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
 
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-                integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-                crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
 
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
- 
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
-        <title>COURSEWORK</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
-        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-        <!-- <link rel="stylesheet" href="normalize.css"> -->
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="section-sidebar.css">
+
+    <title>COURSEWORK</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="normalize.css"> -->
+    <link rel="stylesheet" href="radio.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="section-sidebar.css">
+    <link rel= "stylesheet" href="post-Event.css">
 
 
 
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <nav>
+    <nav>
 
-            <div class="logo">
-                PICK-UP
+        <div class="logo">
+       <a href="index.php" class="logolink"> PICK-UP </a>
 
-            </div>
-
-
-
-            <ul class="nav-links">
-                <li> <a href="#"> Home</a></li>
-                <li> <a href="Map.html"> Map</a></li>
-                <li> <a href="about.html"> About</a></li>
-                <li> <a href="#"> Entertaiment</a></li>
-            </ul>
-
-
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-
-
-
-            </div>
-
-
-
-        </nav>
-
-        <div>
-
-        
         </div>
 
 
 
-        <div id="id01" class="modal">
+        <ul class="nav-links">
+            <li> <a href="#"> Home</a></li>
+            <li> <a href="Map.html"> Map</a></li>
+            <li> <a href="about.html"> About</a></li>
+            <li> <a href="#"> Entertaiment</a></li>
+        </ul>
 
-            <form class="modal-content animate" action="action.php" method="post">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="images/avatar.png" alt="Avatar" class="avatar">
 
-
-                </div>
-
-                <div class="container">
-                    <label for="uname"><b>Username</b>
-                    </label>
-                    <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
-
-                    <label for="psw"><b>Password</b>
-                    </label>
-                    <input type="password" placeholder="Enter Password" name="psw" required class="password" id="password">
-
-                    <button type="submit" class="logsubmit">Login</button>
-
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-
-                    <br>
-                    <br> Not a member Yet ?
-
-                    <button type="button" id="signupButton" title="Close Modal"> Signup</button>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
 
 
 
-                </div>
-            </form>
         </div>
 
 
-        <!-- ------------------------------------------------ -->
+
+    </nav>
+
+    <div>
 
 
-        <!-- <div id="signout" class="signuoutclass">
+    </div>
+
+
+
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="images/avatar.png" alt="Avatar" class="avatar">
+
+
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b>
+                </label>
+                <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
+
+                <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+                </div>
+
+                <label for="psw"><b>Password</b>
+                </label>
+                <input type="password" placeholder="Enter Password" name="psw"  class="password" id="password">
+            <h5 class="errorlabel"></h5>
+                <button type="submit" class="logsubmit">Login</button>
+
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+
+                <br>
+                <br> Not a member Yet ?
+
+                <button type="button" id="signupButton" title="Close Modal"> Signup</button>
+
+
+
+            </div>
+        </form>
+
+
+
+
+    </div>
+
+
+    <!-- ------------------------------------------------ -->
+
+
+    <!-- <div id="signout" class="signuoutclass">
 
 <form class="modal-content animate" action="action.php" method="post">
     <div class="imgcontainer">
@@ -161,206 +163,298 @@ require_once('init.php');
 
 
 
-        <div id="signup" class="signupclass">
+    <div id="signup" class="signupclass">
 
-            <form class="modal-content animate" action="signup.php" method="post">
+        <form class="modal-content animate" action="signup.php" method="post">
 
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('signup').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-                </div>
+            </div>
 
-                <div class="container">
-                    Signup
-                    <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                    <br>
+            <div class="container">
+                Signup
+                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
+                <br>
 
-                    <input type="text" placeholder="Enter first name" name="fname" required class="uname">
-                    <input type="text" placeholder="Enter last name" name="lname" required class="uname">
+                <input type="text" placeholder="Enter first name" name="fname" required class="uname">
+                <input type="text" placeholder="Enter last name" name="lname" required class="uname">
 
 
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required class="uname">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required class="uname">
 
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" id="psw1" name="psw" required class="password">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="psw1" name="psw" required class="password">
 
-                    <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
-                    Email
-                    <input type="email" placeholder="Your email" name="email" required class="password"
-                           style="width:100%; height:50px;" required>
+                <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
+                Email
+                <input type="email" placeholder="Your email" name="email" required class="signupemail" style="width:100%; height:50px; padding: 12px 20px;" required>
 
-                    <button type="submit" class="logsubmit" id="signupButton1" onclick="return Validate()">Sign up</button>
-                    <br>
-                    <br>
-                </div>
-            </form>
+                <button type="submit" class="logsubmit" id="signupButton1" onclick="return Validate()">Sign up</button>
+                <br>
+                <br>
+            </div>
+        </form>
 
-        </div>
+    </div>
 
 
 
-        <!--
-
+    <!--
+                                            HERE the MODAL(login/signup) ends
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -->
 
 
-        <div class = "indexcontainer">
+    <div class="indexcontainer">
 
-            <div class="section-sidebar">
-                <br>
+        <div class="section-sidebar">
+            <br>
 
-                <!-- this button is serves as a login button or account button based on php user session -->
-            <?php 
+            <!-- this button is serves as a login button or account button based on php user session -->
+            <?php
 
-require_once('authenticate.php');
-$u = get_username();
-            
+            require_once('authenticate.php');
+            $u = get_username();
+
             //"<a href = 'account.php'> <button style='width:auto;' 
             //class='greenbtn'> $u </button> </a>"
 
             //this determines when to display the signup button and when to display the user photo
-            echo (isset($_SESSION['username']) ?  "": " <button id ='login-accountbutton' style='width:auto;' 
+            echo (isset($_SESSION['username']) ?  "" : " <button id ='login-accountbutton' style='width:auto;' 
                         class='greenbtn'>  Login</button>");  ?>
 
- <?php 
-    require_once('authenticate.php');
- $u = get_username();
- echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg'style=' position: relative;
+            <?php
+            require_once('authenticate.php');
+            $u = get_username();
+            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg'style=' position: relative;
   width: 70px;
   height:70px;
   overflow: hidden;
-  border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");      
-      ?>
+  border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
+            ?>
 
 
-                <section class ="stealthy-scroll-container">
-                    
-                        
+            <section class="stealthy-scroll-container">
 
 
-                    <ul class="sidebar-nav">
-                    
-                        
-                        
-                     <a href = "<?php echo (isset($_SESSION['username']) ? "account.php" : "account.php"); ?>" > <li > 
 
-                            <i class= "thumbnail">
-                                
+
+                <ul class="sidebar-nav">
+
+
+
+                    <a href="<?php echo (isset($_SESSION['username']) ? "account.php" : "account.php"); ?>">
+                        <li>
+
+                            <i class="thumbnail">
+
                             </i>
                             Profile
-                            </li></a>
-                        
-                                              <a href = "#" > <li > 
+                        </li>
+                    </a>
 
-                            <i class= "thumbnail">
-                                
+                    <a href="#">
+                        <li>
+
+                            <i class="thumbnail">
+
                             </i>
 
                             Feed
 
-                            </li></a>
-                        
-                                              <a href = "#" > <li > 
+                        </li>
+                    </a>
 
-                            <i class= "thumbnail">
-                                
+                    <a href="#">
+                        <li>
+
+                            <i class="thumbnail">
+
                             </i>
 
-                            Events
+                           Popular Events
 
-                            </li></a>
-                        
-                                               <a href = "#" > <li > 
+                        </li>
+                    </a>
 
-                            <i class= "thumbnail">
-                                
+                    <a href="#">
+                        <li>
+
+                            <i class="thumbnail">
+
                             </i>
 
                             Whatever
 
-                            </li></a>
-                        
-                    </ul>   
-<?php
-                    echo (isset($_SESSION['username']) ?  "<button class='sslogout'> LOGOUT</button>": ""); 
-                        
-                        ?>
-                
+                        </li>
 
-                </section> 
+                    </a>
+
+                    <a>
+
+                    <li> Account details</li>
+
+                    </a>
+
+                </ul>
+                <?php
+                echo (isset($_SESSION['username']) ?  "<a href = 'logout.php'><button class='sslogout'> Logout</button></a>" : "");
+
+                ?>
 
 
-<!--                    This is the end of the section sidebar-->
-<!--            /---------------------------------------------------------------->
-            </div>
+            </section>
+
+
+            <!--                    This is the end of the section sidebar-->
+            <!------------------- --------------------------------------------------------------------------------------->
+        </div>
+
+        <div class="indexfeed">
+
+<!-- <div id="map"></div> -->
+
+          
+           <h1 >Event Feed</h1>
+           <br>
+        <div id= "eventbutton" onclick = "popEvent()">
+<header style="font-size:large;">Want to host a new event</header>
+<input placeholder="Title" id="title1" name="title" autocomplete="off"></input>   
+
+</div>
+ 
             
-            
-            
-            
 
+            <div class="eventfeed " id="id02">
+                <section class="postsection1">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
+                    <form action="post-Event.php" method="POST" class="event-content animate" autocomplete="off">
+                   
 
-
-
-            <div class="indexfeed">
-                
-                <!-- <div id="map"></div> -->
-
-
-
-                
-                <div class="eventfeed">
-                    <section class="postsection" onclick="thisfn()">
-                        <div class="text" >
+                        <div class="text">
+                       
                             <header style="font-size:large;">Post a new event</header>
-                          <textarea placeholder="Title" id ="title"></textarea>
-
-                          <div class="date-picker">
-                            <div class="selected-date"></div>
-                    
-                            <div class="dates">
-                                <div class="month">
-                                    <div class="arrows prev-mth">&lt;</div>
-                                    <div class="mth"></div>
-                                    <div class="arrows next-mth">&gt;</div>
-                                </div>
-                    
-                                <div class="days"></div>
-                            </div>
+                            <input placeholder="Title" id="title" name="title" required></input>
+                            
                         </div>
-                          
+                            <div class="date-picker"> </div>
+
+                            <label for="time" name="time">Start Time</label>
+                            <input type="time" name="time" id="time" />
+                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
+
                             <div id="eventoption">
 
-                                <header>Choose a facility</header>
-                          <button>Warehouse</button>
-                          <button>Library</button>
-                          <button>YMCA</button>
-                        </div>
-                        
+                       <input type="text" id="date1" name="date" value="" style="width:50%;">
+                                <h4>Select a Facility</h4>
 
-    
-                        <input type="submit" value="post" />
-                        
-                        </div>
-                      </section>
+                                <div class="col-xl-10 pb-5">
+                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Library" checked>
+                                    <label class="for-checkbox-budget" for="budget-1">
+                                        <span data-hover="Library">Library</span>
+                                    </label>
+                                    <!--
+						--><input class="checkbox-budget" type="radio" name="budget" id="budget-2" value="Warehouse">
+                                    <label class="for-checkbox-budget" for="budget-2">
+                                        <span data-hover="Warehouse">Warehouse</span>
+                                    </label>
+                                    <!--
+						--><input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA">
+                                    <label class="for-checkbox-budget" for="budget-3">
+                                        <span data-hover="YMCA">YMCA</span>
+                                    </label>
+                                    <!--
+						-->
+                                </div>
 
 
+                                <input type="submit" value="post" />
 
-                
 
-                
-                
-                </div>
+                            </div>
 
-                
-            </div>
-            
-            
-            
-            
+                            
+
+                    </form>
+
+
+                    </section>
+                    </div>
+
+
+        <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
+
+        <?php
+                    require_once('query_auth.php');
+                    $event = get_AllEvents();
+
         
+                    
+            
+
+                    for ($x = 0; $x <sizeof($event) ;$x++) {  
+                       $date1 =  $event[$x]-> get_date();
+
+                         
+                            echo  
+                            '
+                            
+                            
+                            <div class="eventtest'.$x.'" id="">
+                             <section class="postsection">
+                          
+                             <h1 style="color:#0077CC;">'
+                             .$event[$x]->get_title().
+                             '
+                             </h1>
+                             
+                             <p>'.$date = $event[$x]->get_date().'</p>
+     
+                             
+                             
+     
+                             <div>Time: '.$event[$x]->get_time().'
+                             <br>
+                                 Location: '.$event[$x]->get_location().'
+                             </div> 
+    
+                             
+                             </div>
+                             
+                             
+                             ';
+                        
+
+                   
+
+                    
+                }
+
+                    
+
+                    
+                    
+                    ?> 
+
+        <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
+
+
+        <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
+
+
+
+
+
+
+<!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
+
+                    </div>
+
+
+
+
         </div>
 
 
@@ -369,191 +463,338 @@ $u = get_username();
 
 
 
-
-
-
-
-        <!--
+    <!--
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -->
 
 
-        <!-- <footer>
-            <div class="foot">
-
-                This was made by memli,ardit,lola,learta
-
-            </div>
 
 
+    <script>
+        //dipslays the login(modal)
+        const signup = document.getElementById('signupButton');
 
-        </footer> -->
+        signup.addEventListener('click', () => {
+            var s = document.getElementById('signup');
+            var modal = document.getElementById('id01');
+            modal.style.display = "none";
+            s.style.display = 'block';
 
-
-
-
-
-
-
-
-        <script>
+        });
+    </script>
 
 
 
-            const signup = document.getElementById('signupButton');
+    <script src="index.js"></script>
 
-            signup.addEventListener('click', () => {
-                var s = document.getElementById('signup');
-                var modal = document.getElementById('id01');
-                modal.style.display = "none";
-                s.style.display = 'block';
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
-            });
-        </script>
-
-
-
-
-        <script src="index.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("#signupButton1").click(function () {
-                    var passalert = document.getElementById('alert');
-                    var password = $("#psw1").val();
-                    var confirmPassword = $("#psw2").val();
-                    if (password != confirmPassword) {
-                        swal({
-                            title: "Passwords do not match",
-                            type: "error",
-                            showConfirmButton: true,
-                            showCancelButton: false,
-                            customClass: "Custom_Cancel",
-                            confirmButtonColor: "#DD6B55"
-                        });
-                        return false;
-                    }
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            //checks if passwords are the same
+            $("#signupButton1").click(function() {
+                var passalert = document.getElementById('alert');
+                var password = $("#psw1").val();
+                var confirmPassword = $("#psw2").val();
+                if (password != confirmPassword) {
                     swal({
-                        title: "Success",
-                        type: "success",
-                        showConfirmButton: false,
-                        customClass: "success",
-                        timer: 1500
-
+                        title: "Passwords do not match",
+                        type: "error",
+                        showConfirmButton: true,
+                        showCancelButton: false,
+                        customClass: "Custom_Cancel",
+                        confirmButtonColor: "#DD6B55"
                     });
 
-                    return true;
+                    return false;
+                }
+                swal({
+                    title: "Success",
+                    type: "success",
+                    showConfirmButton: false,
+                    customClass: "success",
+                    timer: 1500
+
                 });
+
+                return true;
             });
-        </script>
+        });
+    </script>
 
 
-        <script>
-            const mymap = L.map('mapid').setView([51.505, -0.09], 13);
-            const attribution =
-                  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-            const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-            const tiles = L.tileLayer(tileUrl, { attribution });
-            tiles.addTo(mymap);
-            const marker = L.marker([51.505, -0.09], 13).addTo(mymap);
-        </script>
-        
-        
-        
-        <script>
 
-    function initMap(){
-        var location = {lat: 40.6401, lng:22.9444};
-        var library = {lat: 40.637350, lng:22.936904};
+    <script>
+        //other api map
+        const mymap = L.map('mapid').setView([51.505, -0.09], 13);
+        const attribution =
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, {
+            attribution
+        });
+        tiles.addTo(mymap);
+        const marker = L.marker([51.505, -0.09], 13).addTo(mymap);
+    </script>
 
-        var YMCA = {lat: 40.626573, lng:22.951844};
 
-        var warehouse = {lat: 40.634825, lng:22.934286};
-        var map = new google.maps.Map(document.getElementById("map"),{
-            zoom:14,
-            center: location
+
+    <script>
+        function initMap() {
+            var location = {
+                lat: 40.6401,
+                lng: 22.9444
+            };
+            var library = {
+                lat: 40.637350,
+                lng: 22.936904
+            };
+
+            var YMCA = {
+                lat: 40.626573,
+                lng: 22.951844
+            };
+
+            var warehouse = {
+                lat: 40.634825,
+                lng: 22.934286
+            };
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: location
+            });
+
+
+            var librarymarker = new google.maps.Marker({
+                position: library,
+                map: map,
+                title: 'library'
+            });
+
+
+            var warehousemarker = new google.maps.Marker({
+                position: warehouse,
+                map: map,
+                title: 'Warehouse'
+            });
+
+
+            var ymcamarker = new google.maps.Marker({
+                position: YMCA,
+                map: map,
+                title: 'YMCA'
+            });
+
+
+
+
+        }
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
+
+
+    <script>
+        function thisfn() {
+            var eventpost = document.querySelector('.postsection');
+            var eventoption = document.getElementById('eventoption');
+            const date_picker_element = document.querySelector('.date-picker');
+            const date_selected = document.querySelector('.selected-date');
+
+            // alert(event_content);
+            date_picker_element.style.display = "block";
+            eventoption.style.display = 'block';
+            event_content.style.display = "block";
+            eventpost.classList.toggle('eventpost-active');
+            eventoption.classList.toggle('eventoption-active');
+        }
+    </script>
+
+
+    <script src="date-js.js"></script>
+
+    <script>
+        var button = document.getElementById('login-accountbutton');
+        var modal = document.getElementById('id01');
+
+
+        button.addEventListener('click', () => {
+
+            modal.style.display = "block";
+
         });
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
-        var librarymarker = new google.maps.Marker({
-    position: library,
-    map: map,
-    title: 'library'
-  });
+    <script>
+        function popEvent(){
 
+        
 
-  var warehousemarker = new google.maps.Marker({
-    position: warehouse,
-    map: map,
-    title: 'Warehouse'
-  }); 
+            var eventbutton = document.getElementById('eventbutton');
+             var modal2 = document.getElementById('id02');
 
+           
+                // modal2.classList.toggle('eventfeed-active');
 
-  var ymcamarker = new google.maps.Marker({
-    position: YMCA,
-    map: map,
-    title: 'YMCA    '
-  });
-
-
+               modal2.style.display ="block";
 
 
-    }
+            window.onclick = function(event) {
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+                
+            }
+        }
+        }
 
+    </script>
+
+
+    <script>
+        // function bridge(){
+        // var date_selected = document.querySelector('.selected-date');
+        // var  bridgePHP = document.querySelector('.bridgePHP');
+        // var abc = $(date_selected).data('value');
+        // var a = bridgePHP.value;
+
+        // bridgePHP.value = abc;
+
+        // alert(abc);
+        // }
+    </script>
+
+
+    <script src="datedropper.pro.min.js">
 
 
     </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
-type="text/javascript"></script>
 
 
-<script>
+    <script>
+        n = new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        var l = document.getElementById("date1");
 
-    function thisfn(){
-        var eventpost = document.getElementById('postsection');
-        var eventoption = document.getElementById('eventoption');
-        const date_picker_element = document.querySelector('.date-picker');
-        console.log('post is clicked');
-
-        eventoption.style.display = 'block';
-        eventoption.classList.toggle('eventoption-active');
-        date_picker_element.style.display = "block";
-    }
-</script>
+        l.value = m + "/" + d + "/" + y;
 
 
-<script src="date-js.js"></script>
+        $("#date1").dateDropper({});
+    </script>
 
-<script>
-var button = document.getElementById('login-accountbutton');
-var modal = document.getElementById('id01');
 
-button.addEventListener('click',() => {
 
-    modal.style.display= "block";
+
+
+<script type="text/javascript">
+function do_login()
+{
+
+ var username=$("#username").val();
+ var pass=$("#password").val();
+ 
+
+  $.ajax
+  ({
+  type:'post',
+  url:'AJAX.php',
+  data:{
+    do_login:"do_login",
+   username:username,
+   password:pass
+  },
+  success:function(response) {
+
+  if(response == 1)
+  {
+    loggedin();
+
+  }
+  else if(response == 2 )
+  {
+    shaker();
+  }
+
+  }
+  });
+ return false;
+}
+
+function shaker(){
+    var usrbox = document.querySelector('.uname');
+    var password = document.querySelector('.password');
+
+   usrbox.classList.toggle('shaker-active');
+   password.classList.toggle('shaker-active');
+
+   
+    var x = document.getElementsByTagName("h5")[0];
+    x.outerHTML = "<h6 style='color:#f44336;'>Wrong password or username</h6>"
+
+
+
+}
+
+function loggedin(){
+    var loader_wrapper = document.querySelector('.loader-wrapper');
+    var loader_inner = document.querySelector('.loader-inner');
+    var loader = document.querySelector('.loader');
+    // loader.classList.toggle('loader-active');
+    var modal = document.querySelector('.id01');
+    loader_wrapper.style.display = "block";
+
+    loader.classList.toggle('loader-active');
+    loader_inner.classList.toggle('loader-inner-active');
+
+    setTimeout(function(){   swal({
+                        title: "Logged in",
+                        type: "success",
+                        showConfirmButton:false,
+                        confirmButtonColor: "green"
+                    }); 
+                     }, 1000);
+    
+   
+    setTimeout(function(){  window.location.replace("index.php"); }, 2000);
+   
+    ///setTimeout(() => {    }, 1200);
 
     
 
-});
-
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-if (event.target == modal) {
-    modal.style.display = "none";
 }
-}
-
 </script>
 
 
 
-    </body>
+
+
+
+<script>
+document.querySelector("#time").addEventListener("input", function(e) {
+  const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+  const time = this.value;
+  if (reTime.exec(time)) {
+    const minute = Number(time.substring(3,5));
+    const hour = Number(time.substring(0,2)) % 12 + (minute / 60);
+    this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
+  }
+});
+</script>
+    
+
+
+</body>
 
 
 </html>

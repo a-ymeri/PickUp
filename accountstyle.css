@@ -4,8 +4,11 @@
     align-items: center;
     text-align: center;
     font-family: Poppins;
-    background-color: rgba(255, 255, 255);
-    background-image: url(images/accountlanding.jpg);
+    color:#fff;
+    background-image: url(images/acclanding.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-color: rgba(0, 0, 0, 1); */
 }
 
 h1{
@@ -47,7 +50,8 @@ button {
     letter-spacing: 2.5px;
     font-weight: 1000;
     color: white;
-    background-color: rgba(39, 59, 122);;
+    background-color: rgba(39, 59, 122);
+    background-color: rgb(59, 134, 184);
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -56,20 +60,23 @@ button {
     outline: none;
     opacity:.7;
     font-size:12px;
-    line-heigt: 10px;
+    line-height: 10px;
     font-family:'Poppins';
     }
   
   button:hover {
     background-color: #2EE59D;
+   background-color: rgb(59, 134, 184);   
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
+    box-shadow: 0px 15px 20px rgb(10, 53, 53);
+    /* color: #fff; */
     transform: translateY(-7px);
     opacity:1;
   }
 
   .privacy{
       position:absolute ;
+      color:gray;
       border:1px solid grey;
       background-color: transparent;
       width: 500px;
@@ -97,7 +104,7 @@ button {
   }
 
   .doublediv:hover{
-    background-color: rgba(235, 235, 235);
+    background-color: rgba(235, 235, 235, .1);
     color:#4990ed;
 
 }
@@ -108,6 +115,7 @@ button {
 .security{
     position:absolute ;
     border:1px solid grey;
+    color:grey;
     background-color: transparent;
     width: 500px;
     border-radius:8px;
@@ -134,7 +142,7 @@ button {
 }
 
 .doubledivsecurity:hover{
-    background-color: rgba(235, 235, 235);
+    background-color: rgba(235, 235, 235, .1);
   color:#4990ed;
 
 }
@@ -152,12 +160,16 @@ button {
     color:red;
     border:1px solid red;
     font-weight:900;
+    
 
 }
 
 .logoutbutton:hover{
     opacity:1;
+    /* box-shadow: 0px 15px 20px rgba(229, 67, 46, 0.4); */
+    box-shadow: 0px 15px 20px rgb(10, 53, 53);
     background-color:#ff3e30;
+    color:white;
     transform: perspective();
     transition:all .4s;
 }
