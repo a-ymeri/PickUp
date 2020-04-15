@@ -524,9 +524,9 @@ require_once('init.php');
         });
     </script>
 
+    <!-- LEAFLET API>
 
-
-    <script>
+    <!--<script>
         //other api map
         const mymap = L.map('mapid').setView([51.505, -0.09], 13);
         const attribution =
@@ -592,7 +592,7 @@ require_once('init.php');
 
         }
     </script>
-
+    -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 
 
