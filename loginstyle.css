@@ -7,6 +7,7 @@ body {
 
 input[type=text],
 input[type=password] {
+    color:white;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -65,7 +66,7 @@ button:hover {
 }
 
 .navatar {
-    height: 60px;
+    height: 50px;
     margin-top: 2%;
 }
 
@@ -105,22 +106,23 @@ img.avatar {
 
 .container .uname {
     font-family: Poppins;
-    background-color: gray;
-    backface-visibility: visible;
-    border-radius: 24px;
+    background-color: transparent;
+    backface-visibility: hidden;
+    border-radius: 10px;
 }
 
 .container .password {
     font-family: Poppins;
-    background-color: gray;
-    border-radius: 24px;
+    background-color: transparent;
+    border-radius: 10px;
 }
 
 .container .signupemail {
     font-family: Poppins;
     width: auto;
-    background-color: gray;
-    border-radius: 24px;
+    background-color: transparent;
+    border-radius: 10px;
+    color:white;
 }
 
 .container .logsubmit {

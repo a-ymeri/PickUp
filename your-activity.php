@@ -62,11 +62,8 @@ session_start();
 <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
 
 <div class='accontainer'>
-    <br>
-    <br>
 
-    <div class="circular--landscape"> 
-</div>
+<br>
 
 
     <?php 
@@ -82,50 +79,69 @@ session_start();
       ?>
     
     <br>
-      <h1><?php echo (isset($_SESSION['username']) ? $_SESSION['username'] : ""); ?></h1>  
-      <?php  
-
-  echo (isset($_SESSION['username']) ? "<a href = 'logout.php'><button class='logoutbutton'> Logout</button></a>" : "");
-
-?>
-       <div class="accnav">
+    
+      <h1><?php echo (isset($_SESSION['username']) ?"<p style='color:;'>Your Activity</p>" : ""); ?></h1>  
+     <br>
+      <div class="accnav">
+          
         <button class="manage"><stong>Manage</stong></button>
         <?php 
         
        echo (isset($_SESSION['username']) ? "<a href = 'personal-info.php'><button class='personal-info'>Personal Info</button></a>" 
        :"<button class = 'personalinfo'>Personal Info</button>");
         ?>
-        <?php 
+                <?php 
         
-        echo (isset($_SESSION['username']) ? "<a href = 'your-activity.php'><button class='personal-info'>Your Activity</button></a>" 
-        :"<button class = 'personalinfo'>Your Activity</button>");
+        echo (isset($_SESSION['username']) ? "<a href = 'account.php'><button class='account'>Account</button></a>" 
+        :"<button class = 'personalinfo'>Account</button>");
          ?>
         <button class = "feed">Feed</button>
 
     </div>
 
-    <br>
-    <br>
+    
+
+       <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
+
+       <?php
+                    require_once('query_auth.php');
+                    $event = get_UserEvents();
+
+                    for ($x = 0; $x < sizeof($event) ;$x++) {  
+                    
+                   echo  
+                       '<div class="classevent'.$x.'" id="">
+                        <section class="postsection">
+                        <h1 style="#0077CC:">'
+                        .$event[$x]->get_title().
+                        '
+                        </h1>
+                        
+                        <p>'.$event[$x]->get_date().'</p>
+                        
+
+                        <div>Time: '.$event[$x]->get_time().'
+                        <br>
+                            Location: '.$event[$x]->get_location().'
+                        </div> 
+
+                        </div>
+                        
+                        
+                        
+                        '; }
+                        
+
+                    
+
+                    
+                    
+                    ?> 
+
+        <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
 
 
-    <div class="privacy">
-        <header>Privacy & Personalization</header>
-        <div class="privacy1">See the data in your Account and choose what activity is saved to personalize your experience </div>
-        <img src="images/privacy.png"> 
 
-        <div class="doublediv"> Manage your data & personalization</div>
-        
-    </div>
-
-
-    <div class="security">
-        <header>Security Issues</header>
-        <div class="security1">Protect your account now by resolving these issues</div>
-        <img src="images/security.png"> 
-
-        <div class="doubledivsecurity"> Manage your data & personalization</div>
-        
-    </div>
 
 
 </div>
@@ -162,8 +178,6 @@ session_start();
     </form>
   </div>
   
-
-        </div>
        
           
     
@@ -203,5 +217,3 @@ function scrollFunction() {
     
    
 </html>
-
- 

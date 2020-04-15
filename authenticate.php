@@ -6,14 +6,16 @@ require_once('query_auth.php');
 function usr_log_in($username,$password){
             if (verify_user($username,$password)) {
                 $_SESSION['username'] = $username;
-                header('Location: index.php');
+                return true;
+               
             }
 
     
 
     else{
         if(!verify_user($username,$password)){
-            echo "<script> alert('wrong password dude')</script>";
+           //  echo "<script> alert('wrong password dude')</script>";
+            return false;
 
         }
     }

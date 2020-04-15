@@ -31,7 +31,7 @@ table{
 }
 
 p{
-    color :red;
+    color :white;
     font-size:25px;
     font-weight: bolder;
 
@@ -45,18 +45,20 @@ p .l{
 label{
     font-size:22px;
     font-weight: bolder;
+    color:rgba(164, 198, 221, 0.5);
     
 }
 
 input{
     width:40%;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
     border:none;
     font-family: "Poppins";
     text-align: center;
     height:30px;
     font-size: 20px;
+    index:1;
 }
 
 input:focus, textarea:focus, select:focus{
@@ -76,11 +78,13 @@ input[type=password]{
 
 }
 
-.savechanges{
+.s-confirm{
     /* background-color: #ff3e30; */
+    position: relative;
+    width:160px;
     border-style: none;
     border-radius:5px;
-    background-color:#32c92d;
+    background: linear-gradient(135.44deg, #654EA3 4.9% , #EAAFC8 98.53%);
     color:black;
     border:1px solid #32c92d;
     font-weight:900;
@@ -88,15 +92,41 @@ input[type=password]{
 
 }
 
-.savechanges:hover{
+s-confirm:hover{
+    transform:scale(1.1);
+    color:transparent;
+}
+
+.s-confirm::after{
+    position: absolute;
+    /* transform:translate(-50%, calc(-50% + 30px)); */
+    opacity:0;
+    content:'';
+    width:160px;
+    height:55px;
+    background:url(images/tick.png);
+    background-size: 40px;
+    background-position:left;
+    background-repeat: no-repeat;
+    transition: 350ms ease;
+
+}
+
+.s-confirm-done{
+    background-position: -158px;
+    color:transparent;
+    background-color: red;
+}
+
+.s-confirm-done::after{
     opacity:1;
-    background-color:#32c92d;
-    transform: perspective();
-    transition:all .4s;
+    transform:translate(-50%, -35%);
+    
+
 }
 
 fieldset{
-    border-top:1px solid black;
+    border-top:1px solid gray;
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
@@ -105,5 +135,5 @@ fieldset{
 
 legend{
     font-size: 24px;
-    color:red;
+    color:gray;
 }
