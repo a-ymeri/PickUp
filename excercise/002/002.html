@@ -1,0 +1,32 @@
+<html>
+
+<head>
+	
+<script>
+	// Write down a function that displays the text message 'User is typing...' when a user clicks in the input text box.
+	
+	function init(){
+		 console.log("is typing");
+		 var m = document.getElementById('message').innerHTML = "is typing";
+
+		 window.onclick = function(event) {
+        }
+	}
+	// The text should appear inside the 'div' with ID: 'message'. 
+	// The text should disappear when the user clicks out of the input text box (i.e., the element focus is lost).
+	</script>
+</head>
+
+<body>
+
+	Message: 
+	<!-- The above function should be called by the 'input' tag below. -->
+	<input type="text"  onclick="init()" ><br><br>
+	
+	<!-- You are NOT allowed to change the HTML code below -->
+	<div id="message" style="color:grey;"><div>
+	
+</body>
+
+
+</html>
