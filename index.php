@@ -62,7 +62,7 @@ require_once('init.php');
 
         <ul class="nav-links">
             <li> <a href="#"> Home</a></li>
-            <li> <a href="Map.html"> Map</a></li>
+            <li> <a href="Map.php"> Map</a></li>
             <li> <a href="about.html"> About</a></li>
             <li> <a href="#"> Entertaiment</a></li>
         </ul>
@@ -423,7 +423,7 @@ require_once('init.php');
      
                              <div>Time: '.$event[$x]->get_time().'
                              <br>
-                                 Location: '.$event[$x]->get_location().'
+                                 Location: '.$event[$x]->get_lat().'
                              </div> 
     
                              

@@ -56,7 +56,7 @@ session_start();
 
         <ul class="nav-links">
             <li> <a href="index.php"> Home</a></li>
-            <li> <a href="Map.html"> Map</a></li>
+            <li> <a href="Map.php"> Map</a></li>
             <li> <a href="about.html"> About</a></li>
             <li> <a href="#"> Entertaiment</a></li>
         </ul>

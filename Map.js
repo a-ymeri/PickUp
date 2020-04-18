@@ -1,3 +1,5 @@
+var map;
+var array;
 function initMap() {
     var thessaloniki = { lat: 40.6401, lng: 22.9444 };
 
@@ -8,7 +10,11 @@ function initMap() {
 
     var pins = [];
     var marker;
-    var map = new google.maps.Map(document.getElementById('map'), options);
+    map = new google.maps.Map(document.getElementById('map'), options);
+
+    for(var i = 0; i<array.length;i++){
+        marker = new google.maps.Marker({ position: {lat: Number(array[i].lat), lng: Number(array[i].lng)}, map: map });
+    }
 
     map.addListener('click', function (event) {
         if(marker != null)
@@ -20,6 +26,9 @@ function initMap() {
 
 }
 
-function placePin(map, coords) {
-    marker = new google.maps.Marker({ position: coords, map: map });
+function placePin(coords) {
+}
+
+function initPins(array){
+
 }
