@@ -43,7 +43,7 @@ require_once('init.php');
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel= "stylesheet" href="post-Event.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
 
@@ -314,6 +314,14 @@ require_once('init.php');
 
         <div class="indexfeed">
 
+
+        <div class="search-bar">
+  <i class="fa fa-search"></i>
+  <form method="post" action ="search.php">
+  <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+  </form>
+</div>
+
 <!-- <div id="map"></div> -->
 
           
@@ -321,12 +329,10 @@ require_once('init.php');
            <br>
         <div id= "eventbutton" onclick = "popEvent()">
 <header style="font-size:large;">Want to host a new event</header>
-<input placeholder="Title" id="title1" name="title" autocomplete="off"></input>   
-
+<input placeholder="Title" id="title1" name="title" autocomplete="off"></input>
 </div>
  
             
-
             <div class="eventfeed " id="id02">
                 <section class="postsection1">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
@@ -524,9 +530,9 @@ require_once('init.php');
         });
     </script>
 
-    <!-- LEAFLET API>
 
-    <!--<script>
+
+    <script>
         //other api map
         const mymap = L.map('mapid').setView([51.505, -0.09], 13);
         const attribution =
@@ -592,7 +598,7 @@ require_once('init.php');
 
         }
     </script>
-    -->
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 
 
@@ -790,6 +796,27 @@ document.querySelector("#time").addEventListener("input", function(e) {
     this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
   }
 });
+</script>
+
+<script>const input = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+
+const expand = () => {
+  searchBtn.classList.toggle("close");
+  input.classList.toggle("square");
+};
+
+searchBtn.addEventListener("click", expand);</script>
+
+<script>
+
+
+function search(keyword){
+    if(event.key === 'Enter') {
+        submitFunction();
+    }
+}
+
 </script>
     
 

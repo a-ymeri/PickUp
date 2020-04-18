@@ -20,6 +20,10 @@ session_start();
 
     <title>COURSEWORK</title>
 
+    <script src="https://use.fontawesome.com/a31a0bdd36.js"></script>
+
+    <script src="https://kit.fontawesome.com/d0528b62e3.js" crossorigin="anonymous"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
     <link rel="stylesheet" href="style.css">
@@ -33,8 +37,9 @@ session_start();
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
-
-
+    
+    <link rel="stylesheet/less" type="text/css" href="idk.less" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
 
 
 </head>
@@ -68,32 +73,65 @@ session_start();
     </nav>
 
 
+<!-- 
+    "<img class='circular--square' src='images/$u.jpg'style=' position: relative;
+    width: 100px;
+    height:100px;
+    overflow: hidden;
+    border-radius: 50%; margin-top:3%;'>" -->
+
 
     <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
 
     <div class='accontainer' style="height:2000px;">
         </br>
-        </br>
-
+        
         <?php
 
         require_once('authenticate.php');
         $u = get_username();
 
-        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'style=' position: relative;
-    width: 100px;
-    height:100px;
-    overflow: hidden;
-    border-radius: 50%; margin-top:3%;'>" :  "<img class='circular--square' src='images/avatar.png' style='margin-top:2%;'>");
+        echo (isset($_SESSION['username']) ?  "<div class='container'>
+        <div class='avatar-upload'>
+            <div class='avatar-edit'>
+                <input type='file' id='imageUpload' accept='.png, .jpg, .jpeg' />
+                <label for='imageUpload' id = 'edit-label'></label>
+            </div>
+            <div class='avatar-preview'>
+                <div id='imagePreview' style='background-image: url(images/$u.jpg);'>
+                </div>
+            </div>
+        </div>
+    </div>" :  "<img class='circular--square' src='images/avatar.png' style='margin-top:2%;'>");
         ?>
 
-        <br>
         <h1><?php echo (isset($_SESSION['username']) ? $_SESSION['username'] : ""); ?></h1>
         <?php
 
         echo (isset($_SESSION['username']) ? "<a href = 'logout.php'><button class='logoutbutton'> Logout</button></a>" : "");
 
         ?>
+
+<!-- <form action="upload.php" method="POST" enctype="multipart/form-data">
+  <div class="input-file-container">  
+  <input type="file" class="input-file" name="fileToUpload" id="fileToUpload">
+    <label tabindex="0" for="file" class="input-file-trigger">Change profile picture...</label>
+  </div>
+  <input type="submit" value="Upload Image" name="submit" class="input-submit">
+</form> -->
+
+
+<!-- https://codepen.io/siremilomir/pen/jBbQGo -->
+
+<!-- <form action="upload.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form> -->
+
+
+
+<!-- <form action = "upload.php" method -->
 
 
         <form class="personal-info-edit" method="POST" action="PI-edit.php" onsubmit="return save_changes();">
@@ -201,6 +239,8 @@ session_start();
             <button type="submit" class="s-confirm" >Save Changes</button>
         </form>
 
+
+
     </div>
 
 
@@ -243,7 +283,6 @@ session_start();
                         email: email
                     },
                     success: function(response) {
-
                         if (response == 1) {
                         var s_confirm = document.querySelector('.s-confirm');
                         s_confirm.classList.toggle('s-confirm-done');
@@ -306,6 +345,76 @@ session_start();
             x.outerHTML = "<h6 style='color:#f44336;'>You cannot change the username</h6>"
         }
     </script>
+
+    <script>document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value; 
+    
+});  </script>
+
+<<script>
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+             $('#imagePreview').hide();
+             $('#imagePreview').fadeIn(650);
+
+             var $data = { 'title': 'Sample Photo Title', 'file': reader.result };
+        $.ajax({
+            type: 'POST',
+            url: 'upload-pic.php',
+            data: $data,
+            success: function(response) {
+                
+            },
+            error: function(response) {
+                alert(response);
+                
+            },
+        });
+        }
+        reader.readAsDataURL(input.files[0]);
+    //     reader.onload = function(){
+    //     var $data = { 'title': 'Sample Photo Title', 'file': reader.result };
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'test.php',
+    //         data: $data,
+    //         success: function(response) {
+    //             window.location.reload(true);
+    //         },
+    //         error: function(response) {
+    //             alert(response);
+                
+    //         },
+    //     });
+    // };
+    reader.readAsDataURL($("#file-to-upload").get(0).files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+</script>
+
+
 
 </body>
 

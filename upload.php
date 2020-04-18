@@ -1,33 +1,61 @@
 <?php
-        if(isset($_POST['submit'])){
-            $file = $_FILES['file'];
+$target_dir = "images/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
 
-            $fileName = $_FILES['file']['name'];
-            $fileTmpName = $_FILES['file']['tmp_name'];
-            //Might need to limit size: $fileSize = $_FILES['file']['size'];
-            //Might need for error-checking: $fileError = $_FILES['file']['error'];
-            //IDK $fileType = $_FILES['file']['type'];
-            
-            //Retrieve the part after the '.' (extension)
-            $fileExt = explode('.', $fileName);
-            $fileActualExt = strtolower(end($fileExt));
+require_once("authenticate.php");
+$fileExt = explode('.', $target_file);
+$fileActualExt = strtolower(end($fileExt));
+$target_file = get_username().".".$fileActualExt;
 
-            //Allowed formats
-            $allowed = array('jpg', 'jpeg', 'bmp', 'png');
-            
-            if(in_array($fileActualExt, $allowed)){
-                    //Instead of test, use get_username from the session.
-                    $fileNameNew = "get_username()".".".$fileActualExt;
-                    $fileDestination = 'images/'.$fileNameNew;
-                    move_uploaded_file($fileTmpName, $fileDestination);
-                    
-                    //Go back to the site that called upload.php
-                    header("location:".$_SERVER['HTTP_REFERER']);
-                    //Testing purposes
-                    //echo '<img src="images/'.$fileNameNew.'">';
-            }
-            else{
-                echo "Inappropriate format";
-            }
-        }
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 900000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+}
+
+// Check if file already exists
+if (file_exists("images/$target_file")) {
+    unlink("images/$target_file");
+        
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "images/$target_file")) {
+        echo $_FILES["fileToUpload"]["tmp_name"];
+        header("location:".$_SERVER['HTTP_REFERER']);
+
+        $uploadOk = 2;
+    }
+}
+if($uploadOk == 1) {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "images/$target_file")) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        header("location:".$_SERVER['HTTP_REFERER']);
+    } else {
+
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
 ?>

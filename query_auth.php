@@ -241,6 +241,35 @@ function change_password($password){
 }
 
 
+function search($keyword){
+    $conn = db_connect();
+    $sql = "SELECT * from events where subject like '%".$keyword."%'";
+
+     $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $event_ids = array();
+        $events = array();
+        //output data of each row
+        for ($x = 0; $x < $result->num_rows; $x++) {
+            $row = $result->fetch_assoc();
+            $event_id = $row["event_id"];
+            array_push($event_ids,$event_id);
+
+            array_push($events,get_eventbyID($event_ids[$x]));
+        }
+        // $event = get_eventbyID($event_id);
+         //echo $event->get_title();
+        return $events;
+
+
+    }
+
+}
+
+
+
+
 
 
 
@@ -287,5 +316,6 @@ class Event {
     }
   
   }
+
 
   ?>
