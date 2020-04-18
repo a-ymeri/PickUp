@@ -84,17 +84,17 @@ function get_password($username)
 
 
 
-function insert_event($date, $time, $title, $location)
+function insert_event($date, $time, $title, $lat, $lng)
 {
     $conn = db_connect();
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
 
-    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,address) 
-    VALUES(?,?,?,?,?,?,?);";
+    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng) 
+    VALUES(?,?,?,?,?,?,?,?);";
     $stmt = $pdo->prepare($query);
 
     $randomNumber = rand(10, 200);
-    $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $location]);
+    $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
 }
 
 
@@ -224,7 +224,6 @@ function makeEvent($result){
     //an array of Event objects
     if ($result->num_rows > 0) {
         $events = array();
-        //output data of each row
         for ($x = 0; $x < $result->num_rows; $x++) {
             $row = $result->fetch_assoc();
 
@@ -233,15 +232,15 @@ function makeEvent($result){
             $date = $row["date_of_event"];
             $time = $row["time_of_event"];
             $title = $row["subject"];
-            $location = $row["address"];
+            $lat = $row["lat"];
+            $lng = $row["lng"];
 
-            $event = new Event($event_id, $date, $time, $title, $location);
+            $event = new Event($event_id, $date, $time, $title, $lat,$lng);
 
             //Push into array of event objects
             array_push($events, $event);
         }
-        // $event = get_eventbyID($event_id);
-        //echo $event->get_title();
+
         return $events;
     }
 }
@@ -257,13 +256,14 @@ class Event
     public $event_id, $date, $time, $title, $location;
 
 
-    function __construct($event_id, $date, $time, $title, $location)
+    function __construct($event_id, $date, $time, $title, $lat, $lng)
     {
         $this->event_id = $event_id;
         $this->date = $date;
         $this->time = $time;
         $this->title = $title;
-        $this->location = $location;
+        $this->lat = $lat;
+        $this->lng = $lng;
     }
 
 
@@ -289,9 +289,14 @@ class Event
     }
 
 
-    function get_location()
+    function get_lat()
     {
-        return $this->location;
+        return $this->lat;
+    }
+
+    function get_lng()
+    {
+        return $this->lat;
     }
 
     function get_title()
