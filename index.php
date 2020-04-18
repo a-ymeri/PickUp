@@ -42,7 +42,7 @@ require_once('init.php');
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
-    <link rel= "stylesheet" href="post-Event.css">
+    <link rel="stylesheet" href="post-Event.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
@@ -54,7 +54,7 @@ require_once('init.php');
     <nav>
 
         <div class="logo">
-       <a href="index.php" class="logolink"> PICK-UP </a>
+            <a href="index.php" class="logolink"> PICK-UP </a>
 
         </div>
 
@@ -104,13 +104,13 @@ require_once('init.php');
                 <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
 
                 <div class="loader-wrapper">
-            <span class="loader"><span class="loader-inner"></span></span>
+                    <span class="loader"><span class="loader-inner"></span></span>
                 </div>
 
                 <label for="psw"><b>Password</b>
                 </label>
-                <input type="password" placeholder="Enter Password" name="psw"  class="password" id="password">
-            <h5 class="errorlabel"></h5>
+                <input type="password" placeholder="Enter Password" name="psw" class="password" id="password">
+                <h5 class="errorlabel"></h5>
                 <button type="submit" class="logsubmit">Login</button>
 
                 <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -274,7 +274,7 @@ require_once('init.php');
 
                             </i>
 
-                           Popular Events
+                            Popular Events
 
                         </li>
                     </a>
@@ -294,7 +294,7 @@ require_once('init.php');
 
                     <a>
 
-                    <li> Account details</li>
+                        <li> Account details</li>
 
                     </a>
 
@@ -315,115 +315,133 @@ require_once('init.php');
         <div class="indexfeed">
 
 
-        <div class="search-bar">
-  <i class="fa fa-search"></i>
-  <form method="post" action ="search.php">
-  <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
-  </form>
-</div>
+            <div class="search-bar">
+                <i class="fa fa-search"></i>
+                <form method="post" action="search.php">
+                    <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+                </form>
+            </div>
 
-<!-- <div id="map"></div> -->
+            <!-- <div id="map"></div> -->
 
-          
-           <h1 >Event Feed</h1>
-           <br>
-        <div id= "eventbutton" onclick = "popEvent()">
-<header style="font-size:large;">Want to host a new event</header>
-<input placeholder="Title" id="title1" name="title" autocomplete="off"></input>
-</div>
- 
-            
+
+            <h1>Event Feed</h1>
+            <br>
+            <div id="eventbutton" onclick="popEvent()">
+                <header style="font-size:large;">Want to host a new event</header>
+                <input placeholder="Title" id="title1" name="title" autocomplete="off"></input>
+
+            </div>
+
+
+
             <div class="eventfeed " id="id02">
-                <section class="postsection1">
-                <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
+                <!-- used to be postsection1, changed bc the css is causing me problems -->
+                <section class="postevent">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
                     <form action="post-Event.php" method="POST" class="event-content animate" autocomplete="off">
-                   
+
 
                         <div class="text">
-                       
+
                             <header style="font-size:large;">Post a new event</header>
                             <input placeholder="Title" id="title" name="title" required></input>
-                            
+
                         </div>
-                            <div class="date-picker"> </div>
+                        <div class="date-picker"> </div>
 
-                            <label for="time" name="time">Start Time</label>
-                            <input type="time" name="time" id="time" />
-                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
+                        <label for="time" name="time">Start Time</label>
+                        <input type="time" name="time" id="time" />
+                        <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
-                            <div id="eventoption">
+                        <div id="eventoption">
 
-                       <input type="text" id="date1" name="date" value="" style="width:50%;">
-                                <h4>Select a Facility</h4>
+                            <input type="text" id="date1" name="date" value="" style="width:50%;">
+                            <h4>Select a Facility</h4>
 
-                                <div class="col-xl-10 pb-5">
-                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Library" checked>
-                                    <label class="for-checkbox-budget" for="budget-1">
-                                        <span data-hover="Library">Library</span>
+                            <div class="venueOptions">
+                                
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Sofou Building" onclick="removeDiv()" checked>
+                                <label class="for-checkbox-budget" for="budget-1">
+                                    <span data-hover="Sofou Building">Sofou Building</span>
+                                </label>
+
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-2" value="Warehouse" onclick="removeDiv()">
+                                <label class="for-checkbox-budget" for="budget-2">
+                                    <span data-hover="Warehouse">Warehouse</span>
+                                </label>
+
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA" onclick="removeDiv()">
+                                <label class="for-checkbox-budget" for="budget-3">
+                                    <span data-hover="YMCA">YMCA</span>
+                                </label>
+
+                                <div>
+                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()" >
+                                    <label class="for-checkbox-budget" for="budget-4" >
+                                        <span data-hover="Other">Other</span>
                                     </label>
-                                    <!--
-						--><input class="checkbox-budget" type="radio" name="budget" id="budget-2" value="Warehouse">
-                                    <label class="for-checkbox-budget" for="budget-2">
-                                        <span data-hover="Warehouse">Warehouse</span>
-                                    </label>
-                                    <!--
-						--><input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA">
-                                    <label class="for-checkbox-budget" for="budget-3">
-                                        <span data-hover="YMCA">YMCA</span>
-                                    </label>
-                                    <!--
-						-->
                                 </div>
-
-
-                                <input type="submit" value="post" />
-
+                                <div id="map" style="display:none"></div>
+                                
+                               
 
                             </div>
 
-                            
+
+
+
+                        </div>
+                        <div class="evetDscp">
+                            <h5>Event Description</h5>
+                            <textarea name="eventTxt"></textarea>
+                        </div>
+
+                        <input type="submit" value="post" />
+
+
 
                     </form>
 
 
-                    </section>
-                    </div>
+                </section>
+            </div>
 
 
-        <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
+            <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
 
-        <?php
-                    require_once('query_auth.php');
-                    $event = get_AllEvents();
+            <?php
+            require_once('query_auth.php');
+            $event = get_AllEvents();
 
-        
-                    
-            
 
-                    for ($x = 0; $x <sizeof($event) ;$x++) {  
-                       $date1 =  $event[$x]-> get_date();
 
-                         
-                            echo  
-                            '
+
+
+            for ($x = 0; $x < sizeof($event); $x++) {
+                $date1 =  $event[$x]->get_date();
+
+
+                echo
+                    '
                             
                             
-                            <div class="eventtest'.$x.'" id="">
+                            <div class="eventtest' . $x . '" id="">
                              <section class="postsection">
                           
                              <h1 style="color:#0077CC;">'
-                             .$event[$x]->get_title().
-                             '
+                        . $event[$x]->get_title() .
+                        '
                              </h1>
                              
-                             <p>'.$date = $event[$x]->get_date().'</p>
+                             <p>' . $date = $event[$x]->get_date() . '</p>
      
                              
                              
      
-                             <div>Time: '.$event[$x]->get_time().'
+                             <div>Time: ' . $event[$x]->get_time() . '
                              <br>
-                                 Location: '.$event[$x]->get_lat().'
+                                 Location: ' . $event[$x]->get_lat() . '
                              </div> 
     
                              
@@ -431,37 +449,32 @@ require_once('init.php');
                              
                              
                              ';
-                        
-
-                   
-
-                    
-                }
-
-                    
-
-                    
-                    
-                    ?> 
-
-        <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
+            }
 
 
-        <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
+
+
+
+            ?>
+
+            <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
+
+
+            <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
 
 
 
 
 
 
-<!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
-
-                    </div>
-
-
-
+            <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
 
         </div>
+
+
+
+
+    </div>
 
 
 
@@ -490,6 +503,21 @@ require_once('init.php');
         });
     </script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="Map.js">
+        // function checkLocation(){
+        //     var otherValue = document.getElementById('budget-4');
+        //     if ()
+        // }
+    </script>
+    <script>
+        function showDiv() {
+            document.getElementById('map').style.display = "block";
+        }
+        function removeDiv() {
+            document.getElementById('map').style.display = "none";
+        }
+    </script>
 
 
     <script src="index.js"></script>
@@ -641,27 +669,26 @@ require_once('init.php');
     </script>
 
     <script>
-        function popEvent(){
+        function popEvent() {
 
-        
+
 
             var eventbutton = document.getElementById('eventbutton');
-             var modal2 = document.getElementById('id02');
+            var modal2 = document.getElementById('id02');
 
-           
-                // modal2.classList.toggle('eventfeed-active');
 
-               modal2.style.display ="block";
+            // modal2.classList.toggle('eventfeed-active');
+
+            modal2.style.display = "block";
 
 
             window.onclick = function(event) {
-            if (event.target == modal2) {
-                modal2.style.display = "none";
-                
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+
+                }
             }
         }
-        }
-
     </script>
 
 
@@ -703,122 +730,119 @@ require_once('init.php');
 
 
 
-<script type="text/javascript">
-function do_login()
-{
+    <script type="text/javascript">
+        function do_login() {
 
- var username=$("#username").val();
- var pass=$("#password").val();
- 
+            var username = $("#username").val();
+            var pass = $("#password").val();
 
-  $.ajax
-  ({
-  type:'post',
-  url:'AJAX.php',
-  data:{
-    do_login:"do_login",
-   username:username,
-   password:pass
-  },
-  success:function(response) {
 
-  if(response == 1)
-  {
-    loggedin();
+            $.ajax({
+                type: 'post',
+                url: 'AJAX.php',
+                data: {
+                    do_login: "do_login",
+                    username: username,
+                    password: pass
+                },
+                success: function(response) {
 
-  }
-  else if(response == 2 )
-  {
-    shaker();
-  }
+                    if (response == 1) {
+                        loggedin();
 
-  }
-  });
- return false;
-}
+                    } else if (response == 2) {
+                        shaker();
+                    }
 
-function shaker(){
-    var usrbox = document.querySelector('.uname');
-    var password = document.querySelector('.password');
+                }
+            });
+            return false;
+        }
 
-   usrbox.classList.toggle('shaker-active');
-   password.classList.toggle('shaker-active');
+        function shaker() {
+            var usrbox = document.querySelector('.uname');
+            var password = document.querySelector('.password');
 
-   
-    var x = document.getElementsByTagName("h5")[0];
-    x.outerHTML = "<h6 style='color:#f44336;'>Wrong password or username</h6>"
+            usrbox.classList.toggle('shaker-active');
+            password.classList.toggle('shaker-active');
+
+
+            var x = document.getElementsByTagName("h5")[0];
+            x.outerHTML = "<h6 style='color:#f44336;'>Wrong password or username</h6>"
 
 
 
-}
+        }
 
-function loggedin(){
-    var loader_wrapper = document.querySelector('.loader-wrapper');
-    var loader_inner = document.querySelector('.loader-inner');
-    var loader = document.querySelector('.loader');
-    // loader.classList.toggle('loader-active');
-    var modal = document.querySelector('.id01');
-    loader_wrapper.style.display = "block";
+        function loggedin() {
+            var loader_wrapper = document.querySelector('.loader-wrapper');
+            var loader_inner = document.querySelector('.loader-inner');
+            var loader = document.querySelector('.loader');
+            // loader.classList.toggle('loader-active');
+            var modal = document.querySelector('.id01');
+            loader_wrapper.style.display = "block";
 
-    loader.classList.toggle('loader-active');
-    loader_inner.classList.toggle('loader-inner-active');
+            loader.classList.toggle('loader-active');
+            loader_inner.classList.toggle('loader-inner-active');
 
-    setTimeout(function(){   swal({
-                        title: "Logged in",
-                        type: "success",
-                        showConfirmButton:false,
-                        confirmButtonColor: "green"
-                    }); 
-                     }, 1000);
-    
-   
-    setTimeout(function(){  window.location.replace("index.php"); }, 2000);
-   
-    ///setTimeout(() => {    }, 1200);
+            setTimeout(function() {
+                swal({
+                    title: "Logged in",
+                    type: "success",
+                    showConfirmButton: false,
+                    confirmButtonColor: "green"
+                });
+            }, 1000);
 
-    
 
-}
-</script>
+            setTimeout(function() {
+                window.location.replace("index.php");
+            }, 2000);
+
+            ///setTimeout(() => {    }, 1200);
+
+
+
+        }
+    </script>
 
 
 
 
 
 
-<script>
-document.querySelector("#time").addEventListener("input", function(e) {
-  const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-  const time = this.value;
-  if (reTime.exec(time)) {
-    const minute = Number(time.substring(3,5));
-    const hour = Number(time.substring(0,2)) % 12 + (minute / 60);
-    this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
-  }
-});
-</script>
+    <script>
+        document.querySelector("#time").addEventListener("input", function(e) {
+            const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+            const time = this.value;
+            if (reTime.exec(time)) {
+                const minute = Number(time.substring(3, 5));
+                const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
+                this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
+            }
+        });
+    </script>
 
-<script>const input = document.getElementById("search-input");
-const searchBtn = document.getElementById("search-btn");
+    <script>
+        const input = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
 
-const expand = () => {
-  searchBtn.classList.toggle("close");
-  input.classList.toggle("square");
-};
+        const expand = () => {
+            searchBtn.classList.toggle("close");
+            input.classList.toggle("square");
+        };
 
-searchBtn.addEventListener("click", expand);</script>
+        searchBtn.addEventListener("click", expand);
+    </script>
 
-<script>
+    <script>
+        function search(keyword) {
+            if (event.key === 'Enter') {
+                submitFunction();
+            }
+        }
+    </script>
 
-
-function search(keyword){
-    if(event.key === 'Enter') {
-        submitFunction();
-    }
-}
-
-</script>
-    
 
 
 </body>
