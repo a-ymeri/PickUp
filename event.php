@@ -1,45 +1,57 @@
 <?php
-class Event {
-  // Properties
-  public $event_id,$date,$time,$title,$location;
+class Event
+{
+    // Properties
+    public $event_id, $date, $time, $title, $lat, $lng;
 
 
-  function __construct($event_id,$date,$time,$title,$location) {
-    $this->event_id = $event_id;
-    $this->date = $date;
-    $this->time = $time;
-    $this->title = $title;
-    $this->location = $location;
-  }
-
- 
-  function set_eventid($event_id)
-  {
-    $this->event_id = $event_id;
-  }
+    function __construct($event_id, $date, $time, $title, $lat, $lng)
+    {
+        $this->event_id = $event_id;
+        $this->date = $date;
+        $this->time = $time;
+        $this->title = $title;
+        $this->lat = $lat;
+        $this->lng = $lng;
+    }
 
 
-  function get_eventid() {
-    return $this->event_id;
-  }
-
-  function get_date() {
-    return $this->date;
-  }
-
-  function get_time() {
-    return $this->time;
-  }
+    function set_eventid($event_id)
+    {
+        $this->event_id = $event_id;
+    }
 
 
-  function get_location() {
-    return $this->location;
-  }
+    function get_eventid()
+    {
+        return $this->event_id;
+    }
 
-  function get_title() {
-    return $this->title;
-  }
+    function get_date()
+    {
+        return $this->date;
+    }
 
+    function get_time()
+    {
+        return $this->time;
+    }
+
+
+    function get_lat()
+    {
+        return $this->lat;
+    }
+
+    function get_lng()
+    {
+        return $this->lat;
+    }
+
+    function get_title()
+    {
+        return $this->title;
+    }
 }
 
 ?>

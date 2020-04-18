@@ -111,9 +111,10 @@ function get_event()
             $date = $row["date_of_event"];
             $time = $row["time_of_event"];
             $title = $row["subject"];
-            $location = $row["address"];
+            $lat = $row["lat"];
+            $lng = $row["lng"];
         }
-        $event = new Event($event_id, $date, $time, $title, $location);
+        $event = new Event($event_id, $date, $time, $title, $lat, $lng);
         //echo $event->get_title();
         return $event;
     }

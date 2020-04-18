@@ -415,7 +415,7 @@ require_once('init.php');
      
                              <div>Time: '.$event[$x]->get_time().'
                              <br>
-                                 Location: '.$event[$x]->get_location().'
+                                 TODO: FIX THIS LATER Location: '.$event[$x]->get_lat().'
                              </div> 
     
                              
@@ -544,7 +544,7 @@ require_once('init.php');
     </script>
 
 
-
+        <!-- TODO: Delete this
     <script>
         function initMap() {
             var location = {
@@ -595,7 +595,7 @@ require_once('init.php');
 
 
         }
-    </script>
+    </script>-->
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 

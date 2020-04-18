@@ -505,10 +505,6 @@ require_once('init.php');
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="Map.js">
-        // function checkLocation(){
-        //     var otherValue = document.getElementById('budget-4');
-        //     if ()
-        // }
     </script>
     <script>
         function showDiv() {
@@ -575,7 +571,7 @@ require_once('init.php');
 
 
 
-    <script>
+    <!--<script>
         function initMap() {
             var location = {
                 lat: 40.6401,
@@ -626,7 +622,7 @@ require_once('init.php');
 
         }
     </script>
-
+-->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 
 

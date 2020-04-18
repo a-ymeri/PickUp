@@ -122,7 +122,7 @@ session_start();
 
                         <div>Time: '.$event[$x]->get_time().'
                         <br>
-                            Location: '.$event[$x]->get_location().'
+                            TODO: FIX THIS - Location: '.$event[$x]->get_lat().'
                         </div> 
 
                         </div>
