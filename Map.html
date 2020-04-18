@@ -1,100 +1,100 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-
-
-  <title>COURSEWORK</title>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        
+        
+        <title>COURSEWORK</title>
+        
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="normalize.css"> -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet1" href="style.scss">
+        <!-- <link rel="stylesheet" href="normalize.css"> -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet1" href="style.scss">
+        
+        
+        
+
+    </head>
+    <body>
+        
+        <nav>
+             
+            <div class ="logo">
+              PICK-UP
+                          
+            </div>
+            
+            
+            
+        <ul class = "nav-links">
+            <li> <a href = "index.php"> Home</a></li>
+            <li> <a href = "#"> Map</a></li>
+            <li> <a href = "about.html"> About</a></li>
+            <li> <a href = "#"> Entertaiment</a></li>
+        </ul>
+            
+            <div class="burger">
+                <div class= "line1"></div>
+                <div class= "line2"></div>
+                <div class= "line3"></div>
+            
+            </div>
+
+        </nav>
+        
+        
+        
+<!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
+
+<div class='container'>
 
 
 
-
-</head>
-
-<body>
-
-  <nav>
-
-    <div class="logo">
-      PICK-UP
-
-    </div>
+  <div id="map"></div>
 
 
+               
+    
 
-    <ul class="nav-links">
-      <li> <a href="index.php"> Home</a></li>
-      <li> <a href="#"> Map</a></li>
-      <li> <a href="about.html"> About</a></li>
-      <li> <a href="#"> Entertaiment</a></li>
-    </ul>
+        
+      
+        
+                <div class ="parallax">
+                    <div class = "textparallax">
+                        
 
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+                                                
+                        
+                  </div>
+                        
+                        
+                        
+                    
+                        </div>
+        </div>
+       
+          
+    
+        
 
-    </div>
-
-  </nav>
-
-
-
-  <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
-
-  <div class='container'>
-
-
-
-    <div id="map"></div>
-
-
-
-
-
-
-
-
-    <div class="parallax">
-      <div class="textparallax">
-
-
-
-
-      </div>
-
-
-
-
-    </div>
-  </div>
-
-
-
-
-
-  <footer>
+<footer>
     <div class="foot">
-
+   
     </div>
+    
 
-
-
-  </footer>
-  <script src="index.js"></script>
-
-
-  <!--
+        
+        </footer>
+        <script src = "index.js" ></script>
+        
+        
+<!--
         
         <script>
 // When the user scrolls down 50px from the top of the document, resize the header's font size
@@ -110,19 +110,59 @@ function scrollFunction() {
 </script>
 -->
 
+<script src="Map.js"></script>
 
-  <script src="Map.js">
+<!-- <script>
 
-  </script>
+    function initMap(){
+        var location = {lat: 40.6401, lng:22.9444};
+        var library = {lat: 40.637350, lng:22.936904};
 
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
-    type="text/javascript"></script>
+        var YMCA = {lat: 40.626573, lng:22.951844};
+
+        var warehouse = {lat: 40.634825, lng:22.934286};
+        var map = new google.maps.Map(document.getElementById("map"),{
+            zoom:14,
+            center: location
+        });
 
 
-  <script src="index.js"></script>
+        var librarymarker = new google.maps.Marker({
+    position: library,
+    map: map,
+    title: 'library'
+  });
 
-</body>
+
+  var warehousemarker = new google.maps.Marker({
+    position: warehouse,
+    map: map,
+    title: 'Warehouse'
+  }); 
 
 
+  var ymcamarker = new google.maps.Marker({
+    position: YMCA,
+    map: map,
+    title: 'YMCA    '
+  });
+
+
+
+
+    }
+
+
+
+    </script> -->
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
+type="text/javascript"></script>
+
+
+<script src = "index.js" ></script>
+
+    </body>
+    
+   
 </html>

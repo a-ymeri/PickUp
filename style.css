@@ -1248,6 +1248,106 @@ html {
 
   }
 
+  .search-bar{
+    position: absolute;
+    left: 90%;
+    margin-top:5%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: skyblue;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 5px solid skyblue;
+    padding: 4px;
+    text-align: center;
+}
+
+.search-bar input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 38.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: black;
+    color:white;
+    font-family: "Poppins";
+
+}
+
+.search-bar input::placeholder{
+    color:skyblue;
+    font-size: 18px;
+    color:skyblue;
+    opacity: .7;
+}
+
+.dh3{
+    position: absolute;
+    margin-top: 4%;
+    margin-left: 63%;
+    font-size: 18px;
+    color:skyblue;
+    opacity: .7;
+}
+
+.search-bar .fa{
+    box-sizing: border-box;
+    padding: 11px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 40%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.search-bar:hover{
+    width: 200px;
+    cursor: pointer;
+}
+
+.search-bar:hover input{
+    display: block;
+}
+
+.search-bar:hover .fa{
+    background: skyblue;
+    color:black;
+}
+
+.search-bar:hover h3{
+    transform: scale(0);
+    transition: all 340ms;
+}
+
+#error-fa{
+    margin-top:20%;
+    font-size: 40px;
+    letter-spacing: 3px;
+    padding-right: 20px;
+} 
+
+#error-fa1{
+    color:rgb(255, 255, 255);
+    margin-top:20%;
+    padding: 20px;
+    font-size: 40px;
+    font-family: "Poppins";    
+}
+
 
 
   /* .circular--landscape {
