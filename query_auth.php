@@ -253,7 +253,7 @@ function makeEvent($result){
 class Event
 {
     // Properties
-    public $event_id, $date, $time, $title, $location;
+    public $event_id, $date, $time, $title, $lat, $lng;
 
 
     function __construct($event_id, $date, $time, $title, $lat, $lng)
