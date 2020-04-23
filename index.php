@@ -337,7 +337,7 @@ require_once('init.php');
 
             <div class="eventfeed " id="id02">
                 <!-- used to be postsection1, changed bc the css is causing me problems -->
-                <section class="postevent">
+                <section class="postsection1">
                     <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
                     <form action="post-Event.php" method="POST" class="event-content animate" autocomplete="off">
 
@@ -376,7 +376,7 @@ require_once('init.php');
                                     <span data-hover="YMCA">YMCA</span>
                                 </label>
 
-                                <div>
+                                <div id="budget-4id">
                                     <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()" >
                                     <label class="for-checkbox-budget" for="budget-4" >
                                         <span data-hover="Other">Other</span>
@@ -394,10 +394,10 @@ require_once('init.php');
                         </div>
                         <div class="evetDscp">
                             <h5>Event Description</h5>
-                            <textarea name="eventTxt"></textarea>
+                            <input name="eventTxt">
                         </div>
 
-                        <input type="submit" value="post" />
+                        <input type="submit" value="post" id="postsectionsubmit"/>
 
 
 
@@ -505,13 +505,19 @@ require_once('init.php');
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="Map.js">
+        // function checkLocation(){
+        //     var otherValue = document.getElementById('budget-4');
+        //     if ()
+        // }
     </script>
     <script>
         function showDiv() {
             document.getElementById('map').style.display = "block";
+            document.getElementById('budget-4id').style.display="none";
         }
         function removeDiv() {
             document.getElementById('map').style.display = "none";
+            document.getElementById('budget-4id').style.display="block";
         }
     </script>
 
@@ -571,7 +577,7 @@ require_once('init.php');
 
 
 
-    <!--<script>
+    <script>
         function initMap() {
             var location = {
                 lat: 40.6401,
@@ -622,7 +628,7 @@ require_once('init.php');
 
         }
     </script>
--->
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 
 
