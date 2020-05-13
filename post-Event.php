@@ -19,8 +19,10 @@
      $datefinal =  str_replace("/","-",$l);
  
      //echo $datefinal;
+    
 
-     //var_dump($_FILES['picfile']['name']);
+    //used in index to upload poster LJ01 
+    //var_dump($_FILES['picfile']['name']);
     // if(isset($_FILES['file'])){
         $errors= array();
         $file_name = $_FILES['picfile']['name'];
@@ -28,7 +30,11 @@
         $file_size =$_FILES['picfile']['size'];
         $file_tmp =$_FILES['picfile']['tmp_name'];
         $file_type=$_FILES['picfile']['type'];
+
         $file_ext = strtolower(end($fileTmpName));
+
+        //lets you upload the same file may times
+        $fileNameNew = uniqid('', true) . "." . $file_ext;
         
         $extensions= array("jpeg","jpg","png");
         
@@ -36,13 +42,13 @@
            $errors[]="extension not allowed, please choose a JPEG or PNG file.";
         }
         
-        // if($file_size > 2097152){
-        //    $errors[]='File size must be excately 2 MB';
-        // }
+        if($file_size > 10000000){
+            $errors[]='File size is to big';
+        }
         
         if(empty($errors)==true){
-           move_uploaded_file($file_tmp,"uploads/".$file_name);
-           echo "Success";
+           move_uploaded_file($file_tmp,"uploads/".$fileNameNew );
+           //echo "Successfully uploaded";
         }else{
            print_r($errors);
         }
@@ -53,6 +59,6 @@
 
      insert_event($datefinal,$time,$title,0,0);
 
-    //  echo '<script>location.replace("index.php");</script>';
+    echo '<script>location.replace("index.php");</script>';
 
 ?>
