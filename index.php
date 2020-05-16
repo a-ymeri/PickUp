@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require_once('init.php');
@@ -25,10 +26,10 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
 
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
 
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
@@ -54,17 +55,22 @@ require_once('init.php');
     <nav>
 
         <div class="logo">
-            <a href="index.php" class="logolink"> PICK-UP </a>
+            <a href="index.php" class="logolink"> PickUp </a>
 
         </div>
 
-
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <form method="post" action="search.php">
+                <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+            </form>
+        </div>
 
         <ul class="nav-links">
-            <li> <a href="#"> Home</a></li>
+            <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
-            <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li>
+            <!-- <li> <a href="about.html"> About</a></li>
+            <li> <a href="#"> Entertaiment</a></li> -->
         </ul>
 
 
@@ -99,6 +105,8 @@ require_once('init.php');
             </div>
 
             <div class="container">
+
+                <div class="g-signin2" data-onsuccess="onSignIn" id="googlebutton"></div>
                 <label for="uname"><b>Username</b>
                 </label>
                 <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
@@ -262,7 +270,7 @@ require_once('init.php');
 
                             </i>
 
-                            Feed
+                            Notifications
 
                         </li>
                     </a>
@@ -274,7 +282,7 @@ require_once('init.php');
 
                             </i>
 
-                            Popular Events
+                            Bookmarks
 
                         </li>
                     </a>
@@ -286,7 +294,7 @@ require_once('init.php');
 
                             </i>
 
-                            Whatever
+                            Settings and Privacy
 
                         </li>
 
@@ -294,7 +302,7 @@ require_once('init.php');
 
                     <a>
 
-                        <li> Account details</li>
+                        <li> Display</li>
 
                     </a>
 
@@ -315,36 +323,35 @@ require_once('init.php');
         <div class="indexfeed">
 
 
-            <div class="search-bar">
+            <!-- <div class="search-bar">
                 <i class="fa fa-search"></i>
                 <form method="post" action="search.php">
                     <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
                 </form>
-            </div>
+            </div> -->
 
             <!-- <div id="map"></div> -->
 
 
-            <h1>Event Feed</h1>
+            <!-- <h1>Event Feed</h1> -->
             <br>
             <div id="eventbutton" onclick="popEvent()">
-                <header style="font-size:large;">Want to host a new event</header>
-                <input placeholder="Title" id="title1" name="title" autocomplete="off"></input>
+                <header style="font-size:large;">Host new event</header>
+                <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
 
             </div>
-
 
 
             <div class="eventfeed " id="id02">
                 <!-- used to be postsection1, changed bc the css is causing me problems -->
                 <section class="postsection1">
                     <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
-                    <form action="post-Event.php" method="POST" class="event-content animate" autocomplete="off">
+                    <form action="post-Event.php" method="POST" enctype="multipart/form-data" class="event-content animate" autocomplete="off" >
 
 
                         <div class="text">
 
-                            <header style="font-size:large;">Post a new event</header>
+                            <header style="font-size:large;">Post a new event</header> <br>
                             <input placeholder="Title" id="title" name="title" required></input>
 
                         </div>
@@ -360,7 +367,7 @@ require_once('init.php');
                             <h4>Select a Facility</h4>
 
                             <div class="venueOptions">
-                                
+
                                 <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Sofou Building" onclick="removeDiv()" checked>
                                 <label class="for-checkbox-budget" for="budget-1">
                                     <span data-hover="Sofou Building">Sofou Building</span>
@@ -377,14 +384,14 @@ require_once('init.php');
                                 </label>
 
                                 <div id="budget-4id">
-                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()" >
-                                    <label class="for-checkbox-budget" for="budget-4" >
+                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()">
+                                    <label class="for-checkbox-budget" for="budget-4">
                                         <span data-hover="Other">Other</span>
                                     </label>
                                 </div>
                                 <div id="map" style="display:none"></div>
-                                
-                               
+
+
 
                             </div>
 
@@ -397,11 +404,22 @@ require_once('init.php');
                             <input name="eventTxt">
                         </div>
 
-                        <input type="submit" value="post" id="postsectionsubmit"/>
+                        
+                        <input type="file" name="picfile">
+                        <button type="submit" name="submit">Upload Event Poster</button>
 
+                        <!-- Submit form -->
+                        <input type="submit" value="post" id="postsectionsubmit" />
 
-
+                    
                     </form>
+
+                    <!-- <form action="uploadEventPic.php" method="POST" enctype="multipart/form-data">  
+                                
+                    <input type="file" name="picfile">
+                    <button type="submit" name="submit">Upload Event Poster</button>
+
+                    </form> -->
 
 
                 </section>
@@ -513,11 +531,12 @@ require_once('init.php');
     <script>
         function showDiv() {
             document.getElementById('map').style.display = "block";
-            document.getElementById('budget-4id').style.display="none";
+            document.getElementById('budget-4id').style.display = "none";
         }
+
         function removeDiv() {
             document.getElementById('map').style.display = "none";
-            document.getElementById('budget-4id').style.display="block";
+            document.getElementById('budget-4id').style.display = "block";
         }
     </script>
 
@@ -560,6 +579,8 @@ require_once('init.php');
         });
     </script>
 
+    <script>
+    </script>
 
 
     <script>
@@ -597,16 +618,16 @@ require_once('init.php');
                 lat: 40.634825,
                 lng: 22.934286
             };
-             var map = new google.maps.Map(document.getElementById("map"), {
-                 zoom: 14,
-                 center: location
-             });
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: location
+            });
 
 
             var librarymarker = new google.maps.Marker({
                 position: library,
                 map: map,
-                title: 'Library'
+                title: 'library'
             });
 
 
@@ -715,6 +736,61 @@ require_once('init.php');
 
 
 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <meta name="google-signin-client_id" content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+
+            var email = profile.getEmail();
+            var name = profile.getName();
+            //   var id = profile.getID();
+            //   var profileimage = profile.getImageUrl();
+
+            var username = email.substring(0, email.lastIndexOf("@"));
+            var domain = email.substring(email.lastIndexOf("@") + 1);
+
+            if (domain == 'citycollege.sheffield.eu' || domain == "sheffield.ac.uk") {
+                $.ajax({
+                    type: 'post',
+                    url: 'googlelogin.php',
+                    data: {
+                        email: email,
+                        username: username,
+                        name: name
+                    },
+                    success: function(response) {
+                        if (response == 1) {
+                            loggedin();
+
+                        } else if (response == 2) {
+                            swal({
+                                title: "Sorry you need to sign in with Sheffield University credentials",
+                                type: "error",
+                                showConfirmButton: true,
+                                showCancelButton: false,
+                                customClass: "Custom_Cancel",
+                                confirmButtonColor: "#DD6B55"
+                            });
+                        }
+
+                    }
+                });
+            } else {
+                swal({
+                    title: "Sorry you need to sign in with Sheffield University credentials",
+                    type: "error",
+                    showConfirmButton: true,
+                    showCancelButton: false,
+                    customClass: "Custom_Cancel",
+                    confirmButtonColor: "#DD6B55"
+                });
+            }
+        }
+    </script>
     <script>
         n = new Date();
         y = n.getFullYear();
@@ -737,7 +813,7 @@ require_once('init.php');
 
             var username = $("#username").val();
             var pass = $("#password").val();
-
+            console.log("inside do_login");
 
             $.ajax({
                 type: 'post',
@@ -787,14 +863,14 @@ require_once('init.php');
             loader.classList.toggle('loader-active');
             loader_inner.classList.toggle('loader-inner-active');
 
-            setTimeout(function() {
-                swal({
-                    title: "Logged in",
-                    type: "success",
-                    showConfirmButton: false,
-                    confirmButtonColor: "green"
-                });
-            }, 1000);
+            // setTimeout(function() {
+            //     swal({
+            //         titleswal: "Logged in",
+            //         type: "success",
+            //         showConfirmButton: false,
+            //         confirmButtonColor: "green"
+            //     });
+            // }, 1000);
 
 
             setTimeout(function() {
@@ -848,6 +924,5 @@ require_once('init.php');
 
 
 </body>
-
 
 </html>
