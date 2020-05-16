@@ -597,16 +597,16 @@ require_once('init.php');
                 lat: 40.634825,
                 lng: 22.934286
             };
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 14,
-                center: location
-            });
+             var map = new google.maps.Map(document.getElementById("map"), {
+                 zoom: 14,
+                 center: location
+             });
 
 
             var librarymarker = new google.maps.Marker({
                 position: library,
                 map: map,
-                title: 'library'
+                title: 'Library'
             });
 
 

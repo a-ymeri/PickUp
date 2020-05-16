@@ -145,7 +145,7 @@ function get_event()
 
 function get_UserEvents()
 {
-    //Returns all the events in which the user is part of
+    //Returns all the events in which the user is participating in
     $username = $_SESSION['username'];
     $conn = db_connect();
     $sql = "SELECT * from isin where username = '$username'";

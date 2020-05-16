@@ -9,6 +9,7 @@
     $time = $_POST['time'];
 
 
+    //Which radio option was picked
     if($location == "Library"){
         $lat = 40.6401;
         $lng = 22.9444;
@@ -26,7 +27,7 @@
 
     $date1=date_create($date);
     $l = date_format($date1,"Y/m/d");
-     $datefinal =  str_replace("/","-",$l);
+    $datefinal =  str_replace("/","-",$l);
  
      //echo $datefinal;
 
