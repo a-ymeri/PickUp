@@ -395,7 +395,7 @@ require_once('init.php');
 
                                 <div id="budget-4id">
                                     <input class="checkbox-budget" type="radio" name="budget" id="budget-4"
-                                        value="Other" onclick="showDiv()">
+                                        value="YMCA" onclick="showDiv()">
                                     <label class="for-checkbox-budget" for="budget-4">
                                         <span data-hover="Other">Other</span>
                                     </label>
@@ -510,7 +510,8 @@ require_once('init.php');
             });
         }
     </script>
-
+    <script src="Map.js">
+    </script>
 
 
     <!--
@@ -535,12 +536,7 @@ require_once('init.php');
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="Map.js">
-    // function checkLocation(){
-    //     var otherValue = document.getElementById('budget-4');
-    //     if ()
-    // }
-    </script>
+    
     <script>
     function showDiv() {
         document.getElementById('map').style.display = "block";
@@ -592,26 +588,9 @@ require_once('init.php');
     });
     </script>
 
-    <script>
-    </script>
 
 
-    <script>
-    //other api map
-    const mymap = L.map('mapid').setView([51.505, -0.09], 13);
-    const attribution =
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const tiles = L.tileLayer(tileUrl, {
-        attribution
-    });
-    tiles.addTo(mymap);
-    const marker = L.marker([51.505, -0.09], 13).addTo(mymap);
-    </script>
-
-
-
-    <script>
+    <!--<script>
     function initMap() {
         var location = {
             lat: 40.6401,
@@ -661,7 +640,7 @@ require_once('init.php');
 
 
     }
-    </script>
+    </script>-->
 
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"

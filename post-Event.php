@@ -69,8 +69,13 @@
       }else if($location == 'YMCA'){
          $lat= 40.626573;
          $lng= 22.951844;
+      }else{
+         $latlng = explode(",",$location);
+         $lat = (float)$latlng[0];
+         $lng = (float)$latlng[1];
       }
       //TODO: cover the custom case as well
+
   
      insert_event($datefinal,$time,$title,$lat,$lng);
 
