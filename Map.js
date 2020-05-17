@@ -22,7 +22,7 @@ function initMap() {
             marker.setMap(null);
         marker = new google.maps.Marker({ position: event.latLng });
         marker.setMap(map);
-        console.log(marker.position.lat());
+        console.log("hello");
     });
 
 }

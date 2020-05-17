@@ -266,7 +266,7 @@ class Event
         $this->lat = $lat;
         $this->lng = $lng;
     }
-
+    
 
     function set_eventid($event_id)
     {
@@ -304,4 +304,5 @@ class Event
     {
         return $this->title;
     }
+    
 }

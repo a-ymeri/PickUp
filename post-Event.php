@@ -2,12 +2,14 @@
 
     $title  = $_POST['title'];
 
+    //IDK why this is named budget, TODO: reconsider changing name
     $location= $_POST['budget'];
 
     $date = $_POST['date'];
 
     $time = $_POST['time'];
-
+    $lat = 0;
+    $lng = 0;
     // $date =  str_replace("/","-",$date);
 
 
@@ -57,7 +59,19 @@
 
      require_once('query_auth.php');
 
-     insert_event($datefinal,$time,$title,0,0);
+     //If user selected a static location, here are their LatLngs
+     if($location == 'Sofou Building'){
+        $lat = 40.637350;
+        $lng = 22.936904;
+     }else if($location == 'Warehouse'){
+         $lat= 40.634825;
+         $lng= 22.93428;
+      }else if($location == 'YMCA'){
+         $lat= 40.626573;
+         $lng= 22.951844;
+      }
+      //TODO: cover the custom case as well
+  
+     insert_event($datefinal,$time,$title,$lat,$lng);
 
     echo '<script>location.replace("index.php");</script>';
-

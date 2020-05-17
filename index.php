@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require_once('init.php');
@@ -24,7 +23,9 @@ require_once('init.php');
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
+
 
     <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
@@ -44,7 +45,8 @@ require_once('init.php');
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="post-Event.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
 
@@ -98,7 +100,8 @@ require_once('init.php');
 
         <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
                 <img src="images/avatar.png" alt="Avatar" class="avatar">
 
 
@@ -176,7 +179,8 @@ require_once('init.php');
         <form class="modal-content animate" action="signup.php" method="post">
 
             <div class="imgcontainer">
-                <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('signup').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
 
             </div>
 
@@ -197,7 +201,8 @@ require_once('init.php');
 
                 <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
                 Email
-                <input type="email" placeholder="Your email" name="email" required class="signupemail" style="width:100%; height:50px; padding: 12px 20px;" required>
+                <input type="email" placeholder="Your email" name="email" required class="signupemail"
+                    style="width:100%; height:50px; padding: 12px 20px;" required>
 
                 <button type="submit" class="logsubmit" id="signupButton1" onclick="return Validate()">Sign up</button>
                 <br>
@@ -345,8 +350,10 @@ require_once('init.php');
             <div class="eventfeed " id="id02">
                 <!-- used to be postsection1, changed bc the css is causing me problems -->
                 <section class="postsection1">
-                    <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
-                    <form action="post-Event.php" method="POST" enctype="multipart/form-data" class="event-content animate" autocomplete="off" >
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close1"
+                        title="Close Modal">&times;</span>
+                    <form action="post-Event.php" method="POST" enctype="multipart/form-data"
+                        class="event-content animate" autocomplete="off">
 
 
                         <div class="text">
@@ -368,23 +375,27 @@ require_once('init.php');
 
                             <div class="venueOptions">
 
-                                <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Sofou Building" onclick="removeDiv()" checked>
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-1"
+                                    value="Sofou Building" onclick="removeDiv()" checked>
                                 <label class="for-checkbox-budget" for="budget-1">
                                     <span data-hover="Sofou Building">Sofou Building</span>
                                 </label>
 
-                                <input class="checkbox-budget" type="radio" name="budget" id="budget-2" value="Warehouse" onclick="removeDiv()">
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-2"
+                                    value="Warehouse" onclick="removeDiv()">
                                 <label class="for-checkbox-budget" for="budget-2">
                                     <span data-hover="Warehouse">Warehouse</span>
                                 </label>
 
-                                <input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA" onclick="removeDiv()">
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA"
+                                    onclick="removeDiv()">
                                 <label class="for-checkbox-budget" for="budget-3">
                                     <span data-hover="YMCA">YMCA</span>
                                 </label>
 
                                 <div id="budget-4id">
-                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()">
+                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4"
+                                        value="Other" onclick="showDiv()">
                                     <label class="for-checkbox-budget" for="budget-4">
                                         <span data-hover="Other">Other</span>
                                     </label>
@@ -404,14 +415,14 @@ require_once('init.php');
                             <input name="eventTxt">
                         </div>
 
-                        
+
                         <input type="file" name="picfile">
                         <button type="submit" name="submit">Upload Event Poster</button>
 
                         <!-- Submit form -->
                         <input type="submit" value="post" id="postsectionsubmit" />
 
-                    
+
                     </form>
 
                     <!-- <form action="uploadEventPic.php" method="POST" enctype="multipart/form-data">  
@@ -424,8 +435,6 @@ require_once('init.php');
 
                 </section>
             </div>
-
-
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
 
             <?php
@@ -437,9 +446,6 @@ require_once('init.php');
 
 
             for ($x = 0; $x < sizeof($event); $x++) {
-                $date1 =  $event[$x]->get_date();
-
-
                 echo
                     '
                             
@@ -459,8 +465,7 @@ require_once('init.php');
      
                              <div>Time: ' . $event[$x]->get_time() . '
                              <br>
-                                 Location: ' . $event[$x]->get_lat() . '
-                             </div> 
+                                Location: <p class="events"></p> </div> 
     
                              
                              </div>
@@ -468,10 +473,6 @@ require_once('init.php');
                              
                              ';
             }
-
-
-
-
 
             ?>
 
@@ -481,22 +482,34 @@ require_once('init.php');
             <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
 
 
-
-
-
-
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
 
         </div>
-
-
-
-
     </div>
 
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
+        type="text/javascript"></script>
 
 
-
+    <script>
+        //$event is a variable used earlier to store the list of all events from the DB
+        //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
+        eventArray = <?php require_once('query_auth.php');
+        $php_array = array();
+        $php_array = $event;
+        echo json_encode($php_array);?>;
+ 
+        for(let i = 0; i<eventArray.length;i++){
+            //Geolocate each event using jquery and geolocation api.
+            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + eventArray[i].lat + ',' + eventArray[i].lng +
+            '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
+            function(data) {
+                //use the json result and take only the address from it. Change the event spans to have the addresses.
+                document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
+            });
+        }
+    </script>
 
 
 
@@ -509,35 +522,35 @@ require_once('init.php');
 
 
     <script>
-        //dipslays the login(modal)
-        const signup = document.getElementById('signupButton');
+    //dipslays the login(modal)
+    const signup = document.getElementById('signupButton');
 
-        signup.addEventListener('click', () => {
-            var s = document.getElementById('signup');
-            var modal = document.getElementById('id01');
-            modal.style.display = "none";
-            s.style.display = 'block';
+    signup.addEventListener('click', () => {
+        var s = document.getElementById('signup');
+        var modal = document.getElementById('id01');
+        modal.style.display = "none";
+        s.style.display = 'block';
 
-        });
+    });
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="Map.js">
-        // function checkLocation(){
-        //     var otherValue = document.getElementById('budget-4');
-        //     if ()
-        // }
+    // function checkLocation(){
+    //     var otherValue = document.getElementById('budget-4');
+    //     if ()
+    // }
     </script>
     <script>
-        function showDiv() {
-            document.getElementById('map').style.display = "block";
-            document.getElementById('budget-4id').style.display = "none";
-        }
+    function showDiv() {
+        document.getElementById('map').style.display = "block";
+        document.getElementById('budget-4id').style.display = "none";
+    }
 
-        function removeDiv() {
-            document.getElementById('map').style.display = "none";
-            document.getElementById('budget-4id').style.display = "block";
-        }
+    function removeDiv() {
+        document.getElementById('map').style.display = "none";
+        document.getElementById('budget-4id').style.display = "block";
+    }
     </script>
 
 
@@ -547,36 +560,36 @@ require_once('init.php');
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            //checks if passwords are the same
-            $("#signupButton1").click(function() {
-                var passalert = document.getElementById('alert');
-                var password = $("#psw1").val();
-                var confirmPassword = $("#psw2").val();
-                if (password != confirmPassword) {
-                    swal({
-                        title: "Passwords do not match",
-                        type: "error",
-                        showConfirmButton: true,
-                        showCancelButton: false,
-                        customClass: "Custom_Cancel",
-                        confirmButtonColor: "#DD6B55"
-                    });
-
-                    return false;
-                }
+    $(function() {
+        //checks if passwords are the same
+        $("#signupButton1").click(function() {
+            var passalert = document.getElementById('alert');
+            var password = $("#psw1").val();
+            var confirmPassword = $("#psw2").val();
+            if (password != confirmPassword) {
                 swal({
-                    title: "Success",
-                    type: "success",
-                    showConfirmButton: false,
-                    customClass: "success",
-                    timer: 1500
-
+                    title: "Passwords do not match",
+                    type: "error",
+                    showConfirmButton: true,
+                    showCancelButton: false,
+                    customClass: "Custom_Cancel",
+                    confirmButtonColor: "#DD6B55"
                 });
 
-                return true;
+                return false;
+            }
+            swal({
+                title: "Success",
+                type: "success",
+                showConfirmButton: false,
+                customClass: "success",
+                timer: 1500
+
             });
+
+            return true;
         });
+    });
     </script>
 
     <script>
@@ -584,148 +597,150 @@ require_once('init.php');
 
 
     <script>
-        //other api map
-        const mymap = L.map('mapid').setView([51.505, -0.09], 13);
-        const attribution =
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        const tiles = L.tileLayer(tileUrl, {
-            attribution
+    //other api map
+    const mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    const attribution =
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, {
+        attribution
+    });
+    tiles.addTo(mymap);
+    const marker = L.marker([51.505, -0.09], 13).addTo(mymap);
+    </script>
+
+
+
+    <script>
+    function initMap() {
+        var location = {
+            lat: 40.6401,
+            lng: 22.9444
+        };
+        var library = {
+            lat: 40.637350,
+            lng: 22.936904
+        };
+
+        var YMCA = {
+            lat: 40.626573,
+            lng: 22.951844
+        };
+
+        var warehouse = {
+            lat: 40.634825,
+            lng: 22.934286
+        };
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: location
         });
-        tiles.addTo(mymap);
-        const marker = L.marker([51.505, -0.09], 13).addTo(mymap);
+
+
+        var librarymarker = new google.maps.Marker({
+            position: library,
+            map: map,
+            title: 'library'
+        });
+
+
+        var warehousemarker = new google.maps.Marker({
+            position: warehouse,
+            map: map,
+            title: 'Warehouse'
+        });
+
+
+        var ymcamarker = new google.maps.Marker({
+            position: YMCA,
+            map: map,
+            title: 'YMCA'
+        });
+
+
+
+
+    }
     </script>
 
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
+        type="text/javascript"></script>
 
 
     <script>
-        function initMap() {
-            var location = {
-                lat: 40.6401,
-                lng: 22.9444
-            };
-            var library = {
-                lat: 40.637350,
-                lng: 22.936904
-            };
+    function thisfn() {
+        var eventpost = document.querySelector('.postsection');
+        var eventoption = document.getElementById('eventoption');
+        const date_picker_element = document.querySelector('.date-picker');
+        const date_selected = document.querySelector('.selected-date');
 
-            var YMCA = {
-                lat: 40.626573,
-                lng: 22.951844
-            };
-
-            var warehouse = {
-                lat: 40.634825,
-                lng: 22.934286
-            };
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 14,
-                center: location
-            });
-
-
-            var librarymarker = new google.maps.Marker({
-                position: library,
-                map: map,
-                title: 'library'
-            });
-
-
-            var warehousemarker = new google.maps.Marker({
-                position: warehouse,
-                map: map,
-                title: 'Warehouse'
-            });
-
-
-            var ymcamarker = new google.maps.Marker({
-                position: YMCA,
-                map: map,
-                title: 'YMCA'
-            });
-
-
-
-
-        }
-    </script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
-
-
-    <script>
-        function thisfn() {
-            var eventpost = document.querySelector('.postsection');
-            var eventoption = document.getElementById('eventoption');
-            const date_picker_element = document.querySelector('.date-picker');
-            const date_selected = document.querySelector('.selected-date');
-
-            // alert(event_content);
-            date_picker_element.style.display = "block";
-            eventoption.style.display = 'block';
-            event_content.style.display = "block";
-            eventpost.classList.toggle('eventpost-active');
-            eventoption.classList.toggle('eventoption-active');
-        }
+        // alert(event_content);
+        date_picker_element.style.display = "block";
+        eventoption.style.display = 'block';
+        event_content.style.display = "block";
+        eventpost.classList.toggle('eventpost-active');
+        eventoption.classList.toggle('eventoption-active');
+    }
     </script>
 
 
     <script src="date-js.js"></script>
 
     <script>
-        var button = document.getElementById('login-accountbutton');
-        var modal = document.getElementById('id01');
+    var button = document.getElementById('login-accountbutton');
+    var modal = document.getElementById('id01');
 
 
-        button.addEventListener('click', () => {
+    button.addEventListener('click', () => {
 
-            modal.style.display = "block";
+        modal.style.display = "block";
 
-        });
+    });
 
-        // When the user clicks anywhere outside of the modal, close it
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+
+    <script>
+    function popEvent() {
+
+
+
+        var eventbutton = document.getElementById('eventbutton');
+        var modal2 = document.getElementById('id02');
+
+
+        // modal2.classList.toggle('eventfeed-active');
+
+        modal2.style.display = "block";
+
+
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+
             }
         }
-    </script>
-
-    <script>
-        function popEvent() {
-
-
-
-            var eventbutton = document.getElementById('eventbutton');
-            var modal2 = document.getElementById('id02');
-
-
-            // modal2.classList.toggle('eventfeed-active');
-
-            modal2.style.display = "block";
-
-
-            window.onclick = function(event) {
-                if (event.target == modal2) {
-                    modal2.style.display = "none";
-
-                }
-            }
-        }
+    }
     </script>
 
 
     <script>
-        // function bridge(){
-        // var date_selected = document.querySelector('.selected-date');
-        // var  bridgePHP = document.querySelector('.bridgePHP');
-        // var abc = $(date_selected).data('value');
-        // var a = bridgePHP.value;
+    // function bridge(){
+    // var date_selected = document.querySelector('.selected-date');
+    // var  bridgePHP = document.querySelector('.bridgePHP');
+    // var abc = $(date_selected).data('value');
+    // var a = bridgePHP.value;
 
-        // bridgePHP.value = abc;
+    // bridgePHP.value = abc;
 
-        // alert(abc);
-        // }
+    // alert(abc);
+    // }
     </script>
 
 
@@ -738,70 +753,71 @@ require_once('init.php');
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta name="google-signin-client_id" content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
 
 
     <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
 
-            var email = profile.getEmail();
-            var name = profile.getName();
-            //   var id = profile.getID();
-            //   var profileimage = profile.getImageUrl();
+        var email = profile.getEmail();
+        var name = profile.getName();
+        //   var id = profile.getID();
+        //   var profileimage = profile.getImageUrl();
 
-            var username = email.substring(0, email.lastIndexOf("@"));
-            var domain = email.substring(email.lastIndexOf("@") + 1);
+        var username = email.substring(0, email.lastIndexOf("@"));
+        var domain = email.substring(email.lastIndexOf("@") + 1);
 
-            if (domain == 'citycollege.sheffield.eu' || domain == "sheffield.ac.uk") {
-                $.ajax({
-                    type: 'post',
-                    url: 'googlelogin.php',
-                    data: {
-                        email: email,
-                        username: username,
-                        name: name
-                    },
-                    success: function(response) {
-                        if (response == 1) {
-                            loggedin();
+        if (domain == 'citycollege.sheffield.eu' || domain == "sheffield.ac.uk") {
+            $.ajax({
+                type: 'post',
+                url: 'googlelogin.php',
+                data: {
+                    email: email,
+                    username: username,
+                    name: name
+                },
+                success: function(response) {
+                    if (response == 1) {
+                        loggedin();
 
-                        } else if (response == 2) {
-                            swal({
-                                title: "Sorry you need to sign in with Sheffield University credentials",
-                                type: "error",
-                                showConfirmButton: true,
-                                showCancelButton: false,
-                                customClass: "Custom_Cancel",
-                                confirmButtonColor: "#DD6B55"
-                            });
-                        }
-
+                    } else if (response == 2) {
+                        swal({
+                            title: "Sorry you need to sign in with Sheffield University credentials",
+                            type: "error",
+                            showConfirmButton: true,
+                            showCancelButton: false,
+                            customClass: "Custom_Cancel",
+                            confirmButtonColor: "#DD6B55"
+                        });
                     }
-                });
-            } else {
-                swal({
-                    title: "Sorry you need to sign in with Sheffield University credentials",
-                    type: "error",
-                    showConfirmButton: true,
-                    showCancelButton: false,
-                    customClass: "Custom_Cancel",
-                    confirmButtonColor: "#DD6B55"
-                });
-            }
+
+                }
+            });
+        } else {
+            swal({
+                title: "Sorry you need to sign in with Sheffield University credentials",
+                type: "error",
+                showConfirmButton: true,
+                showCancelButton: false,
+                customClass: "Custom_Cancel",
+                confirmButtonColor: "#DD6B55"
+            });
         }
+    }
     </script>
     <script>
-        n = new Date();
-        y = n.getFullYear();
-        m = n.getMonth() + 1;
-        d = n.getDate();
-        var l = document.getElementById("date1");
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    var l = document.getElementById("date1");
 
-        l.value = m + "/" + d + "/" + y;
+    l.value = m + "/" + d + "/" + y;
 
 
-        $("#date1").dateDropper({});
+    $("#date1").dateDropper({});
     </script>
 
 
@@ -809,116 +825,117 @@ require_once('init.php');
 
 
     <script type="text/javascript">
-        function do_login() {
+    function do_login() {
 
-            var username = $("#username").val();
-            var pass = $("#password").val();
-            console.log("inside do_login");
+        var username = $("#username").val();
+        var pass = $("#password").val();
+        console.log("inside do_login");
 
-            $.ajax({
-                type: 'post',
-                url: 'AJAX.php',
-                data: {
-                    do_login: "do_login",
-                    username: username,
-                    password: pass
-                },
-                success: function(response) {
+        $.ajax({
+            type: 'post',
+            url: 'AJAX.php',
+            data: {
+                do_login: "do_login",
+                username: username,
+                password: pass
+            },
+            success: function(response) {
 
-                    if (response == 1) {
-                        loggedin();
+                if (response == 1) {
+                    loggedin();
 
-                    } else if (response == 2) {
-                        shaker();
-                    }
-
+                } else if (response == 2) {
+                    shaker();
                 }
-            });
-            return false;
-        }
 
-        function shaker() {
-            var usrbox = document.querySelector('.uname');
-            var password = document.querySelector('.password');
-
-            usrbox.classList.toggle('shaker-active');
-            password.classList.toggle('shaker-active');
-
-
-            var x = document.getElementsByTagName("h5")[0];
-            x.outerHTML = "<h6 style='color:#f44336;'>Wrong password or username</h6>"
-
-
-
-        }
-
-        function loggedin() {
-            var loader_wrapper = document.querySelector('.loader-wrapper');
-            var loader_inner = document.querySelector('.loader-inner');
-            var loader = document.querySelector('.loader');
-            // loader.classList.toggle('loader-active');
-            var modal = document.querySelector('.id01');
-            loader_wrapper.style.display = "block";
-
-            loader.classList.toggle('loader-active');
-            loader_inner.classList.toggle('loader-inner-active');
-
-            // setTimeout(function() {
-            //     swal({
-            //         titleswal: "Logged in",
-            //         type: "success",
-            //         showConfirmButton: false,
-            //         confirmButtonColor: "green"
-            //     });
-            // }, 1000);
-
-
-            setTimeout(function() {
-                window.location.replace("index.php");
-            }, 2000);
-
-            ///setTimeout(() => {    }, 1200);
-
-
-
-        }
-    </script>
-
-
-
-
-
-
-    <script>
-        document.querySelector("#time").addEventListener("input", function(e) {
-            const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-            const time = this.value;
-            if (reTime.exec(time)) {
-                const minute = Number(time.substring(3, 5));
-                const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
-                this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
             }
         });
+        return false;
+    }
+
+    function shaker() {
+        var usrbox = document.querySelector('.uname');
+        var password = document.querySelector('.password');
+
+        usrbox.classList.toggle('shaker-active');
+        password.classList.toggle('shaker-active');
+
+
+        var x = document.getElementsByTagName("h5")[0];
+        x.outerHTML = "<h6 style='color:#f44336;'>Wrong password or username</h6>"
+
+
+
+    }
+
+    function loggedin() {
+        var loader_wrapper = document.querySelector('.loader-wrapper');
+        var loader_inner = document.querySelector('.loader-inner');
+        var loader = document.querySelector('.loader');
+        // loader.classList.toggle('loader-active');
+        var modal = document.querySelector('.id01');
+        loader_wrapper.style.display = "block";
+
+        loader.classList.toggle('loader-active');
+        loader_inner.classList.toggle('loader-inner-active');
+
+        // setTimeout(function() {
+        //     swal({
+        //         titleswal: "Logged in",
+        //         type: "success",
+        //         showConfirmButton: false,
+        //         confirmButtonColor: "green"
+        //     });
+        // }, 1000);
+
+
+        setTimeout(function() {
+            window.location.replace("index.php");
+        }, 2000);
+
+        ///setTimeout(() => {    }, 1200);
+
+
+
+    }
     </script>
 
-    <script>
-        const input = document.getElementById("search-input");
-        const searchBtn = document.getElementById("search-btn");
 
-        const expand = () => {
-            searchBtn.classList.toggle("close");
-            input.classList.toggle("square");
-        };
 
-        searchBtn.addEventListener("click", expand);
-    </script>
+
+
 
     <script>
-        function search(keyword) {
-            if (event.key === 'Enter') {
-                submitFunction();
-            }
+    document.querySelector("#time").addEventListener("input", function(e) {
+        const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+        const time = this.value;
+        if (reTime.exec(time)) {
+            const minute = Number(time.substring(3, 5));
+            const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
+            this.style.backgroundImage =
+                `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
         }
+    });
+    </script>
+
+    <script>
+    const input = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+
+    const expand = () => {
+        searchBtn.classList.toggle("close");
+        input.classList.toggle("square");
+    };
+
+    searchBtn.addEventListener("click", expand);
+    </script>
+
+    <script>
+    function search(keyword) {
+        if (event.key === 'Enter') {
+            submitFunction();
+        }
+    }
     </script>
 
 

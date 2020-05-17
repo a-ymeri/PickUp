@@ -114,16 +114,17 @@ function scrollFunction() {
 </script>
 -->
 
-    <script src="Map.js"></script>
+    
     <script>
+        //populate JS array with the the events from the DB
         array = <?php require_once('query_auth.php');
                     $php_array = array();
                     $php_array = get_AllEvents();
                     echo json_encode($php_array); ?>;
     </script>
-
+    <script src="Map.js"></script>
+    <script> getAddress();</script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
-
 
     <script src="index.js"></script>
 
