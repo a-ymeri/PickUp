@@ -23,7 +23,7 @@
 
     //used in index to upload poster LJ01 
     //var_dump($_FILES['picfile']['name']);
-    // if(isset($_FILES['file'])){
+    if(isset($_FILES['picfile'])){
         $errors= array();
         $file_name = $_FILES['picfile']['name'];
         $fileTmpName = (explode('.', $file_name));
@@ -36,7 +36,7 @@
         //lets you upload the same file may times
         $fileNameNew = uniqid('', true) . "." . $file_ext;
         
-        $extensions= array("jpeg","jpg","png");
+        $extensions= array("jpeg","jpg","png", "gif");
         
         if(in_array($file_ext,$extensions)=== false){
            $errors[]="extension not allowed, please choose a JPEG or PNG file.";
@@ -52,7 +52,7 @@
         }else{
            print_r($errors);
         }
-    // }
+    }
 
 
      require_once('query_auth.php');

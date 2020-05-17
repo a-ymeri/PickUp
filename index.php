@@ -342,7 +342,7 @@ require_once('init.php');
 
 
             <div class="eventfeed " id="id02">
-                <!-- used to be postsection1, changed bc the css is causing me problems -->
+ s
                 <section class="postsection1">
                     <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
                     <form action="post-Event.php" method="POST" enctype="multipart/form-data" class="event-content animate" autocomplete="off" >
@@ -404,8 +404,9 @@ require_once('init.php');
                         </div>
 
                         
-                        <input type="file" name="picfile">
-                        <button type="submit" name="submit">Upload Event Poster</button>
+                        <input type="file" name="picfile"> 
+                        <br>
+                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
                         <!-- Submit form -->
                         <input type="submit" value="post" id="postsectionsubmit" />
