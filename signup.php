@@ -4,28 +4,33 @@
 
     $conn = db_connect();
 
-    $firstname = $_POST['uname'];
-    $pass = $_POST['psw'];
-
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $fullName = $fname . " " . $lname;
+    
+    
+    
 
     //Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $username =  $_POST['uname'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $userpassword = $_POST['psw2'];
     $email = $_POST['email'];
+    $usernameArray = explode('@',$email);
+    $username = $usernameArray[0];
+    
+    //TODO: Check if password is the same
+    $userpassword = $_POST['password1'];
+    
 
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
 
 
-    $query = "INSERT INTO user (username, fname,lname,email,password) 
-VALUES(?, ?,?,?,?);";
+    $query = "INSERT INTO user (username,name,email,password) 
+VALUES(?,?,?,?);";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$username, $fname, $lname, $email, $userpassword]);
+    $stmt->execute([$username,$fullName, $email, $userpassword]);
 
 
     require_once('query_auth.php');

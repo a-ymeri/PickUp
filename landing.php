@@ -115,7 +115,7 @@ require_once('init.php');
             
             <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-        <form class="modal-content animate" action="landing.php" method="post">
+        <form class="modal-content animate" action="signup.php" method="post">
             <?php include('errors.php'); ?>
             <div class="imgcontainer">
                 <span onclick="document.getElementById('signup').style.display='none'" class="close"
@@ -137,9 +137,9 @@ require_once('init.php');
                 <input type="text" placeholder="Enter Username" name="uname" class="uname"  value="">-->
 
                 <label for="psw1"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" id="psw1" name="psw1" required class="password">
+                <input type="password" placeholder="Enter Password" id="psw1" name="password1" required class="password">
 
-                <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
+                <input type="password" placeholder="Re-enter Password" id="psw2" name="password2" required class="password">
                 
                 
                 <label for="email"><b>Email</b></label>
