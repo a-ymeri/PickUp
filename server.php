@@ -8,7 +8,7 @@ $email="";
 $errors=array();
 
 $servername = "localhost";
-$user = "lola";
+$user = "learta";
 $pass = "123";
 $dbname = "cwtest1";
 

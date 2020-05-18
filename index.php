@@ -544,6 +544,8 @@ require_once('init.php');
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
+    <script src="Map.js"></script>
+
     <script>
     function showDiv() {
         document.getElementById('map').style.display = "block";
