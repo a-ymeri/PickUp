@@ -3,7 +3,7 @@
 
 	function db_connect(){
     $servername = "localhost";
-    $username = "learta";
+    $username = "lola";
     $password = "123";
 	$dbname = "cwtest1";
 	

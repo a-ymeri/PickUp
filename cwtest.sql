@@ -131,7 +131,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `fname`, `lname`, `email`, `password`) VALUES
 ('aymeri', 'ardit', 'ymeri', 'aymeri@citycollege.sheffiel.eu', '123'),
-('ldavidovijk', 'lola', 'davidovijk', 'ldavidovijk@citycollege.sheffield.eu', '123'),
+('ldavidovikj', 'lola', 'davidovikj', 'ldavidovikj@citycollege.sheffield.eu', '123'),
 ('ljanuzi', 'learta', 'januzi', 'ljanuzi@citycollege.sheffield.eu', '123'),
 ('mrestelica', 'memli', 'restelica', 'restelicamemli@gmail.com', '123');
 
