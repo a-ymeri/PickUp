@@ -5,7 +5,9 @@
     //IDK why this is named budget, TODO: reconsider changing name
    $location= $_POST['budget'];
 
+
    $date = $_POST['date'];
+
 
    $time = $_POST['time'];
    $lat = 0;
@@ -13,7 +15,7 @@
 
    //give value to the event id here, we need to create it before posting because we need it for the pics.
    $id = rand(10, 200);
-  
+
     // $date =  str_replace("/","-",$date);
 
 
@@ -62,6 +64,7 @@
          $errors[]='File size is to big';
       }
         
+
       if(empty($errors)==true){
          move_uploaded_file($file_tmp,"uploads/".$fileNameNew );
          //echo "Successfully uploaded";
@@ -75,6 +78,7 @@
 
    
 
+
      //If user selected a static location, here are their LatLngs
      if($location == 'Sofou Building'){
         $lat = 40.637350;
@@ -85,9 +89,11 @@
       }else if($location == 'YMCA'){
          $lat= 40.626573;
          $lng= 22.951844;
+
       }
       //TODO: cover the custom case as well
   
      insert_event($id,$datefinal,$time,$title,$lat,$lng,$dscp);
+
 
     echo '<script>location.replace("index.php");</script>';
