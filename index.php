@@ -241,11 +241,11 @@ require_once('init.php');
             <?php
             require_once('authenticate.php');
             $u = get_username();
-            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg'style=' position: relative;
-  width: 70px;
-  height:70px;
-  overflow: hidden;
-  border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
+            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg' style='position: relative;
+                width: 70px;
+                height:70px;
+                overflow: hidden;
+                border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
             ?>
 
 
@@ -350,10 +350,12 @@ require_once('init.php');
             <div class="eventfeed " id="id02">
                 <!-- used to be postsection1, changed bc the css is causing me problems -->
                 <section class="postsection1">
+
                     <span onclick="document.getElementById('id02').style.display='none'" class="close1"
                         title="Close Modal">&times;</span>
                     <form action="post-Event.php" method="POST" enctype="multipart/form-data"
                         class="event-content animate" autocomplete="off">
+
 
 
                         <div class="text">
@@ -412,74 +414,78 @@ require_once('init.php');
                         </div>
                         <div class="evetDscp">
                             <h5>Event Description</h5>
-                            <input name="eventTxt">
+                            <input type="text" name="eventTxt">
                         </div>
 
 
                         <input type="file" name="picfile">
-                        <button type="submit" name="submit">Upload Event Poster</button>
+                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
                         <!-- Submit form -->
-                        <input type="submit" value="post" id="postsectionsubmit" />
+                        <input type="submit" value="post" id="postsectionsubmit"/>
+
+                        <!-- <div id="poster" style="display: none">
+                            <input type="file" name="picfile">
+                        </div> -->
+
 
 
                     </form>
 
-                    <!-- <form action="uploadEventPic.php" method="POST" enctype="multipart/form-data">  
-                                
-                    <input type="file" name="picfile">
-                    <button type="submit" name="submit">Upload Event Poster</button>
-
-                    </form> -->
 
 
                 </section>
             </div>
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
-
-            <?php
-            require_once('query_auth.php');
-            $event = get_AllEvents();
+            <div id="events" onclick="popInfo()">
 
 
+                <?php
+                    require_once('query_auth.php');
+                    $event = get_AllEvents();
+
+                    for ($x = 0; $x < sizeof($event); $x++) {
+
+                        $id = $event[$x]->get_eventid();
+                        $pic = 'uploads/' .$id. '.jpg';
+
+                        echo
+                            '<div class="eventtest '. $x .'" id="">
+                                <section class="postsection">
+                                <h1 style="color:#0077CC;">
+                                    '. $event[$x]->get_title() .'
+                                </h1> 
+                                <p>'. $date = $event[$x]->get_date() .'</p>
+                                <div>
+                                    Time: ' . $event[$x]->get_time() . '
+                                    <br>
+                                    Location: <p class="events"></p> 
+                                </div>'. choosePic($pic, $id). '<br>'. $dscp = $event[$x]->get_description().'
+
+                            </div>';
+                        
+                        
+                    }
 
 
+                    function choosePic($pic, $id){
+                        if (file_exists($pic)){
+                            return '<img src="uploads/'.$id.'.jpg" style= "width: 70px;
+                            height:70px; float=left">';
+                        }
+                        else
+                            return '<img src="images/eventpic.jpg" style= "width: 70px"
+                         height:70px>';
+                    }
 
-            for ($x = 0; $x < sizeof($event); $x++) {
-                echo
-                    '
-                            
-                            
-                            <div class="eventtest' . $x . '" id="">
-                             <section class="postsection">
-                          
-                             <h1 style="color:#0077CC;">'
-                        . $event[$x]->get_title() .
-                        '
-                             </h1>
-                             
-                             <p>' . $date = $event[$x]->get_date() . '</p>
-     
-                             
-                             
-     
-                             <div>Time: ' . $event[$x]->get_time() . '
-                             <br>
-                                Location: <p class="events"></p> </div> 
-    
-                             
-                             </div>
-                             
-                             
-                             ';
-            }
+                    
+                ?>
+            </div>
 
-            ?>
-
-            <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
-
-
-            <!-- -----------------------------EEEEENNNNDDDDDDDD--------------------------------------- -->
+            <div id="viewMore" style="display: none">
+            
+                
+            </div>
 
 
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
@@ -487,31 +493,32 @@ require_once('init.php');
         </div>
     </div>
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
-        type="text/javascript"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
+
 
 
     <script>
         //$event is a variable used earlier to store the list of all events from the DB
         //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
         eventArray = <?php require_once('query_auth.php');
-        $php_array = array();
-        $php_array = $event;
-        echo json_encode($php_array);?>;
- 
-        for(let i = 0; i<eventArray.length;i++){
+
+                        $php_array = array();
+                        $php_array = $event;
+                        echo json_encode($php_array); ?>;
+
+        for (let i = 0; i < eventArray.length; i++) {
             //Geolocate each event using jquery and geolocation api.
             $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + eventArray[i].lat + ',' + eventArray[i].lng +
-            '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
-            function(data) {
-                //use the json result and take only the address from it. Change the event spans to have the addresses.
-                document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
-            });
+                '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
+                function(data) {
+                    //use the json result and take only the address from it. Change the event spans to have the addresses.
+                    document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
+                });
         }
     </script>
-    <script src="Map.js">
-    </script>
+
+
 
 
     <!--
@@ -642,9 +649,10 @@ require_once('init.php');
     }
     </script>-->
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
-        type="text/javascript"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript">
+    </script>
+
 
 
     <script>
@@ -689,14 +697,11 @@ require_once('init.php');
     function popEvent() {
 
 
+            var eventbutton = document.getElementById('eventbutton');
+            var modal2 = document.getElementById('id02');
 
-        var eventbutton = document.getElementById('eventbutton');
-        var modal2 = document.getElementById('id02');
+            modal2.style.display = "block";
 
-
-        // modal2.classList.toggle('eventfeed-active');
-
-        modal2.style.display = "block";
 
 
         window.onclick = function(event) {
@@ -708,6 +713,20 @@ require_once('init.php');
     }
     </script>
 
+    <script>
+        function popInfo(){
+            var events = document.getElementById('events');
+            var view = document.getElementById('viewMore');
+
+            viewMore.style.display = "block";
+
+            window.onclick = function(event){
+                if(event.target == view){
+                    view.style.display = "none";
+                }
+            }
+        }
+    </script>
 
     <script>
     // function bridge(){
@@ -885,16 +904,18 @@ require_once('init.php');
 
 
     <script>
-    document.querySelector("#time").addEventListener("input", function(e) {
-        const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-        const time = this.value;
-        if (reTime.exec(time)) {
-            const minute = Number(time.substring(3, 5));
-            const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
-            this.style.backgroundImage =
-                `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
-        }
-    });
+
+        document.querySelector("#time").addEventListener("input", function(e) {
+            const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+            const time = this.value;
+            if (reTime.exec(time)) {
+                const minute = Number(time.substring(3, 5));
+                const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
+                this.style.backgroundImage =
+                    `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
+            }
+        });
+
     </script>
 
     <script>
