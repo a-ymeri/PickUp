@@ -403,7 +403,7 @@ require_once('init.php');
                         </div>
                         <div class="evetDscp">
                             <h5>Event Description</h5>
-                            <input name="eventTxt">
+                            <input type="text" name="eventTxt">
                         </div>
 
 
@@ -447,7 +447,8 @@ require_once('init.php');
                                     Time: ' . $event[$x]->get_time() . '
                                     <br>
                                     Location: <p class="events"></p> 
-                                </div>'. choosePic($pic, $id).'
+                                </div>'. choosePic($pic, $id). '<br>'. $dscp = $event[$x]->get_description().'
+
                             </div>';
                         
                         
@@ -463,12 +464,13 @@ require_once('init.php');
                          height:70px>';
                     }
 
+                    
+
                 ?>
             </div>
 
-            <div id="viewMore">
-            <span onclick="document.getElementById('viewMore').style.display='none'" class="close" title="Close Modal">&times;
-            </span>
+            <div id="viewMore" style="display: none">
+            
                 
             </div>
 

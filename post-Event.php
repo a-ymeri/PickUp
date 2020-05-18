@@ -20,6 +20,8 @@
    $date1=date_create($date);
    $l = date_format($date1,"Y/m/d");
 
+   $dscp = $_POST['eventTxt'];
+
     
 
    $datefinal =  str_replace("/","-",$l);
@@ -86,6 +88,6 @@
       }
       //TODO: cover the custom case as well
   
-     insert_event($id,$datefinal,$time,$title,$lat,$lng);
+     insert_event($id,$datefinal,$time,$title,$lat,$lng,$dscp);
 
     echo '<script>location.replace("index.php");</script>';

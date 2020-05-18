@@ -84,18 +84,18 @@ function get_password($username)
 
 
 
-function insert_event($event_id,$date, $time, $title, $lat, $lng)
+function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
 {
     $conn = db_connect();
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
 
-    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng) 
-    VALUES(?,?,?,?,?,?,?,?);";
+    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng,description) 
+    VALUES(?,?,?,?,?,?,?,?,?);";
     $stmt = $pdo->prepare($query);
     //the id is now creared on post-Event.php 
     // $randomNumber = rand(10, 200);
     // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
-    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng]);
+    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp]);
 }
 
 
@@ -114,8 +114,9 @@ function get_event()
             $title = $row["subject"];
             $lat = $row["lat"];
             $lng = $row["lng"];
+            $description = $row["description"];
         }
-        $event = new Event($event_id, $date, $time, $title, $lat, $lng);
+        $event = new Event($event_id, $date, $time, $title, $lat, $lng, $description);
         //echo $event->get_title();
         return $event;
     }
@@ -236,8 +237,9 @@ function makeEvent($result){
             $title = $row["subject"];
             $lat = $row["lat"];
             $lng = $row["lng"];
+            $description = $row["description"];
 
-            $event = new Event($event_id, $date, $time, $title, $lat,$lng);
+            $event = new Event($event_id, $date, $time, $title, $lat,$lng,$description);
 
             //Push into array of event objects
             array_push($events, $event);
@@ -254,9 +256,9 @@ function makeEvent($result){
 class Event
 {
     // Properties
-    public $event_id, $date, $time, $title, $lat, $lng;
+    public $event_id, $date, $time, $title, $lat, $lng, $description;
 
-    function __construct($event_id, $date, $time, $title, $lat, $lng)
+    function __construct($event_id, $date, $time, $title, $lat, $lng, $description)
     {
         $this->event_id = $event_id;
         $this->date = $date;
@@ -264,6 +266,7 @@ class Event
         $this->title = $title;
         $this->lat = $lat;
         $this->lng = $lng;
+        $this->description = $description;
     }
     
 
@@ -302,6 +305,11 @@ class Event
     function get_title()
     {
         return $this->title;
+    }
+
+    function get_description()
+    {
+        return $this->description;
     }
     
 }
