@@ -452,6 +452,7 @@ require_once('init.php');
                         
                         
                     }
+
                     function choosePic($pic, $id){
                         if (file_exists($pic)){
                             return '<img src="uploads/'.$id.'.jpg" style= "width: 70px;
@@ -461,6 +462,7 @@ require_once('init.php');
                             return '<img src="images/eventpic.jpg" style= "width: 70px"
                          height:70px>';
                     }
+
                 ?>
             </div>
 
