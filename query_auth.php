@@ -84,7 +84,7 @@ function get_password($username)
 
 
 
-function insert_event($date, $time, $title, $lat, $lng)
+function insert_event($event_id,$date, $time, $title, $lat, $lng)
 {
     $conn = db_connect();
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
@@ -92,9 +92,10 @@ function insert_event($date, $time, $title, $lat, $lng)
     $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng) 
     VALUES(?,?,?,?,?,?,?,?);";
     $stmt = $pdo->prepare($query);
-
-    $randomNumber = rand(10, 200);
-    $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
+    //the id is now creared on post-Event.php 
+    // $randomNumber = rand(10, 200);
+    // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
+    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng]);
 }
 
 
@@ -145,7 +146,7 @@ function get_event()
 
 function get_UserEvents()
 {
-    //Returns all the events in which the user is part of
+    //Returns all the events in which the user is participating in
     $username = $_SESSION['username'];
     $conn = db_connect();
     $sql = "SELECT * from isin where username = '$username'";
@@ -250,12 +251,10 @@ function makeEvent($result){
 
 
 
-
 class Event
 {
     // Properties
     public $event_id, $date, $time, $title, $lat, $lng;
-
 
     function __construct($event_id, $date, $time, $title, $lat, $lng)
     {
@@ -266,7 +265,7 @@ class Event
         $this->lat = $lat;
         $this->lng = $lng;
     }
-
+    
 
     function set_eventid($event_id)
     {
@@ -304,4 +303,5 @@ class Event
     {
         return $this->title;
     }
+    
 }
