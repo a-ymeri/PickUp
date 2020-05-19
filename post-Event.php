@@ -11,6 +11,7 @@
     $lat = 0;
     $lng = 0;
     $description = $_POST['eventDescription'];
+    $id = uniqid();
     // $date =  str_replace("/","-",$date);
 
 
@@ -71,13 +72,26 @@
          $lat= 40.626573;
          $lng= 22.951844;
       }else{
+         //If they input their location through map, lat/lng get decided by the location input
          $latlng = explode(",",$location);
          $lat = (float)$latlng[0];
          $lng = (float)$latlng[1];
       }
-      //TODO: cover the custom case as well
 
   
-     insert_event(400,$datefinal,$time,$title,$lat,$lng,$description);
+     insert_event($id,$datefinal,$time,$title,$lat,$lng,$description);
 
     echo '<script>location.replace("index.php");</script>';
+
+   function uniqidReal($length = 13) {
+      // uniqid gives 13 chars, but you could adjust it to your needs.
+      if (function_exists("random_bytes")) {
+         $bytes = random_bytes(ceil($length / 2));
+      } elseif (function_exists("openssl_random_pseudo_bytes")) {
+         $bytes = openssl_random_pseudo_bytes(ceil($length / 2));
+      } else {
+         throw new Exception("no cryptographically secure random function available");
+      }
+      return substr(bin2hex($bytes), 0, $length);
+   }
+?>

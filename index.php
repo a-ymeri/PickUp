@@ -853,7 +853,7 @@ require_once('init.php');
         return false;
     }
 
-    function shaker() {
+    /*function shaker() {
         var usrbox = document.querySelector('.uname');
         var password = document.querySelector('.password');
 
@@ -891,13 +891,13 @@ require_once('init.php');
 
         setTimeout(function() {
             window.location.replace("index.php");
-        }, 2000);
+        }, 10);
 
         ///setTimeout(() => {    }, 1200);
 
 
 
-    }
+    }*/
     </script>
 
 
@@ -907,6 +907,7 @@ require_once('init.php');
 
     <script>
 
+        //Handles the event form time. Also adds a time graphic on the side that updates based on the time that was input.
         document.querySelector("#time").addEventListener("input", function(e) {
             const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
             const time = this.value;
@@ -918,18 +919,6 @@ require_once('init.php');
             }
         });
 
-    </script>
-
-    <script>
-    const input = document.getElementById("search-input");
-    const searchBtn = document.getElementById("search-btn");
-
-    const expand = () => {
-        searchBtn.classList.toggle("close");
-        input.classList.toggle("square");
-    };
-
-    searchBtn.addEventListener("click", expand);
     </script>
 
     <script>

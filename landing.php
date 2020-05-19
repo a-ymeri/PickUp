@@ -247,7 +247,7 @@ require_once('init.php');
 
             setTimeout(function() {
                 window.location.replace("index.php");
-            }, 2000);
+            }, 10);
 
             ///setTimeout(() => {    }, 1200);
 
