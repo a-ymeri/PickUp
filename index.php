@@ -397,7 +397,7 @@ require_once('init.php');
 
                                 <div id="budget-4id">
                                     <input class="checkbox-budget" type="radio" name="budget" id="budget-4"
-                                        value="YMCA" onclick="showDiv()">
+                                        value="Other" onclick="showDiv()">
                                     <label class="for-checkbox-budget" for="budget-4">
                                         <span data-hover="Other">Other</span>
                                     </label>
