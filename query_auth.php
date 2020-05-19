@@ -122,35 +122,23 @@ function get_event()
     }
 }
 
-//TODO: remove obsolete method
-/*function get_eventbyID($eventid)
-{
-    $conn = db_connect();
-    $sql = "SELECT * from events where event_id = " . $eventid . "";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        //output data of each row
-        while ($row = $result->fetch_assoc()) {
-            $event_id = $row["event_id"];
-            $date = $row["date_of_event"];
-            $time = $row["time_of_event"];
-            $title = $row["subject"];
-            $location = $row["address"];
-        }
-        $event = new Event($event_id, $date, $time, $title, $location);
-        // echo $event->get_title();
-        return $event;
-    }
-}*/
-
-
 function get_UserEvents()
 {
     //Returns all the events in which the user is participating in
     $username = $_SESSION['username'];
     $conn = db_connect();
-    $sql = "SELECT * from isin where username = '$username'";
+    $sql = "SELECT * from isin where user_id = '$username'";
+
+    $result = $conn->query($sql);
+    return makeEvent($result);
+}
+
+function getBookmarks()
+{
+    //Returns all the events which the logged in user has bookmarked
+    $username = $_SESSION['username'];
+    $conn = db_connect();
+    $sql = "SELECT * from bookmarks where user_id = '$username'";
 
     $result = $conn->query($sql);
     return makeEvent($result);
@@ -170,7 +158,7 @@ function get_NumberOfUserEvents()
 
     $username = $_SESSION['username'];
     $conn = db_connect();
-    $sql = "SELECT * from isin where username = '$username'";
+    $sql = "SELECT * from isin where user_id = '$username'";
 
     $result = $conn->query($sql);
 
@@ -269,12 +257,6 @@ class Event
         $this->description = $description;
     }
     
-
-    function set_eventid($event_id)
-    {
-        $this->event_id = $event_id;
-    }
-
 
     function get_eventid()
     {

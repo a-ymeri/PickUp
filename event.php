@@ -15,13 +15,6 @@ class Event
         $this->lng = $lng;
     }
 
-
-    function set_eventid($event_id)
-    {
-        $this->event_id = $event_id;
-    }
-
-
     function get_eventid()
     {
         return $this->event_id;

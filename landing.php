@@ -245,9 +245,9 @@ require_once('init.php');
             // }, 1000);
 
 
-            setTimeout(function() {
+            //function() {
                 window.location.replace("index.php");
-            }, 10);
+            //}
 
             ///setTimeout(() => {    }, 1200);
 
