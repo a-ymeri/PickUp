@@ -414,7 +414,7 @@ require_once('init.php');
                         </div>
                         <div class="evetDscp">
                             <h5>Event Description</h5>
-                            <input type="text" name="eventTxt">
+                            <input type="text" name="eventDescription">
                         </div>
 
 

@@ -10,7 +10,7 @@
     $time = $_POST['time'];
     $lat = 0;
     $lng = 0;
-    $description = "Test";
+    $description = $_POST['eventDescription'];
     // $date =  str_replace("/","-",$date);
 
 
@@ -78,6 +78,6 @@
       //TODO: cover the custom case as well
 
   
-     insert_event(15,$datefinal,$time,$title,$lat,$lng,$description);
+     insert_event(400,$datefinal,$time,$title,$lat,$lng,$description);
 
     echo '<script>location.replace("index.php");</script>';
