@@ -37,7 +37,7 @@
 
 
         <ul class="nav-links">
-            <li> <a href="landing.php"> Home</a></li>
+            <li> <a href="index.php"> Home</a></li>
             <li> <a href="#"> Map</a></li>
             <li> <a href="about.html"> About</a></li>
             <li> <a href="#"> Entertaiment</a></li>
@@ -103,7 +103,6 @@
         <script>
 // When the user scrolls down 50px from the top of the document, resize the header's font size
 window.onscroll = function() {scrollFunction()};
-
 function scrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     document.getElementById("header").style.fontSize = "30px";
@@ -114,15 +113,15 @@ function scrollFunction() {
 </script>
 -->
 
-    
+<script src="Map.js"></script>
     <script>
         //populate JS array with the the events from the DB
-        array = <?php require_once('query_auth.php');
+        eventArray = <?php require_once('query_auth.php');
                     $php_array = array();
                     $php_array = get_AllEvents();
                     echo json_encode($php_array); ?>;
     </script>
-    <script src="Map.js"></script>
+    
     <script> getAddress();</script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 

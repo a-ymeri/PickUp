@@ -497,7 +497,7 @@ require_once('init.php');
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 
 
-
+    <script src="Map.js"></script>
     <script>
         //$event is a variable used earlier to store the list of all events from the DB
         //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
@@ -544,7 +544,7 @@ require_once('init.php');
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
-    <script src="Map.js"></script>
+
 
     <script>
     function showDiv() {
