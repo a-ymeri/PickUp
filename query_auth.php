@@ -128,7 +128,7 @@ function get_UserEvents()
     $username = $_SESSION['username'];
     $conn = db_connect();
     $sql = "SELECT * from isin where user_id = '$username'";
-
+}
 
 function joinEvent($event_id){
     $conn = db_connect();
@@ -150,18 +150,6 @@ function getEventUsers($event_id){
     $result = $conn->query($sql);
 
 
-    return makeEvent($result);
-}
-
-function getBookmarks()
-{
-    //Returns all the events which the logged in user has bookmarked
-    $username = $_SESSION['username'];
-    $conn = db_connect();
-
-    $sql = "SELECT * from isin where user_id = '$username'";
-
-    $result = $conn->query($sql);
     return makeEvent($result);
 }
 
@@ -325,7 +313,6 @@ class Event
     function get_description()
     {
         return $this->description;
-    }
-
-    
+    }   
 }
+?>
