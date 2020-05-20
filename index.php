@@ -100,6 +100,7 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
             <hr>
                 
                 <br>
+                
                 <h1>Not a member Yet ?</h1>
             <br>
 
@@ -173,13 +174,11 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
     <!--<script>
         //dipslays the login(modal)
         const signup = document.getElementById('signupButton');
-
         signup.addEventListener('click', () => {
             var s = document.getElementById('signup');
             var modal = document.getElementById('id01');
             modal.style.display = "none";
             s.style.display = 'block';
-
         });
     </script>-->
     
@@ -248,9 +247,9 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
             // }, 1000);
 
 
-            setTimeout(function() {
-                window.location.replace("landing.php");
-            }, 10);
+            //function() {
+                window.location.replace("index.php");
+            //}
 
             ///setTimeout(() => {    }, 1200);
 
@@ -262,15 +261,12 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
     <!--<script>
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
-
             var email = profile.getEmail();
             var name = profile.getName();
             //   var id = profile.getID();
             //   var profileimage = profile.getImageUrl();
-
             var username = email.substring(0, email.lastIndexOf("@"));
             var domain = email.substring(email.lastIndexOf("@") + 1);
-
             if (domain == 'citycollege.sheffield.eu' || domain == "sheffield.ac.uk") {
                 $.ajax({
                     type: 'post',
@@ -283,7 +279,6 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
                     success: function(response) {
                         if (response == 1) {
                             loggedin();
-
                         } else if (response == 2) {
                             swal({
                                 title: "Sorry you need to sign in with Sheffield University credentials",
@@ -294,7 +289,6 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
                                 confirmButtonColor: "#DD6B55"
                             });
                         }
-
                     }
                 });
             } else {
@@ -313,14 +307,9 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
     <!--<script>
         var button = document.getElementById('login-accountbutton');
         var modal = document.getElementById('id01');
-
-
         button.addEventListener('click', () => {
-
             modal.style.display = "block";
-
         });
-
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -345,7 +334,6 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
                         customClass: "Custom_Cancel",
                         confirmButtonColor: "#DD6B55"
                     });
-
                     return false;
                 }
                 swal({
@@ -354,9 +342,7 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
                     showConfirmButton: false,
                     customClass: "success",
                     timer: 1500
-
                 });
-
                 return true;
             });
         });
