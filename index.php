@@ -70,7 +70,7 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
 
             
 
-                
+
                 <label for="uname"><b>Username</b>
                 </label>
                 <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
@@ -159,6 +159,7 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
         </form>
 
     </div>
+
     
     
     <!--<script>
@@ -168,9 +169,11 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
           if (event.target == signupclass) {
             signupclass.style.display = "none";
           }
+
         }
     </script>-->
     
+
     <!--<script>
         //dipslays the login(modal)
         const signup = document.getElementById('signupButton');
