@@ -288,7 +288,7 @@ require_once('init.php');
                         </li>
                     </a>
 
-                    <a href="#">
+                    <a href="settings.php">
                         <li>
 
                             <i class="thumbnail">
