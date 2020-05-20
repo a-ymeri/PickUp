@@ -144,13 +144,45 @@ function get_event()
     }
 }*/
 
+function joinEvent($event_id){
+    $conn = db_connect();
+    $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
+
+    $query = "INSERT INTO isin (event_id, user_id) 
+    VALUES(?,?);";
+    $stmt = $pdo->prepare($query);
+    //the id is now creared on post-Event.php 
+    // $randomNumber = rand(10, 200);
+    // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
+    $username = $_SESSION['username'];
+    $stmt->execute([$event_id,$username]);
+}
+
+function getEventUsers($event_id){
+    $conn = db_connect();
+    $sql = "SELECT * from isin where event_id = '$event_id' ";
+    $result = $conn->query($sql);
+
+    return makeEvent($result);
+}
 
 function get_UserEvents()
 {
     //Returns all the events in which the user is participating in
     $username = $_SESSION['username'];
     $conn = db_connect();
-    $sql = "SELECT * from isin where username = '$username'";
+    $sql = "SELECT * from isin where user_id = '$username'";
+
+    $result = $conn->query($sql);
+    return makeEvent($result);
+}
+
+function getBookmarks()
+{
+    //Returns all the events which the logged in user has bookmarked
+    $username = $_SESSION['username'];
+    $conn = db_connect();
+    $sql = "SELECT * from bookmarks where user_id = '$username'";
 
     $result = $conn->query($sql);
     return makeEvent($result);
