@@ -74,5 +74,5 @@ if(isset($_FILES['file'])){
     //         echo "Files of this type, cannot be uploaded!";
     //     }
     // }
-    echo '<script>location.replace("index.php");</script>';
+    echo '<script>location.replace("landing.php");</script>';
 ?>

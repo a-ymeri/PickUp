@@ -3,6 +3,7 @@
 
 require_once('init.php');
 require_once('authenticate.php');
+require_once('query_auth.php');
 
 if(isset($_POST['do_login'])){
 
@@ -10,19 +11,17 @@ if(isset($_POST['do_login'])){
     $pass = $_POST['password'];
 
     if(usr_log_in($username,$pass)){
-
         echo 1;
     }
-
-
     else{
-
         echo 2;
-
     }
-
     exit();
+}
 
+if (isset($_POST['action'])) {
+    joinEvent($_POST['action']);
+    exit();
 }
 
 ?>

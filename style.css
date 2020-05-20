@@ -276,12 +276,18 @@ nav {
 
 
 .logo{
+    
     margin-left:4%;
-    margin-top: 0.7%;
+    /* margin-top: 0.7%; */
     color: rgb(59, 134, 184);
-    letter-spacing: 3px;
+    /* letter-spacing: 3px;
     font-size: 27px;
-    font-family:'Fredoka one',cursive;
+    font-family:'Fredoka one',cursive; */
+}
+
+.logo img{
+    height: 60px;
+    
 }
 
 .logo:hover{
@@ -290,6 +296,7 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
 }
 
 .logolink{
+    height:10px;
     text-decoration: none;
     color:inherit;
 }

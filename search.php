@@ -56,14 +56,14 @@ require_once('init.php');
     <nav>
 
         <div class="logo">
-       <a href="index.php" class="logolink"> PICK-UP </a>
+       <a href="landing.php" class="logolink"> PICK-UP </a>
 
         </div>
 
 
 
         <ul class="nav-links">
-            <li> <a href="index.php"> Home</a></li>
+            <li> <a href="landing.php"> Home</a></li>
             <li> <a href="Map.php"> Map</a></li>
             <li> <a href="about.html"> About</a></li>
             <li> <a href="#"> Entertaiment</a></li>

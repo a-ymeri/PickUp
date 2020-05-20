@@ -37,7 +37,7 @@ VALUES(?,?,?,?);";
 
     if(verify_user($username,$userpassword)){
         $_SESSION['username'] = $username;
-        echo "<script> window.location.replace('index.php');</script>";
+        echo "<script> window.location.replace('landing.php');</script>";
 
     }
 

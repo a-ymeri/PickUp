@@ -1,6 +1,7 @@
 var eventArray = {};
 var marker;
 function initMap() {
+    //TODO: add a search bar for map focus
     var map;
 
     var thessaloniki = { lat: 40.6401, lng: 22.9444 };
@@ -28,7 +29,7 @@ function initMap() {
             icon:'images/bluemarker1.png'
          });
         var value = document.getElementById("budget-4");
-        console.log(marker.position.lat());
+        console.log(marker.position.lat()); 
         value.setAttribute("value",marker.position.lat()+","+marker.position.lng());
     });
 
@@ -37,4 +38,3 @@ function initMap() {
 function getMarker(){
     console.log(marker.position.latLng.lat);
 }
-

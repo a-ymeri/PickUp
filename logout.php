@@ -3,6 +3,6 @@
 
 session_start();
 session_destroy();  
-header('Location: landing.php');
+header('Location: index.php');
 exit;
 ?>
