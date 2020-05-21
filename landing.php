@@ -44,7 +44,8 @@ require_once('init.php');
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
-    <link rel="stylesheet" href="post-Event.css">   
+    <link rel="stylesheet" href="post-Event.css">
+    <link rel="stylesheet" href="pagination.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
@@ -88,7 +89,7 @@ require_once('init.php');
 
     </nav>
 
-    
+
 
 
     <div id="id01" class="modal">
@@ -422,11 +423,10 @@ require_once('init.php');
                 </section>
             </div>
             <script>
-
-            function hashtag(text){
-                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=#$1">#$1</a>');
-                return repl;
-            }
+                function hashtag(text) {
+                    var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=#$1">#$1</a>');
+                    return repl;
+                }
             </script>
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
@@ -435,9 +435,9 @@ require_once('init.php');
                 <?php
                 require_once('query_auth.php');
                 $event;
-                if(isset($_GET['str'])){
+                if (isset($_GET['str'])) {
                     $event = get_UserEvents();
-                }else{
+                } else {
                     $event = get_AllEvents();
                 }
 
@@ -461,10 +461,10 @@ require_once('init.php');
                                     
                                     
                                 
-                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("'.$dscp.'"))</script>'  . '
+                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
-                                <button type="submit" class="button1 nonevent" id="'.$id.'" name="join" value="join '.$id.'" onclick="changeButton(this)">Join</button>
-                                <button type="submit" class="button1 nonevent" id="b'.$id.'" name="join" value="bookmark '.$id.'" onclick="changeButton(this)">Bookmark</button>
+                                <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
+                                <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
                                 </section>
                             </div>';
                 }
@@ -484,6 +484,16 @@ require_once('init.php');
                 ?>
             </div>
 
+            <div class="paginationList">
+                <ul class="pagination">
+                    <li>
+                        <a id="previous-page" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div id="viewMore" class="eventfeed">
                 <!-- this is where we put info on events-->
                 <section class="postsection1">
@@ -494,35 +504,41 @@ require_once('init.php');
 
         </div>
     </div>
-     
+
+    <script src="pagination.js"></script>
+
     <script>
         var postsection = document.querySelectorAll(".postsection");
 
-        for (var i = 0;i < postsection.length; i++) {
-            postsection[i].addEventListener("click", function event(event) {popInfo();});
+        for (var i = 0; i < postsection.length; i++) {
+            postsection[i].addEventListener("click", function event(event) {
+                popInfo();
+            });
         }
 
         var joinBookmarkButtons = document.querySelectorAll(".nonevent");
-        for (var i = 0; i< joinBookmarkButtons.length; i++) {
-            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {event.stopPropagation();changeButton(this);});
+        for (var i = 0; i < joinBookmarkButtons.length; i++) {
+            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+                event.stopPropagation();
+                changeButton(this);
+            });
         }
 
-        
 
-        
-        function changeButton(button){
-            if(button.innerHTML == "Join"){
+
+
+        function changeButton(button) {
+            if (button.innerHTML == "Join") {
                 button.innerHTML = "joined!";
-            }else if (button.innerHTML == "Bookmark"){
+            } else if (button.innerHTML == "Bookmark") {
                 button.innerHTML = "bookmarked!";
             }
             //button.style.hover = "false";
             //button.style.disabled = "true";
         }
-
     </script>
 
-    
+
     <script src="Map.js"></script>
     <script>
         //$event is a variable used earlier to store the list of all events from the DB
@@ -546,23 +562,23 @@ require_once('init.php');
 
     <script>
         hasJoined = <?php require_once('query_auth.php');
-                        //$joinedArray = array();
-                        $joinedArray = get_UserEvents();
-                        echo json_encode($joinedArray); ?>;
+                    //$joinedArray = array();
+                    $joinedArray = get_UserEvents();
+                    echo json_encode($joinedArray); ?>;
         hasBookmarked = <?php require_once('query_auth.php');
                         //$bookmarkArray = array();
                         $bookmarkArray = getBookmarks();
                         echo json_encode($bookmarkArray); ?>;
 
-        for(i = 0; i<hasJoined.length; i++){
-            if(document.getElementById(hasJoined[i].event_id)!=null)
+        for (i = 0; i < hasJoined.length; i++) {
+            if (document.getElementById(hasJoined[i].event_id) != null)
                 changeButton(document.getElementById(hasJoined[i].event_id));
         }
-        console.log(hasBookmarked.length);  
-        for(i = 0; i<hasBookmarked.length; i++){
+        console.log(hasBookmarked.length);
+        for (i = 0; i < hasBookmarked.length; i++) {
             //if(document.getElementById("b"+hasBookmarked[i])==null)
-                if(document.getElementById("b"+hasBookmarked[i].event_id)!=null)
-                    changeButton(document.getElementById("b"+hasBookmarked[i].event_id));
+            if (document.getElementById("b" + hasBookmarked[i].event_id) != null)
+                changeButton(document.getElementById("b" + hasBookmarked[i].event_id));
         }
     </script>
 
@@ -747,18 +763,19 @@ require_once('init.php');
 
 
     <script type="text/javascript">
-       $(document).ready(function(){
-        $('.button1').click(function(){
-            var clickBtnValue = $(this).val();
-            var ajaxurl = 'ajax.php',
-            data =  {'action': clickBtnValue};
-            $.post(ajaxurl, data, function (response) {
-                // Response div goes here.
-                //alert("action performed successfully");
+        $(document).ready(function() {
+            $('.button1').click(function() {
+                var clickBtnValue = $(this).val();
+                var ajaxurl = 'ajax.php',
+                    data = {
+                        'action': clickBtnValue
+                    };
+                $.post(ajaxurl, data, function(response) {
+                    // Response div goes here.
+                    //alert("action performed successfully");
+                });
             });
         });
-    });
-    
     </script>
 
 
