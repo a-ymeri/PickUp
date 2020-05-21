@@ -1,0 +1,17 @@
+/* :/ */
+
+.paginationList {
+    display: table;
+    margin: 0 auto;
+}
+
+ul.pagination {
+    min-width: 696px;
+    list-style: none;
+    padding-top: 20px;
+}
+
+ul.pagination li {
+    display: inline;
+    margin: 4px;
+}
