@@ -449,7 +449,7 @@ require_once('init.php');
                                 
                                     Time: ' . $event[$x]->get_time() . '
                                     <br>
-                                    Location: <p class="events"></p> 
+                                    Location: <span class="events"></span> 
                                     
                                     
                                 
