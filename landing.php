@@ -465,8 +465,8 @@ require_once('init.php');
                                 
                                 ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
-                                <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
-                                <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
+                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
+                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
                 }
@@ -514,29 +514,51 @@ require_once('init.php');
 
         for (let i = 0; i < postsection.length; i++) {
             postsection[i].addEventListener("click", function event(event) {
-                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
+                //window.location.href ='event.php?str='+(postsection[i].id).substring(3);
             });
         }
 
         var joinBookmarkButtons = document.querySelectorAll(".nonevent");
-        for (var i = 0; i < joinBookmarkButtons.length; i++) {
-            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
-                event.stopPropagation();
-                changeButton(this);
+        for (let i = 0; i < joinBookmarkButtons.length; i++) {
+            button = joinBookmarkButtons[i];
+            text = button.innerHTML;
+            joinBookmarkButtons[i].addEventListener("click", function () {
+                //event.stopPropagation();
+
+                if (text == "join") {
+                    //console.log(text);
+                    button.innerHTML = "joined!";
+                   // button.value = "joined!"+substring(text,5);
+                } else if (text== "bookmark") {
+                    button.innerHTML = "bookmarked!";   
+                   // button.value = "joined"+substring(text,5);
+                } else if(text=="joined!"){
+                    //console.log(text);
+                    button.innerHTML = "join";
+                    //button.value = "joined!"+substring(text,7);
+                } else if(text == "bookmarked!"){
+                    button.innerHTML = "bookmarked!";
+                    //button.value = "bookmarked"+substring(text,7);
+                }
             });
         }
 
 
 
-
         function changeButton(button) {
-            if (button.innerHTML == "Join") {
+            if (button.innerHTML == "join") {
                 button.innerHTML = "joined!";
-            } else if (button.innerHTML == "Bookmark") {
+                //button.attributes[0].value = "joined!"+substring(text,5);
+            } else if (button.innerHTML == "bookmark") {
                 button.innerHTML = "bookmarked!";
-            }
-            //button.style.hover = "false";
-            //button.style.disabled = "true";
+                //button.value = "joined"+substring(text,5);
+            } else if (button.innerHTML == "bookmarked!") {
+                button.innerHTML = "bookmark";
+               // button.value = "joined!"+substring(text,7);
+            } else if (button.innerHTML == "joined!") {
+                button.innerHTML = "join";
+                //button.value = "bookmarked"+substring(text,7);
+            } 
         }
     </script>
 
@@ -573,14 +595,14 @@ require_once('init.php');
                         echo json_encode($bookmarkArray); ?>;
 
         for (i = 0; i < hasJoined.length; i++) {
-            if (document.getElementById(hasJoined[i].event_id) != null)
-                changeButton(document.getElementById(hasJoined[i].event_id));
+            if (document.getElementById("j-"+hasJoined[i].event_id) != null)
+                changeButton(document.getElementById("j-"+hasJoined[i].event_id));
         }
         console.log(hasBookmarked.length);
         for (i = 0; i < hasBookmarked.length; i++) {
             //if(document.getElementById("b"+hasBookmarked[i])==null)
-            if (document.getElementById("b" + hasBookmarked[i].event_id) != null)
-                changeButton(document.getElementById("b" + hasBookmarked[i].event_id));
+            if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
+                changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
         }
     </script>
 
@@ -755,14 +777,19 @@ require_once('init.php');
     <script type="text/javascript">
         $(document).ready(function() {
             $('.button1').click(function() {
-                var clickBtnValue = $(this).val();
+                var clickBtnValue = $(this).html();
+                console.log(clickBtnValue);
+                var buttonid = $(this).attr('id');
+                buttonid = buttonid.substring(3);
+                console.log(buttonid);
                 var ajaxurl = 'ajax.php',
                     data = {
-                        'action': clickBtnValue
+                        'action': clickBtnValue,
+                        'id': buttonid
                     };
                 $.post(ajaxurl, data, function(response) {
                     // Response div goes here.
-                    //alert("action performed successfully");
+                    alert(response);
                 });
             });
         });

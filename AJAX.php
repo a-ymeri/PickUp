@@ -20,14 +20,22 @@ if(isset($_POST['do_login'])){
 }
 
 if (isset($_POST['action'])) {
-    $button = explode(" ",$_POST['action']);
-    switch($button[0]){
+    $id = $_POST['id'];
+    switch($_POST['action']){
         case "join": 
-            joinEvent($button[1]);
+            unJoinEvent($id);
             exit();
             break;
         case "bookmark":
-            bookmarkEvent($button[1]);
+            unBookmarkEvent($id);
+            exit();
+            break;
+        case "joined!":
+            joinEvent($id);
+            exit();
+            break;
+        case "bookmarked!":
+            bookmarkEvent($id);
             exit();
             break;
     }
