@@ -44,6 +44,7 @@ require_once('init.php');
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="post-Event.css">
+    <link rel="stylesheet" href="pagination.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -87,10 +88,6 @@ require_once('init.php');
 
     </nav>
 
-    <div>
-
-
-    </div>
 
 
 
@@ -259,7 +256,9 @@ require_once('init.php');
 
                         </li>
                     </a>
+
                     <a href="Map.php">
+
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
@@ -419,24 +418,38 @@ require_once('init.php');
 
                 </section>
             </div>
-   
+
+            <script>
+
+            function hashtag(text){
+                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
+                return repl;
+            }
+
+            </script>
+
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
 
                 <?php
                 require_once('query_auth.php');
-                $event = get_AllEvents();
+                $event;
+                if(isset($_GET['str'])){
+                    $event = getHashtagEvents();
+                }else{
+                    $event = get_AllEvents();
+                }
 
                 for ($x = 0; $x < sizeof($event); $x++) {
 
                     $id = $event[$x]->get_eventid();
+                    $dscp = $event[$x]->get_description();
                     $pic = 'uploads/' . $id . '.jpg';
 
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection">
-                                <div onclick="popInfo()">
+                                <section class="postsection" id="ps-'.$id.'">
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -444,14 +457,15 @@ require_once('init.php');
                                 
                                     Time: ' . $event[$x]->get_time() . '
                                     <br>
-                                    Location: <p class="events"></p> 
+                                    Location: <span class="events"></span> 
                                     
                                     
                                 
-                                ' . '<br>'. choosePic($pic, $id) . '<br>' . $dscp = $event[$x]->get_description() . '<br>' . '
-                                </div>
-                                <button type="submit" class="button1" id="'.$id.'" name="join" value="'.$id.'" onclick="changeButton(this)">Join</button>
-                                <button type="button3"  class="button2" onclick="changeButton1(this)" >Bookmark</button>
+
+                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
+                                
+                                <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
+                                <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
                                 </section>
                             </div>';
                     
@@ -471,6 +485,16 @@ require_once('init.php');
                 ?>
             </div>
 
+            <div class="paginationList">
+                <ul class="pagination">
+                    <li>
+                        <a id="previous-page" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div id="viewMore" class="eventfeed">
                 <!-- this is where we put info on events-->
                 <section class="postsection1">
@@ -481,23 +505,54 @@ require_once('init.php');
 
         </div>
     </div>
-     
+
+    <script src="pagination.js"></script>
+
     <script>
-        function changeButton(button){
+
+        /*function changeButton(button){
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
-        }
+        }*/
         function changeButton1(button){
             button.innerHTML = "Bookmarked!";
             button.style.hover = "false";
             button.style.disabled = "true";
-            button.style.backgroundColor= "#2bba75";
+
+        var postsection = document.querySelectorAll(".postsection");
+
+        for (let i = 0; i < postsection.length; i++) {
+            postsection[i].addEventListener("click", function event(event) {
+                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
+            });
+        }
+
+        var joinBookmarkButtons = document.querySelectorAll(".nonevent");
+        for (var i = 0; i < joinBookmarkButtons.length; i++) {
+            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+                event.stopPropagation();
+                changeButton(this);
+            });
+        }
+
+
+
+
+        function changeButton(button) {
+            if (button.innerHTML == "Join") {
+                button.innerHTML = "joined!";
+            } else if (button.innerHTML == "Bookmark") {
+                button.innerHTML = "bookmarked!";
+            }
+            //button.style.hover = "false";
+            //button.style.disabled = "true";
+
         }
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
+
     <script src="Map.js"></script>
     <script>
         //$event is a variable used earlier to store the list of all events from the DB
@@ -519,29 +574,28 @@ require_once('init.php');
         }
     </script>
 
+    <script>
+        hasJoined = <?php require_once('query_auth.php');
+                    //$joinedArray = array();
+                    $joinedArray = get_UserEvents();
+                    echo json_encode($joinedArray); ?>;
+        hasBookmarked = <?php require_once('query_auth.php');
+                        //$bookmarkArray = array();
+                        $bookmarkArray = getBookmarks();
+                        echo json_encode($bookmarkArray); ?>;
 
+        for (i = 0; i < hasJoined.length; i++) {
+            if (document.getElementById(hasJoined[i].event_id) != null)
+                changeButton(document.getElementById(hasJoined[i].event_id));
+        }
+        console.log(hasBookmarked.length);
+        for (i = 0; i < hasBookmarked.length; i++) {
+            //if(document.getElementById("b"+hasBookmarked[i])==null)
+            if (document.getElementById("b" + hasBookmarked[i].event_id) != null)
+                changeButton(document.getElementById("b" + hasBookmarked[i].event_id));
+        }
+    </script>
 
-
-    <!--
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--->
-
-
-
-
-    <!-- <script>
-    //dipslays the login(modal)
-    const signup = document.getElementById('signupButton');
-
-    signup.addEventListener('click', () => {
-        var s = document.getElementById('signup');
-        var modal = document.getElementById('id01');
-        modal.style.display = "none";
-        s.style.display = 'block';
-
-    });
-    </script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -598,61 +652,6 @@ require_once('init.php');
             });
         });
     </script>
-
-
-
-    <!--<script>
-    function initMap() {
-        var location = {
-            lat: 40.6401,
-            lng: 22.9444
-        };
-        var library = {
-            lat: 40.637350,
-            lng: 22.936904
-        };
-
-        var YMCA = {
-            lat: 40.626573,
-            lng: 22.951844
-        };
-
-        var warehouse = {
-            lat: 40.634825,
-            lng: 22.934286
-        };
-        var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
-            center: location
-        });
-
-
-        var librarymarker = new google.maps.Marker({
-            position: library,
-            map: map,
-            title: 'library'
-        });
-
-
-        var warehousemarker = new google.maps.Marker({
-            position: warehouse,
-            map: map,
-            title: 'Warehouse'
-        });
-
-
-        var ymcamarker = new google.maps.Marker({
-            position: YMCA,
-            map: map,
-            title: 'YMCA'
-        });
-
-
-
-
-    }
-    </script>-->
-
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript">
     </script>
@@ -725,7 +724,7 @@ require_once('init.php');
             view.style.display = "block";
 
             window.onclick = function(event) {
-                if (event.target == view || event.target == document.querySelector(".button1")) {
+                if (event.target == view) {
                     console.log("worked");
                     view.style.display = "none";
                 }
@@ -733,18 +732,6 @@ require_once('init.php');
         }
     </script>
 
-    <script>
-        // function bridge(){
-        // var date_selected = document.querySelector('.selected-date');
-        // var  bridgePHP = document.querySelector('.bridgePHP');
-        // var abc = $(date_selected).data('value');
-        // var a = bridgePHP.value;
-
-        // bridgePHP.value = abc;
-
-        // alert(abc);
-        // }
-    </script>
 
 
     <script src="datedropper.pro.min.js">
@@ -778,18 +765,19 @@ require_once('init.php');
 
 
     <script type="text/javascript">
-       $(document).ready(function(){
-        $('.button').click(function(){
-            var clickBtnValue = $(this).val();
-            var ajaxurl = 'ajax.php',
-            data =  {'action': clickBtnValue};
-            $.post(ajaxurl, data, function (response) {
-                // Response div goes here.
-                //alert("action performed successfully");
+        $(document).ready(function() {
+            $('.button1').click(function() {
+                var clickBtnValue = $(this).val();
+                var ajaxurl = 'ajax.php',
+                    data = {
+                        'action': clickBtnValue
+                    };
+                $.post(ajaxurl, data, function(response) {
+                    // Response div goes here.
+                    //alert("action performed successfully");
+                });
             });
         });
-    });
-    
     </script>
 
 
