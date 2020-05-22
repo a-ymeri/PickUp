@@ -544,6 +544,10 @@ require_once('init.php');
         function changeButton(button) {
             if (button.innerHTML == "join") {
                 button.innerHTML = "joined!";
+                
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor= "#2bba75";
                 //button.attributes[0].value = "joined!"+substring(text,5);
             } else if (button.innerHTML == "bookmark") {
                 button.innerHTML = "bookmarked!";
