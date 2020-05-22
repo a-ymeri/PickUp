@@ -102,8 +102,9 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
 
 function get_event()
 {
+    $event_id = $_GET["str"];
     $conn = db_connect();
-    $sql = "SELECT * from events where event_id = 1";
+    $sql = "SELECT * from events where event_id like '$event_id'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -175,7 +176,7 @@ function insert_hashtag($event_id, $dscp){
     }
     $stmt = $pdo->prepare($query);
     for($i = 0; $i < count($hashtags); $i++){
-        if(strlen($hashtags[$i]) <10)
+        if(strlen($hashtags[$i]) <30)
         $stmt->execute([$event_id,$hashtags[$i]]);
     }
 }

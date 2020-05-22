@@ -451,7 +451,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" onclick="popInfo()">
+                                <section class="postsection" id="ps-'.$id.'">
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -512,9 +512,9 @@ require_once('init.php');
     <script>
         var postsection = document.querySelectorAll(".postsection");
 
-        for (var i = 0; i < postsection.length; i++) {
+        for (let i = 0; i < postsection.length; i++) {
             postsection[i].addEventListener("click", function event(event) {
-                popInfo();
+                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
             });
         }
 
