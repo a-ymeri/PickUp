@@ -422,56 +422,31 @@ require_once('init.php');
                 </section>
             </div>
             <script>
-
-            function hashtag(text){
-                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
-                return repl;
-            }
-
+                function hashtag(text) {
+                    var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
+                    return repl;
+                }
             </script>
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
-
+                
                 <?php
                 require_once('query_auth.php');
                 $event;
-                if(!isset($_GET['str'])){
+                if (!isset($_GET['str'])) {
                     echo "error";
-                }else{
+                } else {
                     $event = get_event();
                 }
 
-                //for ($x = 0; $x < sizeof($event); $x++) {
-
-                    //$id = $event[$x]->get_eventid();
-                    //dscp = $event[$x]->get_description();
-                    //$pic = 'uploads/' . $id . '.jpg';
-
-                //     echo
-                //         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                //                 <section class="postsection" onclick="popInfo()">
-                //                 <h1 style="color:#0077CC;">
-                //                     ' . $event[$x]->get_title() . '
-                //                 </h1> 
-                //                 <p>' . $date = $event[$x]->get_date() . '</p>
-                                
-                //                     Time: ' . $event[$x]->get_time() . '
-                //                     <br>
-                //                     Location: <span class="events"></span> 
-                                    
-                                    
-                                
-                //                 ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
-                                
-                //                 <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
-                //                 <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
-                //                 </section>
-                //             </div>';
-                // }
+                $id = $event->event_id;
+                $dscp = $event->description;
+                $pic = 'uploads/' . $id . '.jpg';
 
                 echo '<div class="eventtest ' . $event->event_id . '" id="eventtest ' . $event->event_id . '">
                                  <section class="postsection" onclick="popInfo()">
+                                 <span onclick="goBack()" style=" display: flex;">&larr;</span>
                                  <h1 style="color:#0077CC;">
                                      ' . $event->get_title() . '
                                  </h1> 
@@ -479,7 +454,13 @@ require_once('init.php');
                                 
                                    Time: ' . $event->get_time() . '
                                      <br>
-                                     Location: <span class="events"></span> ";';
+                                     Location: <span class="events"></span>'
+                    . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
+                                
+                                <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
+                                <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
+                                </section>
+                            </div>';
 
                 function choosePic($pic, $id)
                 {
@@ -505,17 +486,20 @@ require_once('init.php');
                 </ul>
             </div>-->
 
-            <div id="viewMore" class="eventfeed">
-                <!-- this is where we put info on events-->
+            <!-- <div id="viewMore" class="eventfeed">
                 <section class="postsection1">
                     <P> TEST </P>
                 </section>
-            </div>
+            </div> -->
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
 
         </div>
     </div>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <script>
         var postsection = document.querySelectorAll(".postsection");
@@ -555,9 +539,10 @@ require_once('init.php');
         //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
         // eventArray = <?php require_once('query_auth.php');
 
-        //                 $php_array = array();
-        //                 $php_array = $event;
-        //                 echo json_encode($php_array); ?>;
+                        //                 $php_array = array();
+                        //                 $php_array = $event;
+                        //                 echo json_encode($php_array); 
+                        ?>;
 
         // for (let i = 0; i < eventArray.length; i++) {
         //     //Geolocate each event using jquery and geolocation api.
