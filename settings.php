@@ -16,7 +16,7 @@ require_once('init.php');
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="loginstyle.css">
-    <link rel="stylesheet" href="date-picker.css">
+    <link rel="stylesheet" href="settings.css">
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
@@ -57,23 +57,17 @@ require_once('init.php');
     <nav>
 
         <div class="logo">
-            <a href="index.php" class="logolink"> PickUp </a>
+            <a href="landing.php" class="logolink"> <img src="images/logo.png"> </a>
 
         </div>
 
         <div class="search-bar">
-            <i class="fa fa-search"></i>
-            <form method="post" action="search.php">
-                <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+            <form method="post" action="search.php" class="search">
+                
+                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
 
-        <ul class="nav-links">
-            <li> <a href="#"> Feed</a></li>
-            <li> <a href="Map.php"> Map</a></li>
-            <!-- <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li> -->
-        </ul>
 
 
         <div class="burger">
@@ -89,132 +83,7 @@ require_once('init.php');
 
     </nav>
 
-    <div>
 
-
-    </div>
-
-
-
-    <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="images/avatar.png" alt="Avatar" class="avatar">
-
-
-            </div>
-
-            <div class="container">
-
-                <div class="g-signin2" data-onsuccess="onSignIn" id="googlebutton"></div>
-                <label for="uname"><b>Username</b>
-                </label>
-                <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
-
-                <div class="loader-wrapper">
-                    <span class="loader"><span class="loader-inner"></span></span>
-                </div>
-
-                <label for="psw"><b>Password</b>
-                </label>
-                <input type="password" placeholder="Enter Password" name="psw" class="password" id="password">
-                <h5 class="errorlabel"></h5>
-                <button type="submit" class="logsubmit">Login</button>
-
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-
-                <br>
-                <br> Not a member Yet ?
-
-                <button type="button" id="signupButton" title="Close Modal"> Signup</button>
-
-
-
-            </div>
-        </form>
-
-
-
-
-    </div>
-
-
-    <!-- ------------------------------------------------ -->
-
-
-    <!-- <div id="signout" class="signuoutclass">
-
-<form class="modal-content animate" action="action.php" method="post">
-    <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-              <a href= "account.php">
-        <img src="images/avatar.png" alt="Avatar" class="avatar">
-        </a>
-
-        <button>Signout</button>
-
-
-    </div>
-
-    <div class="container">
-        <label for="uname"><b>Username</b>
-        </label>
-        <button type="button" id="signupButton" title="Close Modal"> Signup</button>
-
-
-
-    </div>
-</form>
-</div> -->
-
-
-
-
-    <div id="signup" class="signupclass">
-
-        <form class="modal-content animate" action="signup.php" method="post">
-
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-            </div>
-
-            <div class="container">
-                Signup
-                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                <br>
-
-                <input type="text" placeholder="Enter first name" name="fname" required class="uname">
-                <input type="text" placeholder="Enter last name" name="lname" required class="uname">
-
-
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required class="uname">
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" id="psw1" name="psw" required class="password">
-
-                <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
-                Email
-                <input type="email" placeholder="Your email" name="email" required class="signupemail" style="width:100%; height:50px; padding: 12px 20px;" required>
-
-                <button type="submit" class="logsubmit" id="signupButton1" onclick="return Validate()">Sign up</button>
-                <br>
-                <br>
-            </div>
-        </form>
-
-    </div>
-
-
-
-    <!--
-                                            HERE the MODAL(login/signup) ends
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--->
 
 
     <div class="indexcontainer">
@@ -223,27 +92,6 @@ require_once('init.php');
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            <?php
-
-            require_once('authenticate.php');
-            $u = get_username();
-
-            //"<a href = 'account.php'> <button style='width:auto;' 
-            //class='greenbtn'> $u </button> </a>"
-
-            //this determines when to display the signup button and when to display the user photo
-            echo (isset($_SESSION['username']) ?  "" : " <button id ='login-accountbutton' style='width:auto;' 
-                        class='greenbtn'>  Login</button>");  ?>
-
-            <?php
-            require_once('authenticate.php');
-            $u = get_username();
-            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg' style='position: relative;
-                width: 70px;
-                height:70px;
-                overflow: hidden;
-                border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
-            ?>
 
 
             <section class="stealthy-scroll-container">
@@ -254,64 +102,70 @@ require_once('init.php');
                 <ul class="sidebar-nav">
 
 
-
-                    <a href="<?php echo (isset($_SESSION['username']) ? "account.php" : "account.php"); ?>">
+                    
+                    <a href="landing.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-                            Profile
+                            <i class="fas fa-home"></i> 
+                            <p>Home</p>
+                        
                         </li>
+                    
                     </a>
 
                     <a href="#">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Notifications
+                            <i class="fas fa-bell"></i>
+                            <p>Notifications</p>
 
                         </li>
                     </a>
 
-                    <a href="#">
+                    <a href="bookmark.php">
                         <li>
+                            <i class="fas fa-bookmark"></i>
+                            <p>Bookmarks</p>
 
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Bookmarks
-
+                        </li>
+                    </a>
+                    <a href="Map.php">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Map</p>
+                        
+                        </li>
+                    </a>
+                    
+                    <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            width: 70px;
+                            height:70px;
+                            overflow: hidden;
+                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
+                        ?>
+                            <p class="prof" >Profile</p>
                         </li>
                     </a>
 
                     <a href="settings.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Settings and Privacy
+                            <i class="fas fa-user-cog" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Settings and Privacy</p>
 
                         </li>
 
                     </a>
+                    
 
-                    <a>
-
-                        <li> Display</li>
-
-                    </a>
+                    
 
                 </ul>
                 <?php
-                echo (isset($_SESSION['username']) ?  "<a href = 'logout.php'><button class='sslogout'> Logout</button></a>" : "");
-
+                echo "<a href = 'logout.php'><button class='sslogout'> Logout</button></a>";
                 ?>
 
 
@@ -322,75 +176,61 @@ require_once('init.php');
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
 
-        <div class="indexfeed">
+        <div class="index-settings">
 
-            <div class="settings" id="page-top">
-                <ul class="settingsOptions">
-                    <li>Account Settings
-                        <ul class="accSet">
-                            <li>Name
-                                <br>
-                                <span class="settingInfo">
-                                    <?php
-                                    require_once('query_auth.php');
-                                    $u = get_name($_SESSION['username']);
-                                    echo (isset($_SESSION['username']) ? "$u " : "");
-                                    ?>
-                                </span>
-                            </li>
-
-                            <li>Username
-                                <br>
-                                <span class="settingInfo">
-                                    <?php require_once('authenticate.php');
-                                    $u = get_username();
-                                    echo (isset($_SESSION['username']) ? "$u" : "");
-                                    ?>
-                                </span>
-                            </li>
-
-                            <li>Email
-                                <br>
-                                <span class="settingInfo">
-                                    <?php
-                                    require_once('query_auth.php');
-                                    $u = get_email($_SESSION['username']);
-                                    echo (isset($_SESSION['username']) ? "$u" : "");
-                                    ?>
-                                </span>
-                            </li>
-                            <li>Password</li>
-                            <button id="editButton" onclick="popEditInfo()">Edit</button>
-                        </ul>
-                    </li>
-
-                    <li>Display<span class="open">></span></li>
-                    <li>About<span class="open"><a href=#option>></a></span></li>
-                    <li>Help Center<span class="open"><a href=#help>></a></span></li>
-                    <li>Terms and Conditions<span class="open"><a href=#terms>></a></span></li>
-
-                </ul>
-            </div>
-            <br>
-            <br>
-
-            <div class="editInfo" id="info" style="display: none">
-                <section class="editInfoSection">
-
-                    <span onclick="document.getElementById('info').style.display='none'" class="close1" title="Close Modal">&times;</span>
+            <button type="button" class="collapsible">Account Settings</button>
+            <div class="content">
+                <p>Name
+                    <br>
+                    <span class="settingInfo">
+                        <?php
+                        require_once('query_auth.php');
+                        $u = get_name($_SESSION['username']);
+                        echo (isset($_SESSION['username']) ? "$u " : "");
+                        ?>
+                    </span>
+                </p>
+                <hr>
+                <p>Username
+                    <br>
+                    <span class="settingInfo">
+                        <?php require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ? "$u" : "");
+                        ?>
+                    </span>
+                </p>
+                <hr>
+                <p>
+                    Email
+                    <br>
+                    <span class="settingInfo">
+                        <?php
+                        require_once('query_auth.php');
+                        $u = get_email($_SESSION['username']);
+                        echo (isset($_SESSION['username']) ? "$u" : "");
+                        ?>
+                    </span>
+                </p>
+                <hr>
+                <p>Password</p>
+                <hr>
+                <button type="button" class="collapsible" id="innerButton">Edit</button>
+                <div class="content">
+                    <br>
                     <form action="PI-edit.php" class="editAccInfo" method="POST" onsubmit="return save_changes();">
 
 
                         <legend class="infoBoxLegend"><?php require_once('authenticate.php');
                                                         $u = get_username();
-                                                        echo (isset($_SESSION['username']) ? "$u account details" : " ");
+                                                        echo (isset($_SESSION['username']) ? "@$u account details" : " ");
                                                         ?>
                         </legend>
                         <hr>
 
                         <br>
                         <div class="infoBox">
-                            <label for="nameBox" class="infoBoxName">Name</label>
+                            <label for="nameBox" >Name</label>
                             <br>
                             <input id="nameBox" name="nameBox" class="infoBoxName" type="text" <?php require_once('query_auth.php');
                                                                                                 $u = get_name($_SESSION['username']);
@@ -398,17 +238,6 @@ require_once('init.php');
                                                                                                 ?>>
                         </div>
 
-                        <div class="infoBox">
-                            <br>
-                            <label for="emailBox" class="infoBoxLabel">Email Address</label>
-                            <br>
-                            <input id="emailBox" name="emailBox" class="infoBoxEmail" type="email" <?php
-                                                                                                    require_once('query_auth.php');
-                                                                                                    $u = get_email($_SESSION['username']);
-                                                                                                    echo (isset($_SESSION['username']) ? "value='$u'" : "");
-                                                                                                    ?>>
-                        </div>
-                        
                         <div class="infoBox">
                             <br>
                             <label for="currentPassword" class="infoBoxLabel">Current Password</label>
@@ -434,92 +263,61 @@ require_once('init.php');
                         <br>
 
                         <input type="submit" value="post" id="postsectionsubmit" class="s-confirm" />
-                        <!-- <button type="submit" class="s-confirm">Save Changes</button> -->
                     </form>
-                </section>
-
+                </div>
             </div>
-
-            <div class="settings" id="option">
-                <ul class="aboutOptions">
-                    <li id="title">About</li>
-                    <li>What is PickUp <br>
-                        <span class="aboutInfo">
-                            blah blha
-                        </span>
-
-                    </li>
-
-                    <li>About Us <br>
-                        <span class="aboutInfo">
-                            Lola D <br>
-                            Learta J <br>
-                            Memli R<br>
-                            Ardit Y<br>
-                        </span>
-                    </li>
-                    <li>Contact <br>
-                        <span class="aboutInfo">
-                            Lola D - ldavidovikj@citycollege.sheffield.eu<br>
-                            Learta J - ljanuzi@citycollege.sheffield.eu <br>
-                            Memli R - mrestelica@citycollege.sheffield.eu<br>
-                            Ardit Y - aymeri@citycollege.sheffield.eu<br>
-                        </span>
-                    </li>
-                </ul>
+            <button type="button" class="collapsible">About</button>
+            <div class="content">
+                <button type="button" class="collapsible">What is PickUp</button>
+                <div class="content">
+                    <p>Describe the site</p>
+                </div>
+                <button type="button" class="collapsible">About Us</button>
+                <div class="content">
+                    <p>
+                        Lola D <br>
+                        Learta J <br>
+                        Memli R<br>
+                        Ardit Y<br>
+                    </p>
+                </div>
             </div>
-            <div class="top">
-                <a class="top" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+            <button type="button" class="collapsible">Help Center</button>
+            <div class="content">
+                <button type="button" class="collapsible">Create Event</button>
+                <div class="content">
+                    <p>how to create event</p>
+                </div>
+                <button type="button" class="collapsible">Change Profile</button>
+                <div class="content">
+                    <p>
+                        how to change profile 
+                    </p>
+                </div>
             </div>
-            <br><br>
-
-            <div class="settings" id="help">
-                <ul class="aboutOptions">
-
-                    <li id="title">Help Center</li>
-
-                    <li>Events <br>
-                        <span class="aboutInfo">
-                            how to create event
-                            how to join event
-                            how to delete event
-                        </span>
-
-                    </li>
-
-                    <li>Profile <br>
-                        <span class="aboutInfo">
-                            how to fix profile shit like pic
-                        </span>
-                    </li>
-                </ul>
+            <button type="button" class="collapsible">Terms and conditions</button>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
-            <div class="top">
-                <a class="top" href="#page-top"><i class="fa fa-chevron-up"></i></a>
-            </div>
-
-            <br>
-            <br>
-
-            <div class="settings" id="terms">
-                <ul class="aboutOptions">
-                    <li id="title">Terms and Conditions</li>
-                    <li>
-                        <!-- Terms and Conditions <br> -->
-                        <span class="aboutInfo">
-                            some terms
-                        </span>
-
-                    </li>
-                </ul>
-            </div>
-            <div class="top">
-                <a class="top" href="#page-top"><i class="fa fa-chevron-up"></i></a>
-            </div>
-
-
         </div>
     </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
 
     <script>
         function popEditInfo() {
@@ -562,7 +360,7 @@ require_once('init.php');
 
             if (currentpassword == "") {
 
-                var name = $("#customerName").val();
+                var name = $("#nameBox").val();
                 var email = $("#customerEmail").val();
 
                 $.ajax({
