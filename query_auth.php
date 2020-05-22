@@ -96,13 +96,15 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
     // $randomNumber = rand(10, 200);
     // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
     $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp]);
+    insert_hashtag($event_id,$dscp);
 }
 
 
 function get_event()
 {
+    $event_id = $_GET["str"];
     $conn = db_connect();
-    $sql = "SELECT * from events where event_id = 1";
+    $sql = "SELECT * from events where event_id like '$event_id'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -127,8 +129,15 @@ function get_UserEvents()
     //Returns all the events in which the user is participating in
     $username = $_SESSION['username'];
     $conn = db_connect();
-    $sql = "SELECT * from isin where user_id = '$username'";
 
+    $sql = "SELECT * from events
+            where events.event_id in 
+            (select event_id from isin where user_id = '$username');";
+
+    $result = $conn->query($sql);
+    return makeEvent($result);
+    
+}
 
 function joinEvent($event_id){
     $conn = db_connect();
@@ -137,12 +146,41 @@ function joinEvent($event_id){
     $query = "INSERT INTO isin (event_id, user_id) 
     VALUES(?,?);";
     $stmt = $pdo->prepare($query);
-    //the id is now creared on post-Event.php 
-    // $randomNumber = rand(10, 200);
-    // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
+
     $username = $_SESSION['username'];
     $stmt->execute([$event_id,$username]);
 }
+function bookmarkEvent($event_id){
+    $conn = db_connect();
+    $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
+
+    $query = "INSERT INTO bookmarks (event_id, user_id) 
+    VALUES(?,?);";
+    $stmt = $pdo->prepare($query);
+
+    $username = $_SESSION['username'];
+    $stmt->execute([$event_id,$username]);
+}
+
+function insert_hashtag($event_id, $dscp){
+    $conn = db_connect();
+    $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
+
+    $query = "INSERT INTO hashtag (event_id, hashtag_name) 
+    VALUES(?,?);";
+
+    preg_match_all('/#(\w+)/', $dscp, $matches);
+    /* Add all matches to array */
+    foreach ($matches[1] as $match) {
+        $hashtags[] = $match;
+    }
+    $stmt = $pdo->prepare($query);
+    for($i = 0; $i < count($hashtags); $i++){
+        if(strlen($hashtags[$i]) <30)
+        $stmt->execute([$event_id,$hashtags[$i]]);
+    }
+}
+
 
 function getEventUsers($event_id){
     $conn = db_connect();
@@ -156,26 +194,42 @@ function getEventUsers($event_id){
 function getBookmarks()
 {
     //Returns all the events which the logged in user has bookmarked
+
     $username = $_SESSION['username'];
     $conn = db_connect();
 
-    $sql = "SELECT * from isin where user_id = '$username'";
+    $sql = "SELECT * from events
+            where events.event_id in 
+            (select event_id from bookmarks where user_id = '$username');";
 
     $result = $conn->query($sql);
     return makeEvent($result);
 }
 
-function getBookmarks()
-{
-    //Returns all the events which the logged in user has bookmarked
-    $username = $_SESSION['username'];
+function getHashtagEvents(){
     $conn = db_connect();
-
-    $sql = "SELECT * from bookmarks where user_id = '$username'";
+    $hashtag = $_GET['str'];
+    //$hashtagF = substr($hashtag,1);
+    $sql = "SELECT * from events
+            where events.event_id in 
+            (select event_id from hashtag where hashtag_name like '$hashtag');";
 
     $result = $conn->query($sql);
     return makeEvent($result);
 }
+
+
+
+// {
+//     $conn = db_connect();
+
+//     $sql = "SELECT * from events
+//             where events.event_id in 
+//             (select event_id from bookmarks where user_id = '$username');";
+
+//     $result = $conn->query($sql);
+//     return makeEvent($result);
+// }
 
 function get_AllEvents()
 {
@@ -325,7 +379,6 @@ class Event
     function get_description()
     {
         return $this->description;
-    }
-
-    
+    }   
 }
+?>

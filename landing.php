@@ -15,8 +15,7 @@ require_once('init.php');
     <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="loginstyle.css">
-    <link rel="stylesheet" href="date-picker.css">
+
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
@@ -46,6 +45,7 @@ require_once('init.php');
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="post-Event.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -61,18 +61,17 @@ require_once('init.php');
         </div>
 
         <div class="search-bar">
-            <i class="fa fa-search"></i>
-            <form method="post" action="search.php">
-                <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+            <form method="post" action="search.php" class="search">
+                
+                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
 
-        <ul class="nav-links">
+        <!--<ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
-            <!-- <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li> -->
-        </ul>
+            
+        </ul>-->
 
 
         <div class="burger">
@@ -95,7 +94,7 @@ require_once('init.php');
 
 
 
-    <div id="id01" class="modal">
+    <!--<div id="id01" class="modal">
 
         <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
             <div class="imgcontainer">
@@ -137,7 +136,7 @@ require_once('init.php');
 
 
 
-    </div>
+    </div>-->
 
 
     <!-- ------------------------------------------------ -->
@@ -172,7 +171,7 @@ require_once('init.php');
 
 
 
-    <div id="signup" class="signupclass">
+   <!-- <div id="signup" class="signupclass">
 
         <form class="modal-content animate" action="signup.php" method="post">
 
@@ -184,7 +183,7 @@ require_once('init.php');
             <div class="container">
                 Signup
                 <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                <br>
+                <!--<br>
 
                 <input type="text" placeholder="Enter first name" name="fname" required class="uname">
                 <input type="text" placeholder="Enter last name" name="lname" required class="uname">
@@ -206,7 +205,7 @@ require_once('init.php');
             </div>
         </form>
 
-    </div>
+    </div>-->
 
 
 
@@ -222,27 +221,9 @@ require_once('init.php');
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            <?php
+            
 
-            require_once('authenticate.php');
-            $u = get_username();
-
-            //"<a href = 'account.php'> <button style='width:auto;' 
-            //class='greenbtn'> $u </button> </a>"
-
-            //this determines when to display the signup button and when to display the user photo
-            echo (isset($_SESSION['username']) ?  "" : " <button id ='login-accountbutton' style='width:auto;' 
-                        class='greenbtn'>  Login</button>");  ?>
-
-            <?php
-            require_once('authenticate.php');
-            $u = get_username();
-            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg' style='position: relative;
-                width: 70px;
-                height:70px;
-                overflow: hidden;
-                border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
-            ?>
+           
 
 
             <section class="stealthy-scroll-container">
@@ -253,59 +234,66 @@ require_once('init.php');
                 <ul class="sidebar-nav">
 
 
-
-                    <a href="account.php">
+                    
+                    <a href="landing.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-                            Profile
+                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i> 
+                            <p style="color: rgb(82, 227, 77);">Home</p>
+                        
                         </li>
+                    
                     </a>
 
                     <a href="#">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Notifications
+                            <i class="fas fa-bell"></i>
+                            <p>Notifications</p>
 
                         </li>
                     </a>
 
                     <a href="bookmark.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Bookmarks
+                            <i class="fas fa-bookmark"></i>
+                            <p>Bookmarks</p>
 
                         </li>
                     </a>
-
-                    <a href="#">
+                    <a href="Map.php">
                         <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Map</p>
+                        
+                        </li>
+                    </a>
+                    
+                    <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            width: 70px;
+                            height:70px;
+                            overflow: hidden;
+                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                    </a>
 
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Settings and Privacy
+                    <a href="settings.php">
+                        <li>
+                            <i class="fas fa-user-cog"></i>
+                            <p>Settings and Privacy</p>
 
                         </li>
 
                     </a>
+                    
 
-                    <a>
-
-                        <li> Display</li>
-
-                    </a>
+                    
 
                 </ul>
                 <?php
@@ -336,7 +324,7 @@ require_once('init.php');
             <!-- <h1>Event Feed</h1> -->
             <br>
             <div id="eventbutton" onclick="popEvent()">
-                <header style="font-size:large;">Host new event</header>
+                <header style="font-size:large;">Host event</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
 
             </div>
@@ -353,19 +341,30 @@ require_once('init.php');
 
                         <div class="text">
 
-                            <header style="font-size:large;">Post a new event</header> <br>
-                            <input placeholder="Title" id="title" name="title" required></input>
+                            <header style="font-size:30px;">Host a new event</header> <br>
 
                         </div>
-                        <div class="date-picker"> </div>
-
-                        <label for="time" name="time">Start Time</label>
-                        <input type="time" name="time" id="time" />
+                        <div class="event-body">
+                            <label for="title">Event name: </label>
+                            <input type="text" placeholder="Title" id="title" name="title" required>
+                        <!--<div class="date-picker"> </div>-->
+                       
+                      
+                        
                         <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
-                        <div id="eventoption">
-
+                            <br>
+                            <br>
+                            
+                            <label for="date">Select a date: </label>
                             <input type="text" id="date1" name="date" value="" style="width:50%;">
+                            <br>
+                            <br>
+                            <label for="time" name="time">Start Time:</label>
+                            <input type="time" name="time" id="time" >
+                            <br>
+                            <br>
+                            <br>
                             <h4>Select a Facility</h4>
 
                             <div class="venueOptions">
@@ -392,39 +391,35 @@ require_once('init.php');
                                     </label>
                                 </div>
                                 <div id="map" style="display:none"></div>
-
+                                <br>
 
 
                             </div>
-
-
-
-
-                        </div>
-                        <div class="evetDscp">
-                            <h5>Event Description</h5>
+                        <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
-                        </div>
-
-
+                        <br>
+                        <br>
+                        <label for="picfile">Upload a picture:</label>
                         <input type="file" name="picfile">
+                            <input type="submit" value="post" id="postsectionsubmit" >
                         <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
                         <!-- Submit form -->
-                        <input type="submit" value="post" id="postsectionsubmit" />
+                     
 
                         <!-- <div id="poster" style="display: none">
                             <input type="file" name="picfile">
                         </div> -->
 
 
-
+                        </div>
                     </form>
 
 
 
                 </section>
             </div>
+   
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
@@ -453,23 +448,23 @@ require_once('init.php');
                                     
                                     
                                 
-                                ' . choosePic($pic, $id) . '<br>' . $dscp = $event[$x]->get_description() . '
+                                ' . '<br>'. choosePic($pic, $id) . '<br>' . $dscp = $event[$x]->get_description() . '<br>' . '
                                 </div>
                                 <button type="submit" class="button1" id="'.$id.'" name="join" value="'.$id.'" onclick="changeButton(this)">Join</button>
-                                <button type="button3" onclick="" = "button2">Bookmark</button>
+                                <button type="button3"  class="button2" onclick="changeButton1(this)" >Bookmark</button>
                                 </section>
                             </div>';
+                    
                 }
 
 
                 function choosePic($pic, $id)
                 {
                     if (file_exists($pic)) {
-                        return '<img src="uploads/' . $id . '.jpg" style= "width: 70px;
-                            height:70px; float=left">';
+                        return '<img src="uploads/' . $id . '.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;">';
                     } else
-                        return '<img src="images/eventpic.jpg" style= "width: 70px"
-                         height:70px>';
+                        return '<img src="images/eventpic.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;"
+                         >';
                 }
 
 
@@ -492,6 +487,13 @@ require_once('init.php');
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
+            button.style.backgroundColor= "#2bba75";
+        }
+        function changeButton1(button){
+            button.innerHTML = "Bookmarked!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor= "#2bba75";
         }
     </script>
 

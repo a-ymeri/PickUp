@@ -20,8 +20,17 @@ if(isset($_POST['do_login'])){
 }
 
 if (isset($_POST['action'])) {
-    joinEvent($_POST['action']);
-    exit();
+    $button = explode(" ",$_POST['action']);
+    switch($button[0]){
+        case "join": 
+            joinEvent($button[1]);
+            exit();
+            break;
+        case "bookmark":
+            bookmarkEvent($button[1]);
+            exit();
+            break;
+    }
 }
 
 ?>
