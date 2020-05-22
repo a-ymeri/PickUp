@@ -466,7 +466,7 @@ require_once('init.php');
                                 ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
                                 <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
-                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
+                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
                 }
@@ -522,24 +522,9 @@ require_once('init.php');
         for (let i = 0; i < joinBookmarkButtons.length; i++) {
             button = joinBookmarkButtons[i];
             text = button.innerHTML;
-            joinBookmarkButtons[i].addEventListener("click", function () {
-                //event.stopPropagation();
-
-                if (text == "join") {
-                    //console.log(text);
-                    button.innerHTML = "joined!";
-                   // button.value = "joined!"+substring(text,5);
-                } else if (text== "bookmark") {
-                    button.innerHTML = "bookmarked!";   
-                   // button.value = "joined"+substring(text,5);
-                } else if(text=="joined!"){
-                    //console.log(text);
-                    button.innerHTML = "join";
-                    //button.value = "joined!"+substring(text,7);
-                } else if(text == "bookmarked!"){
-                    button.innerHTML = "bookmarked!";
-                    //button.value = "bookmarked"+substring(text,7);
-                }
+            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+                event.stopPropagation();
+                
             });
         }
 
@@ -780,7 +765,7 @@ require_once('init.php');
                 var clickBtnValue = $(this).html();
                 console.log(clickBtnValue);
                 var buttonid = $(this).attr('id');
-                buttonid = buttonid.substring(3);
+                buttonid = buttonid.substring(2);
                 console.log(buttonid);
                 var ajaxurl = 'ajax.php',
                     data = {
@@ -789,7 +774,7 @@ require_once('init.php');
                     };
                 $.post(ajaxurl, data, function(response) {
                     // Response div goes here.
-                    alert(response);
+                    //alert(response);
                 });
             });
         });
