@@ -57,9 +57,10 @@ table {
 
 body {
     /* background-image:url(images/landing1.jpg); */
-    background-color: rgba(0, 0, 0, 1);
+    background-color: black !important;
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Poppins' !important;
 }
 
 .indexbody{
@@ -267,17 +268,29 @@ nav {
     width: 100%;
     display:flex;
     justify-content:space-between;
-    height: 50px;
+    height: 90px;
     font-family: 'Poppins';
-    background-color: rgba(0, 0, 0,.92);
+    background-color: black;
     z-index: 1;
 }
 
+.indexcontainer{
+    margin-top: auto;
+    width: 100% auto;
+    overflow: hidden;
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: inherit; 
+    border:none;
+   
 
+    
+}
 
 .logo{
     
-    margin-left:4%;
+    margin-left: 20px;
+    margin-top: 10px;
     /* margin-top: 0.7%; */
     color: rgb(59, 134, 184);
     /* letter-spacing: 3px;
@@ -302,7 +315,6 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
 }
 
 .nav-links {
-    margin-right:10%;
     margin-top: 0.7%;
     display: flex;
     justify-content: space-around;
@@ -718,10 +730,11 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
 #map {
 
     opacity:.7;
-    top:0;
+    top:90px;
     height: 500px;
-    width:100%;
+    
     z-index: 1;
+    margin-left: 250px;
 }
 
 #map:hover{
@@ -777,8 +790,8 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
     align-items: center;
     text-align: center;
     max-width: 900px;
-    margin-top:5%;
-    margin-left: 20% ;
+    margin-top:90px;
+    margin-left: 250px; ;
     margin-right: auto;
     height:auto;
     background-color: black;
@@ -789,13 +802,13 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
 .eventfeed{
 
     display:none;
-    position: fixed;
+    position:absolute;
     /* Stay in place */
     z-index: 1;
     /* Sit on top */
     left: 0;
     top: 0;
-
+    bottom: 50%;
     width: 100%;
     height: 100%;
     /* Full height */
@@ -804,22 +817,76 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
     /* background-color: rgba(65, 65, 65, 0.3); */
 
     /* Black w/ opacity */
-    padding-top: 0px;
-    overflow-Y:scroll;
-
+    padding-top: 40px;
 
 
 }
 
-.event-content{
-    background-color: transparent;
+
+
+.event-body{
+    margin-top: 30px;
+}
+
+.event-body label{
+    margin-right: 25px;
+ 
+}
+
+.button1{
+    position: relative;
+    display: block;
+    border-style: none;
+    border-radius:5px;
+    background-color:rgb(52, 137, 207);
+    color:white;  
+    width: 250px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-left:auto; 
+    margin-right:auto;
+    margin-top: 10px;
+ 
+}
+
+.button2{
+    position: relative;
+    display: block;
+    border-style: none;
+    border-radius:5px;
+    background-color: rgb(52, 137, 207);
+    color:white;
+    width: 250px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-left:auto; 
+    margin-right:auto;
+    margin-top: 10px;
+
+}
+
+.button1:hover, .button2:hover{
+    background-color: #2bba75;
+}
+
+
+
+.postsection{
+    text-align: left;
+}
+
+
+.event-content animate{
+
     background-blend-mode: hard-light;
     margin: 5% auto 15% auto;
     /* 5% from the top, 15% from the bottom and centered */
     width: auto;
     /* Could be more or les, depending on screen size */
-    height: auto;
-    margin-bottom: auto;
+    height: 100%;
+    
     margin-top:auto;
 
 }
@@ -827,23 +894,25 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
                     this is the post event style */
 
 
+
  #eventbutton{
       width:50%;
       height:auto;
       padding:20px;
       margin:auto;
-      border-radius: 10px;
-      background-color: black;
+      border-radius: 20px;
+      background-color: rgb(52, 137, 207);
       color:white;
-      border:0.2mm solid skyblue;
+      border:0.7mm solid rgb(52, 137, 207);
   }
 
   #eventbutton:hover{
       cursor:pointer;
       transform:translateY(-10%);
-      
       transform:scale(1.1);
       transition: 430ms ease;
+      box-shadow: 0px 5px 15px rgb(209, 209, 209);
+      
   }
 
   #eventbutton  input {
@@ -1047,12 +1116,17 @@ box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 1);
 }
 
 #eventoption{
-    
+    margin-top: 50px;
 }
 
 
 .date-picker:hover{
     box-shadow: 0px 15px 20px  rgb(253,71,53);
+}
+
+
+.circular--square{
+    width: 30px;
 }
 
 .circular--square:hover{
@@ -1279,14 +1353,14 @@ html {
 
   }
 
-  .search-bar{
+ /* .search-bar{
     position: absolute;
-    left: 90%;
-    margin-top:5%;
+    right: 0px;
+    margin-top: 40px;
     transform: translate(-50%,-50%);
     transition: all 1s;
-    width: 50px;
-    height: 50px;
+    width: 200px;
+    height: 60px;
     background: skyblue;
     box-sizing: border-box;
     border-radius: 20px;
@@ -1300,13 +1374,13 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    height: 38.5px;
-    line-height: 30px;
+    height: 50px;
+    line-height: 50px;
     outline: 0;
     border: 0;
     display: none;
-    font-size: 1em;
-    border-radius: 10px;
+    font-size: 50px;
+    border-radius: 20px;
     padding: 0 20px;
     background-color: black;
     color:white;
@@ -1338,6 +1412,7 @@ html {
     position: absolute;
     top: 0;
     right: 0;
+    bottom: 0;
     border-radius: 40%;
     color: #07051a;
     text-align: center;
@@ -1362,7 +1437,9 @@ html {
 .search-bar:hover h3{
     transform: scale(0);
     transition: all 340ms;
-}
+}*/
+
+
 
 #error-fa{
     margin-top:20%;
