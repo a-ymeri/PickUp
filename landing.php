@@ -424,7 +424,7 @@ require_once('init.php');
             <script>
 
             function hashtag(text){
-                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=#$1">#$1</a>');
+                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
                 return repl;
             }
             </script>
@@ -436,7 +436,7 @@ require_once('init.php');
                 require_once('query_auth.php');
                 $event;
                 if(isset($_GET['str'])){
-                    $event = get_UserEvents();
+                    $event = getHashtagEvents();
                 }else{
                     $event = get_AllEvents();
                 }
@@ -702,18 +702,6 @@ require_once('init.php');
         }
     </script>
 
-    <script>
-        // function bridge(){
-        // var date_selected = document.querySelector('.selected-date');
-        // var  bridgePHP = document.querySelector('.bridgePHP');
-        // var abc = $(date_selected).data('value');
-        // var a = bridgePHP.value;
-
-        // bridgePHP.value = abc;
-
-        // alert(abc);
-        // }
-    </script>
 
 
     <script src="datedropper.pro.min.js">

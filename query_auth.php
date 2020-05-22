@@ -96,6 +96,7 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
     // $randomNumber = rand(10, 200);
     // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
     $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp]);
+    insert_hashtag($event_id,$dscp);
 }
 
 
@@ -160,6 +161,25 @@ function bookmarkEvent($event_id){
     $stmt->execute([$event_id,$username]);
 }
 
+function insert_hashtag($event_id, $dscp){
+    $conn = db_connect();
+    $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
+
+    $query = "INSERT INTO hashtag (event_id, hashtag_name) 
+    VALUES(?,?);";
+
+    preg_match_all('/#(\w+)/', $dscp, $matches);
+    /* Add all matches to array */
+    foreach ($matches[1] as $match) {
+        $hashtags[] = $match;
+    }
+    $stmt = $pdo->prepare($query);
+    for($i = 0; $i < count($hashtags); $i++){
+        if(strlen($hashtags[$i]) <10)
+        $stmt->execute([$event_id,$hashtags[$i]]);
+    }
+}
+
 
 function getEventUsers($event_id){
     $conn = db_connect();
@@ -184,6 +204,31 @@ function getBookmarks()
     $result = $conn->query($sql);
     return makeEvent($result);
 }
+
+function getHashtagEvents(){
+    $conn = db_connect();
+    $hashtag = $_GET['str'];
+    //$hashtagF = substr($hashtag,1);
+    $sql = "SELECT * from events
+            where events.event_id in 
+            (select event_id from hashtag where hashtag_name like '$hashtag');";
+
+    $result = $conn->query($sql);
+    return makeEvent($result);
+}
+
+
+
+// {
+//     $conn = db_connect();
+
+//     $sql = "SELECT * from events
+//             where events.event_id in 
+//             (select event_id from bookmarks where user_id = '$username');";
+
+//     $result = $conn->query($sql);
+//     return makeEvent($result);
+// }
 
 function get_AllEvents()
 {

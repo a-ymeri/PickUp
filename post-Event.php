@@ -80,6 +80,9 @@
 
   
      insert_event($id,$datefinal,$time,$title,$lat,$lng,$description);
+     
+     
+
 
     echo '<script>location.replace("landing.php");</script>';
 
