@@ -19,7 +19,7 @@ require_once('init.php');
    
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <script src="https://use.fontawesome.com/a31a0bdd36.js"></script>
 

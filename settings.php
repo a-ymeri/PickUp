@@ -37,7 +37,7 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->

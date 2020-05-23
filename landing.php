@@ -36,7 +36,7 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
@@ -63,7 +63,7 @@ require_once('init.php');
 
         <div class="search-bar">
             <form method="post" action="search.php" class="search">
-                
+
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
@@ -168,7 +168,7 @@ require_once('init.php');
 
 
 
-   <!-- <div id="signup" class="signupclass">
+    <!-- <div id="signup" class="signupclass">
 
         <form class="modal-content animate" action="signup.php" method="post">
 
@@ -179,8 +179,8 @@ require_once('init.php');
 
             <div class="container">
                 Signup
-                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                <!--<br>
+                
+                <br>
 
                 <input type="text" placeholder="Enter first name" name="fname" required class="uname">
                 <input type="text" placeholder="Enter last name" name="lname" required class="uname">
@@ -218,9 +218,9 @@ require_once('init.php');
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            
 
-           
+
+
 
 
             <section class="stealthy-scroll-container">
@@ -231,14 +231,14 @@ require_once('init.php');
                 <ul class="sidebar-nav">
 
 
-                    
+
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i> 
+                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
                             <p style="color: rgb(82, 227, 77);">Home</p>
-                        
+
                         </li>
-                    
+
                     </a>
 
                     <a href="#">
@@ -262,22 +262,22 @@ require_once('init.php');
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
-                        
+
                         </li>
                     </a>
-                    
+
                     <a href="account.php">
-                        
+
                         <li class="profile">
                             <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            require_once('authenticate.php');
+                            $u = get_username();
+                            echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
                             width: 70px;
                             height:70px;
                             overflow: hidden;
                             border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
+                            ?>
                             <p class="prof">Profile</p>
                         </li>
                     </a>
@@ -290,9 +290,9 @@ require_once('init.php');
                         </li>
 
                     </a>
-                    
 
-                    
+
+
 
                 </ul>
                 <?php
@@ -346,21 +346,21 @@ require_once('init.php');
                         <div class="event-body">
                             <label for="title">Event name: </label>
                             <input type="text" placeholder="Title" id="title" name="title" required>
-                        <!--<div class="date-picker"> </div>-->
-                       
-                      
-                        
-                        <!-- <input class="bridgePHP" value='MEMLI'></input> -->
+                            <!--<div class="date-picker"> </div>-->
+
+
+
+                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
                             <br>
                             <br>
-                            
+
                             <label for="date">Select a date: </label>
                             <input type="text" id="date1" name="date" value="" style="width:50%;">
                             <br>
                             <br>
                             <label for="time" name="time">Start Time:</label>
-                            <input type="time" name="time" id="time" >
+                            <input type="time" name="time" id="time">
                             <br>
                             <br>
                             <br>
@@ -394,19 +394,19 @@ require_once('init.php');
 
 
                             </div>
-                        <label for="eventDescription">Event Description</label>
+                            <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
-                        <br>
-                        <br>
-                        <label for="picfile">Upload a picture:</label>
-                        <input type="file" name="picfile">
-                            <input type="submit" value="post" id="postsectionsubmit" >
-                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
+                            <br>
+                            <br>
+                            <label for="picfile">Upload a picture:</label>
+                            <input type="file" name="picfile">
+                            <input type="submit" value="post" id="postsectionsubmit">
+                            <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
-                        <!-- Submit form -->
-                     
+                            <!-- Submit form -->
 
-                        <!-- <div id="poster" style="display: none">
+
+                            <!-- <div id="poster" style="display: none">
                             <input type="file" name="picfile">
                         </div> -->
 
@@ -420,12 +420,10 @@ require_once('init.php');
             </div>
 
             <script>
-
-            function hashtag(text){
-                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
-                return repl;
-            }
-
+                function hashtag(text) {
+                    var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
+                    return repl;
+                }
             </script>
 
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
@@ -435,9 +433,9 @@ require_once('init.php');
                 <?php
                 require_once('query_auth.php');
                 $event;
-                if(isset($_GET['str'])){
+                if (isset($_GET['str'])) {
                     $event = getHashtagEvents();
-                }else{
+                } else {
                     $event = get_AllEvents();
                 }
 
@@ -449,7 +447,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" id="ps-'.$id.'">
+                                <section class="postsection" id="ps-' . $id . '">
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -468,7 +466,6 @@ require_once('init.php');
                                 <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
-                    
                 }
 
 
@@ -496,9 +493,9 @@ require_once('init.php');
             </div>
 
             <div id="viewMore" class="eventfeed">
-                <!-- this is where we put info on events-->
+              
                 <section class="postsection1">
-                    <P> TEST </P>
+                    <P> TESTL </P>
                 </section>
             </div>
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
@@ -509,14 +506,13 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
-
         /*function changeButton(button){
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
         }*/
-        function changeButton1(button){
+        function changeButton1(button) {
             button.innerHTML = "Bookmarked!";
             button.style.hover = "false";
             button.style.disabled = "true";
@@ -525,7 +521,7 @@ require_once('init.php');
 
         for (let i = 0; i < postsection.length; i++) {
             postsection[i].addEventListener("click", function event(event) {
-                //window.location.href ='event.php?str='+(postsection[i].id).substring(3);
+                window.location.href = 'event.php?str=' + (postsection[i].id).substring(3);
             });
         }
 
@@ -535,7 +531,7 @@ require_once('init.php');
             text = button.innerHTML;
             joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
                 event.stopPropagation();
-                
+
             });
         }
 
@@ -544,21 +540,21 @@ require_once('init.php');
         function changeButton(button) {
             if (button.innerHTML == "join") {
                 button.innerHTML = "joined!";
-                
-            button.style.hover = "false";
-            button.style.disabled = "true";
-            button.style.backgroundColor= "#2bba75";
+
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor = "#2bba75";
                 //button.attributes[0].value = "joined!"+substring(text,5);
             } else if (button.innerHTML == "bookmark") {
                 button.innerHTML = "bookmarked!";
                 //button.value = "joined"+substring(text,5);
             } else if (button.innerHTML == "bookmarked!") {
                 button.innerHTML = "bookmark";
-               // button.value = "joined!"+substring(text,7);
+                // button.value = "joined!"+substring(text,7);
             } else if (button.innerHTML == "joined!") {
                 button.innerHTML = "join";
                 //button.value = "bookmarked"+substring(text,7);
-            } 
+            }
         }
     </script>
 
@@ -595,8 +591,8 @@ require_once('init.php');
                         echo json_encode($bookmarkArray); ?>;
 
         for (i = 0; i < hasJoined.length; i++) {
-            if (document.getElementById("j-"+hasJoined[i].event_id) != null)
-                changeButton(document.getElementById("j-"+hasJoined[i].event_id));
+            if (document.getElementById("j-" + hasJoined[i].event_id) != null)
+                changeButton(document.getElementById("j-" + hasJoined[i].event_id));
         }
         console.log(hasBookmarked.length);
         for (i = 0; i < hasBookmarked.length; i++) {

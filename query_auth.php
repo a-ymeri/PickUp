@@ -140,6 +140,7 @@ function get_UserEvents()
 }
 
 function joinEvent($event_id){
+    $conn = db_connect();
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
 
     $query = "INSERT INTO isin (event_id, user_id) 
@@ -149,23 +150,6 @@ function joinEvent($event_id){
     $username = $_SESSION['username'];
     $stmt->execute([$event_id,$username]);
 }
-
-function unJoinEvent($event_id){
-    //$event_id = $_GET["str"];
-    $conn = db_connect();
-    $username = $_SESSION['username'];
-    $sql = "DELETE FROM isin WHERE event_id = '$event_id' and user_id = '$username'";
-    $conn->query($sql);
-}
-
-function unBookMarkEvent($event_id){
-    //$event_id = $_GET["str"];
-    $conn = db_connect();
-    $username = $_SESSION['username'];
-    $sql = "DELETE FROM bookmark WHERE event_id = '$event_id' and user_id = '$username'";
-    $conn->query($sql);
-}
-
 function bookmarkEvent($event_id){
     $conn = db_connect();
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
@@ -177,7 +161,6 @@ function bookmarkEvent($event_id){
     $username = $_SESSION['username'];
     $stmt->execute([$event_id,$username]);
 }
-
 
 function insert_hashtag($event_id, $dscp){
     $conn = db_connect();
