@@ -67,27 +67,29 @@ require_once('init.php');
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
-
+       
         <!--<ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
             
         </ul>-->
 
-
-        <div class="burger">
+    
+        <!-- <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
 
 
 
-        </div>
+        </div> -->
 
 
 
     </nav>
-
+    <span style="display:inline">
+            <p> test</p>
+        </span>
 
 
 
@@ -525,14 +527,14 @@ require_once('init.php');
 
         for (let i = 0; i < postsection.length; i++) {
             postsection[i].addEventListener("click", function event(event) {
-                //window.location.href ='event.php?str='+(postsection[i].id).substring(3);
+                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
             });
         }
 
         var joinBookmarkButtons = document.querySelectorAll(".nonevent");
         for (let i = 0; i < joinBookmarkButtons.length; i++) {
-            button = joinBookmarkButtons[i];
-            text = button.innerHTML;
+            // button = joinBookmarkButtons[i];
+            // text = button.innerHTML;
             joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
                 event.stopPropagation();
                 
@@ -545,19 +547,25 @@ require_once('init.php');
             if (button.innerHTML == "join") {
                 button.innerHTML = "joined!";
                 
-            button.style.hover = "false";
-            button.style.disabled = "true";
-            button.style.backgroundColor= "#2bba75";
-                //button.attributes[0].value = "joined!"+substring(text,5);
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor= "#2bba75";
+                
             } else if (button.innerHTML == "bookmark") {
                 button.innerHTML = "bookmarked!";
-                //button.value = "joined"+substring(text,5);
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor= "#2bba75";
             } else if (button.innerHTML == "bookmarked!") {
                 button.innerHTML = "bookmark";
-               // button.value = "joined!"+substring(text,7);
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor= "#3489CD";
             } else if (button.innerHTML == "joined!") {
                 button.innerHTML = "join";
-                //button.value = "bookmarked"+substring(text,7);
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor= "#3489CD";
             } 
         }
     </script>

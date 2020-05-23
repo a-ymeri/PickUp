@@ -99,6 +99,12 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
     insert_hashtag($event_id,$dscp);
 }
 
+function get_hashtags(){
+    $conn = db_connect();
+    $sql = "SELECT hashtag_name,count(event_id) from hashtag group by hashtag_name order by count(event_id) desc limit 5;";
+    return $conn->query($sql);
+}
+
 
 function get_event()
 {
