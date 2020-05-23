@@ -1,4 +1,52 @@
+body{
+    background-color: black !important;
+}
 
+.index-account{
+    margin-top:90px;
+    margin-left: 250px; ;
+    margin-right: auto;
+    background-color: black;
+    color:white;
+    font-family: 'Poppins';
+
+}
+
+h1{
+    text-align: center;
+}
+
+
+.your-events, .joined-events{
+    display: none;
+}
+
+.btn1, .btn2{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-style: none;
+    border-bottom-style:double;
+    border-color: rgb(43, 117, 186);
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    margin: 20px;
+}
+
+.btn1:hover, .btn2:hover{
+    background-color: rgb(43, 117, 186);
+}
+
+.menu-options li{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
 
 .sendfile{

@@ -13,13 +13,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet1" href="style.scss">
+    <link rel="stylesheet" href="section-sidebar.css">
+    <link rel="stylesheet" href="radio.css">
+    
+    <script src="https://use.fontawesome.com/a31a0bdd36.js"></script>
 
+    <script src="https://kit.fontawesome.com/d0528b62e3.js" crossorigin="anonymous"></script>
 
 
 
@@ -30,33 +35,123 @@
     <nav>
 
         <div class="logo">
-            PICK-UP
+            <a href="landing.php" class="logolink"> <img src="images/logo.png"> </a>
 
         </div>
 
+        <div class="search-bar">
+            <form method="post" action="search.php" class="search">
+                
+                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
+            </form>
+        </div>
 
 
-        <ul class="nav-links">
-            <li> <a href="index.php"> Home</a></li>
-            <li> <a href="#"> Map</a></li>
-            <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li>
-        </ul>
 
         <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
 
+
+
         </div>
+
+
 
     </nav>
 
 
-
     <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
 
-    <div class='container'>
+    <div class='map-container'>
+                <div class="section-sidebar">
+            <br>
+
+            <!-- this button is serves as a login button or account button based on php user session -->
+
+
+            <section class="stealthy-scroll-container">
+
+
+
+
+                <ul class="sidebar-nav">
+
+
+                    
+                    <a href="landing.php">
+                        <li>
+                            <i class="fas fa-home"></i> 
+                            <p>Home</p>
+                        
+                        </li>
+                    
+                    </a>
+
+                    <a href="#">
+                        <li>
+                            <i class="fas fa-bell"></i>
+                            <p>Notifications</p>
+
+                        </li>
+                    </a>
+
+                    <a href="bookmark.php">
+                        <li>
+                            <i class="fas fa-bookmark"></i>
+                            <p>Bookmarks</p>
+
+                        </li>
+                    </a>
+                    <a href="Map.php">
+                        <li>
+                            <i class="fas fa-map-marker-alt" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Map</p>
+                        
+                        </li>
+                    </a>
+                    
+                    <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            width: 70px;
+                            height:70px;
+                            overflow: hidden;
+                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
+                        ?>
+                            <p class="prof" >Profile</p>
+                        </li>
+                    </a>
+
+                    <a href="settings.php">
+                        <li>
+                            <i class="fas fa-user-cog"></i>
+                            <p>Settings and Privacy</p>
+
+                        </li>
+
+                    </a>
+                    
+
+                    
+
+                </ul>
+                <?php
+                echo "<a href = 'logout.php'><button class='sslogout'> Logout</button></a>";
+                ?>
+
+
+            </section>
+
+
+            <!--                    This is the end of the section sidebar-->
+            <!------------------- --------------------------------------------------------------------------------------->
+        </div>
 
 
 

@@ -18,7 +18,7 @@ session_start();
     <link rel="stylesheet" href="personal-infostyle.css">
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <script src="https://use.fontawesome.com/a31a0bdd36.js"></script>
 

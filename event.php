@@ -37,7 +37,7 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
@@ -430,7 +430,7 @@ require_once('init.php');
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
-                
+
                 <?php
                 require_once('query_auth.php');
                 $event;
@@ -440,6 +440,33 @@ require_once('init.php');
                     $event = get_event();
                 }
 
+                //for ($x = 0; $x < sizeof($event); $x++) {
+
+                //$id = $event[$x]->get_eventid();
+                //dscp = $event[$x]->get_description();
+                //$pic = 'uploads/' . $id . '.jpg';
+
+                //     echo
+                //         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
+                //                 <section class="postsection" onclick="popInfo()">
+                //                 <h1 style="color:#0077CC;">
+                //                     ' . $event[$x]->get_title() . '
+                //                 </h1> 
+                //                 <p>' . $date = $event[$x]->get_date() . '</p>
+
+                //                     Time: ' . $event[$x]->get_time() . '
+                //                     <br>
+                //                     Location: <span class="events"></span> 
+
+
+
+                //                 ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
+
+                //                 <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
+                //                 <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
+                //                 </section>
+                //             </div>';
+                // }
                 $id = $event->event_id;
                 $dscp = $event->description;
                 $pic = 'uploads/' . $id . '.jpg';
@@ -487,6 +514,7 @@ require_once('init.php');
             </div>-->
 
             <!-- <div id="viewMore" class="eventfeed">
+                
                 <section class="postsection1">
                     <P> TEST </P>
                 </section>
@@ -495,6 +523,7 @@ require_once('init.php');
 
         </div>
     </div>
+
     <script>
         function goBack() {
             window.history.back();

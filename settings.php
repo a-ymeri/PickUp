@@ -16,7 +16,6 @@ require_once('init.php');
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="loginstyle.css">
-    <link rel="stylesheet" href="date-picker.css">
     <link rel="stylesheet" href="settings.css">
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -38,7 +37,7 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
@@ -58,23 +57,17 @@ require_once('init.php');
     <nav>
 
         <div class="logo">
-            <a href="index.php" class="logolink"> PickUp </a>
+            <a href="landing.php" class="logolink"> <img src="images/logo.png"> </a>
 
         </div>
 
         <div class="search-bar">
-            <i class="fa fa-search"></i>
-            <form method="post" action="search.php">
-                <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+            <form method="post" action="search.php" class="search">
+                
+                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
 
-        <ul class="nav-links">
-            <li> <a href="#"> Feed</a></li>
-            <li> <a href="Map.php"> Map</a></li>
-            <!-- <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li> -->
-        </ul>
 
 
         <div class="burger">
@@ -90,132 +83,7 @@ require_once('init.php');
 
     </nav>
 
-    <div>
 
-
-    </div>
-
-
-
-    <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="images/avatar.png" alt="Avatar" class="avatar">
-
-
-            </div>
-
-            <div class="container">
-
-                <div class="g-signin2" data-onsuccess="onSignIn" id="googlebutton"></div>
-                <label for="uname"><b>Username</b>
-                </label>
-                <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
-
-                <div class="loader-wrapper">
-                    <span class="loader"><span class="loader-inner"></span></span>
-                </div>
-
-                <label for="psw"><b>Password</b>
-                </label>
-                <input type="password" placeholder="Enter Password" name="psw" class="password" id="password">
-                <h5 class="errorlabel"></h5>
-                <button type="submit" class="logsubmit">Login</button>
-
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-
-                <br>
-                <br> Not a member Yet ?
-
-                <button type="button" id="signupButton" title="Close Modal"> Signup</button>
-
-
-
-            </div>
-        </form>
-
-
-
-
-    </div>
-
-
-    <!-- ------------------------------------------------ -->
-
-
-    <!-- <div id="signout" class="signuoutclass">
-
-<form class="modal-content animate" action="action.php" method="post">
-    <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-              <a href= "account.php">
-        <img src="images/avatar.png" alt="Avatar" class="avatar">
-        </a>
-
-        <button>Signout</button>
-
-
-    </div>
-
-    <div class="container">
-        <label for="uname"><b>Username</b>
-        </label>
-        <button type="button" id="signupButton" title="Close Modal"> Signup</button>
-
-
-
-    </div>
-</form>
-</div> -->
-
-
-
-
-    <div id="signup" class="signupclass">
-
-        <form class="modal-content animate" action="signup.php" method="post">
-
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-            </div>
-
-            <div class="container">
-                Signup
-                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                <br>
-
-                <input type="text" placeholder="Enter first name" name="fname" required class="uname">
-                <input type="text" placeholder="Enter last name" name="lname" required class="uname">
-
-
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required class="uname">
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" id="psw1" name="psw" required class="password">
-
-                <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
-                Email
-                <input type="email" placeholder="Your email" name="email" required class="signupemail" style="width:100%; height:50px; padding: 12px 20px;" required>
-
-                <button type="submit" class="logsubmit" id="signupButton1" onclick="return Validate()">Sign up</button>
-                <br>
-                <br>
-            </div>
-        </form>
-
-    </div>
-
-
-
-    <!--
-                                            HERE the MODAL(login/signup) ends
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--->
 
 
     <div class="indexcontainer">
@@ -224,27 +92,6 @@ require_once('init.php');
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            <?php
-
-            require_once('authenticate.php');
-            $u = get_username();
-
-            //"<a href = 'account.php'> <button style='width:auto;' 
-            //class='greenbtn'> $u </button> </a>"
-
-            //this determines when to display the signup button and when to display the user photo
-            echo (isset($_SESSION['username']) ?  "" : " <button id ='login-accountbutton' style='width:auto;' 
-                        class='greenbtn'>  Login</button>");  ?>
-
-            <?php
-            require_once('authenticate.php');
-            $u = get_username();
-            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg' style='position: relative;
-                width: 70px;
-                height:70px;
-                overflow: hidden;
-                border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
-            ?>
 
 
             <section class="stealthy-scroll-container">
@@ -255,64 +102,70 @@ require_once('init.php');
                 <ul class="sidebar-nav">
 
 
-
-                    <a href="<?php echo (isset($_SESSION['username']) ? "account.php" : "account.php"); ?>">
+                    
+                    <a href="landing.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-                            Profile
+                            <i class="fas fa-home"></i> 
+                            <p>Home</p>
+                        
                         </li>
+                    
                     </a>
 
                     <a href="#">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Notifications
+                            <i class="fas fa-bell"></i>
+                            <p>Notifications</p>
 
                         </li>
                     </a>
 
-                    <a href="#">
+                    <a href="bookmark.php">
                         <li>
+                            <i class="fas fa-bookmark"></i>
+                            <p>Bookmarks</p>
 
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Bookmarks
-
+                        </li>
+                    </a>
+                    <a href="Map.php">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Map</p>
+                        
+                        </li>
+                    </a>
+                    
+                    <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            width: 70px;
+                            height:70px;
+                            overflow: hidden;
+                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
+                        ?>
+                            <p class="prof" >Profile</p>
                         </li>
                     </a>
 
                     <a href="settings.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Settings and Privacy
+                            <i class="fas fa-user-cog" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Settings and Privacy</p>
 
                         </li>
 
                     </a>
+                    
 
-                    <a>
-
-                        <li> Display</li>
-
-                    </a>
+                    
 
                 </ul>
                 <?php
-                echo (isset($_SESSION['username']) ?  "<a href = 'logout.php'><button class='sslogout'> Logout</button></a>" : "");
-
+                echo "<a href = 'logout.php'><button class='sslogout'> Logout</button></a>";
                 ?>
 
 
@@ -323,7 +176,7 @@ require_once('init.php');
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
 
-        <div class="indexfeed">
+        <div class="index-settings">
 
             <button type="button" class="collapsible">Account Settings</button>
             <div class="content">

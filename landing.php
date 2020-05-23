@@ -15,8 +15,7 @@ require_once('init.php');
     <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="loginstyle.css">
-    <link rel="stylesheet" href="date-picker.css">
+
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
@@ -37,7 +36,7 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
@@ -47,6 +46,7 @@ require_once('init.php');
     <link rel="stylesheet" href="post-Event.css">
     <link rel="stylesheet" href="pagination.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -62,18 +62,17 @@ require_once('init.php');
         </div>
 
         <div class="search-bar">
-            <i class="fa fa-search"></i>
-            <form method="post" action="search.php">
-                <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+            <form method="post" action="search.php" class="search">
+
+                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
 
-        <ul class="nav-links">
+        <!--<ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
-            <!-- <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li> -->
-        </ul>
+            
+        </ul>-->
 
 
         <div class="burger">
@@ -92,7 +91,7 @@ require_once('init.php');
 
 
 
-    <div id="id01" class="modal">
+    <!--<div id="id01" class="modal">
 
         <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
             <div class="imgcontainer">
@@ -134,7 +133,7 @@ require_once('init.php');
 
 
 
-    </div>
+    </div>-->
 
 
     <!-- ------------------------------------------------ -->
@@ -169,7 +168,7 @@ require_once('init.php');
 
 
 
-    <div id="signup" class="signupclass">
+    <!-- <div id="signup" class="signupclass">
 
         <form class="modal-content animate" action="signup.php" method="post">
 
@@ -180,7 +179,7 @@ require_once('init.php');
 
             <div class="container">
                 Signup
-                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
+                
                 <br>
 
                 <input type="text" placeholder="Enter first name" name="fname" required class="uname">
@@ -203,7 +202,7 @@ require_once('init.php');
             </div>
         </form>
 
-    </div>
+    </div>-->
 
 
 
@@ -219,27 +218,9 @@ require_once('init.php');
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            <?php
 
-            require_once('authenticate.php');
-            $u = get_username();
 
-            //"<a href = 'account.php'> <button style='width:auto;' 
-            //class='greenbtn'> $u </button> </a>"
 
-            //this determines when to display the signup button and when to display the user photo
-            echo (isset($_SESSION['username']) ?  "" : " <button id ='login-accountbutton' style='width:auto;' 
-                        class='greenbtn'>  Login</button>");  ?>
-
-            <?php
-            require_once('authenticate.php');
-            $u = get_username();
-            echo (isset($_SESSION['username']) ?  "<a href ='account.php'><img class='circular--square' src='images/$u.jpg' style='position: relative;
-                width: 70px;
-                height:70px;
-                overflow: hidden;
-                border-radius: 50%; margin-top:2%;margin-left:13%;'></a>" : "");
-            ?>
 
 
             <section class="stealthy-scroll-container">
@@ -251,58 +232,67 @@ require_once('init.php');
 
 
 
-                    <a href="account.php">
+                    <a href="landing.php">
                         <li>
+                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Home</p>
 
-                            <i class="thumbnail">
-
-                            </i>
-                            Profile
                         </li>
+
                     </a>
 
                     <a href="#">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Notifications
+                            <i class="fas fa-bell"></i>
+                            <p>Notifications</p>
 
                         </li>
                     </a>
 
                     <a href="bookmark.php">
                         <li>
+                            <i class="fas fa-bookmark"></i>
+                            <p>Bookmarks</p>
 
-                            <i class="thumbnail">
+                        </li>
+                    </a>
 
-                            </i>
+                    <a href="Map.php">
 
-                            Bookmarks
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Map</p>
 
+                        </li>
+                    </a>
+
+                    <a href="account.php">
+
+                        <li class="profile">
+                            <?php
+                            require_once('authenticate.php');
+                            $u = get_username();
+                            echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            width: 70px;
+                            height:70px;
+                            overflow: hidden;
+                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
+                            ?>
+                            <p class="prof">Profile</p>
                         </li>
                     </a>
 
                     <a href="settings.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Settings and Privacy
+                            <i class="fas fa-user-cog"></i>
+                            <p>Settings and Privacy</p>
 
                         </li>
 
                     </a>
 
-                    <a>
 
-                        <li> Display</li>
 
-                    </a>
 
                 </ul>
                 <?php
@@ -333,7 +323,7 @@ require_once('init.php');
             <!-- <h1>Event Feed</h1> -->
             <br>
             <div id="eventbutton" onclick="popEvent()">
-                <header style="font-size:large;">Host new event</header>
+                <header style="font-size:large;">Host event</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
 
             </div>
@@ -350,19 +340,30 @@ require_once('init.php');
 
                         <div class="text">
 
-                            <header style="font-size:large;">Post a new event</header> <br>
-                            <input placeholder="Title" id="title" name="title" required></input>
+                            <header style="font-size:30px;">Host a new event</header> <br>
 
                         </div>
-                        <div class="date-picker"> </div>
+                        <div class="event-body">
+                            <label for="title">Event name: </label>
+                            <input type="text" placeholder="Title" id="title" name="title" required>
+                            <!--<div class="date-picker"> </div>-->
 
-                        <label for="time" name="time">Start Time</label>
-                        <input type="time" name="time" id="time" />
-                        <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
-                        <div id="eventoption">
 
+                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
+
+                            <br>
+                            <br>
+
+                            <label for="date">Select a date: </label>
                             <input type="text" id="date1" name="date" value="" style="width:50%;">
+                            <br>
+                            <br>
+                            <label for="time" name="time">Start Time:</label>
+                            <input type="time" name="time" id="time">
+                            <br>
+                            <br>
+                            <br>
                             <h4>Select a Facility</h4>
 
                             <div class="venueOptions">
@@ -389,47 +390,42 @@ require_once('init.php');
                                     </label>
                                 </div>
                                 <div id="map" style="display:none"></div>
-
+                                <br>
 
 
                             </div>
-
-
-
-
-                        </div>
-                        <div class="evetDscp">
-                            <h5>Event Description</h5>
+                            <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
-                        </div>
+                            <br>
+                            <br>
+                            <label for="picfile">Upload a picture:</label>
+                            <input type="file" name="picfile">
+                            <input type="submit" value="post" id="postsectionsubmit">
+                            <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
+
+                            <!-- Submit form -->
 
 
-                        <input type="file" name="picfile">
-                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
-
-                        <!-- Submit form -->
-                        <input type="submit" value="post" id="postsectionsubmit" />
-
-                        <!-- <div id="poster" style="display: none">
+                            <!-- <div id="poster" style="display: none">
                             <input type="file" name="picfile">
                         </div> -->
 
 
-
+                        </div>
                     </form>
 
 
 
                 </section>
             </div>
+
             <script>
-
-            function hashtag(text){
-                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
-                return repl;
-            }
-
+                function hashtag(text) {
+                    var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
+                    return repl;
+                }
             </script>
+
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
@@ -437,9 +433,9 @@ require_once('init.php');
                 <?php
                 require_once('query_auth.php');
                 $event;
-                if(isset($_GET['str'])){
+                if (isset($_GET['str'])) {
                     $event = getHashtagEvents();
-                }else{
+                } else {
                     $event = get_AllEvents();
                 }
 
@@ -451,7 +447,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" id="ps-'.$id.'">
+                                <section class="postsection" id="ps-' . $id . '">
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -463,10 +459,11 @@ require_once('init.php');
                                     
                                     
                                 
+
                                 ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
-                                <button type="submit" class="button1 nonevent" id="' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">Join</button>
-                                <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
+                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
+                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
                 }
@@ -475,11 +472,10 @@ require_once('init.php');
                 function choosePic($pic, $id)
                 {
                     if (file_exists($pic)) {
-                        return '<img src="uploads/' . $id . '.jpg" style= "width: 70px;
-                            height:70px; float=left">';
+                        return '<img src="uploads/' . $id . '.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;">';
                     } else
-                        return '<img src="images/eventpic.jpg" style= "width: 70px"
-                         height:70px>';
+                        return '<img src="images/eventpic.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;"
+                         >';
                 }
 
 
@@ -497,9 +493,9 @@ require_once('init.php');
             </div>
 
             <div id="viewMore" class="eventfeed">
-                <!-- this is where we put info on events-->
+              
                 <section class="postsection1">
-                    <P> TEST </P>
+                    <P> TESTL </P>
                 </section>
             </div>
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
@@ -510,33 +506,55 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
+        /*function changeButton(button){
+            button.innerHTML = "Joined!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor= "#2bba75";
+        }*/
+        function changeButton1(button) {
+            button.innerHTML = "Bookmarked!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+        }
         var postsection = document.querySelectorAll(".postsection");
 
         for (let i = 0; i < postsection.length; i++) {
             postsection[i].addEventListener("click", function event(event) {
-                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
+                window.location.href = 'event.php?str=' + (postsection[i].id).substring(3);
             });
         }
 
         var joinBookmarkButtons = document.querySelectorAll(".nonevent");
-        for (var i = 0; i < joinBookmarkButtons.length; i++) {
+        for (let i = 0; i < joinBookmarkButtons.length; i++) {
+            button = joinBookmarkButtons[i];
+            text = button.innerHTML;
             joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
                 event.stopPropagation();
-                changeButton(this);
+
             });
         }
 
 
 
-
         function changeButton(button) {
-            if (button.innerHTML == "Join") {
+            if (button.innerHTML == "join") {
                 button.innerHTML = "joined!";
-            } else if (button.innerHTML == "Bookmark") {
+
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor = "#2bba75";
+                //button.attributes[0].value = "joined!"+substring(text,5);
+            } else if (button.innerHTML == "bookmark") {
                 button.innerHTML = "bookmarked!";
+                //button.value = "joined"+substring(text,5);
+            } else if (button.innerHTML == "bookmarked!") {
+                button.innerHTML = "bookmark";
+                // button.value = "joined!"+substring(text,7);
+            } else if (button.innerHTML == "joined!") {
+                button.innerHTML = "join";
+                //button.value = "bookmarked"+substring(text,7);
             }
-            //button.style.hover = "false";
-            //button.style.disabled = "true";
         }
     </script>
 
@@ -573,14 +591,14 @@ require_once('init.php');
                         echo json_encode($bookmarkArray); ?>;
 
         for (i = 0; i < hasJoined.length; i++) {
-            if (document.getElementById(hasJoined[i].event_id) != null)
-                changeButton(document.getElementById(hasJoined[i].event_id));
+            if (document.getElementById("j-" + hasJoined[i].event_id) != null)
+                changeButton(document.getElementById("j-" + hasJoined[i].event_id));
         }
         console.log(hasBookmarked.length);
         for (i = 0; i < hasBookmarked.length; i++) {
             //if(document.getElementById("b"+hasBookmarked[i])==null)
-            if (document.getElementById("b" + hasBookmarked[i].event_id) != null)
-                changeButton(document.getElementById("b" + hasBookmarked[i].event_id));
+            if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
+                changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
         }
     </script>
 
@@ -755,14 +773,19 @@ require_once('init.php');
     <script type="text/javascript">
         $(document).ready(function() {
             $('.button1').click(function() {
-                var clickBtnValue = $(this).val();
+                var clickBtnValue = $(this).html();
+                console.log(clickBtnValue);
+                var buttonid = $(this).attr('id');
+                buttonid = buttonid.substring(2);
+                console.log(buttonid);
                 var ajaxurl = 'ajax.php',
                     data = {
-                        'action': clickBtnValue
+                        'action': clickBtnValue,
+                        'id': buttonid
                     };
                 $.post(ajaxurl, data, function(response) {
                     // Response div goes here.
-                    //alert("action performed successfully");
+                    //alert(response);
                 });
             });
         });

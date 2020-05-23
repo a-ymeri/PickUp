@@ -8,8 +8,7 @@
 
 <head>
     
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+ 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="landing.css">
@@ -23,7 +22,7 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.
 ?>
     
     
-    <title>PICK UP</title>
+    <title>PickUP</title>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
