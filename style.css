@@ -1494,3 +1494,17 @@ psnZtvEzfyb17Jsx
 */
 
 /*# sourceMappingURL=style.css.map */
+
+#hashtags{
+    position: absolute;
+    right:10%;
+    font-size: 20px;
+}
+
+a:link, a:visited{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:#3489CD;
+}

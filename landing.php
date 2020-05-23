@@ -421,6 +421,7 @@ require_once('init.php');
                 </section>
             </div>
 
+            
             <script>
 
             function hashtag(text){
@@ -430,6 +431,16 @@ require_once('init.php');
 
             </script>
 
+            <span id="hashtags">
+                <span id = "hashtagTitle">Trending tags</span><br><hr>
+                <?php 
+                    $hashtags = get_hashtags();
+                    for($i = 0; $i<count($hashtags);$i++){
+                        echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
+                    }
+                ?>
+            </span>
+            
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 

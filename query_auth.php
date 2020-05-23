@@ -102,7 +102,21 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
 function get_hashtags(){
     $conn = db_connect();
     $sql = "SELECT hashtag_name,count(event_id) from hashtag group by hashtag_name order by count(event_id) desc limit 5;";
-    return $conn->query($sql);
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $hashtags = array();
+        for ($x = 0; $x < $result->num_rows; $x++) {
+            $row = $result->fetch_assoc();
+
+            $hashtag = $row["hashtag_name"];
+
+
+            //Push into array of event objects
+            array_push($hashtags, $hashtag);
+        }
+
+        return $hashtags;
+    }
 }
 
 
