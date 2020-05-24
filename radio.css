@@ -85,9 +85,6 @@ mark {
 }
 
 
-/* [type="checkbox"]:checked,
-[type="checkbox"]:not(:checked), */
-
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {
     position: absolute;

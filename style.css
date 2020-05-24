@@ -1437,9 +1437,9 @@ psnZtvEzfyb17Jsx
     text-align: left;
 }
 
-a:link,
-a:visited {
-    color: white;
+
+a:link, a:visited{
+    color:#3489CD;
     text-decoration: none;
 }
 

@@ -15,21 +15,22 @@ function initMap() {
 
     var pins = [];
     map = new google.maps.Map(document.getElementById('map'), options);
-
+    if(eventArray!=null){
     for (let  i = 0; i < eventArray.length; i++) {
         //console.log("test1");
         infoWindowArray[i]= new google.maps.InfoWindow({
-            content: eventArray[i].title+"<br>"+eventArray[i].lat
+            content: "<a href='event.php?str="+eventArray[i].event_id +"'>"+eventArray[i].title+"</a><br>"+eventArray[i].date+"<br>"
         });
         pins[i] = new google.maps.Marker({ position: { lat: Number(eventArray[i].lat), lng: Number(eventArray[i].lng) }, map: map });
-
+        
 
         pins[i].addListener('click',function(){
              infoWindowArray[i].open(map,pins[i]);
              console.log("boom");
          });
-    }
-
+         console.log(eventArray[i]);
+    }}
+    
     map.addListener('click', function (event) {
         //console.log("test2");
         if (marker != null)
