@@ -39,12 +39,7 @@
 
         </div>
 
-        <div class="search-bar">
-            <form method="post" action="search.php" class="search">
-                
-                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
-            </form>
-        </div>
+        
 
 
 

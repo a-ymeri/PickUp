@@ -190,7 +190,7 @@ form {
 } */
 
 .submit {
-    border-radius: 24px;
+   
     opacity: 0.2;
     color: black;
     font-size: 20px;
@@ -406,7 +406,7 @@ nav {
         border-bottom: 1px solid gray;
         font-size: 18px;
         margin-bottom: 16px;
-        border-radius: 25px;
+        
         font-family: 'Poppins';
         border-bottom: aliceblue;
         text-indent: 19px;
@@ -423,13 +423,13 @@ nav {
         border-bottom: 1px solid gray;
         font-size: 18px;
         margin-bottom: 16px;
-        border-radius: 25px;
+        
         font-family: 'Poppins';
         border-bottom: aliceblue;
         text-indent: 19px;
     }
     .submit {
-        border-radius: 24px;
+        
         opacity: 0.2;
         color: black;
         font-size: 20px;
@@ -485,7 +485,7 @@ nav {
         position: relative;
         height: 40px;
         background-color: #444444;
-        border-radius: 50%;
+        
         color: #ffffff;
         font-size: 20px;
         cursor: pointer;
@@ -595,7 +595,7 @@ nav {
     list-style: none;
     margin: 1%;
     height: 45px;
-    border-radius: 24px;
+    
     width: 600px;
     align-content: center;
     transform: translateX(0%);
@@ -652,7 +652,7 @@ nav {
     position: absolute;
     height: 40px;
     background-color: #444444;
-    border-radius: 50%;
+    
     color: #ffffff;
     font-size: 20px;
     cursor: pointer;
@@ -724,10 +724,10 @@ nav {
 
 #map {
     opacity: .7;
-    top: 90px;
+    top: 20px;
     height: 500px;
     z-index: 1;
-    margin-left: 250px;
+   
 }
 
 #map:hover {
@@ -756,7 +756,7 @@ nav {
 #about .about-link li a i {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    
     line-height: 50px;
     text-align: center;
     border: 1px solid #d6c6b2;
@@ -784,7 +784,7 @@ nav {
     margin-top: 90px;
     margin-left: 250px;
     ;
-    margin-right: auto;
+    margin-right: 200px;
     height: auto;
     background-color: black;
     color: white;
@@ -821,7 +821,7 @@ nav {
     position: relative;
     display: block;
     border-style: none;
-    border-radius: 5px;
+    
     background-color: rgb(52, 137, 207);
     color: white;
     width: 250px;
@@ -837,7 +837,7 @@ nav {
     position: relative;
     display: block;
     border-style: none;
-    border-radius: 5px;
+    
     background-color: rgb(52, 137, 207);
     color: white;
     width: 250px;
@@ -877,7 +877,7 @@ nav {
     height: auto;
     padding: 20px;
     margin: auto;
-    border-radius: 20px;
+    
     background-color: rgb(52, 137, 207);
     color: white;
     border: 0.7mm solid rgb(52, 137, 207);
@@ -888,7 +888,7 @@ nav {
     transform: translateY(-10%);
     transform: scale(1.1);
     transition: 430ms ease;
-    box-shadow: 0px 5px 15px rgb(209, 209, 209);
+   
 }
 
 #eventbutton input {
@@ -905,6 +905,8 @@ nav {
     background-color: transparent;
 }
 
+
+
 .postsection {
     align-content: center;
     width: 60%;
@@ -914,7 +916,7 @@ nav {
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
     padding: 20px;
-    border-radius: 10px;
+    
     /* border:1px solid #0077CC; */
     border-bottom: 1px solid gray;
     box-shadow: 5px 8px 8px rgba(0, 0, 0, .3);
@@ -960,7 +962,7 @@ nav {
     background-color: rgba(0, 0, 0, 1);
     color: white;
     padding: 20px;
-    border-radius: 10px;
+    
     border: 1px solid #0077CC;
     box-shadow: 5px 8px 8px rgba(0, 0, 0, .3);
     transition: all 3s;
@@ -1008,7 +1010,7 @@ textarea::-webkit-scrollbar {
 
 textarea::-webkit-scrollbar-thumb {
     background-color: #CCC;
-    border-radius: 2px
+   
 }
 
 .postsection div [type=submit] {
@@ -1019,7 +1021,7 @@ textarea::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
-    border-radius: 5px;
+    
     font-size: 16px;
 }
 
@@ -1031,18 +1033,22 @@ textarea::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
-    border-radius: 5px;
+    
     font-size: 16px;
 }
 
 #postsectionsubmit {
-    margin: 15px 10px auto auto;
+    bottom: -20px;
+    position: absolute;
+    margin:0 auto;
+    left:0;
+    right:0;
     border: none;
     background-color: #0077CC;
     color: #fff;
     font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
+   
+   
     font-size: 16px;
 }
 
@@ -1217,7 +1223,7 @@ button:focus {
     width: 64px;
     height: 64px;
     margin-right: 50%;
-    border-radius: 75%;
+    
     border: 6px solid #fff;
     border-color: #1b71f3 transparent #1b71f3 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
@@ -1265,7 +1271,7 @@ label {}
     background-repeat: no-repeat;
     background-size: var(--size) var(--size);
     border: var(--border) solid var(--color);
-    border-radius: var(--borderRadius);
+    
     color: #222;
     font-size: var(--size);
     padding: var(--margin) var(--margin) var(--margin) var(--marginLeft);
@@ -1281,7 +1287,7 @@ label {}
 
 .applybutton {
     background-color: transparent;
-    border-radius: 5px;
+    
     /* background-color: rgba(46, 144, 92, 0.92); */
     border: 1px solid green;
 }

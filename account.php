@@ -31,6 +31,7 @@ require_once('init.php');
     <link rel="stylesheet" href="personal-infostyle.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="radio.css">
+    <link rel="stylesheet" href="pagination.css">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -233,36 +234,172 @@ require_once('init.php');
         
             <br>
             <br>
-        <button class="btn1">Your Events</button>
-        <button class="btn2">Joined Events</button>
+            <div class="menu-buttons">
+                <button class="btn1" >Your Events</button>
+                <button class="btn2">Joined Events</button>
+                
+            </div>
+           
             
             <div class="your-events">
                 <p>These are your events</p>
             </div>
             <div class="joined-events">
-                <p>These are joined events</p>
+                
+                            <div id="events">
+
+
+                <?php
+                require_once('query_auth.php');
+                $event;
+                if(isset($_GET['str'])){
+                    $event = getHashtagEvents();
+                }else{
+                    $event = get_UserEvents();
+                }
+                if(empty($event)){
+                    echo '<br><br><p>No events to display :(</p>';
+                
+                }else{
+
+                for ($x = 0; $x < sizeof($event); $x++) {
+
+                    $id = $event[$x]->get_eventid();
+                    $dscp = $event[$x]->get_description();
+                    $pic = 'uploads/' . $id . '.jpg';
+
+                    echo
+                        '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
+                                <section class="postsection" id="ps-'.$id.'">
+                                <h1 style="color:#0077CC;">
+                                    ' . $event[$x]->get_title() . '
+                                </h1> 
+                                <p>' . $date = $event[$x]->get_date() . '</p>
+                                
+                                    Time: ' . $event[$x]->get_time() . '
+                                    <br>
+                                    Location: <span class="events"></span> 
+                                    
+                                    
+                                
+
+                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
+                                
+                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
+                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
+                                </section>
+                            </div>';
+                    
+                }
+                }
+
+
+                function choosePic($pic, $id)
+                {
+                    if (file_exists($pic)) {
+                        return '<img src="uploads/' . $id . '.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;">';
+                    } else
+                        return '<img src="images/eventpic.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;"
+                         >';
+                }
+
+
+                ?>
+            </div>
+                <div class="paginationList">
+                <ul class="pagination">
+                    <li>
+                        <a id="previous-page" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="viewMore" class="eventfeed">
+              
+                <section class="postsection1">
+                    <P> TESTL </P>
+                </section>
+            </div>
             </div>
 
         </div>
     </div>
+    
+    <script src="pagination.js"></script>
+    
+    <script>
+        var postsection = document.querySelectorAll(".postsection");
+
+    for (let i = 0; i < postsection.length; i++) {
+        postsection[i].addEventListener("click", function event(event) {
+            window.location.href = 'event.php?str=' + (postsection[i].id).substring(3);
+        });
+    }
+
+    var joinBookmarkButtons = document.querySelectorAll(".nonevent");
+    for (let i = 0; i < joinBookmarkButtons.length; i++) {
+        // button = joinBookmarkButtons[i];
+        // text = button.innerHTML;
+        joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+            event.stopPropagation();
+
+        });
+    }
+
+    function changeButton(button) {
+        if (button.innerHTML == "join") {
+            button.innerHTML = "joined!";
+
+
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+
+        } else if (button.innerHTML == "bookmark") {
+            button.innerHTML = "bookmarked!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+        } else if (button.innerHTML == "bookmarked!") {
+            button.innerHTML = "bookmark";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+        } else if (button.innerHTML == "joined!") {
+            button.innerHTML = "join";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+      }
+    }
+    
+    </script>
      
     <script>
         document.querySelector(".btn1").addEventListener("click", function(){
         document.querySelector(".your-events").style.display = "block";
         document.querySelector(".joined-events").style.display = "none";
+        document.querySelector(".btn1").style.backgroundColor = "rgb(43, 117, 186)";
+        document.querySelector(".btn2").style.backgroundColor = "black";
         });
         
         document.querySelector(".btn2").addEventListener("click", function(){
         document.querySelector(".joined-events").style.display = "block";
         document.querySelector(".your-events").style.display = "none";
+        document.querySelector(".btn2").style.backgroundColor = "rgb(43, 117, 186)";
+        document.querySelector(".btn1").style.backgroundColor = "black";
         });
     
     </script>
     
     
     
+    
+    
     <script>
-        function changeButton(button){
+        /*function changeButton(button){
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
@@ -273,7 +410,7 @@ require_once('init.php');
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
-        }
+        }*/
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
