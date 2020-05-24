@@ -640,7 +640,8 @@ require_once('init.php');
     </script>
 
     <script>
-
+    hasJoined =[];
+    hasBookmarked =[];
     hasJoined = <?php require_once('query_auth.php');
     //$joinedArray = array();
     $joinedArray = get_UserEvents();
@@ -649,17 +650,20 @@ require_once('init.php');
     //$bookmarkArray = array();
     $bookmarkArray = getBookmarks();
     echo json_encode($bookmarkArray);?>;
-
-    for (i = 0; i < hasJoined.length; i++) {
-        if (document.getElementById("j-" + hasJoined[i].event_id) != null)
-            changeButton(document.getElementById("j-" + hasJoined[i].event_id));
+    if(hasJoined!=null){
+        for (i = 0; i < hasJoined.length; i++) {
+            if (document.getElementById("j-" + hasJoined[i].event_id) != null)
+                changeButton(document.getElementById("j-" + hasJoined[i].event_id));
+        }
     }
     console.log(hasBookmarked.length);
+    if(hasBookmarked!=null){
     for (i = 0; i < hasBookmarked.length; i++) {
         //if(document.getElementById("b"+hasBookmarked[i])==null)
         if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
             changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
     }
+}
     </script>
 
 

@@ -86,22 +86,22 @@ function get_password($username)
 
 function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
 {
-    $conn = db_connect();
+    $username = $_SESSION['username'];
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
 
-    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng,description) 
-    VALUES(?,?,?,?,?,?,?,?,?);";
+    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng,description,creator) 
+    VALUES(?,?,?,?,?,?,?,?,?,?);";
     $stmt = $pdo->prepare($query);
     //the id is now creared on post-Event.php 
     // $randomNumber = rand(10, 200);
     // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
-    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp]);
+    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp, $username]);
     insert_hashtag($event_id,$dscp);
 }
 
 function get_hashtags(){
     $conn = db_connect();
-    $sql = "SELECT hashtag_name,count(event_id) from hashtag group by hashtag_name order by count(event_id) desc limit 5;";
+    $sql = "SELECT hashtag_name,count(event_id) from hashtag WHERE event_id IN (select event_id from events WHERE date_of_posting >= DATE_ADD(now(), INTERVAL -7 DAY)) group by hashtag_name order by count(event_id) desc limit 5;";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $hashtags = array();
@@ -286,7 +286,7 @@ function getEventByDay($day){
 function get_AllEvents()
 {
     $conn = db_connect();
-    $sql = "SELECT * from events ";
+    $sql = "SELECT * from events order by date_of_event ASC,time_of_event ASC";
     $result = $conn->query($sql);
 
     return makeEvent($result);
