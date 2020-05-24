@@ -245,6 +245,8 @@ if(!isset($_GET['user'])){
         </div>
     </div>" :  "<img class='circular--square' src='images/avatar.png' style='margin-top:2%;'>");
 
+    echo '<h1>'.$id.'</h1>';
+
 
     echo '            <br>
     <br>
@@ -264,7 +266,7 @@ if(!isset($_GET['user'])){
 </div>';
 
 
-    echo '<h1>'.$id.'</h1>';
+   
 
         }
 
