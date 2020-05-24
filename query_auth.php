@@ -86,17 +86,37 @@ function get_password($username)
 
 function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
 {
-    $conn = db_connect();
+    $username = $_SESSION['username'];
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
 
-    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng,description) 
-    VALUES(?,?,?,?,?,?,?,?,?);";
+    $query = "INSERT INTO events (event_id , date_of_event, time_of_event, subject,max_users,duration_of_event,lat,lng,description,creator) 
+    VALUES(?,?,?,?,?,?,?,?,?,?);";
     $stmt = $pdo->prepare($query);
     //the id is now creared on post-Event.php 
     // $randomNumber = rand(10, 200);
     // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
-    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp]);
+    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp, $username]);
     insert_hashtag($event_id,$dscp);
+}
+
+function get_hashtags(){
+    $conn = db_connect();
+    $sql = "SELECT hashtag_name,count(event_id) from hashtag WHERE event_id IN (select event_id from events WHERE date_of_posting >= DATE_ADD(now(), INTERVAL -7 DAY)) group by hashtag_name order by count(event_id) desc limit 5;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $hashtags = array();
+        for ($x = 0; $x < $result->num_rows; $x++) {
+            $row = $result->fetch_assoc();
+
+            $hashtag = $row["hashtag_name"];
+
+
+            //Push into array of event objects
+            array_push($hashtags, $hashtag);
+        }
+
+        return $hashtags;
+    }
 }
 
 
@@ -137,6 +157,22 @@ function get_UserEvents()
     $result = $conn->query($sql);
     return makeEvent($result);
     
+}
+
+function unJoinEvent($event_id){
+    //$event_id = $_GET["str"];
+    $conn = db_connect();
+    $username = $_SESSION['username'];
+    $sql = "DELETE FROM isin WHERE event_id = '$event_id' and user_id = '$username'";
+    $conn->query($sql);
+}
+
+function unBookMarkEvent($event_id){
+    //$event_id = $_GET["str"];
+    $conn = db_connect();
+    $username = $_SESSION['username'];
+    $sql = "DELETE FROM bookmarks WHERE event_id = '$event_id' and user_id = '$username'";
+    $conn->query($sql);
 }
 
 function joinEvent($event_id){
@@ -218,6 +254,22 @@ function getHashtagEvents(){
     return makeEvent($result);
 }
 
+function getEventByDay($day){
+
+    $conn = db_connect();
+    //$day = $_GET['day'];
+    //LEARTAAAAA: make sure that you only get the numbers form GET day, and not the whole thing!!!!!!!!!!!!!!!!!!!
+
+    $sql = "SELECT * FROM events WHERE WEEKDAY(date_of_event) IN (NOT NULL ";
+    foreach($day as $nr){
+        $sql .= ",$nr";
+    }
+    $sql .= ");";
+
+    $result = $conn -> query($sql);
+    return makeEvent($result);
+}
+
 
 
 // {
@@ -234,7 +286,7 @@ function getHashtagEvents(){
 function get_AllEvents()
 {
     $conn = db_connect();
-    $sql = "SELECT * from events ";
+    $sql = "SELECT * from events order by date_of_event ASC,time_of_event ASC";
     $result = $conn->query($sql);
 
     return makeEvent($result);
