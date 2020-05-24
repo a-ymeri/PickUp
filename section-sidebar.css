@@ -54,14 +54,14 @@ p{
 
 .sidebar-nav a li{
     padding:15px;
-    width: 200px;;
+    width: 220px;;
 }
 
 .sidebar-nav li:hover{
-    border-color: rgb(59, 134, 184);
-    box-shadow: 0 3px 7px 0  rgb(43, 125, 180);
+   
+    border: 0.5px solid rgb(59, 134, 184);
     /* box-shadow: 0 10px 20px 0 rgb(61, 60, 60); */
-    border-radius: 10px;
+    
     transform: translateY(-3px);
     opacity: 1;
     transition: ease-in-out .077s;
@@ -80,7 +80,7 @@ p{
     /* background-color: #ff3e30; */
     position: absolute;
     border-style: none;
-    border-radius:5px;
+    
     background-color:red;
     color:white;
     border:1px solid red;
@@ -97,7 +97,7 @@ p{
 .sslogout:hover{
     opacity:1;
     background-color:#000000;
-    box-shadow: 1px 5px 5px#ff3e30;
+    
     transform: perspective();
     transition:all .4s;
     color:#ff3e30;
@@ -111,7 +111,7 @@ input[type=text] {
     width: 230px;
     box-sizing: border-box;
     border: 2px solid #ccc;
-    border-radius: 30px;
+    
     font-size: 16px;
     background-color: transparent;
     background-position: 10px 10px; 

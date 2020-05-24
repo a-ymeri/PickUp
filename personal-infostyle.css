@@ -21,19 +21,23 @@ h1{
     display: none;
 }
 
+.menu-buttons{
+    text-align: center;
+}
 .btn1, .btn2{
     background-color: black;
     color: white;
     font-size: 20px;
     cursor: pointer;
-    border-radius: 10px;
+
     border-style: none;
     border-bottom-style:double;
     border-color: rgb(43, 117, 186);
     padding: 20px;
     padding-bottom: 10px;
     padding-left: 40px;
-    margin: 20px;
+    margin: 60px;
+    margin-top: -10px;
 }
 
 .btn1:hover, .btn2:hover{
