@@ -163,7 +163,6 @@
 
 
 
-
         <div class="parallax">
             <div class="textparallax">
 
@@ -217,8 +216,8 @@ function scrollFunction() {
                     echo json_encode($php_array); ?>;
     </script>
     
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"
+         async defer></script>
     <script src="index.js"></script>
 
 </body>

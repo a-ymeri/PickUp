@@ -159,6 +159,22 @@ function get_UserEvents()
     
 }
 
+function unJoinEvent($event_id){
+    //$event_id = $_GET["str"];
+    $conn = db_connect();
+    $username = $_SESSION['username'];
+    $sql = "DELETE FROM isin WHERE event_id = '$event_id' and user_id = '$username'";
+    $conn->query($sql);
+}
+
+function unBookMarkEvent($event_id){
+    //$event_id = $_GET["str"];
+    $conn = db_connect();
+    $username = $_SESSION['username'];
+    $sql = "DELETE FROM bookmarks WHERE event_id = '$event_id' and user_id = '$username'";
+    $conn->query($sql);
+}
+
 function joinEvent($event_id){
     $conn = db_connect();
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
