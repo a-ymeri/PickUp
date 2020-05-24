@@ -505,6 +505,11 @@ require_once('init.php');
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
                                 <section class="postsection" id="ps-' . $id . '">
+                                    <span><img class="circular--square" src="images/'.$creator.'.jpg" style="
+                                    width: 70px;
+                                    height:70px;
+                                    overflow: hidden;
+                                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;">'.$creator.'</span>
                                     <div class="whole" style="float:right">
                                     <button type = "button" class="three-dots"> ... </button>
                                         <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
