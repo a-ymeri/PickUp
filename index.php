@@ -22,7 +22,7 @@ echo (isset($_SESSION['username']) ?  "<script>window.location.replace('home');<
 ?>
     
     
-    <title>PICK UP</title>
+    <title>PickUP</title>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

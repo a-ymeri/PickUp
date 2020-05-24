@@ -38,6 +38,10 @@ if (isset($_POST['action'])) {
             bookmarkEvent($id);
             exit();
             break;
+        case "Delete":
+            deleteEvent($id);
+            exit();
+            break;
     }
 }
 

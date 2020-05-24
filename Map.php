@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
@@ -39,12 +39,7 @@
 
         </div>
 
-        <div class="search-bar">
-            <form method="post" action="search.php" class="search">
-                
-                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
-            </form>
-        </div>
+        
 
 
 
@@ -168,7 +163,6 @@
 
 
 
-
         <div class="parallax">
             <div class="textparallax">
 
@@ -222,9 +216,8 @@ function scrollFunction() {
                     echo json_encode($php_array); ?>;
     </script>
     
-    <script> getAddress();</script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"
+         async defer></script>
     <script src="index.js"></script>
 
 </body>

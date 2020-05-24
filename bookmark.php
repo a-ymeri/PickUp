@@ -322,11 +322,11 @@ require_once('init.php');
 
             <!-- <h1>Event Feed</h1> -->
             <br>
-            <div id="eventbutton" onclick="popEvent()">
-                <header style="font-size:large;">Host event</header>
+            
+                <header style="font-size:40px;">Bookmarks</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
 
-            </div>
+            
 
 
             <div class="eventfeed " id="id02">
@@ -440,7 +440,10 @@ require_once('init.php');
                 }else{
                     $event = getBookmarks();
                 }
-
+                if(empty($event)){
+                    echo '<br><br><p>No events to display :(</p>';
+                
+                }else{
                 for ($x = 0; $x < sizeof($event); $x++) {
 
                     $id = $event[$x]->get_eventid();
@@ -469,6 +472,7 @@ require_once('init.php');
                                 </section>
                             </div>';
                     
+                }
                 }
 
 
