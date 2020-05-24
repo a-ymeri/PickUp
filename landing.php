@@ -492,11 +492,26 @@ require_once('init.php');
 
                     $id = $event[$x]->get_eventid();
                     $dscp = $event[$x]->get_description();
+                    $creator = $event[$x]->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
+                    $text = "";
+                    if($creator==$_SESSION['username']){
+                        $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
+                    }
+                    $text=$text.'
+                    <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
+                    <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
 
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
                                 <section class="postsection" id="ps-' . $id . '">
+                                    <div class="whole" style="float:right">
+                                    <button type = "button" class="three-dots"> ... </button>
+                                        <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
+                                           
+                                            '.$text.'
+                                        </div>
+                                    </div>
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -556,7 +571,21 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
+        var coll = document.getElementsByClassName("three-dots");
+        var i;
 
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(event) { 
+            event.stopPropagation();
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+        });
+        }
         /*function changeButton(button){
 
             button.innerHTML = "Joined!";
@@ -841,18 +870,18 @@ require_once('init.php');
     $(document).ready(function() {
         $('.button1').click(function() {
             var clickBtnValue = $(this).html();
-            console.log(clickBtnValue);
+            //console.log(clickBtnValue);
             var buttonid = $(this).attr('id');
             buttonid = buttonid.substring(2);
-            console.log(buttonid);
+            //console.log(buttonid);
             var ajaxurl = 'ajax.php',
                 data = {
                     'action': clickBtnValue,
                     'id': buttonid
                 };
             $.post(ajaxurl, data, function(response) {
-                // Response div goes here.
-                //alert(response);
+                
+                //alert(data.id);
             });
         });
     });

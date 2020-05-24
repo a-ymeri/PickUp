@@ -137,8 +137,9 @@ function get_event()
             $lat = $row["lat"];
             $lng = $row["lng"];
             $description = $row["description"];
+            $creator = $row["creator"];
         }
-        $event = new Event($event_id, $date, $time, $title, $lat, $lng, $description);
+        $event = new Event($event_id, $date, $time, $title, $lat, $lng, $description,$creator);
         //echo $event->get_title();
         return $event;
     }
@@ -157,6 +158,19 @@ function get_UserEvents()
     $result = $conn->query($sql);
     return makeEvent($result);
     
+}
+
+function deleteEvent($event){
+    $conn = db_connect();
+    $sql = "DELETE FROM isin WHERE event_id = '$event'";
+    $conn->query($sql);
+    $sql = "DELETE FROM bookmarks WHERE event_id = '$event'";
+    $conn->query($sql);
+    $sql ="DELETE FROM hashtag WHERE event_id = '$event'";
+    $conn->query($sql);
+    $sql ="DELETE FROM events WHERE event_id = '$event'";
+    $conn->query($sql);
+      
 }
 
 function unJoinEvent($event_id){
@@ -365,8 +379,8 @@ function makeEvent($result){
             $lat = $row["lat"];
             $lng = $row["lng"];
             $description = $row["description"];
-
-            $event = new Event($event_id, $date, $time, $title, $lat,$lng,$description);
+            $creator = $row["creator"];
+            $event = new Event($event_id, $date, $time, $title, $lat,$lng,$description, $creator);
 
             //Push into array of event objects
             array_push($events, $event);
@@ -385,7 +399,7 @@ class Event
     // Properties
     public $event_id, $date, $time, $title, $lat, $lng, $description;
 
-    function __construct($event_id, $date, $time, $title, $lat, $lng, $description)
+    function __construct($event_id, $date, $time, $title, $lat, $lng, $description,$creator)
     {
         $this->event_id = $event_id;
         $this->date = $date;
@@ -394,6 +408,7 @@ class Event
         $this->lat = $lat;
         $this->lng = $lng;
         $this->description = $description;
+        $this->creator = $creator;
     }
     
 
@@ -432,5 +447,9 @@ class Event
     {
         return $this->description;
     }   
+    function get_creator()
+    {
+        return $this->creator;
+    } 
 }
 ?>
