@@ -214,7 +214,7 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-        <div class="section-sidebar">
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
@@ -230,11 +230,24 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                        <br>
 
+                      
+                    </a>
                     
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home"></i> 
+                            <i class="fas fa-home" ></i> 
                             <p>Home</p>
                         
                         </li>
@@ -266,26 +279,12 @@ require_once('init.php');
                         </li>
                     </a>
                     
-                    <a href="account.php">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
-                            <p class="prof">Profile</p>
-                        </li>
-                    </a>
+
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -306,6 +305,7 @@ require_once('init.php');
             <!--                    This is the end of the section sidebar-->
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
+
 
         <div class="indexfeed">
 

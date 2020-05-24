@@ -21,10 +21,14 @@ h1{
     display: none;
 }
 
+
+/* .btn1, .btn2{
+
 .menu-buttons{
     text-align: center;
 }
 .btn1, .btn2{
+
     background-color: black;
     color: white;
     font-size: 20px;
@@ -42,7 +46,7 @@ h1{
 
 .btn1:hover, .btn2:hover{
     background-color: rgb(43, 117, 186);
-}
+} */
 
 .menu-options li{
     display: inline-block;

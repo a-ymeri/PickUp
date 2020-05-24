@@ -231,8 +231,20 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
-
-
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                        <br>
+  
+                    </a>
+                   
                     <a href="landing.php">
                         <li>
                             <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
@@ -267,26 +279,11 @@ require_once('init.php');
                         </li>
                     </a>
 
-                    <a href="account.php">
-
-                        <li class="profile">
-                            <?php
-                            require_once('authenticate.php');
-                            $u = get_username();
-                            echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                            ?>
-                            <p class="prof">Profile</p>
-                        </li>
-                    </a>
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -323,6 +320,8 @@ require_once('init.php');
 
             <!-- <h1>Event Feed</h1> -->
             <br>
+
+            <a href="profile.php?user=mrestelica"><button>Memli</button></a>
             <div id="eventbutton" onclick="popEvent()">
                 <header style="font-size:large;">Host event</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
@@ -349,11 +348,7 @@ require_once('init.php');
                         <div class="event-body">
                             <label for="title">Event name: </label>
                             <input type="text" placeholder="Title" id="title" name="title" required>
-                            <!--<div class="date-picker"> </div>-->
 
-
-
-                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
                             <br>
                             <br>
@@ -396,22 +391,27 @@ require_once('init.php');
                                         <span data-hover="Other">Other</span>
                                     </label>
                                 </div>
+
+                              
                                 <div id="map" style="display:none"></div>
+                                <br>
+                                <br>
                                 <br>
 
 
                             </div>
                             <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
-                            <br>
-                            <br>
-                            <label for="picfile">Upload a picture:</label>
-                            <input type="file" name="picfile">
-                            <input type="submit" value="post" id="postsectionsubmit">
-                            <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
+                        <br>
+                        <br>
+                        <label for="picfile">Upload a picture:</label>
+                        <input type="file" name="picfile">
+                        <br>
+                        <br>
+                            <input type="submit" value="post" id="postsectionsubmit" >
+                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
-                            <!-- Submit form -->
 
 
 
@@ -495,8 +495,10 @@ require_once('init.php');
                     $pic = 'uploads/' . $id . '.jpg';
 
                     echo
-                        '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" id="ps-' . $id . '">
+
+                        '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
+                                <section class="postsection" id="ps-'.$id.'">
+
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -531,6 +533,8 @@ require_once('init.php');
 
                 ?>
             </div>
+
+            
 
             <div class="paginationList">
                 <ul class="pagination">
@@ -883,6 +887,47 @@ require_once('init.php');
         if (event.key === 'Enter') {
             submitFunction();
         }
+    }
+    </script>
+
+
+    <script>
+    
+    function getProfile(profile){
+
+
+
+        var url  = "profile.php?user="+profile;
+        //alert(url);
+        window.location.replace(url);
+        
+    }
+    
+    
+    </script>
+
+
+
+    <script>
+    
+    function getAnalytics(event){
+
+            // alert(event);
+
+
+
+            $.ajax({
+                type: 'post',
+                url: 'cookies.php',
+                data: {
+                    event:event
+                },
+                success: function(response) {
+                   console.log(response);
+                }
+            });
+    
+        
     }
     </script>
 
