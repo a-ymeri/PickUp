@@ -405,6 +405,11 @@ require_once('init.php');
                             <input type="text" name="eventDescription">
                             <br>
                             <br>
+                                <label for="quantity">Max. Users:</label>
+                                <input style="width:70px" type="number" id="max_users" name="max_users" min="0" max="100">
+
+                            <br>
+                            <br>
                             <label for="picfile">Upload a picture:</label>
                             <input type="file" name="picfile">
                             <input type="submit" value="post" id="postsectionsubmit">
@@ -464,9 +469,11 @@ require_once('init.php');
                 <hr>
                 <?php 
                     $hashtags = get_hashtags();
+                    if(is_array($hashtags)){
                     for($i = 0; $i<count($hashtags);$i++){
                         echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
                     }
+                }
                 ?>
             </span>
 
@@ -489,12 +496,20 @@ require_once('init.php');
                 }
                 if(is_array($event)){
                 for ($x = 0; $x < count($event); $x++) {
-
+                    
                     $id = $event[$x]->get_eventid();
+                    $max_users = $event[$x]->get_max_users();
                     $dscp = $event[$x]->get_description();
                     $creator = $event[$x]->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
                     $text = "";
+                    //TODO: Consider ajax if slow
+                    $users = getEventUsers($id);
+                    $numUsers = count($users);
+                    $numUserText = "Users: ".$numUsers;
+                    if($max_users > 0){
+                        $numUserText = $numUserText . "/" . $max_users;
+                    }
                     if($creator==$_SESSION['username']){
                         $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
                     }
@@ -511,6 +526,7 @@ require_once('init.php');
                                     overflow: hidden;
                                     border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;">'.$creator.'</span>
                                     <div class="whole" style="float:right">
+                                    <span id ="num-users"></span>
                                     <button type = "button" class="three-dots"> ... </button>
                                         <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
                                            
@@ -525,14 +541,12 @@ require_once('init.php');
                                     Time: ' . $event[$x]->get_time() . '
                                     <br>
                                     Location: <span class="events"></span> 
-                                    
-                                    
+                                   '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
-
-                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
-                                
-                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
-                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
+                                ';
+                                echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                                : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
+                                echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
                 }
@@ -684,6 +698,7 @@ require_once('init.php');
     //$bookmarkArray = array();
     $bookmarkArray = getBookmarks();
     echo json_encode($bookmarkArray);?>;
+    
     if(hasJoined!=null){
         for (i = 0; i < hasJoined.length; i++) {
             if (document.getElementById("j-" + hasJoined[i].event_id) != null)

@@ -1,10 +1,10 @@
 <?php 
 
     $title  = $_POST['title'];
-
+   
     //IDK why this is named budget, TODO: reconsider changing name
     $location= $_POST['budget'];
-
+    $max_users = $_POST['max_users'];
     $date = $_POST['date'];
 
     $time = $_POST['time'];
@@ -79,7 +79,7 @@
       }
 
   
-     insert_event($id,$datefinal,$time,$title,$lat,$lng,$description);
+     insert_event($id,$datefinal,$time,$title,$lat,$lng,$description,$max_users);
      
      
 
