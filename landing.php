@@ -36,7 +36,7 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="normalize.css">
@@ -179,8 +179,9 @@ require_once('init.php');
 
             <div class="container">
                 Signup
-                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-    <!--<br>
+   
+                <br>
+
 
                 <input type="text" placeholder="Enter first name" name="fname" required class="uname">
                 <input type="text" placeholder="Enter last name" name="lname" required class="uname">
@@ -270,14 +271,14 @@ require_once('init.php');
 
                         <li class="profile">
                             <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            require_once('authenticate.php');
+                            $u = get_username();
+                            echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
                             width: 70px;
                             height:70px;
                             overflow: hidden;
                             border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
+                            ?>
                             <p class="prof">Profile</p>
                         </li>
                     </a>
@@ -409,7 +410,9 @@ require_once('init.php');
                             <input type="submit" value="post" id="postsectionsubmit">
                             <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
+
                             <!-- Submit form -->
+
 
 
                             <!-- <div id="poster" style="display: none">
@@ -426,11 +429,34 @@ require_once('init.php');
             </div>
 
 
+            <div class="filterByDay">
+                <h4 id="imfree">I am free on:</h4> 
+                <hr>
+                <form name="dayFilter" method="GET">
+                    <input type="checkbox" name="day[]" value="0">Mondays<BR>
+                    <input type="checkbox" name="day[]" value="1">Tuesdays<BR>
+                    <input type="checkbox" name="day[]" value="2">Wednesdays<BR>
+                    <input type="checkbox" name="day[]" value="3">Thursdays<BR>
+                    <input type="checkbox" name="day[]" value="4">Fridays<BR>
+                    <input type="checkbox" name="day[]" value="5">Saturdays<BR>
+                    <input type="checkbox" name="day[]" value="6">Sundays<BR>
+
+                    <input type="submit" value="Filter feed">
+                </form>
+            </div> <br><br><br>
+
+            <!-- <?php
+                // require_once('query_auth.php');
+                // if(!empty($_GET['day'])){
+                //     $daysChosen = $_GET['day'];
+                // }
+            ?> -->
+            
             <script>
-            function hashtag(text) {
-                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
-                return repl;
-            }
+                function hashtag(text) {
+                    var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
+                    return repl;
+                }
             </script>
 
             <span id="hashtags">
@@ -451,9 +477,14 @@ require_once('init.php');
                 <?php
                 $event = array();
                 require_once('query_auth.php');
-                if(isset($_GET['str'])){
+                $event;
+                if(isset($_GET['day'])){
+                    $daysChosen = $_GET['day'];
+                    $event = getEventByDay($daysChosen);
+                }
+                else if(isset($_GET['str'])){
                     $event = getHashtagEvents();
-                }else{
+                } else {
                     $event = get_AllEvents();
                 }
                 if(is_array($event)){
@@ -465,7 +496,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" id="ps-'.$id.'">
+                                <section class="postsection" id="ps-' . $id . '">
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -484,7 +515,6 @@ require_once('init.php');
                                 <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
-                    
                 }
             }
 
@@ -513,9 +543,9 @@ require_once('init.php');
             </div>
 
             <div id="viewMore" class="eventfeed">
-                <!-- this is where we put info on events-->
+              
                 <section class="postsection1">
-                    <P> TEST </P>
+                    <P> TESTL </P>
                 </section>
             </div>
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
@@ -526,12 +556,15 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
-    /*function changeButton(button){
+
+        /*function changeButton(button){
+
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
         }*/
+
     function changeButton1(button) {
         button.innerHTML = "Bookmarked!";
         button.style.hover = "false";
@@ -555,11 +588,10 @@ require_once('init.php');
         });
     }
 
-
-
     function changeButton(button) {
         if (button.innerHTML == "join") {
             button.innerHTML = "joined!";
+
 
             button.style.hover = "false";
             button.style.disabled = "true";
@@ -580,7 +612,7 @@ require_once('init.php');
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor = "#3489CD";
-        }
+      }
     }
     </script>
 
@@ -608,6 +640,7 @@ require_once('init.php');
     </script>
 
     <script>
+
     hasJoined = <?php require_once('query_auth.php');
     //$joinedArray = array();
     $joinedArray = get_UserEvents();

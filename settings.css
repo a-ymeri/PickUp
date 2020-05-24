@@ -1,13 +1,12 @@
-.index-settings{
-    margin-top:90px;
-    margin-left: 250px; ;
+.index-settings {
+    margin-top: 90px;
+    margin-left: 250px;
+    ;
     margin-right: auto;
     background-color: black;
-    color:white;
+    color: white;
     font-family: 'Poppins';
 }
-
-
 
 .collapsible {
     background-color: rgb(43, 43, 43);

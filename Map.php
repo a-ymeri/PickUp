@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="normalize.css"> -->
