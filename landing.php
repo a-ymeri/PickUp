@@ -67,27 +67,29 @@ require_once('init.php');
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
-
+       
         <!--<ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
             
         </ul>-->
 
-
-        <div class="burger">
+    
+        <!-- <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
 
 
 
-        </div>
+        </div> -->
 
 
 
     </nav>
-
+    <span style="display:inline">
+            <p> test</p>
+        </span>
 
 
 
@@ -419,6 +421,28 @@ require_once('init.php');
                 </section>
             </div>
 
+            <div class="filterByDay">
+                <h3>I am free on:</h3> 
+                <form name="dayFilter" method="GET">
+                    <input type="checkbox" name="day[]" value="0">Mondays<BR>
+                    <input type="checkbox" name="day[]" value="1">Tuesdays<BR>
+                    <input type="checkbox" name="day[]" value="2">Wednesdays<BR>
+                    <input type="checkbox" name="day[]" value="3">Thursdays<BR>
+                    <input type="checkbox" name="day[]" value="4">Fridays<BR>
+                    <input type="checkbox" name="day[]" value="5">Saturdays<BR>
+                    <input type="checkbox" name="day[]" value="6">Sundays<BR><BR>
+
+                    <input type="submit" value="Filter feed">
+                </form>
+            </div>
+
+            <!-- <?php
+                // require_once('query_auth.php');
+                // if(!empty($_GET['day'])){
+                //     $daysChosen = $_GET['day'];
+                // }
+            ?> -->
+            
             <script>
                 function hashtag(text) {
                     var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
@@ -426,6 +450,16 @@ require_once('init.php');
                 }
             </script>
 
+            <span id="hashtags">
+                <span id = "hashtagTitle">Trending tags</span><br><hr>
+                <?php 
+                    $hashtags = get_hashtags();
+                    for($i = 0; $i<count($hashtags);$i++){
+                        echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
+                    }
+                ?>
+            </span>
+            
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
@@ -433,7 +467,11 @@ require_once('init.php');
                 <?php
                 require_once('query_auth.php');
                 $event;
-                if (isset($_GET['str'])) {
+                if(isset($_GET['day'])){
+                    $daysChosen = $_GET['day'];
+                    $event = getEventByDay($daysChosen);
+                }
+                else if(isset($_GET['str'])){
                     $event = getHashtagEvents();
                 } else {
                     $event = get_AllEvents();
@@ -527,8 +565,8 @@ require_once('init.php');
 
         var joinBookmarkButtons = document.querySelectorAll(".nonevent");
         for (let i = 0; i < joinBookmarkButtons.length; i++) {
-            button = joinBookmarkButtons[i];
-            text = button.innerHTML;
+            // button = joinBookmarkButtons[i];
+            // text = button.innerHTML;
             joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
                 event.stopPropagation();
 
@@ -547,7 +585,9 @@ require_once('init.php');
                 //button.attributes[0].value = "joined!"+substring(text,5);
             } else if (button.innerHTML == "bookmark") {
                 button.innerHTML = "bookmarked!";
-                //button.value = "joined"+substring(text,5);
+                button.style.hover = "false";
+                button.style.disabled = "true";
+                button.style.backgroundColor= "#2bba75";
             } else if (button.innerHTML == "bookmarked!") {
                 button.innerHTML = "bookmark";
                 // button.value = "joined!"+substring(text,7);

@@ -99,6 +99,26 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
     insert_hashtag($event_id,$dscp);
 }
 
+function get_hashtags(){
+    $conn = db_connect();
+    $sql = "SELECT hashtag_name,count(event_id) from hashtag group by hashtag_name order by count(event_id) desc limit 5;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $hashtags = array();
+        for ($x = 0; $x < $result->num_rows; $x++) {
+            $row = $result->fetch_assoc();
+
+            $hashtag = $row["hashtag_name"];
+
+
+            //Push into array of event objects
+            array_push($hashtags, $hashtag);
+        }
+
+        return $hashtags;
+    }
+}
+
 
 function get_event()
 {
@@ -215,6 +235,22 @@ function getHashtagEvents(){
             (select event_id from hashtag where hashtag_name like '$hashtag');";
 
     $result = $conn->query($sql);
+    return makeEvent($result);
+}
+
+function getEventByDay($day){
+
+    $conn = db_connect();
+    //$day = $_GET['day'];
+    //LEARTAAAAA: make sure that you only get the numbers form GET day, and not the whole thing!!!!!!!!!!!!!!!!!!!
+
+    $sql = "SELECT * FROM events WHERE WEEKDAY(date_of_event) IN (NOT NULL ";
+    foreach($day as $nr){
+        $sql .= ",$nr";
+    }
+    $sql .= ");";
+
+    $result = $conn -> query($sql);
     return makeEvent($result);
 }
 
