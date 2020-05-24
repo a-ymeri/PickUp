@@ -421,6 +421,27 @@ require_once('init.php');
                 </section>
             </div>
 
+            <div class="filterByDay">
+                <h3>I am free on:</h3> 
+                <form name="dayFilter" method="GET">
+                    <input type="checkbox" name="day[]" value="0">Mondays<BR>
+                    <input type="checkbox" name="day[]" value="1">Tuesdays<BR>
+                    <input type="checkbox" name="day[]" value="2">Wednesdays<BR>
+                    <input type="checkbox" name="day[]" value="3">Thursdays<BR>
+                    <input type="checkbox" name="day[]" value="4">Fridays<BR>
+                    <input type="checkbox" name="day[]" value="5">Saturdays<BR>
+                    <input type="checkbox" name="day[]" value="6">Sundays<BR><BR>
+
+                    <input type="submit" value="Filter feed">
+                </form>
+            </div>
+
+            <!-- <?php
+                // require_once('query_auth.php');
+                // if(!empty($_GET['day'])){
+                //     $daysChosen = $_GET['day'];
+                // }
+            ?> -->
             
             <script>
 
@@ -448,7 +469,11 @@ require_once('init.php');
                 <?php
                 require_once('query_auth.php');
                 $event;
-                if(isset($_GET['str'])){
+                if(isset($_GET['day'])){
+                    $daysChosen = $_GET['day'];
+                    $event = getEventByDay($daysChosen);
+                }
+                else if(isset($_GET['str'])){
                     $event = getHashtagEvents();
                 }else{
                     $event = get_AllEvents();
