@@ -40,7 +40,7 @@ img{
 
 
 
-
+/* 
 button {
     width: 180px;
     height: 45px;
@@ -72,7 +72,7 @@ button {
     /* color: #fff; */
     transform: translateY(-7px);
     opacity:1;
-  }
+  } */
 
   .privacy{
       position:absolute ;
@@ -172,5 +172,48 @@ button {
     color:white;
     transform: perspective();
     transition:all .4s;
+}
+
+
+
+.your-events{
+    margin-left:27%;
+}
+
+
+.joined-events{
+    margin-left:58%;
+}
+
+
+
+.btn1, .btn2{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-style: none;
+    border-bottom-style:double;
+    border-color: rgb(43, 117, 186);
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    margin: 20px;
+    
+}
+
+
+.btn1{
+    margin-left:28%;
+}
+
+
+.btn2{
+    margin-left:20%;
+}
+
+.btn1:hover, .btn2:hover{
+    background-color: rgb(43, 117, 186);
 }
 

@@ -61,12 +61,7 @@ require_once('init.php');
 
         </div>
 
-        <div class="search-bar">
-            <i class="fa fa-search"></i>
-            <form method="post" action="search.php">
-                <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
-            </form>
-        </div>
+        
 
         <ul class="nav-links">
             <li> <a href="#"> Feed</a></li>

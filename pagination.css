@@ -3,6 +3,7 @@
 .paginationList {
     display: table;
     margin: 0 auto;
+    text-align: center;
 }
 
 ul.pagination {
@@ -12,6 +13,6 @@ ul.pagination {
 }
 
 ul.pagination li {
-    display: inline;
+    display: inline !important;
     margin: 4px;
 }

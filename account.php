@@ -29,8 +29,10 @@ require_once('init.php');
     <!-- <link rel="stylesheet" href="normalize.css"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="personal-infostyle.css">
+    <link rel="stylesheet" href="accountstyle.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="radio.css">
+    <link rel="stylesheet" href="pagination.css">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -120,10 +122,13 @@ require_once('init.php');
         
         
         
-        <div class="section-sidebar">
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
+            
+
+           
 
 
             <section class="stealthy-scroll-container">
@@ -133,12 +138,25 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof" style="color: rgb(82, 227, 77);">Profile</p>
+                        </li>
+                        <br>
 
+                      
+                    </a>
                     
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home"></i> 
-                            <p>Home</p>
+                            <i class="fas fa-home" ></i> 
+                            <p >Home</p>
                         
                         </li>
                     
@@ -159,7 +177,9 @@ require_once('init.php');
 
                         </li>
                     </a>
+
                     <a href="Map.php">
+
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
@@ -167,26 +187,12 @@ require_once('init.php');
                         </li>
                     </a>
                     
-                    <a href="account.php">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
-                            <p class="prof" style="color: rgb(82, 227, 77);">Profile</p>
-                        </li>
-                    </a>
+
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -207,6 +213,7 @@ require_once('init.php');
             <!--                    This is the end of the section sidebar-->
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
+
 
         <div class="index-account">
 
@@ -233,36 +240,174 @@ require_once('init.php');
         
             <br>
             <br>
-        <button class="btn1">Your Events</button>
-        <button class="btn2">Joined Events</button>
+            <div class="menu-buttons">
+                <button class="btn1" >Your Events</button>
+                <button class="btn2">Joined Events</button>
+                
+            </div>
+           
             
             <div class="your-events">
                 <p>These are your events</p>
             </div>
+
+            
             <div class="joined-events">
-                <p>These are joined events</p>
+                
+                            <div id="events">
+
+
+                <?php
+                require_once('query_auth.php');
+                $event;
+                if(isset($_GET['str'])){
+                    $event = getHashtagEvents();
+                }else{
+                    $event = get_UserEvents();
+                }
+                if(empty($event)){
+                    echo '<br><br><p>No events to display :(</p>';
+                
+                }else{
+
+                for ($x = 0; $x < sizeof($event); $x++) {
+
+                    $id = $event[$x]->get_eventid();
+                    $dscp = $event[$x]->get_description();
+                    $pic = 'uploads/' . $id . '.jpg';
+
+                    echo
+                        '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
+                                <section class="postsection" id="ps-'.$id.'">
+                                <h1 style="color:#0077CC;">
+                                    ' . $event[$x]->get_title() . '
+                                </h1> 
+                                <p>' . $date = $event[$x]->get_date() . '</p>
+                                
+                                    Time: ' . $event[$x]->get_time() . '
+                                    <br>
+                                    Location: <span class="events"></span> 
+                                    
+                                    
+                                
+
+                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
+                                
+                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
+                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
+                                </section>
+                            </div>';
+                    
+                }
+                }
+
+
+                function choosePic($pic, $id)
+                {
+                    if (file_exists($pic)) {
+                        return '<img src="uploads/' . $id . '.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;">';
+                    } else
+                        return '<img src="images/eventpic.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;"
+                         >';
+                }
+
+
+                ?>
+            </div>
+                <div class="paginationList">
+                <ul class="pagination">
+                    <li>
+                        <a id="previous-page" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="viewMore" class="eventfeed">
+              
+                <section class="postsection1">
+                    <P> TESTL </P>
+                </section>
+            </div>
             </div>
 
         </div>
     </div>
+    
+    <script src="pagination.js"></script>
+    
+    <script>
+        var postsection = document.querySelectorAll(".postsection");
+
+    for (let i = 0; i < postsection.length; i++) {
+        postsection[i].addEventListener("click", function event(event) {
+            window.location.href = 'event.php?str=' + (postsection[i].id).substring(3);
+        });
+    }
+
+    var joinBookmarkButtons = document.querySelectorAll(".nonevent");
+    for (let i = 0; i < joinBookmarkButtons.length; i++) {
+        // button = joinBookmarkButtons[i];
+        // text = button.innerHTML;
+        joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+            event.stopPropagation();
+
+        });
+    }
+
+    function changeButton(button) {
+        if (button.innerHTML == "join") {
+            button.innerHTML = "joined!";
+
+
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+
+        } else if (button.innerHTML == "bookmark") {
+            button.innerHTML = "bookmarked!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+        } else if (button.innerHTML == "bookmarked!") {
+            button.innerHTML = "bookmark";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+        } else if (button.innerHTML == "joined!") {
+            button.innerHTML = "join";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+      }
+    }
+    
+    </script>
      
     <script>
         document.querySelector(".btn1").addEventListener("click", function(){
         document.querySelector(".your-events").style.display = "block";
         document.querySelector(".joined-events").style.display = "none";
+        document.querySelector(".btn1").style.backgroundColor = "rgb(43, 117, 186)";
+        document.querySelector(".btn2").style.backgroundColor = "black";
         });
         
         document.querySelector(".btn2").addEventListener("click", function(){
         document.querySelector(".joined-events").style.display = "block";
         document.querySelector(".your-events").style.display = "none";
+        document.querySelector(".btn2").style.backgroundColor = "rgb(43, 117, 186)";
+        document.querySelector(".btn1").style.backgroundColor = "black";
         });
     
     </script>
     
     
     
+    
+    
     <script>
-        function changeButton(button){
+        /*function changeButton(button){
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
@@ -273,7 +418,7 @@ require_once('init.php');
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
-        }
+        }*/
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
@@ -502,6 +647,89 @@ require_once('init.php');
             }
         }
     </script>
+
+
+<script>
+        function read_only() {
+            var x = document.getElementsByTagName("h5")[0];
+            x.outerHTML = "<h6 style='color:#f44336;'>You cannot change the username</h6>"
+        }
+    </script>
+
+
+
+
+    <script>document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value; 
+    
+});  </script>
+
+<<script>
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+             $('#imagePreview').hide();
+             $('#imagePreview').fadeIn(650);
+
+             var $data = { 'title': 'Sample Photo Title', 'file': reader.result };
+        $.ajax({
+            type: 'POST',
+            url: 'upload-pic.php',
+            data: $data,
+            success: function(response) {
+                
+            },
+            error: function(response) {
+                alert(response);
+                
+            },
+        });
+        }
+        reader.readAsDataURL(input.files[0]);
+    //     reader.onload = function(){
+    //     var $data = { 'title': 'Sample Photo Title', 'file': reader.result };
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'test.php',
+    //         data: $data,
+    //         success: function(response) {
+    //             window.location.reload(true);
+    //         },
+    //         error: function(response) {
+    //             alert(response);
+                
+    //         },
+    //     });
+    // };
+    reader.readAsDataURL($("#file-to-upload").get(0).files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+</script>
+
+
+
+
 
 
 

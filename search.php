@@ -15,7 +15,9 @@ require_once('init.php');
     <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="loginstyle.css">
+
+    <!-- <link rel="stylesheet" href="loginstyle.css"> -->
+
     <link rel="stylesheet" href="date-picker.css">
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -130,10 +132,13 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-<div class="section-sidebar">
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
+            
+
+           
 
 
             <section class="stealthy-scroll-container">
@@ -143,12 +148,25 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                        <br>
 
+                      
+                    </a>
                     
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home"></i> 
-                            <p>Home</p>
+                            <i class="fas fa-home" ></i> 
+                            <p >Home</p>
                         
                         </li>
                     
@@ -169,34 +187,22 @@ require_once('init.php');
 
                         </li>
                     </a>
+
                     <a href="Map.php">
+
                         <li>
-                            <i class="fas fa-map-marker-alt" ></i>
-                            <p >Map</p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Map</p>
                         
                         </li>
                     </a>
                     
-                    <a href="account.php">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
-                            <p class="prof" >Profile</p>
-                        </li>
-                    </a>
+
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -221,12 +227,7 @@ require_once('init.php');
         <div class="indexfeed">
 
 
-        <div class="search-bar">
-  <i class="fa fa-search"></i>
-  <form method="post" action ="search.php">
-  <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
-  </form>
-</div>
+
 
 <!-- <div id="map"></div> -->
 
@@ -292,18 +293,23 @@ require_once('init.php');
 
         <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
 
+
+        <h1 >Search Results</h1>
+
         <?php
                     require_once('query_auth.php');
-                    $event = search($_POST['searchbar']);
+                   
 
-                    if(!empty($event)){
+                    if(!empty( $event = search($_POST['searchbar']))){
+
+
 
                     for ($x = 0; $x <sizeof($event) ;$x++) {  
                        $date1 =  $event[$x]-> get_date();
 
                          
                             echo  
-                            '  <h1 >Search Results</h1>
+                            '  
                             <div class="eventtest'.$x.'" id="">
                              <section class="postsection">
                           
