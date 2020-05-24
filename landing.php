@@ -422,7 +422,8 @@ require_once('init.php');
             </div>
 
             <div class="filterByDay">
-                <h3>I am free on:</h3> 
+                <h4 id="imfree">I am free on:</h4> 
+                <hr>
                 <form name="dayFilter" method="GET">
                     <input type="checkbox" name="day[]" value="0">Mondays<BR>
                     <input type="checkbox" name="day[]" value="1">Tuesdays<BR>
@@ -430,11 +431,11 @@ require_once('init.php');
                     <input type="checkbox" name="day[]" value="3">Thursdays<BR>
                     <input type="checkbox" name="day[]" value="4">Fridays<BR>
                     <input type="checkbox" name="day[]" value="5">Saturdays<BR>
-                    <input type="checkbox" name="day[]" value="6">Sundays<BR><BR>
+                    <input type="checkbox" name="day[]" value="6">Sundays<BR>
 
                     <input type="submit" value="Filter feed">
                 </form>
-            </div>
+            </div> <br><br><br>
 
             <!-- <?php
                 // require_once('query_auth.php');

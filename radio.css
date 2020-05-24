@@ -84,8 +84,10 @@ mark {
     background-color: var(--white);
 }
 
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked),
+
+/* [type="checkbox"]:checked,
+[type="checkbox"]:not(:checked), */
+
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {
     position: absolute;
