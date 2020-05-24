@@ -17,7 +17,11 @@ require_once('init.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> 
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -26,11 +30,7 @@ require_once('init.php');
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
 
 
-    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-
-
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
-
+  
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -39,14 +39,15 @@ require_once('init.php');
     <title>COURSEWORK</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="normalize.css"> -->
+     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="post-Event.css">
     <link rel="stylesheet" href="pagination.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
 
 
@@ -63,18 +64,18 @@ require_once('init.php');
 
         <div class="search-bar">
             <form method="post" action="search.php" class="search">
-                
+
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
-       
+
         <!--<ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
             
         </ul>-->
 
-    
+
         <!-- <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -87,9 +88,6 @@ require_once('init.php');
 
 
     </nav>
-    <span style="display:inline">
-            <p> test</p>
-        </span>
 
 
 
@@ -170,7 +168,7 @@ require_once('init.php');
 
 
 
-   <!-- <div id="signup" class="signupclass">
+    <!-- <div id="signup" class="signupclass">
 
         <form class="modal-content animate" action="signup.php" method="post">
 
@@ -182,7 +180,7 @@ require_once('init.php');
             <div class="container">
                 Signup
                 <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                <!--<br>
+    <!--<br>
 
                 <input type="text" placeholder="Enter first name" name="fname" required class="uname">
                 <input type="text" placeholder="Enter last name" name="lname" required class="uname">
@@ -220,9 +218,9 @@ require_once('init.php');
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            
 
-           
+
+
 
 
             <section class="stealthy-scroll-container">
@@ -233,14 +231,14 @@ require_once('init.php');
                 <ul class="sidebar-nav">
 
 
-                    
+
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i> 
+                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
                             <p style="color: rgb(82, 227, 77);">Home</p>
-                        
+
                         </li>
-                    
+
                     </a>
 
                     <a href="#">
@@ -264,12 +262,12 @@ require_once('init.php');
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
-                        
+
                         </li>
                     </a>
-                    
+
                     <a href="account.php">
-                        
+
                         <li class="profile">
                             <?php
                         require_once('authenticate.php');
@@ -292,9 +290,9 @@ require_once('init.php');
                         </li>
 
                     </a>
-                    
 
-                    
+
+
 
                 </ul>
                 <?php
@@ -335,8 +333,10 @@ require_once('init.php');
                 <!-- used to be postsection1, changed bc the css is causing me problems -->
                 <section class="postsection1">
 
-                    <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
-                    <form action="post-Event.php" method="POST" enctype="multipart/form-data" class="event-content animate" autocomplete="off">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close1"
+                        title="Close Modal">&times;</span>
+                    <form action="post-Event.php" method="POST" enctype="multipart/form-data"
+                        class="event-content animate" autocomplete="off">
 
 
 
@@ -348,21 +348,21 @@ require_once('init.php');
                         <div class="event-body">
                             <label for="title">Event name: </label>
                             <input type="text" placeholder="Title" id="title" name="title" required>
-                        <!--<div class="date-picker"> </div>-->
-                       
-                      
-                        
-                        <!-- <input class="bridgePHP" value='MEMLI'></input> -->
+                            <!--<div class="date-picker"> </div>-->
+
+
+
+                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
                             <br>
                             <br>
-                            
+
                             <label for="date">Select a date: </label>
                             <input type="text" id="date1" name="date" value="" style="width:50%;">
                             <br>
                             <br>
                             <label for="time" name="time">Start Time:</label>
-                            <input type="time" name="time" id="time" >
+                            <input type="time" name="time" id="time">
                             <br>
                             <br>
                             <br>
@@ -370,23 +370,27 @@ require_once('init.php');
 
                             <div class="venueOptions">
 
-                                <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Sofou Building" onclick="removeDiv()" checked>
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-1"
+                                    value="Sofou Building" onclick="removeDiv()" checked>
                                 <label class="for-checkbox-budget" for="budget-1">
                                     <span data-hover="Sofou Building">Sofou Building</span>
                                 </label>
 
-                                <input class="checkbox-budget" type="radio" name="budget" id="budget-2" value="Warehouse" onclick="removeDiv()">
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-2"
+                                    value="Warehouse" onclick="removeDiv()">
                                 <label class="for-checkbox-budget" for="budget-2">
                                     <span data-hover="Warehouse">Warehouse</span>
                                 </label>
 
-                                <input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA" onclick="removeDiv()">
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA"
+                                    onclick="removeDiv()">
                                 <label class="for-checkbox-budget" for="budget-3">
                                     <span data-hover="YMCA">YMCA</span>
                                 </label>
 
                                 <div id="budget-4id">
-                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()">
+                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4"
+                                        value="Other" onclick="showDiv()">
                                     <label class="for-checkbox-budget" for="budget-4">
                                         <span data-hover="Other">Other</span>
                                     </label>
@@ -396,19 +400,19 @@ require_once('init.php');
 
 
                             </div>
-                        <label for="eventDescription">Event Description</label>
+                            <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
-                        <br>
-                        <br>
-                        <label for="picfile">Upload a picture:</label>
-                        <input type="file" name="picfile">
-                            <input type="submit" value="post" id="postsectionsubmit" >
-                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
+                            <br>
+                            <br>
+                            <label for="picfile">Upload a picture:</label>
+                            <input type="file" name="picfile">
+                            <input type="submit" value="post" id="postsectionsubmit">
+                            <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
-                        <!-- Submit form -->
-                     
+                            <!-- Submit form -->
 
-                        <!-- <div id="poster" style="display: none">
+
+                            <!-- <div id="poster" style="display: none">
                             <input type="file" name="picfile">
                         </div> -->
 
@@ -421,18 +425,17 @@ require_once('init.php');
                 </section>
             </div>
 
-            
-            <script>
 
-            function hashtag(text){
+            <script>
+            function hashtag(text) {
                 var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
                 return repl;
             }
-
             </script>
 
             <span id="hashtags">
-                <span id = "hashtagTitle">Trending tags</span><br><hr>
+                <span id="hashtagTitle">Trending tags</span><br>
+                <hr>
                 <?php 
                     $hashtags = get_hashtags();
                     for($i = 0; $i<count($hashtags);$i++){
@@ -440,21 +443,21 @@ require_once('init.php');
                     }
                 ?>
             </span>
-            
+
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
 
 
                 <?php
+                $event = array();
                 require_once('query_auth.php');
-                $event;
                 if(isset($_GET['str'])){
                     $event = getHashtagEvents();
                 }else{
                     $event = get_AllEvents();
                 }
-
-                for ($x = 0; $x < sizeof($event); $x++) {
+                if(is_array($event)){
+                for ($x = 0; $x < count($event); $x++) {
 
                     $id = $event[$x]->get_eventid();
                     $dscp = $event[$x]->get_description();
@@ -483,6 +486,7 @@ require_once('init.php');
                             </div>';
                     
                 }
+            }
 
 
                 function choosePic($pic, $id)
@@ -522,107 +526,107 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
-
-        /*function changeButton(button){
+    /*function changeButton(button){
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
         }*/
-        function changeButton1(button){
-            button.innerHTML = "Bookmarked!";
+    function changeButton1(button) {
+        button.innerHTML = "Bookmarked!";
+        button.style.hover = "false";
+        button.style.disabled = "true";
+    }
+    var postsection = document.querySelectorAll(".postsection");
+
+    for (let i = 0; i < postsection.length; i++) {
+        postsection[i].addEventListener("click", function event(event) {
+            window.location.href = 'event.php?str=' + (postsection[i].id).substring(3);
+        });
+    }
+
+    var joinBookmarkButtons = document.querySelectorAll(".nonevent");
+    for (let i = 0; i < joinBookmarkButtons.length; i++) {
+        // button = joinBookmarkButtons[i];
+        // text = button.innerHTML;
+        joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+            event.stopPropagation();
+
+        });
+    }
+
+
+
+    function changeButton(button) {
+        if (button.innerHTML == "join") {
+            button.innerHTML = "joined!";
+
             button.style.hover = "false";
             button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+
+        } else if (button.innerHTML == "bookmark") {
+            button.innerHTML = "bookmarked!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+        } else if (button.innerHTML == "bookmarked!") {
+            button.innerHTML = "bookmark";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+        } else if (button.innerHTML == "joined!") {
+            button.innerHTML = "join";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
         }
-        var postsection = document.querySelectorAll(".postsection");
-
-        for (let i = 0; i < postsection.length; i++) {
-            postsection[i].addEventListener("click", function event(event) {
-                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
-            });
-        }
-
-        var joinBookmarkButtons = document.querySelectorAll(".nonevent");
-        for (let i = 0; i < joinBookmarkButtons.length; i++) {
-            // button = joinBookmarkButtons[i];
-            // text = button.innerHTML;
-            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
-                event.stopPropagation();
-                
-            });
-        }
-
-
-
-        function changeButton(button) {
-            if (button.innerHTML == "join") {
-                button.innerHTML = "joined!";
-                
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#2bba75";
-                
-            } else if (button.innerHTML == "bookmark") {
-                button.innerHTML = "bookmarked!";
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#2bba75";
-            } else if (button.innerHTML == "bookmarked!") {
-                button.innerHTML = "bookmark";
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#3489CD";
-            } else if (button.innerHTML == "joined!") {
-                button.innerHTML = "join";
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#3489CD";
-            } 
-        }
+    }
     </script>
 
 
     <script src="Map.js"></script>
     <script>
-        //$event is a variable used earlier to store the list of all events from the DB
-        //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
-        eventArray = <?php require_once('query_auth.php');
+    //$event is a variable used earlier to store the list of all events from the DB
+    //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
+    eventArray = <?php require_once('query_auth.php');
 
-                        $php_array = array();
-                        $php_array = $event;
-                        echo json_encode($php_array); ?>;
+    $php_array = array();
+    $php_array = $event;
+    echo json_encode($php_array);?> ;
 
-        for (let i = 0; i < eventArray.length; i++) {
-            //Geolocate each event using jquery and geolocation api.
-            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + eventArray[i].lat + ',' + eventArray[i].lng +
-                '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
-                function(data) {
-                    //use the json result and take only the address from it. Change the event spans to have the addresses.
-                    document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
-                });
-        }
+    for (let i = 0; i < eventArray.length; i++) {
+        //Geolocate each event using jquery and geolocation api.
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + eventArray[i].lat + ',' + eventArray[i]
+            .lng +
+            '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
+            function(data) {
+                //use the json result and take only the address from it. Change the event spans to have the addresses.
+                document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
+            });
+    }
     </script>
 
     <script>
-        hasJoined = <?php require_once('query_auth.php');
-                    //$joinedArray = array();
-                    $joinedArray = get_UserEvents();
-                    echo json_encode($joinedArray); ?>;
-        hasBookmarked = <?php require_once('query_auth.php');
-                        //$bookmarkArray = array();
-                        $bookmarkArray = getBookmarks();
-                        echo json_encode($bookmarkArray); ?>;
+    hasJoined = <?php require_once('query_auth.php');
+    //$joinedArray = array();
+    $joinedArray = get_UserEvents();
+    echo json_encode($joinedArray);?> ;
+    hasBookmarked = <?php require_once('query_auth.php');
+    //$bookmarkArray = array();
+    $bookmarkArray = getBookmarks();
+    echo json_encode($bookmarkArray);?>;
 
-        for (i = 0; i < hasJoined.length; i++) {
-            if (document.getElementById("j-"+hasJoined[i].event_id) != null)
-                changeButton(document.getElementById("j-"+hasJoined[i].event_id));
-        }
-        console.log(hasBookmarked.length);
-        for (i = 0; i < hasBookmarked.length; i++) {
-            //if(document.getElementById("b"+hasBookmarked[i])==null)
-            if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
-                changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
-        }
+    for (i = 0; i < hasJoined.length; i++) {
+        if (document.getElementById("j-" + hasJoined[i].event_id) != null)
+            changeButton(document.getElementById("j-" + hasJoined[i].event_id));
+    }
+    console.log(hasBookmarked.length);
+    for (i = 0; i < hasBookmarked.length; i++) {
+        //if(document.getElementById("b"+hasBookmarked[i])==null)
+        if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
+            changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
+    }
     </script>
 
 
@@ -631,16 +635,16 @@ require_once('init.php');
 
 
     <script>
-        function showDiv() {
-            //Toggle the map option when selecting event location
-            document.getElementById('map').style.display = "block";
-            document.getElementById('budget-4id').style.display = "none";
-        }
+    function showDiv() {
+        //Toggle the map option when selecting event location
+        document.getElementById('map').style.display = "block";
+        document.getElementById('budget-4id').style.display = "none";
+    }
 
-        function removeDiv() {
-            document.getElementById('map').style.display = "none";
-            document.getElementById('budget-4id').style.display = "block";
-        }
+    function removeDiv() {
+        document.getElementById('map').style.display = "none";
+        document.getElementById('budget-4id').style.display = "block";
+    }
     </script>
 
 
@@ -650,57 +654,59 @@ require_once('init.php');
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            //checks if passwords are the same
-            $("#signupButton1").click(function() {
-                var passalert = document.getElementById('alert');
-                var password = $("#psw1").val();
-                var confirmPassword = $("#psw2").val();
-                if (password != confirmPassword) {
-                    swal({
-                        title: "Passwords do not match",
-                        type: "error",
-                        showConfirmButton: true,
-                        showCancelButton: false,
-                        customClass: "Custom_Cancel",
-                        confirmButtonColor: "#DD6B55"
-                    });
-
-                    return false;
-                }
+    $(function() {
+        //checks if passwords are the same
+        $("#signupButton1").click(function() {
+            var passalert = document.getElementById('alert');
+            var password = $("#psw1").val();
+            var confirmPassword = $("#psw2").val();
+            if (password != confirmPassword) {
                 swal({
-                    title: "Success",
-                    type: "success",
-                    showConfirmButton: false,
-                    customClass: "success",
-                    timer: 1500
-
+                    title: "Passwords do not match",
+                    type: "error",
+                    showConfirmButton: true,
+                    showCancelButton: false,
+                    customClass: "Custom_Cancel",
+                    confirmButtonColor: "#DD6B55"
                 });
 
-                return true;
+                return false;
+            }
+            swal({
+                title: "Success",
+                type: "success",
+                showConfirmButton: false,
+                customClass: "success",
+                timer: 1500
+
             });
+
+            return true;
         });
+    });
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript">
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
+        type="text/javascript">
     </script>
 
 
 
     <script>
-        function thisfn() {
-            var eventpost = document.querySelector('.postsection');
-            var eventoption = document.getElementById('eventoption');
-            const date_picker_element = document.querySelector('.date-picker');
-            const date_selected = document.querySelector('.selected-date');
+    function thisfn() {
+        var eventpost = document.querySelector('.postsection');
+        var eventoption = document.getElementById('eventoption');
+        const date_picker_element = document.querySelector('.date-picker');
+        const date_selected = document.querySelector('.selected-date');
 
-            // alert(event_content);
-            date_picker_element.style.display = "block";
-            eventoption.style.display = 'block';
-            event_content.style.display = "block";
-            eventpost.classList.toggle('eventpost-active');
-            eventoption.classList.toggle('eventoption-active');
-        }
+        // alert(event_content);
+        date_picker_element.style.display = "block";
+        eventoption.style.display = 'block';
+        event_content.style.display = "block";
+        eventpost.classList.toggle('eventpost-active');
+        eventoption.classList.toggle('eventoption-active');
+    }
     </script>
 
 
@@ -726,39 +732,39 @@ require_once('init.php');
     </script> -->
 
     <script>
-        function popEvent() {
+    function popEvent() {
 
 
-            //var eventbutton = document.getElementById('eventbutton');
-            var modal2 = document.getElementById('id02');
+        //var eventbutton = document.getElementById('eventbutton');
+        var modal2 = document.getElementById('id02');
 
-            modal2.style.display = "block";
+        modal2.style.display = "block";
 
 
 
-            window.onclick = function(event) {
-                if (event.target == modal2) {
-                    modal2.style.display = "none";
+        window.onclick = function(event) {
+            if (event.target == modal2) {
+                modal2.style.display = "none";
 
-                }
             }
         }
+    }
     </script>
 
     <script>
-        function popInfo() {
-            //var events = document.getElementById('events');
-            var view = document.getElementById('viewMore');
+    function popInfo() {
+        //var events = document.getElementById('events');
+        var view = document.getElementById('viewMore');
 
-            view.style.display = "block";
+        view.style.display = "block";
 
-            window.onclick = function(event) {
-                if (event.target == view) {
-                    console.log("worked");
-                    view.style.display = "none";
-                }
+        window.onclick = function(event) {
+            if (event.target == view) {
+                console.log("worked");
+                view.style.display = "none";
             }
         }
+    }
     </script>
 
 
@@ -772,21 +778,22 @@ require_once('init.php');
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta name="google-signin-client_id" content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
 
 
 
     <script>
-        n = new Date();
-        y = n.getFullYear();
-        m = n.getMonth() + 1;
-        d = n.getDate();
-        var l = document.getElementById("date1");
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    var l = document.getElementById("date1");
 
-        l.value = m + "/" + d + "/" + y;
+    l.value = m + "/" + d + "/" + y;
 
 
-        $("#date1").dateDropper({});
+    $("#date1").dateDropper({});
     </script>
 
 
@@ -794,24 +801,24 @@ require_once('init.php');
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.button1').click(function() {
-                var clickBtnValue = $(this).html();
-                console.log(clickBtnValue);
-                var buttonid = $(this).attr('id');
-                buttonid = buttonid.substring(2);
-                console.log(buttonid);
-                var ajaxurl = 'ajax.php',
-                    data = {
-                        'action': clickBtnValue,
-                        'id': buttonid
-                    };
-                $.post(ajaxurl, data, function(response) {
-                    // Response div goes here.
-                    //alert(response);
-                });
+    $(document).ready(function() {
+        $('.button1').click(function() {
+            var clickBtnValue = $(this).html();
+            console.log(clickBtnValue);
+            var buttonid = $(this).attr('id');
+            buttonid = buttonid.substring(2);
+            console.log(buttonid);
+            var ajaxurl = 'ajax.php',
+                data = {
+                    'action': clickBtnValue,
+                    'id': buttonid
+                };
+            $.post(ajaxurl, data, function(response) {
+                // Response div goes here.
+                //alert(response);
             });
         });
+    });
     </script>
 
 
@@ -820,25 +827,25 @@ require_once('init.php');
 
 
     <script>
-        //Handles the event form time. Also adds a time graphic on the side that updates based on the time that was input.
-        document.querySelector("#time").addEventListener("input", function(e) {
-            const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-            const time = this.value;
-            if (reTime.exec(time)) {
-                const minute = Number(time.substring(3, 5));
-                const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
-                this.style.backgroundImage =
-                    `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
-            }
-        });
-    </script>
-
-    <script>
-        function search(keyword) {
-            if (event.key === 'Enter') {
-                submitFunction();
-            }
+    //Handles the event form time. Also adds a time graphic on the side that updates based on the time that was input.
+    document.querySelector("#time").addEventListener("input", function(e) {
+        const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+        const time = this.value;
+        if (reTime.exec(time)) {
+            const minute = Number(time.substring(3, 5));
+            const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
+            this.style.backgroundImage =
+                `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
         }
+    });
+    </script>
+
+    <script>
+    function search(keyword) {
+        if (event.key === 'Enter') {
+            submitFunction();
+        }
+    }
     </script>
 
 

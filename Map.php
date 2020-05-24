@@ -217,7 +217,6 @@ function scrollFunction() {
                     echo json_encode($php_array); ?>;
     </script>
     
-    <script> getAddress();</script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript"></script>
 
     <script src="index.js"></script>
