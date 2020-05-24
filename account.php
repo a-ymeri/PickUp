@@ -29,6 +29,7 @@ require_once('init.php');
     <!-- <link rel="stylesheet" href="normalize.css"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="personal-infostyle.css">
+    <link rel="stylesheet" href="accountstyle.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="radio.css">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -120,10 +121,13 @@ require_once('init.php');
         
         
         
-        <div class="section-sidebar">
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
+            
+
+           
 
 
             <section class="stealthy-scroll-container">
@@ -133,12 +137,25 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof" style="color: rgb(82, 227, 77);">Profile</p>
+                        </li>
+                        <br>
 
+                      
+                    </a>
                     
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home"></i> 
-                            <p>Home</p>
+                            <i class="fas fa-home" ></i> 
+                            <p >Home</p>
                         
                         </li>
                     
@@ -159,7 +176,9 @@ require_once('init.php');
 
                         </li>
                     </a>
+
                     <a href="Map.php">
+
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
@@ -167,26 +186,12 @@ require_once('init.php');
                         </li>
                     </a>
                     
-                    <a href="account.php">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
-                            <p class="prof" style="color: rgb(82, 227, 77);">Profile</p>
-                        </li>
-                    </a>
+
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -207,6 +212,7 @@ require_once('init.php');
             <!--                    This is the end of the section sidebar-->
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
+
 
         <div class="index-account">
 
@@ -239,6 +245,8 @@ require_once('init.php');
             <div class="your-events">
                 <p>These are your events</p>
             </div>
+
+            
             <div class="joined-events">
                 <p>These are joined events</p>
             </div>
@@ -502,6 +510,89 @@ require_once('init.php');
             }
         }
     </script>
+
+
+<script>
+        function read_only() {
+            var x = document.getElementsByTagName("h5")[0];
+            x.outerHTML = "<h6 style='color:#f44336;'>You cannot change the username</h6>"
+        }
+    </script>
+
+
+
+
+    <script>document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value; 
+    
+});  </script>
+
+<<script>
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+             $('#imagePreview').hide();
+             $('#imagePreview').fadeIn(650);
+
+             var $data = { 'title': 'Sample Photo Title', 'file': reader.result };
+        $.ajax({
+            type: 'POST',
+            url: 'upload-pic.php',
+            data: $data,
+            success: function(response) {
+                
+            },
+            error: function(response) {
+                alert(response);
+                
+            },
+        });
+        }
+        reader.readAsDataURL(input.files[0]);
+    //     reader.onload = function(){
+    //     var $data = { 'title': 'Sample Photo Title', 'file': reader.result };
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'test.php',
+    //         data: $data,
+    //         success: function(response) {
+    //             window.location.reload(true);
+    //         },
+    //         error: function(response) {
+    //             alert(response);
+                
+    //         },
+    //     });
+    // };
+    reader.readAsDataURL($("#file-to-upload").get(0).files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+</script>
+
+
+
+
 
 
 
