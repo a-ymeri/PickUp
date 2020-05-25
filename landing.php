@@ -414,16 +414,6 @@ require_once('init.php');
                             <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
 
-                        <br>
-                        <br>
-                        <label for="picfile">Upload a picture:</label>
-                        <input type="file" name="picfile">
-                        <br>
-                        <br>
-                            <input type="submit" value="post" id="postsectionsubmit" >
-                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
-
-
 
 
                             <!-- <div id="poster" style="display: none">
