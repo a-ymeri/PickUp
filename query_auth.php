@@ -146,10 +146,9 @@ function get_event()
     }
 }
 
-function get_UserEvents()
+function get_UserEvents($username)
 {
     //Returns all the events in which the user is participating in
-    $username = $_SESSION['username'];
     $conn = db_connect();
 
     $sql = "SELECT * from events
@@ -248,11 +247,10 @@ function getEventUsers($event_id){
     return $users;
 }
 
-function getBookmarks()
+function getBookmarks($username)
 {
     //Returns all the events which the logged in user has bookmarked
 
-    $username = $_SESSION['username'];
     $conn = db_connect();
 
     $sql = "SELECT * from events
@@ -313,15 +311,12 @@ function get_AllEvents()
     return makeEvent($result);
 }
 
-function getCreatorEvents()
+function getCreatorEvents($username)
 {
     //Returns all the events which the user has created
-    $username = $_SESSION['username'];
     $conn = db_connect();
 
-    $sql = "SELECT * from events
-            where events.event_id in 
-            (select event_id from events where creator = '$username');";
+    $sql = "SELECT * from events where events.creator = '$username';";
 
     $result = $conn->query($sql);
     return makeEvent($result);
