@@ -1,15 +1,15 @@
 <?php 
 
     $title  = $_POST['title'];
-
+   
     //IDK why this is named budget, TODO: reconsider changing name
     $location= $_POST['budget'];
-
+    $max_users = $_POST['max_users'];
     $date = $_POST['date'];
 
     $time = $_POST['time'];
-    $lat = 40.736851;
-    $lng = 22.920227;
+    $lat = 0; 
+    $lng = 0;
     $description = $_POST['eventDescription'];
     $id = uniqid();
     // $date =  str_replace("/","-",$date);
@@ -65,7 +65,8 @@
      if($location == 'Sofou Building'){
         $lat = 40.637350;
         $lng = 22.936904;
-     }else if($location == 'Warehouse'){
+     }else
+      if($location == 'Warehouse'){
          $lat= 40.634825;
          $lng= 22.93428;
       }else if($location == 'YMCA'){
@@ -79,7 +80,7 @@
       }
 
   
-     insert_event($id,$datefinal,$time,$title,$lat,$lng,$description);
+     insert_event($id,$datefinal,$time,$title,$lat,$lng,$description,$max_users);
      
      
 

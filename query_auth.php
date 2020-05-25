@@ -84,7 +84,7 @@ function get_password($username)
 
 
 
-function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
+function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp, $max_users)
 {
     $username = $_SESSION['username'];
     $pdo = new PDO('mysql:host=localhost;dbname=cwtest1', 'learta', '123');
@@ -95,7 +95,7 @@ function insert_event($event_id,$date, $time, $title, $lat, $lng, $dscp)
     //the id is now creared on post-Event.php 
     // $randomNumber = rand(10, 200);
     // $stmt->execute([$randomNumber, $date, $time, $title, 4, $time, $lat, $lng]);
-    $stmt->execute([$event_id, $date, $time, $title, 4, $time, $lat, $lng, $dscp, $username]);
+    $stmt->execute([$event_id, $date, $time, $title, $max_users, $time, $lat, $lng, $dscp, $username]);
     insert_hashtag($event_id,$dscp);
 }
 
@@ -138,17 +138,17 @@ function get_event()
             $lng = $row["lng"];
             $description = $row["description"];
             $creator = $row["creator"];
+            $max_users = $row["max_users"];
         }
-        $event = new Event($event_id, $date, $time, $title, $lat, $lng, $description,$creator);
+        $event = new Event($event_id, $date, $time, $title, $lat, $lng, $description,$creator, $max_users);
         //echo $event->get_title();
         return $event;
     }
 }
 
-function get_UserEvents()
+function get_UserEvents($username)
 {
     //Returns all the events in which the user is participating in
-    $username = $_SESSION['username'];
     $conn = db_connect();
 
     $sql = "SELECT * from events
@@ -234,18 +234,23 @@ function insert_hashtag($event_id, $dscp){
 
 function getEventUsers($event_id){
     $conn = db_connect();
-    $sql = "SELECT * from isin where event_id = '$event_id' ";
+    $sql = "SELECT user_id from isin where event_id = '$event_id' ";
     $result = $conn->query($sql);
-
-
-    return makeEvent($result);
+    $users = [];
+    if ($result->num_rows > 0) {
+        for ($x = 0; $x < $result->num_rows; $x++) {
+            $row = $result->fetch_assoc();
+            $user_id = $row["user_id"];
+            array_push($users,$user_id);
+        }
+    }
+    return $users;
 }
 
-function getBookmarks()
+function getBookmarks($username)
 {
     //Returns all the events which the logged in user has bookmarked
 
-    $username = $_SESSION['username'];
     $conn = db_connect();
 
     $sql = "SELECT * from events
@@ -304,6 +309,18 @@ function get_AllEvents()
     $result = $conn->query($sql);
 
     return makeEvent($result);
+}
+
+function getCreatorEvents($username)
+{
+    //Returns all the events which the user has created
+    $conn = db_connect();
+
+    $sql = "SELECT * from events where events.creator = '$username';";
+
+    $result = $conn->query($sql);
+    return makeEvent($result);
+    
 }
 
 function get_NumberOfUserEvents()
@@ -380,7 +397,8 @@ function makeEvent($result){
             $lng = $row["lng"];
             $description = $row["description"];
             $creator = $row["creator"];
-            $event = new Event($event_id, $date, $time, $title, $lat,$lng,$description, $creator);
+            $max_users = $row["max_users"];
+            $event = new Event($event_id, $date, $time, $title, $lat,$lng,$description, $creator,$max_users);
 
             //Push into array of event objects
             array_push($events, $event);
@@ -393,13 +411,12 @@ function makeEvent($result){
 
 
 
-
 class Event
 {
     // Properties
-    public $event_id, $date, $time, $title, $lat, $lng, $description;
+    public $event_id, $date, $time, $title, $lat, $lng, $description, $creator, $max_users;
 
-    function __construct($event_id, $date, $time, $title, $lat, $lng, $description,$creator)
+    function __construct($event_id, $date, $time, $title, $lat, $lng, $description,$creator, $max_users)
     {
         $this->event_id = $event_id;
         $this->date = $date;
@@ -409,6 +426,8 @@ class Event
         $this->lng = $lng;
         $this->description = $description;
         $this->creator = $creator;
+        //create max users
+        $this->max_users = $max_users;
     }
     
 
@@ -451,5 +470,9 @@ class Event
     {
         return $this->creator;
     } 
+
+    function get_max_users(){
+        return $this->max_users;
+    }
 }
 ?>

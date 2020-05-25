@@ -105,7 +105,7 @@ session_start();
 
        <?php
                     require_once('query_auth.php');
-                    $event = get_UserEvents();
+                    $event = get_UserEvents($_SESSION['username']);
 
                     for ($x = 0; $x < sizeof($event) ;$x++) {  
                     

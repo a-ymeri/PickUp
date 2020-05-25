@@ -263,7 +263,7 @@ require_once('init.php');
                 if(isset($_GET['str'])){
                     $event = getHashtagEvents();
                 }else{
-                    $event = get_UserEvents();
+                    $event = get_UserEvents($_SESSION['username']);
                 }
                 if(empty($event)){
                     echo '<br><br><p>No events to display :(</p>';
@@ -387,8 +387,8 @@ require_once('init.php');
      
     <script>
         document.querySelector(".btn1").addEventListener("click", function(){
-        document.querySelector(".your-events").style.display = "block";
-        document.querySelector(".joined-events").style.display = "none";
+        // document.querySelector(".your-events").style.display = "block";
+        // document.querySelector(".joined-events").style.display = "none";
         document.querySelector(".btn1").style.backgroundColor = "rgb(43, 117, 186)";
         document.querySelector(".btn2").style.backgroundColor = "black";
         });

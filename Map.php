@@ -59,8 +59,8 @@
 
     <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
 
-    <div class='map-container'>
-    <div class="section-sidebar">
+    <div class='index-container'>
+        <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
@@ -76,7 +76,7 @@
 
                 <ul class="sidebar-nav">
 
-                <a href="account.php">
+                <a href="profile.php?user=<?php echo $_SESSION['username']?>">
                         
                         <li class="profile">
                             <?php
@@ -154,8 +154,9 @@
 
 
 
-
-        <div id="map" style="width:1300px; margin-left:20%;" ></div>
+            
+            <div id="map" style="width:1000px; margin-left:33%; " ></div>
+        
 
 
 
