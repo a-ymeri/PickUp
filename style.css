@@ -785,7 +785,7 @@ nav {
     height: auto;
     background-color: black;
     color: white;
-
+    
 }
 
 .eventfeed {
@@ -809,14 +809,12 @@ nav {
 
 .event-body {
     margin-top: 3%;
-
     z-index: 1;
 }
 .three-dots{
     background-color: rgb(52, 137, 207);
     border:none;
     width: 30px;
-
     height: 30px;
     cursor: pointer;
 }
@@ -829,6 +827,9 @@ nav {
     width: 200px;
     cursor: pointer;
     font-size: 17px;
+    
+    
+    
 }
 
 .filter-btn input {
@@ -845,6 +846,7 @@ nav {
     transform: scale(1.1);
     transition: 430ms ease;
 }
+
 
 
 .button1:hover,
@@ -898,7 +900,6 @@ nav {
     font-size: 15px;
     background-color: transparent;
 }
-
 .item1{
     grid-column: 1 / span 2;
     grid-row: 1;
@@ -911,7 +912,6 @@ nav {
     text-align: center;
 }
 
-
 .item2{
     grid-column: 1;
     grid-row: 2;
@@ -922,24 +922,21 @@ nav {
     grid-row: 2;
     margin-right: 20px;
 }
-
+.postsection {
     display: grid;
     text-align: left;
     
     
     grid-gap: 10px;
     width: 100%;
-
     height: auto;
     margin: auto;
     margin-top: 10%;
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
-
     padding: 10px;
     /* border:1px solid #0077CC; */
     border-bottom: 1px solid gray;
-
     transition: all 3s;
 }
 
@@ -982,6 +979,7 @@ nav {
     background-color: rgba(0, 0, 0, 1);
     color: white;
     padding: 20px;
+    
     border: 1px solid #0077CC;
     box-shadow: 5px 8px 8px rgba(0, 0, 0, .3);
     transition: all 3s;
@@ -1025,6 +1023,7 @@ textarea::-webkit-scrollbar {
 
 textarea::-webkit-scrollbar-thumb {
     background-color: #CCC;
+    
 }
 
 .postsection div [type=submit] {
@@ -1035,6 +1034,7 @@ textarea::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
+    
     font-size: 16px;
 }
 
@@ -1046,6 +1046,7 @@ textarea::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
+    
     font-size: 16px;
 }
 
@@ -1315,6 +1316,7 @@ label {}
 
 .applybutton {
     background-color: transparent;
+    
     /* background-color: rgba(46, 144, 92, 0.92); */
     border: 1px solid green;
 }
@@ -1333,6 +1335,7 @@ label {}
     width: 200px;
     height: 40px;
     box-sizing: border-box;
+    
     padding: 4px;
     text-align: center;
 }
@@ -1371,7 +1374,6 @@ label {}
 }
 
 /*.search-bar .fa {
-
     box-sizing: border-box;
     padding: 11px;
     width: 42.5px;
@@ -1386,7 +1388,6 @@ label {}
     font-size: 1.2em;
     transition: all 1s;
 }*/
-
 
 
 /* .search-bar:hover{
@@ -1405,7 +1406,10 @@ label {}
     display: block;
 } */
 
-
+/*.search-bar:hover .fa {
+    background: skyblue;
+    color: black;
+}*/
 
 .search-bar:hover h3 {
     transform: scale(0);
@@ -1558,4 +1562,42 @@ a:hover {
     background: #f1f7ff;
 }
 
-
+/*EXPERIMENT*/
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .dropdown {
+    float:right;
+    display: inline;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown span:hover {background-color: #ddd;}
+  
+  .show {display: block;}
