@@ -231,7 +231,7 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
-                <a href="account.php">
+                <a href="profile.php?user=<?php echo $_SESSION['username']?>">
                         
                         <li class="profile">
                             <?php
@@ -319,9 +319,7 @@ require_once('init.php');
 
 
             <!-- <h1>Event Feed</h1> -->
-            <br>
 
-            <a href="profile.php?user=mrestelica"><button>Memli</button></a>
             <div id="eventbutton" onclick="popEvent()">
                 <header style="font-size:large;">Host event</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
@@ -386,7 +384,7 @@ require_once('init.php');
 
                                 <div id="budget-4id">
                                     <input class="checkbox-budget" type="radio" name="budget" id="budget-4"
-                                        value="Other" onclick="showDiv()">
+                                        value="Sofou Building" onclick="showDiv()">
                                     <label class="for-checkbox-budget" for="budget-4">
                                         <span data-hover="Other">Other</span>
                                     </label>
@@ -456,7 +454,7 @@ require_once('init.php');
 
                     <input type="submit" value="Filter feed">
                 </form>
-            </div> <br><br><br>
+            </div> 
 
             <!-- <?php
                 // require_once('query_auth.php');
@@ -508,8 +506,8 @@ require_once('init.php');
                     $id = $event[$x]->get_eventid();
                     $max_users = $event[$x]->get_max_users();
                     $dscp = $event[$x]->get_description();
+                    $creator = $event[$x]->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
-
                     $text = "";
                     //TODO: Consider ajax if slow
                     $users = getEventUsers($id);
@@ -528,14 +526,14 @@ require_once('init.php');
                     echo
                         '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
                                 <section class="postsection" id="ps-'.$id.'">
-                                    <span><img class="circular--square" src="images/'.$creator.'.jpg" style="
+                                    <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
                                     width: 70px;
                                     height:70px;
                                     overflow: hidden;
-                                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;">'.$creator.'</span>
+                                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative">'.$creator.'</span></a>
                                     <div class="whole" style="float:right">
                                     <span id ="num-users"></span>
-                                    <button type = "button" class="three-dots"> ... </button>
+                                    <button type = "button" class="three-dots nonevent"> ... </button>
                                         <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
                                            
                                             '.$text.'
@@ -601,7 +599,21 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
-        
+        var coll = document.getElementsByClassName("three-dots");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(event) { 
+            event.stopPropagation();
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+        });
+        }
 
         /*function changeButton(button){
 
@@ -690,11 +702,11 @@ require_once('init.php');
     hasBookmarked =[];
     hasJoined = <?php require_once('query_auth.php');
     //$joinedArray = array();
-    $joinedArray = get_UserEvents();
+    $joinedArray = get_UserEvents($_SESSION['username']);
     echo json_encode($joinedArray);?> ;
     hasBookmarked = <?php require_once('query_auth.php');
     //$bookmarkArray = array();
-    $bookmarkArray = getBookmarks();
+    $bookmarkArray = getBookmarks($_SESSION['username']);
     echo json_encode($bookmarkArray);?>;
     
     if(hasJoined!=null){
