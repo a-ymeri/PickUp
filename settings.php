@@ -88,10 +88,13 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-        <div class="section-sidebar">
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
+
+
+
 
 
             <section class="stealthy-scroll-container">
@@ -100,7 +103,6 @@ require_once('init.php');
 
 
                 <ul class="sidebar-nav">
-
 
                 <a href="profile.php?user=<?php echo $_SESSION['username']?>">
                         
@@ -118,15 +120,12 @@ require_once('init.php');
                    
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
-                            <p style="color: rgb(82, 227, 77);">Home</p>
-
+                            <i class="fas fa-home" ></i>
+                            <p >Home</p>
 
                         </li>
-                    
-                    </a>
 
-                    
+                    </a>
 
                     <a href="bookmark.php">
                         <li>
@@ -135,42 +134,28 @@ require_once('init.php');
 
                         </li>
                     </a>
+
                     <a href="Map.php">
+
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
-                        
-                        </li>
-                    </a>
-                    
-                    <a href="profile.php?user=<?php echo $_SESSION['username']?>">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
-                            <p class="prof" >Profile</p>
+
                         </li>
                     </a>
 
-                    <a href="settings.php">
+
+                    <a href="settings.php" >
                         <li>
-
                             <i class="fas fa-cog" style="color: rgb(82, 227, 77);"></i>
-                            <p style="color: rgb(82, 227, 77);">Settings</p>
+                            <p class="settingsfafa" style="color: rgb(82, 227, 77);">Settings</p>
 
                         </li>
 
                     </a>
-                    
 
-                    
+
+
 
                 </ul>
                 <?php
@@ -279,15 +264,18 @@ require_once('init.php');
             <div class="content">
                 <button type="button" class="collapsible">What is PickUp</button>
                 <div class="content">
-                    <p>Describe the site</p>
+                    <p>Pick up is an online platform for creating events. 
+                        The objective is to create an online social community 
+                        through which people can connect by joining and creating
+                        their own events.</p>
                 </div>
                 <button type="button" class="collapsible">About Us</button>
                 <div class="content">
                     <p>
-                        Lola Davidovikj <br>
-                        Learta Januzi <br>
-                        Memli Restelia<br>
-                        Ardit Ymeri<br>
+                        Lola D <br>
+                        Learta J <br>
+                        Memli R<br>
+                        Ardit Y<br>
                     </p>
                 </div>
             </div>
@@ -295,31 +283,21 @@ require_once('init.php');
             <div class="content">
                 <button type="button" class="collapsible">Create Event</button>
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec lectus at arcu sagittis ultricies sed a erat. 
-                    Praesent euismod cursus ullamcorper. Suspendisse aliquet accumsan metus at elementum. 
-                    Etiam rutrum erat enim, eget tempus ipsum placerat vel. Duis auctor dolor vel lectus ullamcorper, eu interdum odio suscipit. 
-                    Sed dictum elit a dolor mollis, sed pulvinar diam sagittis. Etiam fringilla gravida nulla, quis elementum est fermentum et. 
-                    Nam egestas sem at sem scelerisque, id consectetur ex condimentum. Duis nec nisl ut justo sagittis dictum ultricies vel elit. Quisque bibendum risus felis, eu ultricies lectus rutrum ut. Donec pellentesque tellus quis sem tristique, et condimentum lorem dapibus. Vivamus vestibulum ex vitae viverra ornare. Proin fringilla leo at urna congue sodales. 
-                    Aliquam id sagittis mauris, eu porttitor augue. Donec et feugiat tortor, vel viverra lectus. Quisque rhoncus egestas nisl.</p>
-                </div>
-                <button type="button" class="collapsible">Change Profile</button>
-                <div class="content">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec lectus at arcu sagittis ultricies sed a erat. 
-                    Praesent euismod cursus ullamcorper. Suspendisse aliquet accumsan metus at elementum. Etiam rutrum erat enim, eget tempus ipsum placerat vel. Duis auctor dolor vel lectus ullamcorper, eu interdum odio suscipit. Sed dictum elit a dolor mollis, sed pulvinar diam sagittis. Etiam fringilla gravida nulla, quis elementum est fermentum et. Nam egestas sem at sem scelerisque, id consectetur ex condimentum. Duis nec nisl ut justo sagittis dictum ultricies vel elit. Quisque bibendum risus felis, eu ultricies lectus rutrum ut. Donec pellentesque tellus quis sem tristique, et condimentum lorem dapibus. Vivamus vestibulum ex vitae viverra ornare. Proin fringilla leo at urna congue sodales. 
-                    Aliquam id sagittis mauris, eu porttitor augue. Donec et feugiat tortor, vel viverra lectus. Quisque rhoncus egestas nisl.
+                    <p>On the homepage there is a "Host Event" button that
+                        allows the users to create events. A pop-up form appears,
+                        on which the user can specify the details about the event that
+                        he/she wishes to create.
                     </p>
                 </div>
+                
             </div>
             <button type="button" class="collapsible">Terms and conditions</button>
             <div class="content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec lectus at arcu sagittis ultricies sed a erat. 
-                    Praesent euismod cursus ullamcorper. Suspendisse aliquet accumsan metus at elementum. 
-                    Etiam rutrum erat enim, eget tempus ipsum placerat vel. Duis auctor dolor vel lectus ullamcorper, eu interdum odio suscipit. 
-                    Sed dictum elit a dolor mollis, sed pulvinar diam sagittis. Etiam fringilla gravida nulla, quis elementum est fermentum et. 
-                    Nam egestas sem at sem scelerisque, id consectetur ex condimentum. Duis nec nisl ut justo sagittis dictum ultricies vel elit. 
-                    Quisque bibendum risus felis, eu ultricies lectus rutrum ut. Donec pellentesque tellus quis sem tristique, et condimentum lorem dapibus. Vivamus vestibulum ex vitae viverra ornare. Proin fringilla leo at urna congue sodales.
-                    Aliquam id sagittis mauris, eu porttitor augue. Donec et feugiat tortor, vel viverra lectus. Quisque rhoncus egestas nisl.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <button type="button" class="collapsible">Contact us</button>
+            <div class="content">
+                <a href="contact-us.html"><p>Report a problem</p></a>
             </div>
         </div>
     </div>

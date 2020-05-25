@@ -2,6 +2,9 @@
 session_start();
 require_once('init.php');
 
+if(!isset($_SESSION['username'])){
+    header('Location: login');
+}
 ?>
 
 <!DOCTYPE html>
