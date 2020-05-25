@@ -104,7 +104,7 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
-                <a href="account.php">
+                <a href="profile.php?user=<?php echo $_SESSION['username']?>">
                         
                         <li class="profile">
                             <?php
@@ -120,8 +120,8 @@ require_once('init.php');
                    
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home" ></i>
-                            <p >Home</p>
+                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Home</p>
 
                         </li>
 
@@ -155,8 +155,8 @@ require_once('init.php');
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-cog" style="color: rgb(82, 227, 77);"></i>
-                            <p class="settingsfafa" style="color: rgb(82, 227, 77);">Settings</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
