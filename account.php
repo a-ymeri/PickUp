@@ -162,13 +162,7 @@ require_once('init.php');
                     
                     </a>
 
-                    <a href="#">
-                        <li>
-                            <i class="fas fa-bell"></i>
-                            <p>Notifications</p>
-
-                        </li>
-                    </a>
+                    
 
                     <a href="bookmark.php">
                         <li>

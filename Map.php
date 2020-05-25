@@ -1,6 +1,14 @@
-<!-- AY: TODO: Make uniform navbar for evert webpage-->
+
+<?php
+session_start();
+require_once('init.php');
 
 
+if(!isset($_SESSION['username'])){
+    header('Location: login');
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

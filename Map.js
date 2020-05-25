@@ -23,12 +23,12 @@ function initMap() {
         
         if(pins[name] == null){
             infoWindowArray[name]= new google.maps.InfoWindow({
-                content: "<a href='event.php?str="+ea.event_id +"'>"+ea.title+"</a><br>"+ea.date+"<br>"
+                content: "<a style ='color:blue' href='event.php?str="+ea.event_id +"'>"+ea.title+"</a><br>"+ea.date+"<br>"
             });
             pins[name] = new google.maps.Marker({ position: { lat: Number(ea.lat), lng: Number(ea.lng) }, map: map });
             
         }else{
-            content = infoWindowArray[name].content + "<a href='event.php?str="+ea.event_id +"'>"+ea.title+"</a><br>"+ea.date+"<br>";
+            content = infoWindowArray[name].content + "<a style='color:blue' href='event.php?str="+ea.event_id +"'>"+ea.title+"</a><br>"+ea.date+"<br>";
             infoWindowArray[name].setContent(content);
             //infoWindowArray[name].content= infoWindowArray[name].content+"<hr>"+"<a href='event.php?str="+ea.event_id +"'>"+ea.title+"</a><br>"+ea.date+"<br>"
         }

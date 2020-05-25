@@ -214,10 +214,17 @@ require_once('init.php');
                     if($max_users > 0){
                         $numUserText = $numUserText . "/" . $max_users;
                     }
-
-
-                    echo
-                        '<div class="eventtest " id="'.$event->get_title().'"  onclick="getAnalytics(this.id)"  >
+                    $text = "";
+                    if($creator==$_SESSION['username']){
+                        $text = '<div class="dropdown nonevent">
+                                        <button onclick="myFunction(0)" class="dropbtn">...</button>
+                                            <div id="dropdown 0" class="dropdown-content">
+                                                <span class ="nonevent clickable" id="dl'.$id.'">Delete</span>
+                                            </div>
+                                        </div>';
+                        }
+                        echo
+                        '<div class="eventtest" id="'.$event->get_title().'">
                                 <section class="postsection" id="ps-'.$id.'">
 
                                     <div class="item1">
@@ -226,20 +233,14 @@ require_once('init.php');
                                         height:70px;
                                         overflow: hidden;
                                         border-radius: 50%; margin-left:5px; margin-right: 10px; float:left; position:relative"><p>'.$creator.'</p></span></a>
-                                    <div class="dropdown nonevent">
-                                        <button onclick="myFunction(0)" class="dropbtn">...</button>
-                                            <div id="dropdown 0" class="dropdown-content">
-                                                <span class ="nonevent clickable" id="dl'.$id.'">Delete</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    '.$text.'</div>
                                     <div class="item2">' .choosePic($pic, $id).'</div>
                                     <div class="item3" style="color:#0077CC;"> <p>'
                                      . $event->get_title() .'<br></p>' .'<p>' . $date = $event->get_date() . '</p>
                                 
                                     <br><p>Time: ' . $event->get_time() . '</p>
                                     <br><p>
-                                    Location: <span class="events"></span> 
+                                    Location: <span id="geolocation"></span> 
                                    </p><br><p>'.$numUserText. '</p> <br>' . '<script>document.write(hashtag("' . $dscp . '"))</script></div>'  . '
                                 
                                     ';
@@ -250,11 +251,11 @@ require_once('init.php');
                             </div>';
                 
                             foreach($users as $user){
-                                echo '<a href="profile.php?user='.$user.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
+                                echo '<a href="profile.php?user='.$user.'"><img class="circular--square nonevent" src="images/'.$user.'.jpg" style="
                                 width: 70px;
                                 height:70px;
                                 overflow: hidden;
-                                border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative">'.$user.'</span></a>';
+                                border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative"><br><span style="float:left">'.$user.'</span><br><br> </a>';
                             }
                         }
                 
@@ -557,6 +558,7 @@ require_once('init.php');
             $.post(ajaxurl, data, function(response) {
                 // Response div goes here.
                //alert(response);
+               location.reload();
             });
         });
     });

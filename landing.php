@@ -254,13 +254,7 @@ require_once('init.php');
 
                     </a>
 
-                    <a href="#">
-                        <li>
-                            <i class="fas fa-bell"></i>
-                            <p>Notifications</p>
-
-                        </li>
-                    </a>
+                
 
                     <a href="bookmark.php">
                         <li>
@@ -396,7 +390,9 @@ require_once('init.php');
                                 <br>
 
 
-                            </div>
+                            </div> 
+                            <br>
+                            <br>
                             <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
 
@@ -509,10 +505,17 @@ require_once('init.php');
                     if($max_users > 0){
                         $numUserText = $numUserText . "/" . $max_users;
                     }
-
-
-                    echo
-                        '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
+                    $text = "";
+                    if($creator==$_SESSION['username']){
+                        $text = '<div class="dropdown nonevent">
+                                        <button onclick="myFunction('.$x.')" class="dropbtn">...</button>
+                                            <div id="dropdown '.$x.'" class="dropdown-content">
+                                                <span class ="nonevent clickable" id="dl'.$id.'">Delete</span>
+                                            </div>
+                                        </div>';
+                        }
+                        echo
+                        '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'">
                                 <section class="postsection" id="ps-'.$id.'">
 
                                     <div class="item1">
@@ -521,13 +524,7 @@ require_once('init.php');
                                         height:70px;
                                         overflow: hidden;
                                         border-radius: 50%; margin-left:5px; margin-right: 10px; float:left; position:relative"><p>'.$creator.'</p></span></a>
-                                    <div class="dropdown nonevent">
-                                        <button onclick="myFunction('.$x.')" class="dropbtn">...</button>
-                                            <div id="dropdown '.$x.'" class="dropdown-content">
-                                                <span class ="nonevent clickable" id="dl'.$id.'">Delete</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    '.$text.'</div>
                                     <div class="item2">' .choosePic($pic, $id).'</div>
                                     <div class="item3" style="color:#0077CC;"> <p>'
                                      . $event[$x]->get_title() .'<br></p>' .'<p>' . $date = $event[$x]->get_date() . '</p>
@@ -965,6 +962,7 @@ require_once('init.php');
             $.post(ajaxurl, data, function(response) {
                 // Response div goes here.
                 //alert(response);
+                location.reload();
             });
         });
     });

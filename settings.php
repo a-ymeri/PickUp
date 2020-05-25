@@ -126,13 +126,7 @@ require_once('init.php');
                     
                     </a>
 
-                    <a href="#">
-                        <li>
-                            <i class="fas fa-bell"></i>
-                            <p>Notifications</p>
-
-                        </li>
-                    </a>
+                    
 
                     <a href="bookmark.php">
                         <li>
@@ -290,10 +284,10 @@ require_once('init.php');
                 <button type="button" class="collapsible">About Us</button>
                 <div class="content">
                     <p>
-                        Lola D <br>
-                        Learta J <br>
-                        Memli R<br>
-                        Ardit Y<br>
+                        Lola Davidovikj <br>
+                        Learta Januzi <br>
+                        Memli Restelia<br>
+                        Ardit Ymeri<br>
                     </p>
                 </div>
             </div>
@@ -301,18 +295,31 @@ require_once('init.php');
             <div class="content">
                 <button type="button" class="collapsible">Create Event</button>
                 <div class="content">
-                    <p>how to create event</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec lectus at arcu sagittis ultricies sed a erat. 
+                    Praesent euismod cursus ullamcorper. Suspendisse aliquet accumsan metus at elementum. 
+                    Etiam rutrum erat enim, eget tempus ipsum placerat vel. Duis auctor dolor vel lectus ullamcorper, eu interdum odio suscipit. 
+                    Sed dictum elit a dolor mollis, sed pulvinar diam sagittis. Etiam fringilla gravida nulla, quis elementum est fermentum et. 
+                    Nam egestas sem at sem scelerisque, id consectetur ex condimentum. Duis nec nisl ut justo sagittis dictum ultricies vel elit. Quisque bibendum risus felis, eu ultricies lectus rutrum ut. Donec pellentesque tellus quis sem tristique, et condimentum lorem dapibus. Vivamus vestibulum ex vitae viverra ornare. Proin fringilla leo at urna congue sodales. 
+                    Aliquam id sagittis mauris, eu porttitor augue. Donec et feugiat tortor, vel viverra lectus. Quisque rhoncus egestas nisl.</p>
                 </div>
                 <button type="button" class="collapsible">Change Profile</button>
                 <div class="content">
                     <p>
-                        how to change profile 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec lectus at arcu sagittis ultricies sed a erat. 
+                    Praesent euismod cursus ullamcorper. Suspendisse aliquet accumsan metus at elementum. Etiam rutrum erat enim, eget tempus ipsum placerat vel. Duis auctor dolor vel lectus ullamcorper, eu interdum odio suscipit. Sed dictum elit a dolor mollis, sed pulvinar diam sagittis. Etiam fringilla gravida nulla, quis elementum est fermentum et. Nam egestas sem at sem scelerisque, id consectetur ex condimentum. Duis nec nisl ut justo sagittis dictum ultricies vel elit. Quisque bibendum risus felis, eu ultricies lectus rutrum ut. Donec pellentesque tellus quis sem tristique, et condimentum lorem dapibus. Vivamus vestibulum ex vitae viverra ornare. Proin fringilla leo at urna congue sodales. 
+                    Aliquam id sagittis mauris, eu porttitor augue. Donec et feugiat tortor, vel viverra lectus. Quisque rhoncus egestas nisl.
                     </p>
                 </div>
             </div>
             <button type="button" class="collapsible">Terms and conditions</button>
             <div class="content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec lectus at arcu sagittis ultricies sed a erat. 
+                    Praesent euismod cursus ullamcorper. Suspendisse aliquet accumsan metus at elementum. 
+                    Etiam rutrum erat enim, eget tempus ipsum placerat vel. Duis auctor dolor vel lectus ullamcorper, eu interdum odio suscipit. 
+                    Sed dictum elit a dolor mollis, sed pulvinar diam sagittis. Etiam fringilla gravida nulla, quis elementum est fermentum et. 
+                    Nam egestas sem at sem scelerisque, id consectetur ex condimentum. Duis nec nisl ut justo sagittis dictum ultricies vel elit. 
+                    Quisque bibendum risus felis, eu ultricies lectus rutrum ut. Donec pellentesque tellus quis sem tristique, et condimentum lorem dapibus. Vivamus vestibulum ex vitae viverra ornare. Proin fringilla leo at urna congue sodales.
+                    Aliquam id sagittis mauris, eu porttitor augue. Donec et feugiat tortor, vel viverra lectus. Quisque rhoncus egestas nisl.</p>
             </div>
         </div>
     </div>
