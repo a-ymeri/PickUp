@@ -17,7 +17,7 @@
     <?php
 //require_once('init.php');
 
-echo (isset($_SESSION['username']) ?  "<script>window.location.replace('landing.php');</script>" : " "); 
+echo (isset($_SESSION['username']) ?  "<script>window.location.replace('home');</script>" : " "); 
 
 ?>
     

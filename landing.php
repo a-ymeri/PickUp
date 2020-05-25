@@ -43,7 +43,7 @@ require_once('init.php');
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
-    <link rel="stylesheet" href="post-Event.css">
+    
     <link rel="stylesheet" href="pagination.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -231,8 +231,20 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
-
-
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                        <br>
+  
+                    </a>
+                   
                     <a href="landing.php">
                         <li>
                             <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
@@ -267,26 +279,11 @@ require_once('init.php');
                         </li>
                     </a>
 
-                    <a href="account.php">
-
-                        <li class="profile">
-                            <?php
-                            require_once('authenticate.php');
-                            $u = get_username();
-                            echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                            ?>
-                            <p class="prof">Profile</p>
-                        </li>
-                    </a>
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -323,6 +320,8 @@ require_once('init.php');
 
             <!-- <h1>Event Feed</h1> -->
             <br>
+
+            <a href="profile.php?user=mrestelica"><button>Memli</button></a>
             <div id="eventbutton" onclick="popEvent()">
                 <header style="font-size:large;">Host event</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
@@ -349,11 +348,7 @@ require_once('init.php');
                         <div class="event-body">
                             <label for="title">Event name: </label>
                             <input type="text" placeholder="Title" id="title" name="title" required>
-                            <!--<div class="date-picker"> </div>-->
 
-
-
-                            <!-- <input class="bridgePHP" value='MEMLI'></input> -->
 
                             <br>
                             <br>
@@ -396,13 +391,23 @@ require_once('init.php');
                                         <span data-hover="Other">Other</span>
                                     </label>
                                 </div>
+
+                              
                                 <div id="map" style="display:none"></div>
+                                <br>
+                                <br>
                                 <br>
 
 
                             </div>
                             <label for="eventDescription">Event Description</label>
                             <input type="text" name="eventDescription">
+
+                            <br>
+                            <br>
+                                <label for="quantity">Max. Users:</label>
+                                <input style="width:70px" type="number" id="max_users" name="max_users" min="0" max="100">
+
                             <br>
                             <br>
                             <label for="picfile">Upload a picture:</label>
@@ -411,13 +416,8 @@ require_once('init.php');
                             <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
 
 
-                            <!-- Submit form -->
-
-
-
-                            <!-- <div id="poster" style="display: none">
-                            <input type="file" name="picfile">
-                        </div> -->
+                        
+                        
 
 
                         </div>
@@ -429,7 +429,7 @@ require_once('init.php');
             </div>
 
 
-            <div class="filterByDay">
+            <!--<div class="filterByDay">
                 <h4 id="imfree">I am free on:</h4> 
                 <hr>
                 <form name="dayFilter" method="GET">
@@ -443,7 +443,7 @@ require_once('init.php');
 
                     <input type="submit" value="Filter feed">
                 </form>
-            </div> <br><br><br>
+            </div> <br><br><br>-->
 
             <!-- <?php
                 // require_once('query_auth.php');
@@ -459,16 +459,18 @@ require_once('init.php');
                 }
             </script>
 
-            <span id="hashtags">
+            <!--<span id="hashtags">
                 <span id="hashtagTitle">Trending tags</span><br>
                 <hr>
                 <?php 
-                    $hashtags = get_hashtags();
+                    /*$hashtags = get_hashtags();
+                    if(is_array($hashtags)){
                     for($i = 0; $i<count($hashtags);$i++){
                         echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
                     }
+                }*/
                 ?>
-            </span>
+            </span>-->
 
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
@@ -489,14 +491,44 @@ require_once('init.php');
                 }
                 if(is_array($event)){
                 for ($x = 0; $x < count($event); $x++) {
-
+                    
                     $id = $event[$x]->get_eventid();
+                    $max_users = $event[$x]->get_max_users();
                     $dscp = $event[$x]->get_description();
                     $pic = 'uploads/' . $id . '.jpg';
 
+                    $text = "";
+                    //TODO: Consider ajax if slow
+                    $users = getEventUsers($id);
+                    $numUsers = count($users);
+                    $numUserText = "Users: ".$numUsers;
+                    if($max_users > 0){
+                        $numUserText = $numUserText . "/" . $max_users;
+                    }
+                    if($creator==$_SESSION['username']){
+                        $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
+                    }
+                    $text=$text.'
+                    <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
+                    <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
+
                     echo
-                        '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" id="ps-' . $id . '">
+                        '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
+                                <section class="postsection" id="ps-'.$id.'">
+                                    <span><img class="circular--square" src="images/'.$creator.'.jpg" style="
+                                    width: 70px;
+                                    height:70px;
+                                    overflow: hidden;
+                                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;">'.$creator.'</span>
+                                    <div class="whole" style="float:right">
+                                    <span id ="num-users"></span>
+                                    <button type = "button" class="three-dots"> ... </button>
+                                        <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
+                                           
+                                            '.$text.'
+                                        </div>
+                                    </div>
+
                                 <h1 style="color:#0077CC;">
                                     ' . $event[$x]->get_title() . '
                                 </h1> 
@@ -505,14 +537,12 @@ require_once('init.php');
                                     Time: ' . $event[$x]->get_time() . '
                                     <br>
                                     Location: <span class="events"></span> 
-                                    
-                                    
+                                   '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
-
-                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
-                                
-                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
-                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
+                                ';
+                                echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                                : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
+                                echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
                                 </section>
                             </div>';
                 }
@@ -531,6 +561,8 @@ require_once('init.php');
 
                 ?>
             </div>
+
+            
 
             <div class="paginationList">
                 <ul class="pagination">
@@ -551,6 +583,36 @@ require_once('init.php');
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
 
         </div>
+        <div class="filterByDay">
+                <h3 id="imfree">I am free on:</h3> 
+                <hr>
+                <form name="dayFilter" method="GET">
+                    <input type="checkbox" name="day[]" value="0"><p>Mondays</p><BR>
+                    <input type="checkbox" name="day[]" value="1"><p>Tuesdays</p><BR>
+                    <input type="checkbox" name="day[]" value="2"><p>Wednesdays</p><BR>
+                    <input type="checkbox" name="day[]" value="3"><p>Thursdays</p><BR>
+                    <input type="checkbox" name="day[]" value="4"><p>Fridays</p><BR>
+                    <input type="checkbox" name="day[]" value="5"><p>Saturdays</p><BR>
+                    <input type="checkbox" name="day[]" value="6"><p>Sundays</p><BR>
+
+                    <br>
+                    <span class="filter-btn"><input type="submit" value="Filter feed"></span>
+                </form>
+                <br>
+                
+                <span id="hashtags">
+                    <span id="hashtagTitle">Trending tags</span><br>
+                    <hr>
+                    <?php 
+                        $hashtags = get_hashtags();
+                        if(is_array($hashtags)){
+                        for($i = 0; $i<count($hashtags);$i++){
+                            echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
+                        }
+                    }
+                    ?>
+                </span>
+         </div> <br><br><br>
     </div>
 
     <script src="pagination.js"></script>
@@ -651,6 +713,7 @@ require_once('init.php');
     //$bookmarkArray = array();
     $bookmarkArray = getBookmarks();
     echo json_encode($bookmarkArray);?>;
+    
     if(hasJoined!=null){
         for (i = 0; i < hasJoined.length; i++) {
             if (document.getElementById("j-" + hasJoined[i].event_id) != null)
@@ -883,6 +946,47 @@ require_once('init.php');
         if (event.key === 'Enter') {
             submitFunction();
         }
+    }
+    </script>
+
+
+    <script>
+    
+    function getProfile(profile){
+
+
+
+        var url  = "profile.php?user="+profile;
+        //alert(url);
+        window.location.replace(url);
+        
+    }
+    
+    
+    </script>
+
+
+
+    <script>
+    
+    function getAnalytics(event){
+
+            // alert(event);
+
+
+
+            $.ajax({
+                type: 'post',
+                url: 'cookies.php',
+                data: {
+                    event:event
+                },
+                success: function(response) {
+                   console.log(response);
+                }
+            });
+    
+        
     }
     </script>
 

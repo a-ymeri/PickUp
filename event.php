@@ -465,6 +465,7 @@ require_once('init.php');
                 $id = $event->event_id;
                 $dscp = $event->description;
                 $pic = 'uploads/' . $id . '.jpg';
+                $users = getEventUsers($_GET['str']);
 
                 echo '<div class="eventtest ' . $event->event_id . '" id="eventtest ' . $event->event_id . '">
                                  <section class="postsection" onclick="popInfo()">
@@ -483,6 +484,16 @@ require_once('init.php');
                                 <button type="submit" class="button1 nonevent" id="b' . $id . '" name="join" value="bookmark ' . $id . '" onclick="changeButton(this)">Bookmark</button>
                                 </section>
                             </div>';
+
+                foreach($users as $user){
+                    echo '<span><img class="circular--square" src="images/'.$user.'.jpg" style="
+                    width: 70px;
+                    height:70px;
+                    overflow: hidden;
+                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;">'.$user.'</span><br>';
+                }
+
+                echo count($users).'/'.$event->max_users;
 
                 function choosePic($pic, $id)
                 {
