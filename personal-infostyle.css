@@ -4,12 +4,11 @@ body{
 
 .index-account{
     margin-top:90px;
-    margin-left: 250px; ;
-    margin-right: auto;
+    margin-left: 250px;;
     background-color: black;
     color:white;
     font-family: 'Poppins';
-
+    text-align: center;
 }
 
 h1{
@@ -21,10 +20,14 @@ h1{
     display: none;
 }
 
+
+/* .btn1, .btn2{
+
 .menu-buttons{
     text-align: center;
 }
 .btn1, .btn2{
+
     background-color: black;
     color: white;
     font-size: 20px;
@@ -42,7 +45,7 @@ h1{
 
 .btn1:hover, .btn2:hover{
     background-color: rgb(43, 117, 186);
-}
+} */
 
 .menu-options li{
     display: inline-block;
@@ -104,26 +107,26 @@ label{
     
 }
 
-input{
+/*input{
     width:40%;
-    border-radius: 5px;
+    
     background-color: rgb(255, 255, 255);
     border:none;
     font-family: "Poppins";
     text-align: center;
     height:30px;
     font-size: 20px;
-    index:1;
+    
 }
 
 input:focus, textarea:focus, select:focus{
     outline: none;
-}
+}*/
 
 
 
 
-input[type=text]{
+/*input[type=text]{
     width:40%;
     font-size: 20px;
 }
@@ -131,7 +134,7 @@ input[type=text]{
 input[type=password]{
     width:40%;
 
-}
+}*/
 
 .s-confirm{
     /* background-color: #ff3e30; */

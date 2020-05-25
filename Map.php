@@ -59,11 +59,14 @@
 
     <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
 
-    <div class='map-container'>
-                <div class="section-sidebar">
+    <div class='index-container'>
+        <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
+            
+
+           
 
 
             <section class="stealthy-scroll-container">
@@ -73,12 +76,25 @@
 
                 <ul class="sidebar-nav">
 
+                <a href="account.php">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                        <br>
 
+                      
+                    </a>
                     
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home"></i> 
-                            <p>Home</p>
+                            <i class="fas fa-home" ></i> 
+                            <p >Home</p>
                         
                         </li>
                     
@@ -99,7 +115,9 @@
 
                         </li>
                     </a>
+
                     <a href="Map.php">
+
                         <li>
                             <i class="fas fa-map-marker-alt" style="color: rgb(82, 227, 77);"></i>
                             <p style="color: rgb(82, 227, 77);">Map</p>
@@ -107,26 +125,12 @@
                         </li>
                     </a>
                     
-                    <a href="account.php">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
-                            width: 70px;
-                            height:70px;
-                            overflow: hidden;
-                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
-                        ?>
-                            <p class="prof" >Profile</p>
-                        </li>
-                    </a>
+
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog"></i>
-                            <p>Settings and Privacy</p>
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -150,7 +154,9 @@
 
 
 
-        <div id="map"></div>
+            
+            <div id="map" style="width:1000px; margin-left:33%; " ></div>
+        
 
 
 
