@@ -1,4 +1,8 @@
 <?php 
+
+
+
+
 $current_data = file_get_contents('analytics.json');
 $array = json_decode($current_data,true);
 
@@ -49,6 +53,9 @@ if($x == $sizeOfArray-1){
 // $array[] = $users;
 $final_data = json_encode($array);
 file_put_contents('analytics.json',$final_data);
+
+
+
 
 
 
