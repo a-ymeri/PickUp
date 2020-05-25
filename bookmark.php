@@ -36,17 +36,18 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <title>COURSEWORK</title>
+    <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="normalize.css"> -->
+     
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="post-Event.css">
     <link rel="stylesheet" href="pagination.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
 
 
@@ -63,7 +64,6 @@ require_once('init.php');
 
         <div class="search-bar">
             <form method="post" action="search.php" class="search">
-                
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
@@ -75,10 +75,10 @@ require_once('init.php');
         </ul>-->
 
 
-        <div class="burger">
+        <!-- <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
-            <div class="line3"></div>
+            <div class="line3"></div>-->
 
 
 
@@ -87,7 +87,6 @@ require_once('init.php');
 
 
     </nav>
-
 
 
 
@@ -168,7 +167,7 @@ require_once('init.php');
 
 
 
-   <!-- <div id="signup" class="signupclass">
+    <!-- <div id="signup" class="signupclass">
 
         <form class="modal-content animate" action="signup.php" method="post">
 
@@ -179,8 +178,9 @@ require_once('init.php');
 
             <div class="container">
                 Signup
-                <!-- <h1 style="margin-left: 35%;"> SIGN UP</h1> -->
-                <!--<br>
+   
+                <br>
+
 
                 <input type="text" placeholder="Enter first name" name="fname" required class="uname">
                 <input type="text" placeholder="Enter last name" name="lname" required class="uname">
@@ -214,13 +214,13 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-    <div class="section-sidebar">
+        <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-            
 
-           
+
+
 
 
             <section class="stealthy-scroll-container">
@@ -230,7 +230,7 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
-                <a href="account.php">
+                <a href="profile.php?user=<?php echo $_SESSION['username']?>">
                         
                         <li class="profile">
                             <?php
@@ -241,17 +241,16 @@ require_once('init.php');
                             <p class="prof">Profile</p>
                         </li>
                         <br>
-
-                      
+  
                     </a>
-                    
+                   
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home" ></i> 
-                            <p>Home</p>
-                        
+                            <i class="fas fa-home" ></i>
+                            <p >Home</p>
+
                         </li>
-                    
+
                     </a>
 
                     <a href="#">
@@ -275,10 +274,9 @@ require_once('init.php');
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
-                        
+
                         </li>
                     </a>
-                    
 
 
                     <a href="settings.php">
@@ -289,9 +287,9 @@ require_once('init.php');
                         </li>
 
                     </a>
-                    
 
-                    
+
+
 
                 </ul>
                 <?php
@@ -306,6 +304,14 @@ require_once('init.php');
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
 
+        <!-- <div class="indexfeed">
+            
+            <script>
+                function hashtag(text) {
+                    var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="landing.php?str=$1">#$1</a>');
+                    return repl;
+                }
+            </script> -->
 
         <div class="indexfeed">
 
@@ -433,53 +439,77 @@ require_once('init.php');
 
 
                 <?php
+                $event = array();
                 require_once('query_auth.php');
-                $event;
-                if(isset($_GET['str'])){
-                    $event = getHashtagEvents();
-                }else{
-                    $event = getBookmarks();
-                }
+                
+                $event=getBookmarks($_SESSION['username']);
                 if(empty($event)){
                     echo '<br><br><p>No events to display :(</p>';
                 
-                }else{
-                for ($x = 0; $x < sizeof($event); $x++) {
-
+                }else if(is_array($event)){
+                for ($x = 0; $x < count($event); $x++) {
+                    
                     $id = $event[$x]->get_eventid();
+                    $max_users = $event[$x]->get_max_users();
                     $dscp = $event[$x]->get_description();
+                    $creator = $event[$x]->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
+                    $text = "";
+                    //TODO: Consider ajax if slow
+                    $users = getEventUsers($id);
+                    $numUsers = count($users);
+                    $numUserText = "Users: ".$numUsers;
+                    if($max_users > 0){
+                        $numUserText = $numUserText . "/" . $max_users;
+                    }
+                    if($creator==$_SESSION['username']){
+                        $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
+                    }
+                    $text=$text.'
+                    <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
+                    <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
 
                     echo
-                        '<div class="eventtest ' . $x . '" id="eventtest ' . $x . '">
-                                <section class="postsection" id="ps-'.$id.'">
-                                <h1 style="color:#0077CC;">
-                                    ' . $event[$x]->get_title() . '
-                                </h1> 
-                                <p>' . $date = $event[$x]->get_date() . '</p>
-                                
-                                    Time: ' . $event[$x]->get_time() . '
-                                    <br>
-                                    Location: <span class="events"></span> 
+                        '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
+                        <section class="postsection" id="ps-'.$id.'">
+                            <div class="item1">
+                                <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
+                                width: 70px;
+                                height:70px;
+                                overflow: hidden;
+                                border-radius: 50%; margin-left:5px; margin-right: 10px; float:left; position:relative"><p>'.$creator.'</p></span></a>
+                                <div class="whole" style="float:right">
+                                <span id ="num-users"></span>
+                                    <button type = "button" class="three-dots nonevent"> ... </button>
+                                    <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
                                     
-                                    
-                                
-
-                                ' . choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
-                                
-                                <button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>
-                                <button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
-                                </section>
-                            </div>';
-                    
+                                        '.$text.'
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item2">' .choosePic($pic, $id).'</div>
+                            <div class="item3" style="color:#0077CC;"> <p>'
+                            . $event[$x]->get_title() .'<br></p>' .'<p>' . $date = $event[$x]->get_date() . '</p>
+                        
+                            <br><p>Time: ' . $event[$x]->get_time() . '</p>
+                            <br><p>
+                            Location: <span class="events"></span> 
+                        </p><br><p>'.$numUserText. '</p> <br>' . '<script>document.write(hashtag("' . $dscp . '"))</script></div>'  . '
+                        
+                            ';
+                            echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<div class="item4"><button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                            : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
+                            echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button></div>
+                        </section>
+                    </div>';
                 }
-                }
+            }
 
 
                 function choosePic($pic, $id)
                 {
                     if (file_exists($pic)) {
-                        return '<img src="uploads/' . $id . '.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;">';
+                        return   '<img src="uploads/' . $id . '.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;">';
                     } else
                         return '<img src="images/eventpic.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;"
                          >';
@@ -488,6 +518,8 @@ require_once('init.php');
 
                 ?>
             </div>
+
+            
 
             <div class="paginationList">
                 <ul class="pagination">
@@ -499,12 +531,6 @@ require_once('init.php');
                 </ul>
             </div>
 
-            <div id="viewMore" class="eventfeed">
-                <!-- this is where we put info on events-->
-                <section class="postsection1">
-                    <P> TEST </P>
-                </section>
-            </div>
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
 
         </div>
@@ -513,107 +539,125 @@ require_once('init.php');
     <script src="pagination.js"></script>
 
     <script>
+        var coll = document.getElementsByClassName("three-dots");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(event) { 
+            event.stopPropagation();
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+        });
+        }
 
         /*function changeButton(button){
+
             button.innerHTML = "Joined!";
             button.style.hover = "false";
             button.style.disabled = "true";
             button.style.backgroundColor= "#2bba75";
         }*/
-        function changeButton1(button){
-            button.innerHTML = "Bookmarked!";
+
+    var postsection = document.querySelectorAll(".postsection");
+
+    for (let i = 0; i < postsection.length; i++) {
+        postsection[i].addEventListener("click", function event(event) {
+            window.location.href = 'event.php?str=' + (postsection[i].id).substring(3);
+        });
+    }
+
+    var joinBookmarkButtons = document.querySelectorAll(".nonevent");
+    for (let i = 0; i < joinBookmarkButtons.length; i++) {
+        // button = joinBookmarkButtons[i];
+        // text = button.innerHTML;
+        joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
+            event.stopPropagation();
+
+        });
+    }
+
+    function changeButton(button) {
+        if (button.innerHTML == "join") {
+            button.innerHTML = "joined!";
+
+
             button.style.hover = "false";
             button.style.disabled = "true";
-        }
-        var postsection = document.querySelectorAll(".postsection");
+            button.style.backgroundColor = "#2bba75";
 
-        for (let i = 0; i < postsection.length; i++) {
-            postsection[i].addEventListener("click", function event(event) {
-                window.location.href ='event.php?str='+(postsection[i].id).substring(3);
-            });
-        }
-
-        var joinBookmarkButtons = document.querySelectorAll(".nonevent");
-        for (let i = 0; i < joinBookmarkButtons.length; i++) {
-            button = joinBookmarkButtons[i];
-            text = button.innerHTML;
-            joinBookmarkButtons[i].addEventListener("click", function nonevent(event) {
-                event.stopPropagation();
-                
-            });
-        }
-
-
-
-        function changeButton(button) {
-            if (button.innerHTML == "join") {
-                button.innerHTML = "joined!";
-                
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#2bba75";
-                
-            } else if (button.innerHTML == "bookmark") {
-                button.innerHTML = "bookmarked!";
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#2bba75";
-            } else if (button.innerHTML == "bookmarked!") {
-                button.innerHTML = "bookmark";
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#3489CD";
-            } else if (button.innerHTML == "joined!") {
-                button.innerHTML = "join";
-                button.style.hover = "false";
-                button.style.disabled = "true";
-                button.style.backgroundColor= "#3489CD";
-            } 
-        }
+        } else if (button.innerHTML == "bookmark") {
+            button.innerHTML = "bookmarked!";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#2bba75";
+        } else if (button.innerHTML == "bookmarked!") {
+            button.innerHTML = "bookmark";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+        } else if (button.innerHTML == "joined!") {
+            button.innerHTML = "join";
+            button.style.hover = "false";
+            button.style.disabled = "true";
+            button.style.backgroundColor = "#3489CD";
+      }
+    }
     </script>
 
 
     <script src="Map.js"></script>
     <script>
-        //$event is a variable used earlier to store the list of all events from the DB
-        //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
-        eventArray = <?php require_once('query_auth.php');
+    //$event is a variable used earlier to store the list of all events from the DB
+    //These 4 lines convert the event array to json and assign it to a JS array "eventArray"
+    eventArray = <?php require_once('query_auth.php');
 
-                        $php_array = array();
-                        $php_array = $event;
-                        echo json_encode($php_array); ?>;
+    $php_array = array();
+    $php_array = $event;
+    echo json_encode($php_array);?> ;
 
-        for (let i = 0; i < eventArray.length; i++) {
-            //Geolocate each event using jquery and geolocation api.
-            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + eventArray[i].lat + ',' + eventArray[i].lng +
-                '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
-                function(data) {
-                    //use the json result and take only the address from it. Change the event spans to have the addresses.
-                    document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
-                });
-        }
+    for (let i = 0; i < eventArray.length; i++) {
+        //Geolocate each event using jquery and geolocation api.
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + eventArray[i].lat + ',' + eventArray[i]
+            .lng +
+            '&key=AIzaSyDqe2RY-PDPAopRRejPnD2uKibuvjsEKjM',
+            function(data) {
+                //use the json result and take only the address from it. Change the event spans to have the addresses.
+                document.getElementsByClassName("events")[i].innerHTML = data.results[0].formatted_address;
+            });
+    }
     </script>
 
     <script>
-        hasJoined = <?php require_once('query_auth.php');
-                    //$joinedArray = array();
-                    $joinedArray = get_UserEvents();
-                    echo json_encode($joinedArray); ?>;
-        hasBookmarked = <?php require_once('query_auth.php');
-                        //$bookmarkArray = array();
-                        $bookmarkArray = getBookmarks();
-                        echo json_encode($bookmarkArray); ?>;
-
+    hasJoined =[];
+    hasBookmarked =[];
+    hasJoined = <?php require_once('query_auth.php');
+    //$joinedArray = array();
+    $joinedArray = get_UserEvents($_SESSION['username']);
+    echo json_encode($joinedArray);?> ;
+    hasBookmarked = <?php require_once('query_auth.php');
+    //$bookmarkArray = array();
+    $bookmarkArray = getBookmarks($_SESSION['username']);
+    echo json_encode($bookmarkArray);?>;
+    
+    if(hasJoined!=null){
         for (i = 0; i < hasJoined.length; i++) {
-            if (document.getElementById("j-"+hasJoined[i].event_id) != null)
-                changeButton(document.getElementById("j-"+hasJoined[i].event_id));
+            if (document.getElementById("j-" + hasJoined[i].event_id) != null)
+                changeButton(document.getElementById("j-" + hasJoined[i].event_id));
         }
-        console.log(hasBookmarked.length);
-        for (i = 0; i < hasBookmarked.length; i++) {
-            //if(document.getElementById("b"+hasBookmarked[i])==null)
-            if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
-                changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
-        }
+    }
+    console.log(hasBookmarked.length);
+    if(hasBookmarked!=null){
+    for (i = 0; i < hasBookmarked.length; i++) {
+        //if(document.getElementById("b"+hasBookmarked[i])==null)
+        if (document.getElementById("b-" + hasBookmarked[i].event_id) != null)
+            changeButton(document.getElementById("b-" + hasBookmarked[i].event_id));
+    }
+}
     </script>
 
 
@@ -621,18 +665,6 @@ require_once('init.php');
 
 
 
-    <script>
-        function showDiv() {
-            //Toggle the map option when selecting event location
-            document.getElementById('map').style.display = "block";
-            document.getElementById('budget-4id').style.display = "none";
-        }
-
-        function removeDiv() {
-            document.getElementById('map').style.display = "none";
-            document.getElementById('budget-4id').style.display = "block";
-        }
-    </script>
 
 
     <script src="index.js"></script>
@@ -640,40 +672,11 @@ require_once('init.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            //checks if passwords are the same
-            $("#signupButton1").click(function() {
-                var passalert = document.getElementById('alert');
-                var password = $("#psw1").val();
-                var confirmPassword = $("#psw2").val();
-                if (password != confirmPassword) {
-                    swal({
-                        title: "Passwords do not match",
-                        type: "error",
-                        showConfirmButton: true,
-                        showCancelButton: false,
-                        customClass: "Custom_Cancel",
-                        confirmButtonColor: "#DD6B55"
-                    });
 
-                    return false;
-                }
-                swal({
-                    title: "Success",
-                    type: "success",
-                    showConfirmButton: false,
-                    customClass: "success",
-                    timer: 1500
 
-                });
-
-                return true;
-            });
-        });
-    </script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap" type="text/javascript">
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07Drl0GKvcqjGeHy6W_U0XXsMzR7tMEs&callback=initMap"
+        type="text/javascript">
     </script>
 
 
@@ -716,43 +719,6 @@ require_once('init.php');
     }
     </script> -->
 
-    <script>
-        function popEvent() {
-
-
-            //var eventbutton = document.getElementById('eventbutton');
-            var modal2 = document.getElementById('id02');
-
-            modal2.style.display = "block";
-
-
-
-            window.onclick = function(event) {
-                if (event.target == modal2) {
-                    modal2.style.display = "none";
-
-                }
-            }
-        }
-    </script>
-
-    <script>
-        function popInfo() {
-            //var events = document.getElementById('events');
-            var view = document.getElementById('viewMore');
-
-            view.style.display = "block";
-
-            window.onclick = function(event) {
-                if (event.target == view) {
-                    console.log("worked");
-                    view.style.display = "none";
-                }
-            }
-        }
-    </script>
-
-
 
     <script src="datedropper.pro.min.js">
 
@@ -763,21 +729,22 @@ require_once('init.php');
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta name="google-signin-client_id" content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
 
 
 
     <script>
-        n = new Date();
-        y = n.getFullYear();
-        m = n.getMonth() + 1;
-        d = n.getDate();
-        var l = document.getElementById("date1");
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    var l = document.getElementById("date1");
 
-        l.value = m + "/" + d + "/" + y;
+    l.value = m + "/" + d + "/" + y;
 
 
-        $("#date1").dateDropper({});
+    $("#date1").dateDropper({});
     </script>
 
 
@@ -785,24 +752,24 @@ require_once('init.php');
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.button1').click(function() {
-                var clickBtnValue = $(this).html();
-                console.log(clickBtnValue);
-                var buttonid = $(this).attr('id');
-                buttonid = buttonid.substring(2);
-                console.log(buttonid);
-                var ajaxurl = 'ajax.php',
-                    data = {
-                        'action': clickBtnValue,
-                        'id': buttonid
-                    };
-                $.post(ajaxurl, data, function(response) {
-                    // Response div goes here.
-                    //alert(response);
-                });
+    $(document).ready(function() {
+        $('.button1').click(function() {
+            var clickBtnValue = $(this).html();
+            console.log(clickBtnValue);
+            var buttonid = $(this).attr('id');
+            buttonid = buttonid.substring(2);
+            console.log(buttonid);
+            var ajaxurl = 'ajax.php',
+                data = {
+                    'action': clickBtnValue,
+                    'id': buttonid
+                };
+            $.post(ajaxurl, data, function(response) {
+                // Response div goes here.
+                //alert(response);
             });
         });
+    });
     </script>
 
 
@@ -810,26 +777,54 @@ require_once('init.php');
 
 
 
+    
     <script>
-        //Handles the event form time. Also adds a time graphic on the side that updates based on the time that was input.
-        document.querySelector("#time").addEventListener("input", function(e) {
-            const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-            const time = this.value;
-            if (reTime.exec(time)) {
-                const minute = Number(time.substring(3, 5));
-                const hour = Number(time.substring(0, 2)) % 12 + (minute / 60);
-                this.style.backgroundImage =
-                    `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><circle cx='20' cy='20' r='2' fill='%23222' stroke='%23222' stroke-width='2' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,4 20.5,4 21.5,24.5 Z' fill='%23222' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M18.5,24.5 19.5,8.5 20.5,8.5 21.5,24.5 Z' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></svg>")`;
-            }
-        });
-    </script>
-
-    <script>
-        function search(keyword) {
-            if (event.key === 'Enter') {
-                submitFunction();
-            }
+    function search(keyword) {
+        if (event.key === 'Enter') {
+            submitFunction();
         }
+    }
+    </script>
+
+
+    <script>
+    
+    function getProfile(profile){
+
+
+
+        var url  = "profile.php?user="+profile;
+        //alert(url);
+        window.location.replace(url);
+        
+    }
+    
+    
+    </script>
+
+
+
+    <script>
+    
+    function getAnalytics(event){
+
+            // alert(event);
+
+
+
+            $.ajax({
+                type: 'post',
+                url: 'cookies.php',
+                data: {
+                    event:event
+                },
+                success: function(response) {
+                   console.log(response);
+                }
+            });
+    
+        
+    }
     </script>
 
 
