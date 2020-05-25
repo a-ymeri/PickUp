@@ -88,13 +88,10 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-    <div class="section-sidebar">
+        <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
-
-
-
 
 
             <section class="stealthy-scroll-container">
@@ -103,6 +100,7 @@ require_once('init.php');
 
 
                 <ul class="sidebar-nav">
+
 
                 <a href="profile.php?user=<?php echo $_SESSION['username']?>">
                         
@@ -123,8 +121,9 @@ require_once('init.php');
                             <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
                             <p style="color: rgb(82, 227, 77);">Home</p>
 
-                        </li>
 
+                        </li>
+                    
                     </a>
 
                     <a href="#">
@@ -142,28 +141,42 @@ require_once('init.php');
 
                         </li>
                     </a>
-
                     <a href="Map.php">
-
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
-
+                        
                         </li>
                     </a>
-
+                    
+                    <a href="profile.php?user=<?php echo $_SESSION['username']?>">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg' style='
+                            width: 70px;
+                            height:70px;
+                            overflow: hidden;
+                            border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px;'>" : "");
+                        ?>
+                            <p class="prof" >Profile</p>
+                        </li>
+                    </a>
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-cog"></i>
-                            <p class="settingsfafa">Settings</p>
+
+                            <i class="fas fa-cog" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Settings</p>
 
                         </li>
 
                     </a>
+                    
 
-
-
+                    
 
                 </ul>
                 <?php

@@ -39,7 +39,6 @@ require_once('init.php');
     <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-     
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
@@ -471,6 +470,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
+
                         <section class="postsection" id="ps-'.$id.'">
                             <div class="item1">
                                 <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
@@ -502,6 +502,7 @@ require_once('init.php');
                             echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button></div>
                         </section>
                     </div>';
+
                 }
             }
 
@@ -723,7 +724,11 @@ require_once('init.php');
     <script src="datedropper.pro.min.js">
 
 
+
     </script>
+
+    </script>
+
 
 
 
@@ -731,6 +736,13 @@ require_once('init.php');
 
     <meta name="google-signin-client_id"
         content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+
+ ldavidovikj
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <meta name="google-signin-client_id"
+        content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+
 
 
 

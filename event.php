@@ -85,9 +85,6 @@ require_once('init.php');
 
     <!-- ------------------------------------------------ -->
 
-
-
-
     <!--
                                             HERE the MODAL(login/signup) ends
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -121,6 +118,7 @@ require_once('init.php');
                         echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
                         ?>
                             <p class="prof">Profile</p>
+
                         </li>
                         <br>
   
@@ -128,20 +126,15 @@ require_once('init.php');
                    
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
-                            <p style="color: rgb(82, 227, 77);">Home</p>
+
+                            <i class="fas fa-home" ></i>
+                            <p >Home</p>
+
 
                         </li>
 
                     </a>
 
-                    <a href="#">
-                        <li>
-                            <i class="fas fa-bell"></i>
-                            <p>Notifications</p>
-
-                        </li>
-                    </a>
 
                     <a href="bookmark.php">
                         <li>
@@ -231,6 +224,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest" id="'.$event->get_title().'"  onclick="getAnalytics(this.id)"  >
+
                                 
                                     <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
                                     width: 70px;
@@ -256,6 +250,7 @@ require_once('init.php');
                                     Location: <span id="geolocation"></span> <br>
                                    '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
+
                                 ';
                                 echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
                                 : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';

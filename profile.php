@@ -231,10 +231,6 @@ if (!isset($_GET['user'])) {
                 $id = $_GET['user'];
 
                 if (get_email($id) != "") {
-
-
-
-
                     echo ($_SESSION['username'] == $_GET['user']) ? "<script>document.getElementsByClassName('prof')[0].style.color='#52E34D';</script><div class='personal-container'>
         <div class='avatar-upload'>
             <div class='avatar-edit'>
@@ -357,8 +353,6 @@ if (!isset($_GET['user'])) {
                         return '<img src="images/eventpic.jpg" style= "width: 100px; height:100px; display:block; margin-left:auto; margin-right:auto; margin-top:20px;"
                          >';
                 }
-
-
 ?>
             <script>
                 var user = "";
@@ -371,6 +365,7 @@ if (!isset($_GET['user'])) {
                     document.querySelector(".btn2").style.backgroundColor = "black";
                     window.location.href = "profile.php?user=" + user;
                 });
+
 
                 document.querySelector(".btn2").addEventListener("click", function() {
                     document.querySelector(".joined-events").style.display = "block";
@@ -443,8 +438,6 @@ if (!isset($_GET['user'])) {
 
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
 
             <script>
                 function showDiv() {

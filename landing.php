@@ -535,6 +535,7 @@ require_once('init.php');
                     echo
                         '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
                                 <section class="postsection" id="ps-'.$id.'">
+
                                     <div class="item1">
                                         <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
                                         width: 70px;
@@ -548,6 +549,7 @@ require_once('init.php');
                                             
                                                 '.$text.'
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="item2">' .choosePic($pic, $id).'</div>
