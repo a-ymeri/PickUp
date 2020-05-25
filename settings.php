@@ -102,12 +102,26 @@ require_once('init.php');
                 <ul class="sidebar-nav">
 
 
-                    
+                <a href="profile.php?user=<?php echo $_SESSION['username']?>">
+                        
+                        <li class="profile">
+                            <?php
+                        require_once('authenticate.php');
+                        $u = get_username();
+                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
+                        ?>
+                            <p class="prof">Profile</p>
+                        </li>
+                        <br>
+  
+                    </a>
+                   
                     <a href="landing.php">
                         <li>
-                            <i class="fas fa-home"></i> 
-                            <p>Home</p>
-                        
+                            <i class="fas fa-home" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Home</p>
+
+
                         </li>
                     
                     </a>
@@ -153,8 +167,9 @@ require_once('init.php');
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-user-cog" style="color: rgb(82, 227, 77);"></i>
-                            <p style="color: rgb(82, 227, 77);">Settings and Privacy</p>
+
+                            <i class="fas fa-cog" style="color: rgb(82, 227, 77);"></i>
+                            <p style="color: rgb(82, 227, 77);">Settings</p>
 
                         </li>
 

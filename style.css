@@ -190,7 +190,7 @@ form {
 } */
 
 .submit {
-    border-radius: 24px;
+    
     opacity: 0.2;
     color: black;
     font-size: 20px;
@@ -406,7 +406,7 @@ nav {
         border-bottom: 1px solid gray;
         font-size: 18px;
         margin-bottom: 16px;
-        border-radius: 25px;
+        
         font-family: 'Poppins';
         border-bottom: aliceblue;
         text-indent: 19px;
@@ -423,13 +423,13 @@ nav {
         border-bottom: 1px solid gray;
         font-size: 18px;
         margin-bottom: 16px;
-        border-radius: 25px;
+        
         font-family: 'Poppins';
         border-bottom: aliceblue;
         text-indent: 19px;
     }
     .submit {
-        border-radius: 24px;
+        
         opacity: 0.2;
         color: black;
         font-size: 20px;
@@ -485,7 +485,7 @@ nav {
         position: relative;
         height: 40px;
         background-color: #444444;
-        border-radius: 50%;
+        
         color: #ffffff;
         font-size: 20px;
         cursor: pointer;
@@ -595,7 +595,7 @@ nav {
     list-style: none;
     margin: 1%;
     height: 45px;
-    border-radius: 24px;
+    
     width: 600px;
     align-content: center;
     transform: translateX(0%);
@@ -652,7 +652,7 @@ nav {
     position: absolute;
     height: 40px;
     background-color: #444444;
-    border-radius: 50%;
+    
     color: #ffffff;
     font-size: 20px;
     cursor: pointer;
@@ -757,7 +757,7 @@ nav {
 #about .about-link li a i {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    
     line-height: 50px;
     text-align: center;
     border: 1px solid #d6c6b2;
@@ -785,6 +785,7 @@ nav {
     height: auto;
     background-color: black;
     color: white;
+
 }
 
 .eventfeed {
@@ -808,22 +809,26 @@ nav {
 
 .event-body {
     margin-top: 3%;
-}
 
-.button1 {
-    position: relative;
-    display: block;
-    border-style: none;
-    border-radius: 5px;
+    z-index: 1;
+}
+.three-dots{
     background-color: rgb(52, 137, 207);
-    color: white;
-    width: 250px;
+    border:none;
+    width: 30px;
+
     height: 30px;
     cursor: pointer;
+}
+.button1, .button2 {
+    
+    display: inline-block;
+    border-style: none;
+    background-color: rgb(52, 137, 207);
+    color: white;
+    width: 200px;
+    cursor: pointer;
     font-size: 17px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
 }
 
 .filter-btn input {
@@ -841,29 +846,12 @@ nav {
     transition: 430ms ease;
 }
 
-.button2 {
-    position: relative;
-    display: block;
-    border-style: none;
-    background-color: rgb(52, 137, 207);
-    color: white;
-    width: 250px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 17px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-}
 
 .button1:hover,
 .button2:hover {
     background-color: #2bba75;
 }
 
-.postsection {
-    text-align: left;
-}
 
 .event-content animate {
     background-blend-mode: hard-light;
@@ -911,19 +899,47 @@ nav {
     background-color: transparent;
 }
 
-.postsection {
-    align-content: center;
-    width: 60%;
+.item1{
+    grid-column: 1 / span 2;
+    grid-row: 1;
+}
+
+.item4{
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.item2{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.item3{
+    grid-column: 2;
+    grid-row: 2;
+    margin-right: 20px;
+}
+
+    display: grid;
+    text-align: left;
+    
+    
+    grid-gap: 10px;
+    width: 100%;
+
     height: auto;
     margin: auto;
     margin-top: 10%;
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
-    padding: 20px;
-    border-radius: 10px;
+
+    padding: 10px;
     /* border:1px solid #0077CC; */
     border-bottom: 1px solid gray;
-    box-shadow: 5px 8px 8px rgba(0, 0, 0, .3);
+
     transition: all 3s;
 }
 
@@ -966,7 +982,6 @@ nav {
     background-color: rgba(0, 0, 0, 1);
     color: white;
     padding: 20px;
-    border-radius: 10px;
     border: 1px solid #0077CC;
     box-shadow: 5px 8px 8px rgba(0, 0, 0, .3);
     transition: all 3s;
@@ -1010,7 +1025,6 @@ textarea::-webkit-scrollbar {
 
 textarea::-webkit-scrollbar-thumb {
     background-color: #CCC;
-    border-radius: 2px
 }
 
 .postsection div [type=submit] {
@@ -1021,7 +1035,6 @@ textarea::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
-    border-radius: 5px;
     font-size: 16px;
 }
 
@@ -1033,7 +1046,6 @@ textarea::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
-    border-radius: 5px;
     font-size: 16px;
 }
 
@@ -1239,7 +1251,7 @@ button:focus {
     width: 64px;
     height: 64px;
     margin-right: 50%;
-    border-radius: 75%;
+    
     border: 6px solid #fff;
     border-color: #1b71f3 transparent #1b71f3 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
@@ -1287,7 +1299,7 @@ label {}
     background-repeat: no-repeat;
     background-size: var(--size) var(--size);
     border: var(--border) solid var(--color);
-    border-radius: var(--borderRadius);
+    
     color: #222;
     font-size: var(--size);
     padding: var(--margin) var(--margin) var(--margin) var(--marginLeft);
@@ -1303,7 +1315,6 @@ label {}
 
 .applybutton {
     background-color: transparent;
-    border-radius: 5px;
     /* background-color: rgba(46, 144, 92, 0.92); */
     border: 1px solid green;
 }
@@ -1322,7 +1333,6 @@ label {}
     width: 200px;
     height: 40px;
     box-sizing: border-box;
-    border: 5px solid skyblue;
     padding: 4px;
     text-align: center;
 }
@@ -1336,7 +1346,7 @@ label {}
     border: 0;
     display: block;
     font-size: 20px;
-    border-radius: 20px;
+    
     padding: 0 10%;
     background-color: black;
     color: white;
@@ -1360,7 +1370,8 @@ label {}
     opacity: .7;
 }
 
-.search-bar .fa {
+/*.search-bar .fa {
+
     box-sizing: border-box;
     padding: 11px;
     width: 42.5px;
@@ -1374,7 +1385,8 @@ label {}
     text-align: center;
     font-size: 1.2em;
     transition: all 1s;
-}
+}*/
+
 
 
 /* .search-bar:hover{
@@ -1393,10 +1405,7 @@ label {}
     display: block;
 } */
 
-.search-bar:hover .fa {
-    background: skyblue;
-    color: black;
-}
+
 
 .search-bar:hover h3 {
     transform: scale(0);

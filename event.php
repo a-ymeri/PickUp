@@ -15,7 +15,7 @@ require_once('init.php');
     <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="loginstyle.css">
+    
     <link rel="stylesheet" href="date-picker.css">
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -54,7 +54,7 @@ require_once('init.php');
 
 <body>
 
-    <nav>
+    <<nav>
 
         <div class="logo">
             <a href="landing.php" class="logolink"> <img src="images/logo.png"> </a>
@@ -62,146 +62,28 @@ require_once('init.php');
         </div>
 
         
-
-        <ul class="nav-links">
+        <!--<ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
-            <!-- <li> <a href="about.html"> About</a></li>
-            <li> <a href="#"> Entertaiment</a></li> -->
-        </ul>
+            
+        </ul>-->
 
 
-        <div class="burger">
+        <!-- <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
 
 
 
-        </div>
+        </div> -->
 
 
 
     </nav>
 
 
-
-
-    <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="images/avatar.png" alt="Avatar" class="avatar">
-
-
-            </div>
-
-            <div class="container">
-
-                <div class="g-signin2" data-onsuccess="onSignIn" id="googlebutton"></div>
-                <label for="uname"><b>Username</b>
-                </label>
-                <input type="text" placeholder="Enter Username" name="uname" required class="uname" id="username">
-
-                <div class="loader-wrapper">
-                    <span class="loader"><span class="loader-inner"></span></span>
-                </div>
-
-                <label for="psw"><b>Password</b>
-                </label>
-                <input type="password" placeholder="Enter Password" name="psw" class="password" id="password">
-                <h5 class="errorlabel"></h5>
-                <button type="submit" class="logsubmit">Login</button>
-
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-
-                <br>
-                <br> Not a member Yet ?
-
-                <button type="button" id="signupButton" title="Close Modal"> Signup</button>
-
-
-
-            </div>
-        </form>
-
-
-
-
-    </div>
-
-
     <!-- ------------------------------------------------ -->
-
-
-    <!-- <div id="signout" class="signuoutclass">
-
-<form class="modal-content animate" action="action.php" method="post">
-    <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-              <a href= "account.php">
-        <img src="images/avatar.png" alt="Avatar" class="avatar">
-        </a>
-
-        <button>Signout</button>
-
-
-    </div>
-
-    <div class="container">
-        <label for="uname"><b>Username</b>
-        </label>
-        <button type="button" id="signupButton" title="Close Modal"> Signup</button>
-
-
-
-    </div>
-</form>
-</div> -->
-
-
-
-
-    <!-- <div id="signup" class="signupclass">
-
-        <form class="modal-content animate" action="signup.php" method="post">
-
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-            </div>
-
-            <div class="container">
-                Signup
-   
-                <br>
-
-
-                <input type="text" placeholder="Enter first name" name="fname" required class="uname">
-                <input type="text" placeholder="Enter last name" name="lname" required class="uname">
-
-
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required class="uname">
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" id="psw1" name="psw" required class="password">
-
-                <input type="password" placeholder="Re-enter Password" id="psw2" name="psw2" required class="password">
-                Email
-                <input type="email" placeholder="Your email" name="email" required class="signupemail" style="width:100%; height:50px; padding: 12px 20px;" required>
-
-                <button type="submit" class="logsubmit" id="signupButton1" onclick="return Validate()">Sign up</button>
-                <br>
-                <br>
-            </div>
-        </form>
-
-    </div>-->
-
-
 
     <!--
                                             HERE the MODAL(login/signup) ends
@@ -211,7 +93,7 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-        <div class="section-sidebar">
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
@@ -236,6 +118,7 @@ require_once('init.php');
                         echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
                         ?>
                             <p class="prof">Profile</p>
+
                         </li>
                         <br>
   
@@ -243,8 +126,10 @@ require_once('init.php');
                    
                     <a href="landing.php">
                         <li>
+
                             <i class="fas fa-home" ></i>
                             <p >Home</p>
+
 
                         </li>
 
@@ -253,24 +138,26 @@ require_once('init.php');
 
                     <a href="bookmark.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Bookmarks
+                            <i class="fas fa-bookmark"></i>
+                            <p>Bookmarks</p>
 
                         </li>
                     </a>
 
+                    <a href="Map.php">
+
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Map</p>
+
+                        </li>
+                    </a>
+
+
                     <a href="settings.php">
                         <li>
-
-                            <i class="thumbnail">
-
-                            </i>
-
-                            Settings and Privacy
+                            <i class="fas fa-cog"></i>
+                            <p class="settingsfafa">Settings</p>
 
                         </li>
 
@@ -337,6 +224,7 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest" id="'.$event->get_title().'"  onclick="getAnalytics(this.id)"  >
+
                                 
                                     <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
                                     width: 70px;
@@ -362,6 +250,7 @@ require_once('init.php');
                                     Location: <span id="geolocation"></span> <br>
                                    '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
                                 
+
                                 ';
                                 echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
                                 : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';

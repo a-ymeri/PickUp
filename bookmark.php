@@ -39,7 +39,6 @@ require_once('init.php');
     <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
@@ -471,37 +470,39 @@ require_once('init.php');
 
                     echo
                         '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
-                                <section class="postsection" id="ps-'.$id.'">
-                                    <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
-                                    width: 70px;
-                                    height:70px;
-                                    overflow: hidden;
-                                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative">'.$creator.'</span></a>
-                                    <div class="whole" style="float:right">
-                                    <span id ="num-users"></span>
-                                    <button type = "button" class="three-dots nonevent"> ... </button>
-                                        <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
-                                           
-                                            '.$text.'
-                                        </div>
-                                    </div>
 
-                                <h1 style="color:#0077CC;">
-                                    ' . $event[$x]->get_title() . '
-                                </h1> 
-                                <p>' . $date = $event[$x]->get_date() . '</p>
-                                
-                                    Time: ' . $event[$x]->get_time() . '
-                                    <br>
-                                    Location: <span class="events"></span> 
-                                   '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
-                                
-                                ';
-                                echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
-                                : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
-                                echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
-                                </section>
-                            </div>';
+                        <section class="postsection" id="ps-'.$id.'">
+                            <div class="item1">
+                                <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
+                                width: 70px;
+                                height:70px;
+                                overflow: hidden;
+                                border-radius: 50%; margin-left:5px; margin-right: 10px; float:left; position:relative"><p>'.$creator.'</p></span></a>
+                                <div class="whole" style="float:right">
+                                <span id ="num-users"></span>
+                                    <button type = "button" class="three-dots nonevent"> ... </button>
+                                    <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
+                                    
+                                        '.$text.'
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item2">' .choosePic($pic, $id).'</div>
+                            <div class="item3" style="color:#0077CC;"> <p>'
+                            . $event[$x]->get_title() .'<br></p>' .'<p>' . $date = $event[$x]->get_date() . '</p>
+                        
+                            <br><p>Time: ' . $event[$x]->get_time() . '</p>
+                            <br><p>
+                            Location: <span class="events"></span> 
+                        </p><br><p>'.$numUserText. '</p> <br>' . '<script>document.write(hashtag("' . $dscp . '"))</script></div>'  . '
+                        
+                            ';
+                            echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<div class="item4"><button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                            : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
+                            echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button></div>
+                        </section>
+                    </div>';
+
                 }
             }
 
@@ -723,7 +724,11 @@ require_once('init.php');
     <script src="datedropper.pro.min.js">
 
 
+
     </script>
+
+    </script>
+
 
 
 
@@ -731,6 +736,13 @@ require_once('init.php');
 
     <meta name="google-signin-client_id"
         content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+
+ ldavidovikj
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <meta name="google-signin-client_id"
+        content="991209987037-ai24ultf2fv5i9up0kiiv1bmjik38hho.apps.googleusercontent.com">
+
 
 
 

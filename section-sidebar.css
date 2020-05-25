@@ -88,7 +88,6 @@ p {
     border-radius: 10px;
 ======= MEMLI CHANGE MERGE*/
 
-
 /*.sidebar-nav li:hover {
     /*border: 0.5px solid rgb(59, 134, 184);
     /* box-shadow: 0 10px 20px 0 rgb(61, 60, 60); 
@@ -96,6 +95,7 @@ p {
     opacity: 1;
     transition: ease-in-out .077s;
 }*/
+
 
 */ .sidebar-nav a {
     text-decoration: none;
@@ -106,7 +106,7 @@ p {
     color: #ff3e30;
     position: absolute;
     border-style: none;
-    border-radius: 5px;
+
     background-color: transparent;
     border: 1px solid #ff3e30;
     /* lola change background-color:red;

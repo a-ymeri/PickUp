@@ -241,8 +241,8 @@ require_once('init.php');
             <br>
             <br>
             <div class="menu-buttons">
-                <button class="btn1" >Your Events</button>
-                <button class="btn2">Joined Events</button>
+                <button>Your Events</button>
+                <button>Joined Events</button>
                 
             </div>
            
