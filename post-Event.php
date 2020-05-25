@@ -8,8 +8,13 @@
     $date = $_POST['date'];
 
     $time = $_POST['time'];
+<<<<<<< HEAD
     $lat = 0; 
     $lng = 0;
+=======
+    $lat = 40.736851;
+    $lng = 22.920227;
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     $description = $_POST['eventDescription'];
     $id = uniqid();
     // $date =  str_replace("/","-",$date);

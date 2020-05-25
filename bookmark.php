@@ -17,11 +17,7 @@ require_once('init.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-
-
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> 
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -30,7 +26,11 @@ require_once('init.php');
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
 
 
-  
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
+
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -64,7 +64,6 @@ require_once('init.php');
 
         <div class="search-bar">
             <form method="post" action="search.php" class="search">
-
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
@@ -79,11 +78,11 @@ require_once('init.php');
         <!-- <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
-            <div class="line3"></div>
+            <div class="line3"></div>-->
 
 
 
-        </div> -->
+        </div>
 
 
 
@@ -305,16 +304,135 @@ require_once('init.php');
             <!------------------- --------------------------------------------------------------------------------------->
         </div>
 
-        <div class="indexfeed">
+        <!-- <div class="indexfeed">
             
             <script>
                 function hashtag(text) {
                     var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="landing.php?str=$1">#$1</a>');
                     return repl;
                 }
-            </script>
+            </script> -->
 
-            <header style="font-size:40px;">Bookmarks</header>
+        <div class="indexfeed">
+
+
+            <!-- <div class="search-bar">
+                <i class="fa fa-search"></i>
+                <form method="post" action="search.php">
+                    <input type="search" placeholder="Search" name="searchbar" onkeydown="search(this)">
+                </form>
+            </div> -->
+
+            <!-- <div id="map"></div> -->
+
+
+            <!-- <h1>Event Feed</h1> -->
+            <br>
+            
+                <header style="font-size:40px;">Bookmarks</header>
+                <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
+
+            
+
+
+            <div class="eventfeed " id="id02">
+                <!-- used to be postsection1, changed bc the css is causing me problems -->
+                <section class="postsection1">
+
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
+                    <form action="post-Event.php" method="POST" enctype="multipart/form-data" class="event-content animate" autocomplete="off">
+
+
+
+                        <div class="text">
+
+                            <header style="font-size:30px;">Host a new event</header> <br>
+
+                        </div>
+                        <div class="event-body">
+                            <label for="title">Event name: </label>
+                            <input type="text" placeholder="Title" id="title" name="title" required>
+                        <!--<div class="date-picker"> </div>-->
+                       
+                      
+                        
+                        <!-- <input class="bridgePHP" value='MEMLI'></input> -->
+
+                            <br>
+                            <br>
+                            
+                            <label for="date">Select a date: </label>
+                            <input type="text" id="date1" name="date" value="" style="width:50%;">
+                            <br>
+                            <br>
+                            <label for="time" name="time">Start Time:</label>
+                            <input type="time" name="time" id="time" >
+                            <br>
+                            <br>
+                            <br>
+                            <h4>Select a Facility</h4>
+
+                            <div class="venueOptions">
+
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-1" value="Sofou Building" onclick="removeDiv()" checked>
+                                <label class="for-checkbox-budget" for="budget-1">
+                                    <span data-hover="Sofou Building">Sofou Building</span>
+                                </label>
+
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-2" value="Warehouse" onclick="removeDiv()">
+                                <label class="for-checkbox-budget" for="budget-2">
+                                    <span data-hover="Warehouse">Warehouse</span>
+                                </label>
+
+                                <input class="checkbox-budget" type="radio" name="budget" id="budget-3" value="YMCA" onclick="removeDiv()">
+                                <label class="for-checkbox-budget" for="budget-3">
+                                    <span data-hover="YMCA">YMCA</span>
+                                </label>
+
+                                <div id="budget-4id">
+                                    <input class="checkbox-budget" type="radio" name="budget" id="budget-4" value="Other" onclick="showDiv()">
+                                    <label class="for-checkbox-budget" for="budget-4">
+                                        <span data-hover="Other">Other</span>
+                                    </label>
+                                </div>
+                                <div id="map" style="display:none"></div>
+                                <br>
+
+
+                            </div>
+                        <label for="eventDescription">Event Description</label>
+                            <input type="text" name="eventDescription">
+                        <br>
+                        <br>
+                        <label for="picfile">Upload a picture:</label>
+                        <input type="file" name="picfile">
+                            <input type="submit" value="post" id="postsectionsubmit" >
+                        <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
+
+                        <!-- Submit form -->
+                     
+
+                        <!-- <div id="poster" style="display: none">
+                            <input type="file" name="picfile">
+                        </div> -->
+
+
+                        </div>
+                    </form>
+
+
+
+                </section>
+            </div>
+
+            <script>
+
+            function hashtag(text){
+                var repl = text.replace(/#(\w+)/g, '<a class="nonevent" href="?str=$1">#$1</a>');
+                return repl;
+            }
+
+            </script>
 
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
@@ -564,19 +682,19 @@ require_once('init.php');
 
 
     <script>
-    function thisfn() {
-        var eventpost = document.querySelector('.postsection');
-        var eventoption = document.getElementById('eventoption');
-        const date_picker_element = document.querySelector('.date-picker');
-        const date_selected = document.querySelector('.selected-date');
+        function thisfn() {
+            var eventpost = document.querySelector('.postsection');
+            var eventoption = document.getElementById('eventoption');
+            const date_picker_element = document.querySelector('.date-picker');
+            const date_selected = document.querySelector('.selected-date');
 
-        // alert(event_content);
-        date_picker_element.style.display = "block";
-        eventoption.style.display = 'block';
-        event_content.style.display = "block";
-        eventpost.classList.toggle('eventpost-active');
-        eventoption.classList.toggle('eventoption-active');
-    }
+            // alert(event_content);
+            date_picker_element.style.display = "block";
+            eventoption.style.display = 'block';
+            event_content.style.display = "block";
+            eventpost.classList.toggle('eventpost-active');
+            eventoption.classList.toggle('eventoption-active');
+        }
     </script>
 
 

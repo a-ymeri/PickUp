@@ -45,9 +45,9 @@ if (!isset($_GET['user'])) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
-
+    
     <link rel="stylesheet/less" type="text/css" href="idk.less" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
 
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
@@ -63,7 +63,7 @@ if (!isset($_GET['user'])) {
 
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
 
-    <!-- <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+   <!-- <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
@@ -94,7 +94,7 @@ if (!isset($_GET['user'])) {
 
         <div class="search-bar">
             <form method="post" action="search.php" class="search">
-
+                
                 <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
             </form>
         </div>
@@ -114,24 +114,24 @@ if (!isset($_GET['user'])) {
 
     </nav>
 
+ 
 
 
 
-
-
+  
 
     <div class="indexcontainer">
-
-
-
-
-        <div class="section-sidebar">
+        
+        
+        
+        
+    <div class="section-sidebar">
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
+            
 
-
-
+           
 
 
             <section class="stealthy-scroll-container">
@@ -186,10 +186,10 @@ if (!isset($_GET['user'])) {
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Map</p>
-
+                        
                         </li>
                     </a>
-
+                    
 
 
                     <a href="settings.php">
@@ -200,9 +200,9 @@ if (!isset($_GET['user'])) {
                         </li>
 
                     </a>
+                    
 
-
-
+                    
 
                 </ul>
                 <?php
@@ -256,11 +256,10 @@ if (!isset($_GET['user'])) {
         </div>
     </div>";
 
-                    echo '<h1>' . $id . '</h1>';
+    echo '<h1>'.$id.'</h1>';
 
 
-
-                    echo '            <br>
+    echo '            <br>
     <br>
 <button class="btn1">Events Created</button>
 <button class="btn2">Joined Events</button>

@@ -4,12 +4,20 @@ body{
 
 .index-account{
     margin-top:90px;
+<<<<<<< HEAD
     margin-left: 250px; ;
     margin-right: auto;
     background-color: black;
     color:white;
     font-family: 'Poppins';
 
+=======
+    margin-left: 250px;;
+    background-color: black;
+    color:white;
+    font-family: 'Poppins';
+    text-align: center;
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 }
 
 h1{
@@ -108,26 +116,44 @@ label{
     
 }
 
+<<<<<<< HEAD
 input{
     width:40%;
     border-radius: 5px;
+=======
+/*input{
+    width:40%;
+    
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     background-color: rgb(255, 255, 255);
     border:none;
     font-family: "Poppins";
     text-align: center;
     height:30px;
     font-size: 20px;
+<<<<<<< HEAD
     index:1;
+=======
+    
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 }
 
 input:focus, textarea:focus, select:focus{
     outline: none;
+<<<<<<< HEAD
 }
+=======
+}*/
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
 
 
 
+<<<<<<< HEAD
 input[type=text]{
+=======
+/*input[type=text]{
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     width:40%;
     font-size: 20px;
 }
@@ -135,7 +161,11 @@ input[type=text]{
 input[type=password]{
     width:40%;
 
+<<<<<<< HEAD
 }
+=======
+}*/
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
 .s-confirm{
     /* background-color: #ff3e30; */

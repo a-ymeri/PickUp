@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 i {
     margin: 10px;
     color: rgb(163, 236, 255);
@@ -23,46 +24,107 @@ i {
 }
 
 .profile {
+=======
+i{
+    margin: 10px;
+    color: rgb(163, 236, 255);
+}
+.circular--square{
+    max-width: 30px;
+    max-height: 30px;
+    width: 70px;
+    height:70px;
+    overflow: hidden;
+    border-radius: 50%; 
+    margin-left:10px;
+     margin-right: 10px;
+     position: absolute;
+}
+.prof{
+    position: absolute;
+    display: inline;
+    cursor: pointer;
+   margin-left: 22%;
+}
+
+
+.profile{
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     color: aliceblue;
     padding: 12px;
     width: 200px;
     cursor: pointer;
     height: 40px;
+<<<<<<< HEAD
 }
 
 p {
+=======
+
+}
+
+p{
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     display: inline;
     margin-left: 10px;
 }
 
+<<<<<<< HEAD
 .settingsfafa {
     margin-left: 5px;
 }
 
 .section-sidebar {
     position: fixed;
+=======
+.settingsfafa{
+    margin-left: 5px;
+}
+
+.section-sidebar{
+   position: fixed;
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     margin-top: 80px;
     width: 250px;
     height: 100%;
     text-align: left;
+<<<<<<< HEAD
     background-color: rgba(0, 0, 0, 1);
     border-color: rgb(10, 53, 53);
     border-top-right-radius: 5px;
     border-style: inset;
     border-left: none;
+=======
+    background-color: rgba(0, 0, 0,1); 
+    border-color: rgb(10, 53, 53);
+    border-top-right-radius: 5px;
+    border-style:inset;
+    border-left:none;
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     border-top: none;
     border-bottom: none;
     border-right: 1px solid rgb(59, 134, 184);
     align-content: center;
+<<<<<<< HEAD
 }
 
 .sidebar-nav {
     width: 180px;
     ;
+=======
+    
+}
+
+
+
+.sidebar-nav{
+    width: 180px;;
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     list-style-type: none;
     margin-left: 20px;
 }
 
+<<<<<<< HEAD
 .sidebar-nav a li {
     padding: 15px;
     width: 220px;
@@ -70,18 +132,38 @@ p {
 }
 
 .sidebar-nav a li p:hover {
+=======
+.sidebar-nav a li{
+    padding:15px;
+    width: 220px;;
+}
+
+
+
+.sidebar-nav a li p:hover{
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     border-bottom-style: ridge;
     border-bottom-color: white;
     opacity: .5;
     transition: all .1s;
 }
 
+<<<<<<< HEAD
 .sidebar-nav a li i:hover {
+=======
+
+.sidebar-nav a li i:hover{
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     opacity: .5;
     transition: all .1s;
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 /* .sidebar-nav li:hover{
     border-color: rgb(59, 134, 184);
     box-shadow: 0 3px 7px 0  rgb(43, 125, 180);
@@ -91,6 +173,7 @@ p {
    
     border: 0.5px solid rgb(59, 134, 184);
     /* box-shadow: 0 10px 20px 0 rgb(61, 60, 60); */
+<<<<<<< HEAD
 
 transform: translateY(-3px);
 opacity: 1;
@@ -113,6 +196,35 @@ transition: ease-in-out .077s;
     color:white;
     border:1px solid red;*/
     
+=======
+    
+
+
+
+
+
+.sidebar-nav a {
+    text-decoration: none;
+}
+
+
+
+.sslogout {
+    /* background-color: #ff3e30; */
+    color:#ff3e30;
+    position: absolute;
+    border-style: none;
+
+   
+    background-color:transparent;
+    border:1px solid #ff3e30;
+
+    
+    /* lola change background-color:red;
+    color:white;
+    border:1px solid red;*/
+
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     width: 150px;
     height: 50px;
     left: 40px;
@@ -121,6 +233,7 @@ transition: ease-in-out .077s;
     font-size: 17px;
     font-family: 'Poppins' !important;
     font-weight: 500;
+<<<<<<< HEAD
 }
 .sslogout:hover {
     color: black;
@@ -131,20 +244,64 @@ transition: ease-in-out .077s;
     transition: all .4s;
 }
 input[type=text] {
+=======
+  
+}
+
+.sslogout:hover{
+    color:black;
+    opacity:1;
+
+    background-color:#ff3e30;
+    font-weight: 500;
+
+    transform: perspective();
+    transition:all .4s;
+}
+
+
+/* input[type=text] {
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     color: white;
     height: 40px;
     margin-right: 50px;
     width: 230px;
     box-sizing: border-box;
     border: 2px solid #ccc;
+<<<<<<< HEAD
     font-size: 16px;
     background-color: transparent;
     background-position: 10px 10px;
+=======
+    
+    font-size: 16px;
+    background-color: transparent;
+    background-position: 10px 10px; 
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
+<<<<<<< HEAD
 input[type=text]:focus {
     border-color: rgb(133, 230, 255);
 }
+=======
+
+input[type=text]:focus {
+   
+    border-color: rgb(133, 230, 255);
+} */
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930

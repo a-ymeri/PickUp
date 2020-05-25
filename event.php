@@ -15,13 +15,10 @@ require_once('init.php');
     <!--        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="loginstyle.css">
+    <link rel="stylesheet" href="date-picker.css">
 
-
-     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-
-
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> 
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -30,7 +27,11 @@ require_once('init.php');
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
 
 
-  
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
+
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -39,15 +40,13 @@ require_once('init.php');
     <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="normalize.css">
+    <!-- <link rel="stylesheet" href="normalize.css"> -->
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
     <link rel="stylesheet" href="post-Event.css">
     <link rel="stylesheet" href="pagination.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
 
@@ -62,28 +61,24 @@ require_once('init.php');
 
         </div>
 
-        <div class="search-bar">
-            <form method="post" action="search.php" class="search">
+        
 
-                <input type="text" placeholder="Search.." name="searchbar" onkeydown="search(this)">
-            </form>
-        </div>
-
-        <!--<ul class="nav-links">
+        <ul class="nav-links">
             <li> <a href="#"> Feed</a></li>
             <li> <a href="Map.php"> Map</a></li>
-            
-        </ul>-->
+            <!-- <li> <a href="about.html"> About</a></li>
+            <li> <a href="#"> Entertaiment</a></li> -->
+        </ul>
 
 
-        <!-- <div class="burger">
+        <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
 
 
 
-        </div> -->
+        </div>
 
 
 
@@ -91,7 +86,8 @@ require_once('init.php');
 
 
 
-    <!--<div id="id01" class="modal">
+
+    <div id="id01" class="modal">
 
         <form class="modal-content animate" action="ajax.php" onsubmit="return do_login();">
             <div class="imgcontainer">
@@ -133,7 +129,7 @@ require_once('init.php');
 
 
 
-    </div>-->
+    </div>
 
 
     <!-- ------------------------------------------------ -->
@@ -254,36 +250,27 @@ require_once('init.php');
 
                     </a>
 
-                    <a href="#">
-                        <li>
-                            <i class="fas fa-bell"></i>
-                            <p>Notifications</p>
-
-                        </li>
-                    </a>
 
                     <a href="bookmark.php">
                         <li>
-                            <i class="fas fa-bookmark"></i>
-                            <p>Bookmarks</p>
+
+                            <i class="thumbnail">
+
+                            </i>
+
+                            Bookmarks
 
                         </li>
                     </a>
-
-                    <a href="Map.php">
-
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Map</p>
-
-                        </li>
-                    </a>
-
 
                     <a href="settings.php">
                         <li>
-                            <i class="fas fa-cog"></i>
-                            <p class="settingsfafa">Settings</p>
+
+                            <i class="thumbnail">
+
+                            </i>
+
+                            Settings and Privacy
 
                         </li>
 
@@ -567,19 +554,19 @@ require_once('init.php');
 
 
     <script>
-    function thisfn() {
-        var eventpost = document.querySelector('.postsection');
-        var eventoption = document.getElementById('eventoption');
-        const date_picker_element = document.querySelector('.date-picker');
-        const date_selected = document.querySelector('.selected-date');
+        function thisfn() {
+            var eventpost = document.querySelector('.postsection');
+            var eventoption = document.getElementById('eventoption');
+            const date_picker_element = document.querySelector('.date-picker');
+            const date_selected = document.querySelector('.selected-date');
 
-        // alert(event_content);
-        date_picker_element.style.display = "block";
-        eventoption.style.display = 'block';
-        event_content.style.display = "block";
-        eventpost.classList.toggle('eventpost-active');
-        eventoption.classList.toggle('eventoption-active');
-    }
+            // alert(event_content);
+            date_picker_element.style.display = "block";
+            eventoption.style.display = 'block';
+            event_content.style.display = "block";
+            eventpost.classList.toggle('eventpost-active');
+            eventoption.classList.toggle('eventoption-active');
+        }
     </script>
 
 

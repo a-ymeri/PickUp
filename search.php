@@ -148,7 +148,11 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
+<<<<<<< HEAD
                 <a href="profile.php?user=<?php echo $_SESSION['username']?>">
+=======
+                <a href="account.php">
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
                         
                         <li class="profile">
                             <?php

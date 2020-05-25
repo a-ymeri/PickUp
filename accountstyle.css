@@ -70,9 +70,13 @@ button {
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     box-shadow: 0px 15px 20px rgb(10, 53, 53);
     /* color: #fff; */
+<<<<<<< HEAD
     transform: translateY(-7px);
     opacity:1;
   } */
+=======
+
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
   .privacy{
       position:absolute ;
@@ -176,6 +180,7 @@ button {
 
 
 
+<<<<<<< HEAD
 .your-events{
     margin-left:27%;
 }
@@ -184,6 +189,8 @@ button {
 .joined-events{
     margin-left:58%;
 }
+=======
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
 
 
@@ -192,7 +199,11 @@ button {
     color: white;
     font-size: 20px;
     cursor: pointer;
+<<<<<<< HEAD
     border-radius: 10px;
+=======
+   
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
     border-style: none;
     border-bottom-style:double;
     border-color: rgb(43, 117, 186);
@@ -204,6 +215,7 @@ button {
 }
 
 
+<<<<<<< HEAD
 .btn1{
     margin-left:28%;
 }
@@ -212,6 +224,9 @@ button {
 .btn2{
     margin-left:20%;
 }
+=======
+
+>>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
 .btn1:hover, .btn2:hover{
     background-color: rgb(43, 117, 186);

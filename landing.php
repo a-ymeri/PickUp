@@ -43,7 +43,7 @@ require_once('init.php');
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">
-    <link rel="stylesheet" href="post-Event.css">
+    
     <link rel="stylesheet" href="pagination.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -319,7 +319,6 @@ require_once('init.php');
 
 
             <!-- <h1>Event Feed</h1> -->
-
             <div id="eventbutton" onclick="popEvent()">
                 <header style="font-size:large;">Host event</header>
                 <!-- <input placeholder="Title" id="title1" name="title" autocomplete="off"></input> -->
@@ -418,7 +417,12 @@ require_once('init.php');
 
                             <!-- <div id="poster" style="display: none">
                             <input type="file" name="picfile">
-                        </div> -->
+                            <input type="submit" value="post" id="postsectionsubmit">
+                            <!-- <button type="submit" name="submit">Upload Event Poster</button> -->
+
+
+                        
+                        
 
 
                         </div>
@@ -430,7 +434,7 @@ require_once('init.php');
             </div>
 
 
-            <div class="filterByDay">
+            <!--<div class="filterByDay">
                 <h4 id="imfree">I am free on:</h4> 
                 <hr>
                 <form name="dayFilter" method="GET">
@@ -444,7 +448,7 @@ require_once('init.php');
 
                     <input type="submit" value="Filter feed">
                 </form>
-            </div> 
+            </div> <br><br><br>-->
 
             <!-- <?php
                 // require_once('query_auth.php');
@@ -460,18 +464,18 @@ require_once('init.php');
                 }
             </script>
 
-            <span id="hashtags">
+            <!--<span id="hashtags">
                 <span id="hashtagTitle">Trending tags</span><br>
                 <hr>
                 <?php 
-                    $hashtags = get_hashtags();
+                    /*$hashtags = get_hashtags();
                     if(is_array($hashtags)){
                     for($i = 0; $i<count($hashtags);$i++){
                         echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
                     }
-                }
+                }*/
                 ?>
-            </span>
+            </span>-->
 
             <!-- --------------------------TEST FOR EVENT POPUPP------------------------------------ -->
             <div id="events">
@@ -498,6 +502,21 @@ require_once('init.php');
                     $dscp = $event[$x]->get_description();
                     $creator = $event[$x]->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
+                    $text = "";
+                    //TODO: Consider ajax if slow
+                    $users = getEventUsers($id);
+                    $numUsers = count($users);
+                    $numUserText = "Users: ".$numUsers;
+                    if($max_users > 0){
+                        $numUserText = $numUserText . "/" . $max_users;
+                    }
+                    if($creator==$_SESSION['username']){
+                        $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
+                    }
+                    $text=$text.'
+                    <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
+                    <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
+
                     $text = "";
                     //TODO: Consider ajax if slow
                     $users = getEventUsers($id);
@@ -584,6 +603,36 @@ require_once('init.php');
             <!-- ----------------------------end of INDEXFEED------------------------------------------------------------------------->
 
         </div>
+        <div class="filterByDay">
+                <h3 id="imfree">I am free on:</h3> 
+                <hr>
+                <form name="dayFilter" method="GET">
+                    <input type="checkbox" name="day[]" value="0"><p>Mondays</p><BR>
+                    <input type="checkbox" name="day[]" value="1"><p>Tuesdays</p><BR>
+                    <input type="checkbox" name="day[]" value="2"><p>Wednesdays</p><BR>
+                    <input type="checkbox" name="day[]" value="3"><p>Thursdays</p><BR>
+                    <input type="checkbox" name="day[]" value="4"><p>Fridays</p><BR>
+                    <input type="checkbox" name="day[]" value="5"><p>Saturdays</p><BR>
+                    <input type="checkbox" name="day[]" value="6"><p>Sundays</p><BR>
+
+                    <br>
+                    <span class="filter-btn"><input type="submit" value="Filter feed"></span>
+                </form>
+                <br>
+                
+                <span id="hashtags">
+                    <span id="hashtagTitle">Trending tags</span><br>
+                    <hr>
+                    <?php 
+                        $hashtags = get_hashtags();
+                        if(is_array($hashtags)){
+                        for($i = 0; $i<count($hashtags);$i++){
+                            echo '<script>document.write(hashtag("#' . $hashtags[$i] . '"))</script><br>';
+                        }
+                    }
+                    ?>
+                </span>
+         </div> <br><br><br>
     </div>
 
     <script src="pagination.js"></script>
