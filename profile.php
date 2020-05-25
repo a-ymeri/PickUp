@@ -255,8 +255,7 @@ if (!isset($_GET['user'])) {
     echo '<h1>'.$id.'</h1>';
 
 
-    echo '            <br>
-    <br>
+    echo ' 
 <button class="btn1">Events Created</button>
 <button class="btn2">Joined Events</button>
     
@@ -280,7 +279,7 @@ if (!isset($_GET['user'])) {
                 
                 
                 if($event == null){
-                    echo '<br><br><p>Error 404  </p>';
+                    echo '<br><p> No events :(  </p>';
                 }else{         
                     for ($x = 0; $x < count($event); $x++) {
                     
@@ -297,47 +296,39 @@ if (!isset($_GET['user'])) {
                         if($max_users > 0){
                             $numUserText = $numUserText . "/" . $max_users;
                         }
-                        if($creator==$_SESSION['username']){
-                            $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
-                        }
-                        $text=$text.'
-                        <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
-                        <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
-    
                         echo
-                            '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
-                                    <section class="postsection" id="ps-'.$id.'">
+                        '<div class="eventtest ' . $x . '" id="'.$event[$x]->get_title().'"  onclick="getAnalytics(this.id)"  >
+                                <section class="postsection" style ="width:60%"id="ps-'.$id.'">
+
+                                    <div class="item1">
                                         <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
                                         width: 70px;
                                         height:70px;
                                         overflow: hidden;
-                                        border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative">'.$creator.'</span></a>
-                                        <div class="whole" style="float:right">
-                                        <span id ="num-users"></span>
-                                        <button type = "button" class="three-dots nonevent"> ... </button>
-                                            <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
-                                               
-                                                '.$text.'
+                                        border-radius: 50%; margin-left:5px; margin-right: 10px; float:left; position:relative"><p>'.$creator.'</p></span></a>
+                                    <div class="dropdown nonevent">
+                                        <button onclick="myFunction('.$x.')" class="dropbtn">...</button>
+                                            <div id="dropdown '.$x.'" class="dropdown-content">
+                                                <span class ="nonevent clickable" id="dl'.$id.'">Delete</span>
                                             </div>
                                         </div>
-    
-                                    <h1 style="color:#0077CC;">
-                                        ' . $event[$x]->get_title() . '
-                                    </h1> 
-                                    <p>' . $date = $event[$x]->get_date() . '</p>
-                                    
-                                        Time: ' . $event[$x]->get_time() . '
-                                        <br>
-                                        Location: <span class="events"></span> 
-                                       '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
-                                    
+                                    </div>
+                                    <div class="item2">' .choosePic($pic, $id).'</div>
+                                    <div class="item3" style="color:#0077CC;"> <p>'
+                                     . $event[$x]->get_title() .'<br></p>' .'<p>' . $date = $event[$x]->get_date() . '</p>
+                                
+                                    <br><p>Time: ' . $event[$x]->get_time() . '</p>
+                                    <br><p>
+                                    Location: <span class="events"></span> 
+                                   </p><br><p>'.$numUserText. '</p> <br>' . '<script>document.write(hashtag("' . $dscp . '"))</script></div>'  . '
+                                
                                     ';
-                                    echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
-                                    : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
-                                    echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
-                                    </section>
-                                </div>';
-                    }
+                                    echo $numUsers!=$max_users || $max_users == 0 || in_array($_SESSION['username'],$users)? '<div class="item4"><button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                                    : '<div class="item4"> <button type ="submit" class="button2 nonevent" style="background-color:grey"> Join </button>';
+                                    echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button></div>
+                                </section>
+                            </div>';
+                }
                 }
             } else {
                 echo "<h1>No such profile</h1>";

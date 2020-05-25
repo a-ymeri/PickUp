@@ -502,7 +502,6 @@ require_once('init.php');
                     $dscp = $event[$x]->get_description();
                     $creator = $event[$x]->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
-                    $text = "";
                     //TODO: Consider ajax if slow
                     $users = getEventUsers($id);
                     $numUsers = count($users);
@@ -510,12 +509,6 @@ require_once('init.php');
                     if($max_users > 0){
                         $numUserText = $numUserText . "/" . $max_users;
                     }
-                    if($creator==$_SESSION['username']){
-                        $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
-                    }
-                    $text=$text.'
-                    <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
-                    <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
 
 
                     echo
@@ -545,8 +538,8 @@ require_once('init.php');
                                    </p><br><p>'.$numUserText. '</p> <br>' . '<script>document.write(hashtag("' . $dscp . '"))</script></div>'  . '
                                 
                                     ';
-                                    echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<div class="item4"><button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
-                                    : '<div class="item4"> <button class="button2 nonevent" style="background-color:grey"> Join </button>';
+                                    echo $numUsers!=$max_users || $max_users == 0 || in_array($_SESSION['username'],$users)? '<div class="item4"><button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                                    : '<div class="item4"> <button type ="submit" class="button2 nonevent" style="background-color:grey"> Join </button>';
                                     echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button></div>
                                 </section>
                             </div>';
@@ -955,7 +948,7 @@ require_once('init.php');
                 };
             $.post(ajaxurl, data, function(response) {
                 // Response div goes here.
-                alert(response);
+                //alert(response);
             });
         });
         $('.clickable').click(function() {
@@ -971,7 +964,7 @@ require_once('init.php');
                 };
             $.post(ajaxurl, data, function(response) {
                 // Response div goes here.
-                alert(response);
+                //alert(response);
             });
         });
     });

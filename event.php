@@ -207,7 +207,6 @@ require_once('init.php');
                     $dscp = $event->get_description();
                     $creator = $event->get_creator();
                     $pic = 'uploads/' . $id . '.jpg';
-                    $text = "";
                     //TODO: Consider ajax if slow
                     $users = getEventUsers($id);
                     $numUsers = count($users);
@@ -215,48 +214,41 @@ require_once('init.php');
                     if($max_users > 0){
                         $numUserText = $numUserText . "/" . $max_users;
                     }
-                    if($creator==$_SESSION['username']){
-                        $text=$text.'<button type="button" class ="nonevent button1" id="dl'.$id.'">Delete</button><br>';
-                    }
-                    $text=$text.'
-                    <button type="button" class ="button1" id="sh'.$id.'">Share</button><br>
-                    <button type="button" class ="button1" id="gc'.$id.'">Google Calendar</button>';
+
 
                     echo
-                        '<div class="eventtest" id="'.$event->get_title().'"  onclick="getAnalytics(this.id)"  >
+                        '<div class="eventtest " id="'.$event->get_title().'"  onclick="getAnalytics(this.id)"  >
+                                <section class="postsection" id="ps-'.$id.'">
 
-                                
-                                    <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
-                                    width: 70px;
-                                    height:70px;
-                                    overflow: hidden;
-                                    border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative">'.$creator.'</span></a>
-                                    <div class="whole" style="float:right">
-                                    <span id ="num-users"></span>
-                                    <button type = "button" class="three-dots nonevent"> ... </button>
-                                        <div class="dots-content" style="display: none; overflow: hidden;padding: 0 18px;">
-                                           
-                                            '.$text.'
+                                    <div class="item1">
+                                        <a href="profile.php?user='.$creator.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
+                                        width: 70px;
+                                        height:70px;
+                                        overflow: hidden;
+                                        border-radius: 50%; margin-left:5px; margin-right: 10px; float:left; position:relative"><p>'.$creator.'</p></span></a>
+                                    <div class="dropdown nonevent">
+                                        <button onclick="myFunction(0)" class="dropbtn">...</button>
+                                            <div id="dropdown 0" class="dropdown-content">
+                                                <span class ="nonevent clickable" id="dl'.$id.'">Delete</span>
+                                            </div>
                                         </div>
                                     </div>
-
-                                <h1 style="color:#0077CC;">
-                                    ' . $event->get_title() . '
-                                </h1> 
-                                <p>' . $date = $event->get_date() . '</p>
+                                    <div class="item2">' .choosePic($pic, $id).'</div>
+                                    <div class="item3" style="color:#0077CC;"> <p>'
+                                     . $event->get_title() .'<br></p>' .'<p>' . $date = $event->get_date() . '</p>
                                 
-                                    Time: ' . $event->get_time() . '
-                                    <br>
-                                    Location: <span id="geolocation"></span> <br>
-                                   '.$numUserText. choosePic($pic, $id) . '<br>' . '<script>document.write(hashtag("' . $dscp . '"))</script>'  . '
+                                    <br><p>Time: ' . $event->get_time() . '</p>
+                                    <br><p>
+                                    Location: <span class="events"></span> 
+                                   </p><br><p>'.$numUserText. '</p> <br>' . '<script>document.write(hashtag("' . $dscp . '"))</script></div>'  . '
                                 
-
-                                ';
-                                echo $numUsers!=$max_users || in_array($_SESSION['username'],$users)? '<button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
-                                : '<button class="button2 nonevent" style="background-color:grey"> Join </button>';
-                                echo '<button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button>
-                                Users: <hr>
+                                    ';
+                                    echo $numUsers!=$max_users || $max_users == 0 || in_array($_SESSION['username'],$users)? '<div class="item4"><button type="submit" class="button1 nonevent" id="j-' . $id . '" name="join" value="join ' . $id . '" onclick="changeButton(this)">join</button>'
+                                    : '<div class="item4"> <button type="submit" class="button2 nonevent" style="background-color:grey"> Join </button>';
+                                    echo '<div class "item4"><button type="submit" class="button1 nonevent" id="b-' . $id . '" name="bookmark" value="bookmark ' . $id . '" onclick="changeButton(this)">bookmark</button></div>
+                                </section>
                             </div>';
+                
                             foreach($users as $user){
                                 echo '<a href="profile.php?user='.$user.'"><span><img class="circular--square nonevent" src="images/'.$creator.'.jpg" style="
                                 width: 70px;
@@ -264,8 +256,8 @@ require_once('init.php');
                                 overflow: hidden;
                                 border-radius: 50%; margin-top:2%;margin-left:5px; margin-right: 10px; float:left; position:relative">'.$user.'</span></a>';
                             }
-            
-                }
+                        }
+                
             
 
 
@@ -282,7 +274,27 @@ require_once('init.php');
                 ?>
             </div>
 
-            
+            <script>
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction(number) {
+                document.getElementById("dropdown "+number).classList.toggle("show");
+                }
+
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                    if (!event.target.matches('.dropbtn')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                            }
+                        }
+                    }
+                }
+            </script>
 
             <div class="paginationList">
                 <ul class="pagination">
@@ -298,6 +310,7 @@ require_once('init.php');
 
         </div>
     </div>
+
 
     <script src="pagination.js"></script>
 
@@ -528,6 +541,22 @@ require_once('init.php');
             $.post(ajaxurl, data, function(response) {
                 // Response div goes here.
                 //alert(response);
+            });
+        });
+        $('.clickable').click(function() {
+            var clickBtnValue = $(this).html();
+            console.log(clickBtnValue);
+            var buttonid = $(this).attr('id');
+            buttonid = buttonid.substring(2);
+            console.log(buttonid);
+            var ajaxurl = 'ajax.php',
+                data = {
+                    'action': clickBtnValue,
+                    'id': buttonid
+                };
+            $.post(ajaxurl, data, function(response) {
+                // Response div goes here.
+               //alert(response);
             });
         });
     });

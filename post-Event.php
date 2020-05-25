@@ -46,7 +46,7 @@
            $errors[]="extension not allowed, please choose a JPEG or PNG file.";
         }
         
-        if($file_size > 10000000){
+        if($file_size > 5000000){
             $errors[]='File size is too big';
         }
         
