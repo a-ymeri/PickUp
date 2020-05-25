@@ -39,7 +39,7 @@ require_once('init.php');
     <title>PickUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="normalize.css">
+     <!-- <link rel="stylesheet" href="normalize.css"> -->
     <link rel="stylesheet" href="radio.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="section-sidebar.css">

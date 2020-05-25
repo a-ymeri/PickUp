@@ -30,7 +30,7 @@ if (!isset($_GET['user'])) {
     <script src="https://kit.fontawesome.com/d0528b62e3.js" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="normalize.css"> -->
+     <link rel="stylesheet" href="normalize.css"> 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="personal-infostyle.css">
     <link rel="stylesheet" href="accountstyle.css">

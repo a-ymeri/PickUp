@@ -88,22 +88,12 @@ require_once('init.php');
 
     <div class="indexcontainer">
 
-<<<<<<< HEAD
         <div class="section-sidebar">
-=======
-    <div class="section-sidebar">
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
 
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
             <section class="stealthy-scroll-container">
 
 
@@ -111,7 +101,6 @@ require_once('init.php');
 
                 <ul class="sidebar-nav">
 
-<<<<<<< HEAD
 
                     
                     <a href="landing.php">
@@ -121,29 +110,6 @@ require_once('init.php');
                         
                         </li>
                     
-=======
-                <a href="account.php">
-                        
-                        <li class="profile">
-                            <?php
-                        require_once('authenticate.php');
-                        $u = get_username();
-                        echo (isset($_SESSION['username']) ?  "<img class='circular--square' src='images/$u.jpg'  >" : "");
-                        ?>
-                            <p class="prof">Profile</p>
-                        </li>
-                        <br>
-  
-                    </a>
-                   
-                    <a href="landing.php">
-                        <li>
-                            <i class="fas fa-home" ></i>
-                            <p >Home</p>
-
-                        </li>
-
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
                     </a>
 
                     <a href="#">
@@ -161,7 +127,6 @@ require_once('init.php');
 
                         </li>
                     </a>
-<<<<<<< HEAD
                     <a href="Map.php">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
@@ -190,36 +155,13 @@ require_once('init.php');
                         <li>
                             <i class="fas fa-user-cog" style="color: rgb(82, 227, 77);"></i>
                             <p style="color: rgb(82, 227, 77);">Settings and Privacy</p>
-=======
-
-                    <a href="Map.php">
-
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Map</p>
-
-                        </li>
-                    </a>
-
-
-                    <a href="settings.php">
-                        <li>
-                            <i class="fas fa-cog" style="color: rgb(82, 227, 77);"></i>
-                            <p class="settingsfafa" style="color: rgb(82, 227, 77);">Settings</p>
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
                         </li>
 
                     </a>
-<<<<<<< HEAD
                     
 
                     
-=======
-
-
-
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
                 </ul>
                 <?php

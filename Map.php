@@ -59,13 +59,8 @@
 
     <!--            <img src="AR_Ausbau1024a.jpg" class="AR">-->
 
-<<<<<<< HEAD
-    <div class='map-container'>
-    <div class="section-sidebar">
-=======
     <div class='index-container'>
         <div class="section-sidebar">
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
             <br>
 
             <!-- this button is serves as a login button or account button based on php user session -->
@@ -81,11 +76,7 @@
 
                 <ul class="sidebar-nav">
 
-<<<<<<< HEAD
                 <a href="profile.php?user=<?php echo $_SESSION['username']?>">
-=======
-                <a href="account.php">
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
                         
                         <li class="profile">
                             <?php
@@ -163,14 +154,9 @@
 
 
 
-<<<<<<< HEAD
-
-        <div id="map" style="width:1300px; margin-left:20%;" ></div>
-=======
             
             <div id="map" style="width:1000px; margin-left:33%; " ></div>
         
->>>>>>> 3f37cd87c4bb2c9aa11f1c59b71137f4d3358930
 
 
 
